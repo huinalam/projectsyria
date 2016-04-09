@@ -127,7 +127,7 @@
 
         popData1 = data1.filter(function(d) {return d.year == start_year});
 
-		d3.json("data/ne_50m_admin_0_countries.geo.json", function(json){   	//시라이+중동+아프리카+유럽 포함된 지도. 
+		d3.json("data/world_map.geo.json", function(json){   	//시라이+중동+아프리카+유럽 포함된 지도. 
 
 		map_json = json;
 

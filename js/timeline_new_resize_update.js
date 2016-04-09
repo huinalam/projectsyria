@@ -512,7 +512,7 @@ function customAxis(g) {
 
         
 
-        d3.csv("data/MartyrsCount.csv", function(data){  // 난민 누적수
+        d3.csv("data/death_per_month.csv", function(data){  // 난민 누적수
 
                      data.forEach(function (item){               
 
@@ -588,7 +588,7 @@ function customAxis(g) {
     });
 
 
-    d3.csv("data/chartMonth_ac.csv", function(data){  // 난민 누적수
+    d3.csv("data/refugee_per_month.csv", function(data){  // 난민 누적수
 
                      data.forEach(function (item){               
 
