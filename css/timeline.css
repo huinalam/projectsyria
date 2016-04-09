@@ -1,0 +1,394 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700|Roboto+Slab:400,100,300);
+
+body{
+    background-color: #111111;
+}
+body.chapter{    
+    margin: 0px;
+    width: 440px;
+}
+iframe{
+    width: 550px;
+}
+.check_bar{
+    margin: 50px auto 0px auto;
+    width: 1060px;
+    height: 5px;
+    background-color: #222222;
+}
+.timeline{
+    background-color: rgba(0,0,0,0);
+}
+h1.chapter{
+    color: #DDDDDD;
+    font-size: 20px;
+    text-align: left;
+}
+h1.time{
+    color: #eeeeee;
+    font-size: 15px;
+    text-align: left;
+}
+.title {
+      width:1030px;
+      font-family: 'Roboto Slab', serif;
+      font-size: 25px;
+      font-weight: 100;
+      text-align: center;
+      letter-spacing: 1.2px;
+      margin: 10px  auto;
+      color: #eeeeee;
+}
+.wrapper{
+    width: 1030px;
+    margin:  auto;
+}
+.timeline_div_tlContent{
+    position: relative;
+    left: 620px;
+    top: 0px;
+    width:520px;
+    height:100%;
+    text-align: left;
+}
+.timeline_div_main{
+    width: 1030px;
+    height: auto;
+    margin: 40px auto 40px auto;
+    text-align: center;
+    background-color: #111111;
+    display: inline-block;
+}
+.timeline_div_column1{
+    width: 580px;
+    margin: 5px;
+    height: auto;
+    background-color: #111111;
+    position: relative;
+    float: left;
+}
+.timeline_div_column2{
+    width: 410px;
+    margin: 5px;
+    height: 793px;
+    padding: 10px;
+    background-color: #111111;
+    position: relative;
+    float:left;
+}
+.timeline_div_content{
+    display: inline-block;
+    width: 450px;
+    margin: 10px;
+    height: 100%;
+    padding: 5px;
+}
+.timeline_chapter_title >h2{
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    line-height: 120%;
+    margin: 0px 0px 20px 0px;
+    color: #cc3333;
+}
+.timeline_chapter_content{
+    font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    width: 410px;
+    height: auto;
+    background-color: #111111; 
+    font-size: 12px;
+    color: #cccccc;
+    display: inline-block;
+}
+.timeline_media_section{
+    font-family: Helvetica;
+    text-align: center;
+    width: 410px;
+    height: 320px;
+    font-size: 10px;
+    color: #eeeeee;
+    letter-spacing: 0.8px;
+}
+.who{
+    width: 190px;
+    height: 150px;
+    margin: 5px;
+    background-color: #111111; 
+    position: relative;
+    text-align: left;
+    float: left;
+}
+.what{
+    width: 190px;
+    height: 150px;
+    margin: 5px;
+    background-color: #111111; 
+    position: relative;
+    text-align: left;
+    float: left;
+}
+.circle_event{
+    opacity: 0.5;
+}
+.timeline_summary{
+    display: inline-block;
+    width: 520px;
+    background-color: #111111; 
+    color: #cccccc;
+}
+.timeline_summary > p{
+    text-align: justify;
+    text-justify: distribute;
+    font-size: 15px;
+    font-weight: 300;
+    font-family: 'Roboto Slab', serif;
+    line-height: 150%;
+    text-indent: 30px;
+    color: #dfdfdf;
+}
+.timeline_div_head{
+    width: 580px;
+    margin: 0px;
+    height: auto;
+    background-color: #111111;
+    display: inline-block;
+}
+.timeline_head1{
+    width:70px;
+    height:auto;
+    margin: 10px;
+    padding-left: 20px;
+    position: relative;
+    text-align: left;
+    float: left;
+}
+.timeline_head2{
+    width:190px;
+    height:auto;
+    margin: 10px;
+    position: relative;
+    text-align: left;
+    float: left;
+    color: #eeeeee;
+}
+.timeline_head3{
+    width: 220px;
+    height:auto;
+    margin: 10px;
+    position: relative;
+    text-align: left;
+    float: left;
+}
+.timeline_div_eventSelect{
+    margin: 0px;
+    display: inline;
+}
+.timeline_eventButton{
+    font-family: Helvetica;
+    font-weight: lighter;
+    line-height: 110%;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+.timeline_div_svg{
+    text-align:left;
+    width: 580px;
+    margin: 0px;
+    height: auto;
+    background-color: 000000;
+}
+.timeline_heading{
+    color: #eeeeee;
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+.exp{
+    color: #eeeeee;
+    font-family: Helvetica;
+    font-weight: lighter;
+    line-height: 110%;
+    font-size: 10px;
+    margin-top: 10px;
+     letter-spacing: 1px;
+}
+.timeline_data_review_chart{
+    width: 250px;
+    float: left;
+}
+.timeline_data_review_num{
+    width: 150px;
+    float: left;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+.timeline_divLine{
+    stroke-width : 0.5;
+    stroke: #888888;
+    stroke-dasharray: 2,2;
+    shape-rendering: crispEdges;
+}
+#legend{
+    font-family: Helvetica;
+    font-size: 9px;
+    fill: #dddddd;
+}
+.timeline_axis { /* axis labels */
+    fill: #dddddd;
+    font-family: sans-serif;
+    font-weight: lighter;
+    font-size: 10px;
+}
+
+.timeline_axis line{ /* axis tick marks */
+    stroke-width : 0.5;
+    stroke: #dddddd;
+    shape-rendering: crispEdges;
+}
+#date_axis line{
+    stroke: #888888;
+    stroke-dasharray: 2,2;
+}
+#date_axis path{
+    display: none;
+}
+.timeline_axis path { /* axis line */
+    stroke-width : 0.5;
+    stroke: #dddddd;
+    shape-rendering: crispEdges;
+}
+/* timeline band */
+
+.band { /* band background */
+    fill: #eeeeee;
+}
+
+/* labels */
+.bandLabel {
+    fill: #F0F0F0;
+    font: 10px sans-serif;
+    font-weight: bold;
+}
+.bandMinMaxLabel {
+    fill: blue;
+    font: 10px sans-serif;
+    font-weight: bold;
+}
+
+.bandMidLabel {
+    fill: red;
+    font: 10px sans-serif;
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* brush */
+.brush .extent {
+    stroke: gray;
+    fill: blue;
+    fill-opacity: .1;
+}
+
+.chart {
+    background-color: #000000;
+}
+
+.interval {
+    cursor : default;
+    pointer-events: true;
+}
+
+.instant {
+    cursor : default;
+    pointer-events: true;
+}
+
+.instantLabel {
+    fill : #eeeeee;
+    font: 10px sans-serif;
+    shape-rendering: crispEdges;
+    stroke-location: inside;
+}
+
+#refugee{
+    fill: #338866;
+    color:#338866;
+    stroke:#338866;
+}
+.line_d {
+    stroke: #C23355;
+    stroke-width: 1px;
+}
+.line_r {
+    stroke: #338866;
+    stroke-width: 1px;
+}
+#death{
+    fill: #C23355;
+    color: #C23355;
+    stroke: #C23355;
+}
+#shelling{
+    fill: #BB2244;
+    color: #C23355;
+    border-color: #B71C1C;
+}
+#air_strike{
+    fill: #1177BB;
+    color: #22abc3;
+    border-color: #444444;
+}
+#battle{
+    fill: #338866;
+    color:#338866;
+    border-color: #444444;
+}
+#chemical{
+    fill: #00BB44;
+    color: #00C853;
+    border-color: #444444;
+}
+#massacre{
+    fill: #ffcc00;
+    color: #ffcc00;
+    border-color: #444444;
+}
+#etc{
+    fill: #dddddd;
+    color: #dddddd;
+    border-color: #444444;
+}
+#HZB{
+    fill: #1177BB;
+    color: #22abc3;
+}
+
+#IR{
+    fill: #BB2244;
+    color: #C23355;
+}
+#IS{
+    fill: #ffcc00;
+    color: #ffcc00;
+}
+#RS{
+    fill: #dddddd;
+    color:#dddddd;
+}
+#US{
+    fill: #335533;
+    color:#335533;
+}
+#data_review_num{
+    font-size: 45px;
+}
+.ref_num{
+    color: #338866;
+}
+.death_num{
+    color: #C23355;
+}
+.chapter_selector{
+    fill: rgba(125,140,155,0.5);
+    stroke: #AAAAAA;
+}
