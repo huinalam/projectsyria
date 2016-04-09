@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="css/main_structure.css" rel="stylesheet">
+	<link href="css/gdp_compare.css" rel="stylesheet">
+</head>
+<body>
+<section id="gdp_compare">
+	<div class="chapter_main_div">
+		<div class="chapter_chart_div_s86" id="scatter_col">
+			<div id="scatter_chart">
+			</div>
+			<div class="scatter_exp">
+			<p>We've seen the imbalance of refugees distribution in Middle East by means of economic scope. Please look at the Scatter plot below. Axis x represents GDP of Middle East nations and axis y does the number of refugee acceptance. The size of circle reflects the number of refugees divided by GDP per capita, which indicates the number of refugees in comparison to each countries' relative economic status.
+			</p>
+			</div>
+		</div>
+		<div class="chapter_article_div div_s30" id="gdp_article">
+			<div class="gdp_div_textCol">
+				<h2>2011</h2>
+				<p>No significant characteristics were found in 2011 in terms of refugees since only 700 refugees were staying in Middle East. However, it is possible at least to compare GDP by nations: Saudi Arabia, a persian gulf-nation highest, Turkey, the second and Egypt, UAE and Iraq in order.</p>
+			</div>
+			<div class="gdp_div_textCol">
+				<h2>2012</h2>
+				<p>After a breakout of civil war, the number of refugees jumped in 2012, leading almost equivalent influx toward Turkey and Jordan. The location and scale of circle shows that Jordan took relatively larger burden in accepting refugees.</p>
+			</div>
+			<div class="gdp_div_textCol">
+				<h2>2013</h2>
+				<p>Notably, the rapid increase of refugees was found in Jordan and Lebanon, while Iraq accepted the largest number of refugees among Gulf nations.</p>
+			</div>
+			<div class="gdp_div_textCol">
+				<h2>2014</h2>
+				<p>In 2014, Turkey and Lebanon saw dramatic surge in terms of Syrian refugees staying within its border. The circle of Turkey shows that it takes holds of considerable economic difficulty in supporting current refugees even though the republic has the second highest GDP in Middle East region</p>
+			</div>
+			<div class="gdp_div_textCol">
+				<h2>Arab Conscience</h2>
+				<p>scatter chart on the left suggest that support for maintaining the basic livelihood of many, thus producing along with economic pressures that some countries have suffered due to the imbalance of the refugees accommodated refugees thing you can do.</p>
+
+				 <p>Kuwooyi countries of the Gulf teuneun $ 165 million donation to aid India, Saudi contract has a target refugees Medical Center building in Yemen.</p>
+
+				<p>But that it expected economic activity in Lebanon gyeoung loss of 7.6 billion dareol and an increase in government spending 1.6 billion vary. If Jordan were also looking for Syrian refugee aid funding partners to support medical supplies due to adverse effects occur in the domestic supply of medical goods concerned in the donor conference held in London in February 2016 for refugees.</p>
+
+				<p>However, the Gulf countries have refused to accept the refugee influx overthrow the forces of national concern, such as strict visa system, ISIS reasons.</p>
+			</div>
+			<div id="circle_graph">
+			</div>
+		</div>
+	</div>
+</section>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+<script src="js/gdp_refugee_scatter.js"></script>
+<script>
+$(document).ready(function(){
+
+	gdp_setPosition();
+	
+	function gdp_setPosition(){
+
+
+			var scatter_div_left = parseInt($(".chapter_main_div").css("margin-left"));
+			var scatter_div_top = parseInt($(".chapter_main_div").css("margin-top"));
+			var scatter_div_width = parseInt($("#scatter_chart").css("width"));
+
+			$('#gdp_article').css({"position": "absolute",
+								   "left": scatter_div_width + scatter_div_left,
+								   "top:": scatter_div_top
+								   });
+
+			$('.gdp_div_textCol').css("height",window.innerHeight);
+
+			$('#scatter_col').css({"position":"fixed",
+									 "top": scatter_div_top,
+									 "left": scatter_div_left
+									 });
+		
+		}
+
+	});
+</script>
+</body>
+</html>

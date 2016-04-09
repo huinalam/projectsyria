@@ -68,7 +68,7 @@ d3.csv("data/refugees_sum_year_2011_2014.csv", function(error, data){
       title_text = pie_svg.append("g")
                         .attr("transform","translate(10,10)")
                         .append("text")
-                        .attr("class","portion_title");
+                        .attr("class","chart_title");
 
       title_text.append("tspan")
                 .attr("dy","1.1em")
@@ -157,7 +157,7 @@ d3.csv("data/refugees_sum_year_2011_2014.csv", function(error, data){
       total_text = total_g.append("g")
                         .attr("transform","translate(10,10)")
                         .append("text")
-                        .attr("class","portion_title");
+                        .attr("class","chart_title");
 
       total_text.append("tspan")
                 .attr("dy","1.1em")
