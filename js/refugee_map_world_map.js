@@ -65,7 +65,7 @@
 	var color = d3.scale.log()
  							.range([c1,c3,c4]);		//카토그램 칼라스케일
  	var alpha = 90;
- 
+ 	console.log(c1);
  	var scale_legend = d3.scale.linear()
  							.domain([0,200])
  							.range([0,1500000]);		//레전드바에 칼라매핑을 하기 위한 실제수치변환 스케일
