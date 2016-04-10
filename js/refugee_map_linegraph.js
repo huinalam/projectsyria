@@ -4,7 +4,7 @@ var map_g_linegraph;
 
 //size, margin value
 var map_width_linegraph = 350;
-var map_height_linegraph = 800;
+var map_height_linegraph = 750;
 var linegraph_margin = {
                 top:20,
                 left:20,

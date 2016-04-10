@@ -8,19 +8,21 @@
 	<link href="css/timeline.css" rel="stylesheet">
 </head>
 <body>
-    <section id="intro"></section>
-<div class="chapter_title" id="c1">
-	<div class="chapter_title_div">
-		<h1>IMBALANCE IN MIDDLE EAST:<br>
-		PERSIAN GULF&#39;s NEGLECT</h1>
+<section id="intro"></section>
+<secttion>
+	<div class = "chapter_main_div chapter_title">
+		<div class="chapter_title_div">
+			<h1>SYRIAN REFUGEE DISTRIBUTION<br>
+			MAP OF THE IMBALANCE</h1>
+		</div>
+		<div class="chapter_introduction_div">
+			<p>We've seen the imbalance of refugees distribution in Middle East by means of economic scope. Please look at the Scatter plot below. Axis x represents GDP of Middle East nations and axis y does the number of refugee acceptance. The size of circle reflects the number of refugees divided by GDP per capita, which indicates the number of refugees in comparison to each countries' relative economic status.
+			</p>
+		</div>
 	</div>
-	<div class="chapter_introduction_div">
-		<p>We've seen the imbalance of refugees distribution in Middle East by means of economic scope. Please look at the Scatter plot below. Axis x represents GDP of Middle East nations and axis y does the number of refugee acceptance. The size of circle reflects the number of refugees divided by GDP per capita, which indicates the number of refugees in comparison to each countries' relative economic status.
-		</p>
-	</div>
-</div>
+</secttion>
 <section>
-	<div class="chapter_main_div" id="refugee_map">
+	<div class="chapter_main_div chapter_title" id="refugee_map">
 		<div class="chapter_chart_div_s86">
 			<div class="map_div_map"></div>
 			<div class="map_div_number">
@@ -56,16 +58,18 @@
 		</div>
 	</div>
 </section>
-<div class="chapter_title" id="c2">
-	<div class="chapter_title_div">
-		<h1>IMBALANCE IN MIDDLE EAST:<br>
-		PERSIAN GULF&#39;s NEGLECT</h1>
+<secttion>
+	<div class = "chapter_main_div chapter_title">
+		<div class="chapter_title_div">
+			<h1>IMBALANCE IN MIDDLE EAST:<br>
+			PERSIAN GULF&#39;s NEGLECT</h1>
+		</div>
+		<div class="chapter_introduction_div">
+			<p>We've seen the imbalance of refugees distribution in Middle East by means of economic scope. Please look at the Scatter plot below. Axis x represents GDP of Middle East nations and axis y does the number of refugee acceptance. The size of circle reflects the number of refugees divided by GDP per capita, which indicates the number of refugees in comparison to each countries' relative economic status.</p>
+			</p>
+		</div>
 	</div>
-	<div class="chapter_introduction_div">
-		<p>We've seen the imbalance of refugees distribution in Middle East by means of economic scope. Please look at the Scatter plot below. Axis x represents GDP of Middle East nations and axis y does the number of refugee acceptance. The size of circle reflects the number of refugees divided by GDP per capita, which indicates the number of refugees in comparison to each countries' relative economic status.
-		</p>
-	</div>
-</div>
+</secttion>
 <section>
 	<div class="chapter_main_div" id="gdp_compare">
 		<div class="chapter_chart_div_s86">
@@ -100,16 +104,21 @@
 		</div>
 	</div>
 </section>
-<div class="chapter_title" id="c3">
-	<div class="chapter_title_div">
-		<h1>IMBALANCE IN MIDDLE EAST:<br>
-		PERSIAN GULF&#39;s NEGLECT</h1>
+<secttion>
+	<div class = "chapter_main_div chapter_title">
+		<div class="chapter_title_div">
+			<h1>What the timeline says</h1>
+		</div>
+		<div class="chapter_introduction_div">
+			<p>Our intention is to focus on why almost half of Syrian population had no choice but to leave the motherlands and which types of life threats have existed from the viewpoint of themselves. So we analyzed the data of syriatracker.crowdmap.com which reports several damages inflicted against civilians in and around Syria. Syria Tracker, website utilizing group intelligence, allows anonymous users to directly report cases of civilian deaths, massacre, genocide and also chemical warfare. You can find detailed process of analysis in the section of methodology.</p>
+			</p>
+			<p>
+			By extracted data, timeline says the type of civilian losses and its frequency, fatalities and number of refugees on a monthly and yearly basis. Hence, we intended to let our viewers find out relevance between each data by pointing out which groups are related to certain types of incidents and which sorts of incidents were occurred. From 2011 to April 2016, 7 chapters are dissected as of patterns of civil war and also major timeline cases.
+			</p>
+		</div>
 	</div>
-	<div class="chapter_introduction_div">
-		<p>We've seen the imbalance of refugees distribution in Middle East by means of economic scope. Please look at the Scatter plot below. Axis x represents GDP of Middle East nations and axis y does the number of refugee acceptance. The size of circle reflects the number of refugees divided by GDP per capita, which indicates the number of refugees in comparison to each countries' relative economic status.
-		</p>
-	</div>
-</div>
+</secttion>
+<section>
 <section>
 	<div class="chapter_main_div" id="timeline">
 		<div class="chapter_chart_div_s60" id="timeline_div">
@@ -423,7 +432,7 @@ $(document).ready(function(){
 		var section_top = parseInt($('#timeline').css("margin-top"));
 		var timeline_width = parseInt($("#timeline_div").css("width"));
 
-		$('#timeline').css({
+		$('#timeline_div').css({
 								 position: "fixed",
 								 top: section_top,
 								 left: section_left
@@ -443,7 +452,7 @@ $(document).ready(function(){
 		var section_top = parseInt($('#timeline').css("margin-top"));
 		var timeline_width = parseInt($("#timeline_div").css("width"));
 
-		$('#timeline').css("position", "static");
+		$('#timeline_div').css("position", "static");
 
 		$('#timeline_article').css("position", "static");
 	}

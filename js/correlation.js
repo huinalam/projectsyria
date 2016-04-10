@@ -175,6 +175,8 @@ d3.csv("data/correlation_6_6.csv",function(data){
 			d3.select("#" + id + "_article").style("opacity",1);
 			console.log("#" + id + "_article");
 		});
+
+	popYear(whole);
 });
 
 

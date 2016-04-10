@@ -53,15 +53,15 @@
     var map_legend;
     var map_json;
     var duration =[]; //각 국가의 난민변화수량에 맞게 duration 
-    var map_legend_num =[1,1000,10000,100000,1000000,2500000];
+    var map_legend_num =[1,1000,10000,100000,1000000,1500000];
 
     				//** 카토그램 및 파이 그래프에 필요한 색상들
-    var c1 = "#C0DDCF";
-  	var c2 = "#55BFAA"; //ì¹´í† ê·¸ëž¨ ì²«ë²ˆì§¸ ìƒ‰
+    var c1 = "#000000";
 	var c3 = "#CC3333";
 	var c4 = "#AA2233";
 	var c_syria = "#772222";
 	
+	console.log(c1);
 	var color = d3.scale.log()
  							.range([c1,c3,c4]);		//카토그램 칼라스케일
  	var alpha = 90;
@@ -169,8 +169,12 @@
 							if(d.properties.name == "Syria"){
 								return c_syria;
 							}
+							if(value==0){
+								console.log(d.properties.name);
+								return c1;
+							}
 							if(value){
-								return color(value);
+								return c1;
 							}
 							else{
 								return c1;
@@ -208,7 +212,7 @@
 									if(d.properties.name == countryList[i])	
 										return d.properties.name;	
 								}
-								
+								i
 							})
 							/*.style("fill",function(d,i){
 								if(d.properties.name!="Syria"){
