@@ -75,20 +75,20 @@
 			<div class="scatter_exp">
 			<p>Please click the below years to compare number of refugees on the scatter plot</p>
 			</div>
-			<div class="gdp_div_textCol">
-				<div class="gdp_year_button" id="2011"><h2>2011</h2></div>
+			<div class="gdp_div_textCol gdp_year_button2011">
+				<div class="gdp_year_button gdp_year_button2011"><h2>2011</h2></div>
 				<p>No significant characteristics were found in 2011 in terms of refugees since only 700 refugees were staying in Middle East. However, it is possible at least to compare GDP by nations: Saudi Arabia, a persian gulf-nation highest, Turkey, the second and Egypt, UAE and Iraq in order.</p>
 			</div>
-			<div class="gdp_div_textCol">
-				<div class="gdp_year_button" id="2012"><h2>2012</h2></div>
+			<div class="gdp_div_textCol gdp_year_button2012">
+				<div class="gdp_year_button gdp_year_button2012"><h2>2012</h2></div>
 				<p>After a breakout of civil war, the number of refugees jumped in 2012, leading almost equivalent influx toward Turkey and Jordan. The location and scale of circle shows that Jordan took relatively larger burden in accepting refugees.</p>
 			</div>
-			<div class="gdp_div_textCol">
-				<div class="gdp_year_button" id="2013"><h2>2013</h2></div>
+			<div class="gdp_div_textCol gdp_year_button2013">
+				<div class="gdp_year_button gdp_year_button2013"><h2>2013</h2></div>
 				<p>Notably, the rapid increase of refugees was found in Jordan and Lebanon, while Iraq accepted the largest number of refugees among Gulf nations.</p>
 			</div>
-			<div class="gdp_div_textCol">
-				<div class="gdp_year_button" id="2014"><h2>2014</h2></div>
+			<div class="gdp_div_textCol gdp_year_button2014">
+				<div class="gdp_year_button gdp_year_button2014"><h2>2014</h2></div>
 				<p>In 2014, Turkey and Lebanon saw dramatic surge in terms of Syrian refugees staying within its border. The circle of Turkey shows that it takes holds of considerable economic difficulty in supporting current refugees even though the republic has the second highest GDP in Middle East region</p>
 			</div>
 		</div>
@@ -371,10 +371,22 @@ $(document).ready(function(){
 		total_numTransition(id);
 		pieTransition(id);
 	});
-	$(".gdp_year_button").on("click",function(){
-		var id = parseInt($(this).attr("id"));
-		console.log(id);
-		scatterTransition(id);
+	$(".gdp_div_textCol").on("click", function () {
+	    var classfy = $(this).attr('class').split(/\s+/);
+	    switch (classfy[1]) {
+	        case "gdp_year_button2011":
+	            scatterTransition(2011);
+	            break;
+	        case "gdp_year_button2012":
+	            scatterTransition(2012);
+	            break;
+	        case "gdp_year_button2013":
+	            scatterTransition(2013);
+	            break;
+	        case "gdp_year_button2014":
+	            scatterTransition(2014);
+	            break;
+	    }
 	});
 
 	/** CHAPTER TITLE SETTING **/
@@ -401,7 +413,7 @@ $(document).ready(function(){
 	}
 
 	function section1_initialSetting(){
-		$(".map_div_article").not('#map_article_p1').hide();
+	    $(".map_div_article").not('#map_article_p1').hide();
 	}
 
 
