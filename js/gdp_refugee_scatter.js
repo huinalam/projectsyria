@@ -55,7 +55,7 @@ var cScale_GDP_capita;
 var xScale_scatter;
 var yScale_scatter;
 
-var dataCon;
+var gdp_dataCon;
 var popData;
 var year = 2011;
 
@@ -66,9 +66,9 @@ var country_code = [];
 
 d3.csv("data/refugee_gdp_2011_2014_middle_east.csv",function(data){
 
-	dataCon = data;
+	gdp_dataCon = data;
 
-	dataCon.forEach(function(item,i){
+	gdp_dataCon.forEach(function(item,i){
 		item.year = +item.year;
 		item.GDP = +item.GDP;
 		item.GDP_capita = +item.GDP_capita;
@@ -80,11 +80,11 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east.csv",function(data){
 
 	popData = data.filter(function(d) {return d.year == year});
 
-	var maxGDP = d3.max(dataCon,function(d){ return d.GDP;});
-	var maxGDP_pop = d3.max(dataCon,function(d){ return d.GDP_capita;});
-	var maxRefugee = d3.max(dataCon,function(d){ return d.refugee;});
-	var maxValue1 = d3.max(dataCon,function(d){ return d.value2;});
-	var maxValue2 = d3.max(dataCon,function(d){ return d.value2;});
+	var maxGDP = d3.max(gdp_dataCon,function(d){ return d.GDP;});
+	var maxGDP_pop = d3.max(gdp_dataCon,function(d){ return d.GDP_capita;});
+	var maxRefugee = d3.max(gdp_dataCon,function(d){ return d.refugee;});
+	var maxValue1 = d3.max(gdp_dataCon,function(d){ return d.value2;});
+	var maxValue2 = d3.max(gdp_dataCon,function(d){ return d.value2;});
 	console.log(maxValue1);
 	console.log(maxValue2);
 
@@ -260,7 +260,7 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east.csv",function(data){
 
 	function scatterTransition(year){
 
-		popData = dataCon.filter(function(d) {return d.year == year});
+		popData = gdp_dataCon.filter(function(d) {return d.year == year});
 
 		//scatter_g.selectAll("g").data(popData).transition();
 

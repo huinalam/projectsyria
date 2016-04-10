@@ -4,8 +4,8 @@ var map_g_linegraph;
 
 //size, margin value
 var map_width_linegraph = 350;
-var map_height_linegraph = 680;
-var margin = {
+var map_height_linegraph = 800;
+var linegraph_margin = {
                 top:20,
                 left:20,
                 right:40,
@@ -14,7 +14,7 @@ var margin = {
 //var graph_top_margin = 10;
 
 //data container, scale
-var data_Con;
+var line_data_Con;
 var x_scale_linegraph;
 var y_scale_linegraph;
 
@@ -26,7 +26,7 @@ map_svg_linegraph = d3.select(".map_div_linegraph").append("svg")
 							  .attr("class","map_svg_linegraph")
 							  .attr("width",map_width_linegraph)
 							  .attr("height",map_height_linegraph)
-							  .style("background-color","#222222");
+							  .style("background-color","#111111");
 
 map_g_linegraph = map_svg_linegraph.append("g")
 								 .attr("transfrom","translate(0,0)");
@@ -45,19 +45,19 @@ d3.csv("data/refugees_total_year_2011_2014.csv",function(data){
           d.date = parseDate(d.date);
     });
 
-    data_Con = data;
+    line_data_Con = data;
 
-    var maxValue = d3.max(data_Con,function(d){ return d.value});
+    var maxValue = d3.max(line_data_Con,function(d){ return d.value});
 
     x_scale_linegraph = d3.time.scale()
     						  .domain([parseDate(line_graph_year[0]),parseDate(line_graph_year[3])])
-    						  .range([margin.left,map_width_linegraph - margin.right]);
+    						  .range([linegraph_margin.left,map_width_linegraph - linegraph_margin.right]);
 
     y_scale_linegraph = d3.scale.linear()
     							 .domain([maxValue,0])
-    							 .range([margin.top, map_height_linegraph - margin.bottom]);
+    							 .range([linegraph_margin.top, map_height_linegraph - linegraph_margin.bottom]);
 
-   var refugee_sum_line = d3.svg.line(data_Con)
+   var refugee_sum_line = d3.svg.line(line_data_Con)
                                 .x(function(d){return x_scale_linegraph(d.date)})
                                 .y(function(d){return y_scale_linegraph(d.value)})
                                 .interpolate("cardinal");
@@ -65,33 +65,9 @@ d3.csv("data/refugees_total_year_2011_2014.csv",function(data){
     refugee_sum_path = map_g_linegraph.append("g")
                                      .attr("transform","translate(0,0)")
                                      .append("path")
-                                     .datum(data_Con)
+                                     .datum(line_data_Con)
                                      .attr("d",refugee_sum_line)
                                      .attr("class","line_graph");
-
-
-    /*
-    map_g_linegraph.selectAll("circle")
-                  .data(year)
-                  .enter()
-                  .append("circle")
-                  .attr("cx",function(d){
-                        return x_scale_linegraph(parseDate(d));
-                  })
-                  .attr("cy",function(d){
-                        return y_scale_linegraph(0);
-                  })
-                  .attr("r",4)
-                  .attr("fill","#eeeeee");
-
-    map_g_linegraph.append("line")
-                  .attr("x1",x_scale_linegraph(parseDate(year[0])))
-                  .attr("y1",y_scale_linegraph(0))
-                  .attr("x2",x_scale_linegraph(parseDate(year[3])))
-                  .attr("y2",y_scale_linegraph(0))
-                  .attr("stroke","#eeeeee")
-                  .attr("stroke-width",1);
-    */
 
     //** AXIS decalre and Setting **//
 
@@ -105,8 +81,8 @@ d3.csv("data/refugees_total_year_2011_2014.csv",function(data){
 
     var xAxis_g = map_g_linegraph.append("g")
         .attr("class", "linegraph_axis")
-        .attr("id", "date_axis")
-        .attr("transform", "translate(0,"+(map_height_linegraph - (margin.bottom-20))+")")
+        .attr("id", "linegraph_date_axis")
+        .attr("transform", "translate(0,"+(map_height_linegraph - (linegraph_margin.bottom-20))+")")
         .call(xAxis);
 
 
@@ -119,8 +95,8 @@ d3.csv("data/refugees_total_year_2011_2014.csv",function(data){
 
     var yAxis_g = map_g_linegraph.append("g")
         .attr("class", "linegraph_axis")
-        .attr("id", "date_axis")
-        .attr("transform","translate(" + (map_width_linegraph - (margin.right - 10)) + ",0)")
+        .attr("id", "linegraph_date_axis")
+        .attr("transform","translate(" + (map_width_linegraph - (linegraph_margin.right - 10)) + ",0)")
         .call(yAxis);
 
 
@@ -133,7 +109,7 @@ d3.csv("data/refugees_total_year_2011_2014.csv",function(data){
 
     linegraph_circle = map_g_linegraph.append("circle")
                                           .attr("cx",x_scale_linegraph(parseDate(line_graph_year[0])))
-                                          .attr("cy",y_scale_linegraph(data_Con[0].value))
+                                          .attr("cy",y_scale_linegraph(line_data_Con[0].value))
                                           .attr("r",2)
                                           .attr("fill","#BB2233");
 
@@ -141,26 +117,26 @@ d3.csv("data/refugees_total_year_2011_2014.csv",function(data){
                                         .attr("x1",x_scale_linegraph(parseDate(line_graph_year[0])))
                                         .attr("x2",x_scale_linegraph(parseDate(line_graph_year[0])))
                                         .attr("y1",y_scale_linegraph(0))
-                                        .attr("y2",y_scale_linegraph(data_Con[0].value))
+                                        .attr("y2",y_scale_linegraph(line_data_Con[0].value))
                                         .attr("stroke","#BB2233")
                                         .attr("stroke-width",1);
 
 });
 
-function lineTransition(index){
-
+function lineTransition(year){
+    var index = year - 2011;
     timeAxis_circle.transition().duration(300)
                                 .attr("cx",x_scale_linegraph(parseDate(line_graph_year[index])))
                                 .attr("cy",y_scale_linegraph(0));
 
     linegraph_circle.transition().duration(300)
                                  .attr("cx",x_scale_linegraph(parseDate(line_graph_year[index])))
-                                 .attr("cy",y_scale_linegraph(data_Con[index].value));
+                                 .attr("cy",y_scale_linegraph(line_data_Con[index].value));
 
     linegraph_line.transition().duration(300)
                                .attr("x1",x_scale_linegraph(parseDate(line_graph_year[index])))
                                .attr("x2",x_scale_linegraph(parseDate(line_graph_year[index])))
-                               .attr("y2",y_scale_linegraph(data_Con[index].value));
+                               .attr("y2",y_scale_linegraph(line_data_Con[index].value));
 
 }
 

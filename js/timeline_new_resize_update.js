@@ -26,7 +26,7 @@
         timeline_height = height - 100;
 
     var timeline = {},   // The timeline data를 포함,label,axis시각적 요소까지 포함하는 timeline객첵 
-        dataCon = {},       // Container for the data 각 item(사건)들의 시간,트랙,순서를 저장하는 객체
+        timeline_dataCon = {},       // Container for the data 각 item(사건)들의 시간,트랙,순서를 저장하는 객체
         components = [], // All the components of the timeline for redrawing
         bandGap = 10,    // Arbitray gap between to consecutive bands
         band ={}; //band object
@@ -234,12 +234,12 @@
             yearMills = 31622400000,
             instantOffset = 100* yearMills;
 
-        dataCon.items = items;
+        timeline_dataCon.items = items;
 
         function showItems(n){
             var count = 0; n=n || 10;
             
-            dataCon.items.forEach(function (d){
+            timeline_dataCon.items.forEach(function (d){
                 count++;
                 if(count > n) return;
             })
@@ -316,9 +316,9 @@
             }
 
             if(sortOrder ==="ascending")
-                dataCon.items.sort(compareAscending);
+                timeline_dataCon.items.sort(compareAscending);
             else
-                dataCon.items.sort(compareDescending);
+                timeline_dataCon.items.sort(compareDescending);
 
             if(timeOrder ==="forward")
                 sortForward();
@@ -327,7 +327,7 @@
         }
 
         // Convert yearStrings into dates
-        dataCon.items.forEach(function (item){
+        timeline_dataCon.items.forEach(function (item){
             item.start = parseDate(item.start);
             if (item.end == "") {
                 
@@ -351,12 +351,12 @@
         //calculateTracks(data.items, "ascending", "backward");
         //calculateTracks(data.items, "descending", "forward");
         // Show real data
-        //calculateTracks(dataCon.items, "descending", "backward");
-        calculateTracks(dataCon.items, "ascending", "forward");
-        dataCon.nTracks = tracks.length;
-        dataCon.minDate = d3.min(dataCon.items, function (d) { return d.start; });
-        dataCon.minDate = parseDate("2010-12-01");
-        dataCon.maxDate = parseDate("2016-04-01");
+        //calculateTracks(timeline_dataCon.items, "descending", "backward");
+        calculateTracks(timeline_dataCon.items, "ascending", "forward");
+        timeline_dataCon.nTracks = tracks.length;
+        timeline_dataCon.minDate = d3.min(timeline_dataCon.items, function (d) { return d.start; });
+        timeline_dataCon.minDate = parseDate("2010-12-01");
+        timeline_dataCon.maxDate = parseDate("2016-04-01");
         
         
 
@@ -432,16 +432,16 @@ timeline.setScale = function(){
     band.w = width;
     band.h = height * (0.82 || 1);
     band.trackOffset = 10;
-    band.trackWidth = Math.min((band.h - band.trackOffset) / dataCon.nTracks, 12);
+    band.trackWidth = Math.min((band.h - band.trackOffset) / timeline_dataCon.nTracks, 12);
     band.itemWidth = band.trackWidth * 0.6;
     band.instantWidth = 100;
 
     yScale = d3.time.scale()
-            .domain([dataCon.minDate, dataCon.maxDate])
+            .domain([timeline_dataCon.minDate, timeline_dataCon.maxDate])
             .range([chart_y_top-10, timeline_height]);
 
     xScale_band = function(track){
-        return band.trackOffset + (track%(dataCon.nTracks)) * band.trackWidth;
+        return band.trackOffset + (track%(timeline_dataCon.nTracks)) * band.trackWidth;
     };
 };
 

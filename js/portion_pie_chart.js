@@ -180,7 +180,8 @@ d3.csv("data/refugees_sum_year_2011_2014.csv", function(error, data){
 
  });
 
-function total_numTransition(index){
+function total_numTransition(year){
+    var index = year - 2011
     total_num.transition()
              .duration(300)
              .tween("text",function(){
