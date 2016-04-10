@@ -53,14 +53,14 @@
     var map_legend;
     var map_json;
     var duration =[]; //각 국가의 난민변화수량에 맞게 duration 
-    var map_legend_num =[1,1000,10000,100000,1000000,250000];
+    var map_legend_num =[1,1000,10000,100000,1000000,2500000];
 
     				//** 카토그램 및 파이 그래프에 필요한 색상들
-    var c1 = "#333333";
-  	var c2 = "#55BFAA"; //카토그램 첫번째 색
-	var c3 = "#991122";
-	var c4 = "#CC3344";
-	var c_syria = "#772222"; //시리아 지도표시
+    var c1 = "#C0DDCF";
+  	var c2 = "#55BFAA"; //ì¹´í† ê·¸ëž¨ ì²«ë²ˆì§¸ ìƒ‰
+	var c3 = "#CC3333";
+	var c4 = "#AA2233";
+	var c_syria = "#772222";
 	
 	var color = d3.scale.log()
  							.range([c1,c3,c4]);		//카토그램 칼라스케일
