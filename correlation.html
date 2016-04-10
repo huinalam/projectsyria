@@ -8,31 +8,43 @@
 <body>
 <section>
 </section>
+<section>
+	<div class = "chapter_main_div chapter_title">
+		<div class="chapter_title_div">
+			<h1>NUMBERS SHOULD NOT BE<br>
+			IGNORED</h1>
+		</div>
+		<div class="chapter_introduction_div">
+			<p>We've seen the imbalance of refugees distribution in Middle East by means of economic scope. Please look at the Scatter plot below. Axis x represents GDP of Middle East nations and axis y does the number of refugee acceptance. The size of circle reflects the number of refugees divided by GDP per capita, which indicates the number of refugees in comparison to each countries' relative economic status.
+			</p>
+		</div>
+	</div>
+</section>
 <section  id="correlation">
 	<div class="chapter_main_div">
 		<div class="chapter_chart_div_s60" id="correlation_div_chart"></div>
 		<div class="chapter_article_div div_s45">
-			<div class="correlation_article_div" id="ASS_article">
+			<div class="correlation_article_div div_s45" id="ASS_article">
 				<h2>Assad Regime</h2>
 				<p>We should not overlook the fact that the Assad regime is the factor that has been inflicting the most intense aggression against civilians for the time being until now. Iran and Hezbollah have played a significant role for the dictator during civil war and also Russia, United States, YPG and Islamic state have been involved in the conflicts. However, what is striking is the data of Syrian tracker that say assaults by Assad regime take holds of overwhelming calamities albeit all the other cases combined: approximately 3,500 bombardment, 1,800 shelling cases and 1168 international-law prohibited applications of barrel bomb. Even after its agreement of withdrawing chemical warfare with Russia in September 2013, chemicals-used war crimes have been detected: 16 cases reported after the year 2015. We once again stress out that most of data written here represent indiscriminate attacks against local citizens, not coincided with the battle cases against Free Syrian Army.</p>
 			</div>	
-			<div class="correlation_article_div" id="HZB_article">
+			<div class="correlation_article_div div_s45" id="HZB_article">
 				<h2>Hezbollah</h2>
 				<p>Lebanese armed group of Hezbollah has been concerned with relevant reports, taking second place after Assad regime. Looking at the data, civilian calamities were put to by providing armed forces with armaments such as bombers, rocket launchers and others related to on-ground individual combats. Shelling cases have the strongest relevance with Hezbollah, having 53 cases recorded. Since it is widely reported that Hezbollah has been moving itself with Iranian dispatched division and regime forces, the actual impact would be more fatal. The two-year term of 2013(29 shelling cases) and 2014 (24) have been showing its most military actions with relevant reports decreased after 2015. In other words, Hezbollah is said to support Assad forces directly with Iranian militants, debilitating regional communities.</p>
 			</div>
-			<div class="correlation_article_div" id="IS_article">
+			<div class="correlation_article_div div_s45" id="IS_article">
 				<h2>Islamic State</h2>
 				<p>IS has been actively working on its expansion toward northern Syria amid inner chaos, having its center in the city of Raqqa. According to NYT, IS has involved itself in civil war and about 50 terrors in several continents of Middle East, Europe and Africa throughout 2 years. Data analysis says that 68 shelling incidents by ISIS have been reported. Considering its genuine difficulty in incorporating data within IS-occupied regions, the number of fatal cases committed by IS is supposed to be a lot more.</p>
 			</div>
-			<div class="correlation_article_div" id="RS_article">
+			<div class="correlation_article_div div_s45" id="RS_article">
 				<h2>Russia</h2>
 				<p>It was September 2015 when Russia officially announced its military intervention of Syria under the name of repulsive onslaughts against Islamic State. However, its air-strikes exerted civilian losses long before that point from 2012, reaching the highest frequency in 2014. Russia has been the target of suspicion to attack purposely-planned assaults on civilian areas, not only on IS-occupied regions, proved by the very data here. Among outside players of Middle East, Russia seems to represent the largest damage factor.</p>
 			</div>
-			<div class="correlation_article_div" id="IC_article">
+			<div class="correlation_article_div div_s45" id="IC_article">
 				<h2>International Coalition</h2>
 				<p>By the same token with Russia, US-led coalition of United Nations with European countries has been targeting IS-occupying regions but their intervention also had its limitation since it could not pick up the right places under IS influences. What UN cases have difference with Russians’ is lower frequency and the reported time. 10 times of bombing and shelling cases imposed by UN have been recorded respectively after 2015.</p>
 			</div>
-			<div class="correlation_article_div" id="YPG_article">
+			<div class="correlation_article_div div_s45" id="YPG_article">
 				<h2>YPG</h2>
 				<p>Kurds people have aimed at its secession amid Syrian civil war. Tactically, they have been against both regime and anti-regime forces in northern areas to achieve its expansion, while the regime strategically pursued its softer stance owing to further stronger resistance of anti-Assad forces. Civilian crisis committed by YPG are raids in border areas, arrest and non-clarified murder cases rather than offensives using heavy weapons. In total, OO cases of murder have been mentioned, including female and child victims. Since Kurds have long history without own territory, it’s difficult to have judgment on if military operations for independence have validity during civil war chaos. What is clear at least is that if Kurds are not able to parallel its interest with any of war-involved groups with longer period of civil conflicts, they would consistently harm civilians as much as other groups have committed.</p>
 			</div>
@@ -46,7 +58,24 @@
 
 	$(document).ready(function(){
 
+		var $window = $(window);
+
+		chapter_title_size_setting()
+		section1_setposition();
+		section1_initialSetting();
+
+
+		$window.resize(function(){
+				section1_setposition();
+		        chapter_title_size_setting();
+		});
+
 		/** EVENT HANDLER **/
+
+
+		function chapter_title_size_setting(){
+		$(".chapter_title").css("height",window.innerHeight/2);
+	}
 
 	});
 	
