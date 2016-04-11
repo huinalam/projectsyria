@@ -72,12 +72,12 @@ for(var i=0; i<6; i++){
 	for(var j=0; j<6; j++){
 		var index = i*6 + j;
 		popData_group_event[index] = {};
-		popData_group_event[index].group = event_list[i];
-		popData_group_event[index].event = group_list[j];
+		popData_group_event[index].group = group_list[i];
+		popData_group_event[index].event = event_list[j];
 		popData_group_event[index].value = 0;
 	}
 }
-d3.csv("data/correlation_6_6.csv",function(data){
+d3.csv("data/correlation.csv",function(data){
 
 	dataCon = data;
 
@@ -140,10 +140,10 @@ d3.csv("data/correlation_6_6.csv",function(data){
 	
 	chart_g.append("rect")
 		  .attr("x",function(d){
-		  	return xScale(d.group);
+		  	return xScale(d.event);
 		  })
 		  .attr("y",function(d){
-		  	return yScale(d.event);
+		  	return yScale(d.group);
 		  })
 		  .attr("width",rect_size)
 		  .attr("height",rect_size)
@@ -155,10 +155,10 @@ d3.csv("data/correlation_6_6.csv",function(data){
 
 	chart_g.append("text")
 		  .attr("x",function(d){
-		  	return xScale(d.group) + 35;
+		  	return xScale(d.event) + 35;
 		  })
 		  .attr("y",function(d){
-		  	return yScale(d.event) + 25;
+		  	return yScale(d.group) + 25;
 		  })
 		  .text(function(d){
 		  	return d.value;

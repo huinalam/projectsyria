@@ -6,7 +6,6 @@
     <link href="css/refugee_map.css" rel="stylesheet">
     <link href="css/gdp_compare.css" rel="stylesheet">
     <link href="css/timeline.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -317,6 +316,8 @@
                 $('#timeline_article').css({
                     "padding-left": 600
                 });
+
+                $(".timeline_div_articleGap").css("height",window.innerHeight);
             }
 
             function section3_unFix_top() {
@@ -327,19 +328,19 @@
             }
 
 
-            var chater_divs = $(".timeline_div_article_content");
+            var chatper_divs = $(".timeline_div_article_content");
 
             var chapter_content_offset = [];
-            for (var i = 0; i < chater_divs.length; i++) {
-                chapter_content_offset[i] = parseInt(chater_divs.eq(i).offset().top);
-                console.log("chapter_content_offset[i] : " + chapter_content_offset[i]);
+            for (var i = 0; i < chatper_divs.length; i++) {
+                chapter_content_offset[i] = parseInt(chatper_divs.eq(i).offset().top);
+                console.log("chapter_content_offset["+i+"] : " + chapter_content_offset[i]);
             }
 
             //** ON_SCROLL EVENT **//
             $window.on('scroll', function () {
-                //console.log($window.scrollTop());
+                console.log($window.scrollTop());
                 var scroll_top = $window.scrollTop();
-                var timeline_bottom = parseInt($("#c4").offset().top) - parseInt($(".chapter_chart_div_s60").height());
+                var timeline_bottom = parseInt($("#c4").offset().top) - parseInt($("#timeline_div").height());
 
                 //console.log("timeline_bottom : " + timeline_bottom + " // scroll_top : " + scroll_top);
 
