@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700|Roboto+Slab:400,100,300);
+@import url(https://fonts.googleapis.com/css?family=Arvo:400,700);
 
 body{
 	background-color: #111111 !important;
@@ -9,14 +10,17 @@ section{
 }
 
 /* div */
+.chapter_title{
+
+}
 
 .chapter_title_div{
-	width: 600px;
+	width: 800px;
 	display: table;
-	margin: 30px auto;
+	margin: 10% auto auto auto;
 }
 .chapter_introduction_div{
-	width: 600px;
+	width: 800px;
 	margin: 10px auto;
 }
 .chapter_main_div{
@@ -64,13 +68,16 @@ section{
 
 /* text */
 .chapter_title_div >h1{
-	width: 600px;
-	font-family: 'Lato', sans-serif;
-	font-size: 35px;
+	width: 800px;
+	font-family: 'Arvo', serif;
+	font-size: 48px;
 	font-weight: 700;
+	line-height: 120%;
+	letter-spacing: 2px;
+	word-wrap: 15px;
 }
 .chapter_introduction_div >p{
-	width:600px;
+	width:800px;
 	font-size: 15px;
 	font-weight: 300;
 	font-family: 'Roboto Slab', serif;
