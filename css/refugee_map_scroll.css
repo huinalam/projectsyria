@@ -1,0 +1,142 @@
+.map_div_years {
+	margin-top: 0px;
+	font-family: 'Lato', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 120%;
+	color: #eeeeee;
+}
+.map_year_button{
+	width:20%;
+	margin: 0 2%;
+	float:left;
+	background-color: #cc3333;
+	text-align: center:;
+	cursor: pointer;
+}
+.map_div_total{
+	width: 430px;
+	float: left;
+}
+.map_div_portion{
+	width: 430px;
+	float: left;
+}
+.map_div_article{
+	position: absolute !important;
+	display: inline-block;
+}
+.map_div_linegraph{
+	position: absolute !important;
+}
+.map_exp{
+	font-size: 13px;
+    font-weight: 300;
+    font-family: 'Roboto Slab', serif;
+    font-style: italic;
+    line-height: 150%;
+    text-indent: 5px;
+    color: #FFDD00;
+}
+
+/*map svg element */
+.svg_box{
+ 	fill: #222222;
+	stroke: #eeeeee;
+	stroke-width: 0.5px;
+	stroke-opacity: 0.3;
+ }
+.map_path{
+	stroke: #88aacc;
+	stroke-width: 0.5px;
+}
+.graticule{
+	fill: none;
+	stroke: #666666;
+	stroke-width: 0.5px;
+	stroke-opacity: 0.3;
+}
+
+.focus_map_label{
+ 	fill: #DDDDDD;
+ 	font-family: "HelveticaNeue";
+ 	font-weight: lighter;
+ 	font-size: 8px;
+ 	letter-spacing: 1.5px;
+ }
+.syria_label{
+ 	fill: #DDDDDD;
+ 	font-family: "Courier New";
+ 	font-weight: bold;
+ 	font-size: 8px;
+ 	letter-spacing: 1.5px;
+ }
+ .focus_map_number{
+ 	fill: #eeeeee;
+ 	background-color: #ffcc00;
+ 	font-family: "HelveticaNeue";
+ 	font-weight: lighter;
+ 	font-size: 8px;
+ 	letter-spacing: 1.5px;
+ }
+.total_num{ 
+ 	fill: #EEEEEE;
+ 	font-size: 60px;
+ 	font-weight: 300;
+ }
+ .pie_text{
+ 	font-family: "Courier New";
+ 	fill: #eeeeee;
+ 	font-size: 15px;
+ 	z-index: 0;
+ }
+.dev{
+ 	fill: #6699AA;
+ 	font-size: 9px;
+ }
+.me{
+ 	fill: #AA2244;
+ 	font-size: 9px;
+ }
+ .legend_text{
+ 	font-family: "HelveticaNeue";
+ 	fill: #EEEEEE;
+ 	font-size: 10px;
+ }
+.map_legend_text{
+	letter-spacing: -0.5px;
+	font-family: "Courier New";
+	fill: #cccccc;
+	font-size: 9px;
+}
+
+/** line_graph **/
+.line_graph{
+ 	fill: none;
+ 	stroke-width: 3px;
+ 	stroke: #333333;
+ 	stroke-dasharray: 3,3;
+ 	shape-rendering: crisp;
+ }
+.linegraph_axis { /* axis labels */
+    fill: #888888;
+    font-family: sans-serif;
+    font-weight: lighter;
+    font-size: 10px;
+}
+.linegraph_axis line{ /* axis tick marks */
+    stroke-width : 0.5;
+    stroke: #888888;
+    shape-rendering: crispEdges;
+}
+#linegraph_date_axis line{
+    stroke: #888888;
+}
+#linegraph_date_axis path{
+    display: none;
+}
+.linegraph_axis path { /* axis line */
+    stroke-width : 0.5;
+    stroke: #dddddd;
+    shape-rendering: crispEdges;
+}
