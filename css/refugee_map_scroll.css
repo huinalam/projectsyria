@@ -11,7 +11,7 @@
 	margin: 0 2%;
 	float:left;
 	background-color: #cc3333;
-	text-align: center:;
+	text-align: center;
 	cursor: pointer;
 }
 .map_div_total{
@@ -23,11 +23,11 @@
 	float: left;
 }
 .map_div_article{
-	position: absolute !important;
+	/*position: absolute !important;*/
 	display: inline-block;
 }
 .map_div_linegraph{
-	position: absolute !important;
+	/*position: absolute !important;*/
 }
 .map_exp{
 	font-size: 13px;
