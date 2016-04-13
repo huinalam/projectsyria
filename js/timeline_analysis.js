@@ -50,10 +50,11 @@
     var alpha = 40; //mouseovell시 명암변화
 
     //** 섹션별 position 지정 value ** //
-
-    var px_events = 90;
-    var px_death = 440;
-    var px_refugees = 290;
+    var px_start = 90;
+    var px_events = 120;
+    var px_refugees = 455;
+    var px_death = 600;
+    
 
     var xScale_events = d3.scale.ordinal().rangeBands([px_events,px_refugees])
                                           .domain(legend_list1);
@@ -64,7 +65,7 @@
     var chart = main_svg.append("g")                       // 이벤트들의 밴드들이 그룹
             .attr("class", "chart")
             .attr("clip-path", "url(#chart-area)")
-            .attr("transform","translate("+ timeline_margin.left + ", 30)");
+            .attr("transform","translate("+ timeline_margin.left + ", 40)");
 
 
     var chart_y_top = 50;   //chart group내에서 차트 상단 경계선 y좌표
@@ -79,7 +80,7 @@
 
     var legend_timeline_g = main_svg.append("g")
                         .attr("class","legend")
-                        .attr("transform", "translate(" + px_events + "," + timeline_margin.top +")");
+                        .attr("transform", "translate(" + timeline_margin.left + "," + timeline_margin.top +")");
 
     var legend_type = legend_timeline_g.append("g")
                                      .selectAll("g")
@@ -102,8 +103,11 @@
     var legend_type_text = legend_type
                                     .append("text")
                                     .attr("x",0)
-                                    .attr("y",10)
-                                    .attr("id","legend")
+                                    .attr("y",15)
+                                    .attr("class","timeline_legend")
+                                    .attr("id",function(d){
+                                        return d;
+                                    })
                                     .text(function(d){
                                         return d;
                                     })
@@ -142,7 +146,7 @@
                                 .append("text")
                                 .attr("x",20)
                                 .attr("y",3)
-                                .attr("id","legend")
+                                .attr("class","timeline_legend")
                                 .text(function(d){
                                     return d;    
                                 });
@@ -355,7 +359,7 @@ timeline.setScale = function(){
 
     yScale = d3.time.scale()
             .domain([parseDate("2011-01-01"), parseDate("2016-04-01")])
-            .range([chart_y_top-10, timeline_height]);
+            .range([0, timeline_height]);
 
 };
 
@@ -410,7 +414,7 @@ function customAxis(g) {
       .attr("dy", 3);
 }
 
-d3.csv("data/event_summary_df2.csv", function(event_data){
+d3.csv("data/event_summary_df_whole.csv", function(event_data){
 
         event_data.forEach(function (item){               
                         item.date = parseDate(item.date);
@@ -424,12 +428,19 @@ d3.csv("data/event_summary_df2.csv", function(event_data){
         dataCon = event_data;
 
         timeline.setScale();
-        timeline.yAxis();
+       
 
-         var div_line_death = chart.append("line")
+        var div_line_frequency = chart.append("line")
+                    .attr("class","timeline_divLine")
+                    .attr("x1",px_start)
+                    .attr("y1",yScale(parseDate("2011-01-01")))
+                    .attr("x2",px_start)
+                    .attr("y2",timeline_height);
+
+        var div_line_death = chart.append("line")
                     .attr("class","timeline_divLine")
                     .attr("x1",px_death)
-                    .attr("y1",chart_y_top)
+                    .attr("y1",yScale(parseDate("2011-01-01")))
                     .attr("x2",px_death)
                     .attr("y2",timeline_height);
 
@@ -573,9 +584,12 @@ d3.csv("data/event_summary_df2.csv", function(event_data){
                                 return yScale(d.date);
                             })
                             .attr("r",function(d){
-                                return rScale_event(d.massacre);
+                                return rScale_event(d.barrel_bomb);
                             })
                             .attr("id","barrel_bomb");
+
+
+         timeline.yAxis();
 
 
         
@@ -594,7 +608,7 @@ d3.csv("data/event_summary_df2.csv", function(event_data){
                    var max = d3.max(death_data, function(d){ return d.num});
                 
                     xScale_d = d3.scale.linear()
-                        .range([0,90])
+                        .range([0,100])
                         .domain([min,6000]);
 
                    var xAxis = d3.svg.axis()
@@ -630,7 +644,7 @@ d3.csv("data/event_summary_df2.csv", function(event_data){
 
                         line_group.append("line") 
                             .attr("class", "line_d")
-                            .attr("x1",0)
+                            .attr("x1",xScale_d(0))
                             .attr("y1",function(d){
                                     return yScale(d.date);
                             })
@@ -648,7 +662,7 @@ d3.csv("data/event_summary_df2.csv", function(event_data){
 
                     line_graph_g.append("g")
                             .attr("class","x timeline_axis")
-                            .attr("transform", "translate("+px_death+",49)")
+                            .attr("transform", "translate("+px_death+",0)")
                             .call(xAxis)
                             .append("text")
                             .attr("transform", "rotate(-90)")
@@ -670,7 +684,7 @@ d3.csv("data/event_summary_df2.csv", function(event_data){
                    var max = d3.max(refugee_data, function(d){ return d.num});
                 
                     xScale_r = d3.scale.linear()
-                        .range([150,0])
+                        .range([145,0])
                         .domain([min,max]);
 
                    var xAxis = d3.svg.axis()
@@ -706,7 +720,7 @@ d3.csv("data/event_summary_df2.csv", function(event_data){
 
                         line_group.append("line") 
                             .attr("class", "line_r")
-                            .attr("x1",150)
+                            .attr("x1",xScale_r(0))
                             .attr("y1",function(d){
                                     return yScale(d.date);
                             })
@@ -724,7 +738,7 @@ d3.csv("data/event_summary_df2.csv", function(event_data){
 
                     line_graph_g.append("g")
                             .attr("class","x timeline_axis")
-                            .attr("transform", "translate("+px_refugees+",49)")
+                            .attr("transform", "translate("+px_refugees+",0)")
                             .call(xAxis)
                             .append("text")
                             .attr("transform", "rotate(-90)")

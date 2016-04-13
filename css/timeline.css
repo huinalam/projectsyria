@@ -139,9 +139,9 @@ h3.timeline_heading {
     stroke-dasharray: 2,2;
     shape-rendering: crispEdges;
 }
-#legend{
+.timeline_legend{
     font-family: Helvetica;
-    font-size: 9px;
+    font-size: 10px;
     fill: #dddddd;
 }
 .timeline_axis { /* axis labels */

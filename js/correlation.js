@@ -65,7 +65,7 @@ var main_g = svg_g.append("g")
 var xAxis;
 var yAxis;
 
-var event_list = ["MASSACRE","AIR STRIKE","BATTLE","BARREL BOMB","SHELLING","CHEMICAL"];
+var event_list = ["CHEMICAL","AIR STRIKE","BARREL BOMB","MASSACRE","SHELLING","CHEMICAL"];
 var group_list = ["IS","IC","RS","YPG","HZB","ASS"];
 
 for(var i=0; i<6; i++){
@@ -77,7 +77,7 @@ for(var i=0; i<6; i++){
 		popData_group_event[index].value = 0;
 	}
 }
-d3.csv("data/correlation.csv",function(data){
+d3.csv("data/long_df.csv",function(data){
 
 	dataCon = data;
 
