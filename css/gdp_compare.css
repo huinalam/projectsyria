@@ -7,8 +7,8 @@
     width: 190px;
     margin: 10px;
     float: left;
-    cursor:pointer
-
+    cursor:pointer;
+    opacity: 0.5;
 }
 .gdp_div_textCol > h2{
     margin-top: 0px;
@@ -66,16 +66,8 @@
     stroke: #888888;
     shape-rendering: crispEdges;
 }
-#date_axis line{
-    stroke: #888888;
-}
-#date_axis path{
-    display: none;
-}
 .gdp_axis path { /* axis line */
-    stroke-width : 0.5;
-    stroke: #dddddd;
-    shape-rendering: crispEdges;
+    display: none;
 }
 .scatter_exp_rect{
     fill: #dddddd;

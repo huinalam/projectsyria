@@ -27,6 +27,10 @@
  	stroke-dasharray: 3,3;
  	shape-rendering: crisp;
  }
+ .intro_area{
+    fill: #cc3333;
+    shape-rendering: crisp;
+ }
 .intrograph_axis { /* axis labels */
     fill: #888888;
     font-family: sans-serif;
@@ -49,3 +53,13 @@
     stroke: #dddddd;
     shape-rendering: crispEdges;
 }
+.marking_events{
+    fill: #cc3333;
+}
+.marking_events_line{
+    stroke-width: 0.5;
+    stroke: #cc3333;
+}
+
+
+

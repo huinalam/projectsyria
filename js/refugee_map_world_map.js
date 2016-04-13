@@ -53,19 +53,17 @@
     var map_legend;
     var map_json;
     var duration =[]; //각 국가의 난민변화수량에 맞게 duration 
-    var map_legend_num =[1,1000,10000,100000,1000000,1500000];
+    var map_legend_num =[1,1000,10000,100000,1000000,2000000];
 
     				//** 카토그램 및 파이 그래프에 필요한 색상들
-    var c1 = "#000000";
-	var c3 = "#CC3333";
-	var c4 = "#AA2233";
+ 	var color_list = ["#ccffee","#ccccaa","#cc8866","#bb2222","#AA2233","#660811"];
 	var c_syria = "#772222";
 	
-	console.log(c1);
+	
 	var color = d3.scale.log()
- 							.range([c1,c3,c4]);		//카토그램 칼라스케일
+ 							.range(color_list);		//카토그램 칼라스케일
  	var alpha = 90;
- 	console.log(c1);
+ 	
  	var scale_legend = d3.scale.linear()
  							.domain([0,200])
  							.range([0,1500000]);		//레전드바에 칼라매핑을 하기 위한 실제수치변환 스케일
@@ -115,6 +113,7 @@
 
 
     d3.csv("data/refugee_2004_2014_world_ac.csv", function(data){
+
 		data.forEach(function(d){
           d.refugees_value = +d.refugees_value;
           d.AS_value = +d.AS_value;
@@ -122,7 +121,9 @@
 
 		data1 = data;
 		
-	    color.domain([1,500000,d3.max(data1, function(d){ return d.refugees_value;})]);
+		
+	    color.domain(map_legend_num);
+	    
 
 
         popData1 = data1.filter(function(d) {return d.year == start_year});
@@ -171,13 +172,12 @@
 							}
 							if(value==0){
 								console.log(d.properties.name);
-								return c1;
-							}
-							if(value){
-								return c1;
+								return color_list[0];
+							}else if(value){
+								return color(value)
 							}
 							else{
-								return c1;
+								return color_list[0];
 							}
 						
 						});
@@ -264,8 +264,6 @@
 				});
 
 
-
-
     var legend_group = svg_focus_map.append("g")		//맵 path를 묶을 그룹 추가
     					.attr("transform","translate(0,0)")
     					.attr("class","world");
@@ -294,7 +292,7 @@
 							  	return color(d);
 							  });
 							  
-	  map_legend.append("text")
+	map_legend.append("text")
 	  			  .attr("text-anchor","start")
 				  .text(function(d){
 				  	if(d==1){

@@ -3,18 +3,20 @@
 <head>
     <title></title>
     <link href="css/main_structure.css" rel="stylesheet">
-    <link href="css/intro.css" rel="stylesheet">
+    <link href="css/pre_war.css" rel="stylesheet">
 </head>
 <body>
     <secttion>
         <div class="chapter_main_div chapter_title">
-            <div class="chapter_title_div">
-                <h1>SYRIAN REFUGEE<br>BEFORE<br>THE CIVIL WAR</h1>
-            </div>
-            <div class="chapter_introduction_div">
-                <p>
-                    The data written to the Syrian refugees UNHCR has started since 1968. In order to understand the background of the Syrian civil war and Syrian refugees occurred during a long period of time while passing through the first 50 years two Assad dictatorship in Syria have come to know halgeotyida accept any oppression. In this chapter since independence from France in be referred to the start of Syria's modern history came under the current Assad regime suppressed any Syrian people to come look at whether this occurs in the dead then how refugees.
-                </p>
+            <div class="chapter_title_wrapper">
+                <div class="chapter_title_div">
+                    <h1>SYRIAN REFUGEE<br>BEFORE<br>THE CIVIL WAR</h1>
+                </div>
+                <div class="chapter_introduction_div">
+                    <p>
+                        The data written to the Syrian refugees UNHCR has started since 1968. In order to understand the background of the Syrian civil war and Syrian refugees occurred during a long period of time while passing through the first 50 years two Assad dictatorship in Syria have come to know halgeotyida accept any oppression. In this chapter since independence from France in be referred to the start of Syria's modern history came under the current Assad regime suppressed any Syrian people to come look at whether this occurs in the dead then how refugees.
+                    </p>
+                </div>
             </div>
         </div>
     </secttion>
@@ -29,7 +31,7 @@
                         1946~1956<br>Independent from France
                     </h2>
                     <p>
-                        . After World War I, Arab Kingdom of Syria was announced but soon became French mandate. Later Syria took its independence in 1946, pushing French forces out of the nation due to Syrian nationalists and British pressure over Free French. In 1956, the coalition was intended by Egypt and Syria but gained no success.
+                        After World War I, Arab Kingdom of Syria was announced but soon became French mandate. Later Syria took its independence in 1946, pushing French forces out of the nation due to Syrian nationalists and British pressure over Free French. In 1956, the coalition was intended by Egypt and Syria but gained no success.
                     </p>
                 </div>
                 <div class="intro_div_article div_s30" id="intro_article_p2">
@@ -139,6 +141,7 @@
                         // 2번째 챕터 이벤트
                         // *****************
                         console.log("event : " + idx);
+                         intro_popYear(chapter_list[idx]);
                         break;
                     }
                 }
@@ -147,6 +150,7 @@
                     // 첫번째 챕터 이벤트
                     // *****************
                     console.log("first event");
+                     intro_popYear(chapter_list[0]);
                     return;
                 }
                 // <== end chapter

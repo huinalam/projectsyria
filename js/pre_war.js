@@ -15,11 +15,22 @@ var intro_intrograph_margin = {
 
 //data container, scale
 var intro_dataCon;
+var intro_popData;
 var x_scale_intrograph;
 var y_scale_intrograph;
+var x_area;
+var y_area;
+
+var intro_marking_g;
+var marking_events = [{year:"1971", title:"Hafez al-Assad became the President of Syria"},{year: "1982", title:"Hamma massacre: Occurrence of 10,000-40,000 casulties "},{ year: "2000", title:"Hafez's death and al-Assad Regime began"}];
 
 //year list to put in X scale
 var line_graph_year = ["1968-12-31","1980-12-31","1992-12-31","2011-12-31"]; 
+var chapter_list = [{start: "1967-01-31", end: "1967-12-31"},
+                    {start: "1968-12-31", end: "1982-12-31"},
+                    {start: "1982-12-31", end: "2000-12-31"},
+                    {start: "2000-01-01", end: "2001-12-31"},
+                    {start: "2001-12-31", end: "2011-12-31"}];
 
 //svg group declare
 intro_svg_intrograph = d3.select(".intro_div_intrograph").append("svg")
@@ -28,14 +39,26 @@ intro_svg_intrograph = d3.select(".intro_div_intrograph").append("svg")
 							  .attr("height",intro_height_intrograph)
 							  .style("background-color","#111111");
 
+
+
 intro_g_intrograph = intro_svg_intrograph.append("g")
 								 .attr("transfrom","translate(0,0)");
 
+intro_marking_g = intro_svg_intrograph.append("g")
+                 .attr("transform","translate(0,0)");
+
+var introgaph_title = intro_svg_intrograph.append("text")
+         .attr("class","chart_title")
+         .attr("x",intro_intrograph_margin.left - 10)
+         .attr("y",intro_intrograph_margin.top + 30)
+         .text("Changes of Refugees during Syrian Modern History");
 
 var timeAxis_circle;
 var intrograph_circle;
 var intrograph_line;
+var intrograph_area;
 
+var refugee_sum_area;
 //open csv
 d3.csv("data/refugees_by_years_df.csv",function(data){
 
@@ -56,19 +79,42 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
 
     y_scale_intrograph = d3.scale.linear()
     							 .domain([maxValue,0])
-    							 .range([intro_intrograph_margin.top, intro_height_intrograph - intro_intrograph_margin.bottom]);
+    							 .range([intro_intrograph_margin.bottom, intro_height_intrograph - intro_intrograph_margin.top]);
 
-   var refugee_sum_line = d3.svg.line(intro_dataCon)
+    x_area = d3.time.scale()
+                          .domain([parseDate(line_graph_year[0]),parseDate(line_graph_year[3])])
+                          .range([intro_intrograph_margin.left,intro_width_intrograph - intro_intrograph_margin.right]);
+
+    y_area = d3.scale.linear()
+                         .domain([maxValue,0])
+                         .range([intro_intrograph_margin.bottom, intro_height_intrograph - intro_intrograph_margin.top]);
+
+   var refugee_sum_line = d3.svg.line()
                                 .x(function(d){return x_scale_intrograph(d.year)})
                                 .y(function(d){return y_scale_intrograph(d.value)})
-                                .interpolate("cardinal");
+                                .interpolate("monotone");
 
-    refugee_sum_path = intro_g_intrograph.append("g")
+   refugee_sum_area = d3.svg.area()
+                                .x(function(d) { return x_area(d.year);})
+                                .y0(y_scale_intrograph(0))
+                                .y1(function(d){ return y_area(d.value);})
+                                .interpolate("monotone");
+
+    refugee_sum_line_path = intro_g_intrograph.append("g")
                                      .attr("transform","translate(0,0)")
                                      .append("path")
                                      .datum(intro_dataCon)
                                      .attr("d",refugee_sum_line)
                                      .attr("class","intro_graph");
+
+    refugee_sum_area_path = intro_g_intrograph
+                                     .append("g")
+                                     .attr("class","area_graph")
+                                     .attr("transform","translate(0,0)")
+                                     .append("path")
+                                     .datum(intro_dataCon)
+                                     .attr("d",refugee_sum_area)
+                                     .attr("class","intro_area");
 
     //** AXIS decalre and Setting **//
 
@@ -101,6 +147,9 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
         .call(yAxis);
 
 
+    //** marking point setting **//
+    markingEvent(marking_events);
+                              
     //**moving elelment setting **//
     timeAxis_circle = intro_g_intrograph.append("circle")
                                          .attr("cx",x_scale_intrograph(parseDate(line_graph_year[0])))
@@ -122,11 +171,90 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
                                         .attr("stroke","#BB2233")
                                         .attr("stroke-width",1);
 
+    intro_popYear(chapter_list[0]);
+
 });
+
+function markingEvent(marking_events){
+      console.log(intro_dataCon);
+    var marking_events = intro_marking_g.selectAll("g")
+                                        .data(marking_events)
+                                        .enter();
+
+    marking_events.append("circle")
+                  .attr("class","marking_events")
+                  .attr("r",3)
+                  .attr("cx",function(d){
+                    console.log(d.year);
+                      var toYear = d.year + "-12-31"
+                      return x_scale_intrograph(parseDate(toYear));
+                  })    
+                  .attr("cy",function(d){
+                      var index = d.year - 1968;
+                      return y_scale_intrograph(intro_dataCon[index].value);
+                  }); 
+
+
+    marking_events.append("circle")
+                  .attr("class","marking_events")
+                  .attr("r",3)
+                  .attr("cx",function(d){
+                    console.log(d.year);
+                      var toYear = d.year + "-12-31"
+                      return x_scale_intrograph(parseDate(toYear));
+                  })    
+                  .attr("cy",function(d){
+                      var index = d.year - 1968;
+                      return y_scale_intrograph(intro_dataCon[index].value) - 200;
+                  }); 
+
+    marking_events.append("line")
+                .attr("class","marking_events_line")
+                .attr("x1",function(d){
+                    console.log(d.year);
+                    var toYear = d.year + "-12-31"
+                    return x_scale_intrograph(parseDate(toYear));
+                })
+                .attr("x2",function(d){
+                    console.log(d.year);
+                    var toYear = d.year + "-12-31"
+                    return x_scale_intrograph(parseDate(toYear));
+                })
+                .attr("y1",function(d){
+                      var index = d.year - 1968;
+                      return y_scale_intrograph(intro_dataCon[index].value) - 200;
+                 })
+                .attr("y2",function(d){
+                      var index = d.year - 1968;
+                      return y_scale_intrograph(intro_dataCon[index].value);
+                 }); 
+
+    marking_events.append("text")
+                  .attr("class","chart_caption")
+                  .attr("x",function(d){
+                    console.log(d.year);
+                    var toYear = d.year + "-12-31"
+                    return x_scale_intrograph(parseDate(toYear)) - 10;
+                  })
+                  .attr("y",function(d){
+                      var index = d.year - 1968;
+                      return y_scale_intrograph(intro_dataCon[index].value) - 420;
+                  })
+                  .attr("dy","15px")
+                  .text(function(d){
+                    return d.title;
+                  });
+
+    d3.selectAll(".chart_caption")
+      .call(wrap,150);
+
+
+}
 
 function intrographTransition(year){
     var toYear = year + "-12-31"
     var index = year - 1968;
+
     timeAxis_circle.transition().duration(300)
                                 .attr("cx",x_scale_intrograph(parseDate(toYear)))
                                 .attr("cy",y_scale_intrograph(0));
@@ -140,6 +268,43 @@ function intrographTransition(year){
                                .attr("x2",x_scale_intrograph(parseDate(toYear)))
                                .attr("y2",y_scale_intrograph(intro_dataCon[index].value));
 
+}
+
+function intro_popYear(chapter_list){
+    var popData = intro_dataCon.filter(function(d){ return (parseDate(chapter_list.start) <= d.year)&&(d.year <= parseDate(chapter_list.end));})
+    console.log(popData);
+    intro_popData = popData;
+
+    d3.select(".area_graph").selectAll("path")
+                            .datum(intro_popData)
+                            .attr("d",refugee_sum_area)
+                            .transition()
+                            .duration(2000);
+
+}
+
+function wrap(text, width) {
+  text.each(function() {
+    var text = d3.select(this),
+        words = text.text().split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.1, // ems
+        y = text.attr("y"),
+        dy = parseFloat(text.attr("dy")),
+        tspan = text.text(null).append("tspan").attr("x", d3.select(this).attr("x")).attr("y", y).attr("dy", dy + "em");
+    while (word = words.pop()) {
+      line.push(word);
+      tspan.text(line.join(" "));
+      if (tspan.node().getComputedTextLength() > width) {
+        line.pop();
+        tspan.text(line.join(" "));
+        line = [word];
+        tspan = text.append("tspan").attr("x", d3.select(this).attr("x")).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+      }
+    }
+  });
 }
 
 function parseDate(dateString) {

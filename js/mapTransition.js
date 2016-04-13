@@ -63,18 +63,22 @@ function mapTransition(year){
 	    			})
 	    			.ease("exp")
 	    			.style("fill", function(d){
-					var value = d.properties.refugeesValue;
-						value = +value;
-						if(d.properties.name == "Syria"){
-							return c3;
-						}
-						if(value){
-							return color(value);
-						}
-						else{
-							return c1;
-						}
-					});
+							var value = d.properties.refugeesValue;
+							value = +value;
+							if(d.properties.name == "Syria"){
+								return c_syria;
+							}
+							if(value==0){
+								console.log(d.properties.name);
+								return color_list[0];
+							}else if(value){
+								return color(value)
+							}
+							else{
+								return color_list[0];
+							}
+						
+						});
 
 
 

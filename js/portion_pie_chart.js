@@ -106,9 +106,9 @@ d3.csv("data/refugees_sum_year_2011_2014.csv", function(error, data){
               .attr("d",arc)
               .each(function(d) {this._current = d;})
               .style("fill", function(d) { if(d.data.div =="sum_mid"){
-                     return c3;
+                     return color_list[0];
               }else{
-                     return c2; 
+                     return color_list[2]; 
               }});
 
       pie_text.selectAll("text")
@@ -131,14 +131,14 @@ d3.csv("data/refugees_sum_year_2011_2014.csv", function(error, data){
       		 .attr("y",20)
       		 .attr("width",13)
       		 .attr("height",13)
-      		 .attr("fill",c3);
+      		 .attr("fill",color_list[0]);
 
       pie_legend.append("rect")
       		 .attr("x",0)
       		 .attr("y",0)
       		 .attr("width",13)
       		 .attr("height",13)
-      		 .attr("fill",c2);
+      		 .attr("fill",color_list[2]);
 
       pie_legend.append("text")
       		 .attr("x",20)

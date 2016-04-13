@@ -1,10 +1,11 @@
 var svg_width = 860;
 var svg_height = 560;
 
-var scatter_width = 860;
+var scatter_width = 600;
 var scatter_height = 500;
-var scatter_margin = 50;
-var scatter_top = 30;
+//var scatter_margin = 50;
+//var scatter_top = 30;
+var scatter_margin = {left:100, right:50, bottom:100, top:30}
 
 var circle_graph_width = 280;
 var circle_graph_height = 280;
@@ -25,20 +26,20 @@ var scatter_chart_g = scatter_g.append("g");
 
 var	scatter_title = scatter_g.append("text")
 				 .attr("class","chart_title")
-				 .attr("x",scatter_margin - 10)
+				 .attr("x",scatter_margin.left - 10)
 				 .attr("y",-50)
 				 .text("Number of Refugees & Economic Indicator");
 
-/*
+
 var circle_graph_g = scatter_svg.append("g")
-								.attr("transform","translate("+ 0 +"," + (scatter_height + 2*scatter_margin)  + ")");
+								.attr("transform","translate("+ scatter_width +"," + scatter_margin.top  + ")");
 
 var	circle_graph_title = circle_graph_g.append("text")
 						 .attr("class","chart_title")
-						 .attr("x",scatter_margin - 10)
+						 .attr("x",0)
 						 .attr("y",0)
 						 .text("GDP Per Capita");
-*/
+
 
 //** circle graph//
 
@@ -94,24 +95,24 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east.csv",function(data){
 
 	xScale_scatter = d3.scale.linear()
 					  .domain([0,maxGDP])
-					  .range([scatter_margin,scatter_width-scatter_margin]);
+					  .range([scatter_margin.left,scatter_width-scatter_margin.right]);
 
 	var xAxis = d3.svg.axis()
 					  .scale(xScale_scatter)
 					  .orient("bottom")
-					  .innerTickSize(scatter_margin-scatter_height)
+					  .innerTickSize((scatter_margin.bottom + scatter_margin.top) - scatter_height)
 					  .outerTickSize(0)
         			  .ticks(6)
         			  .tickFormat(d3.format("s"));;
 
 	yScale_scatter = d3.scale.linear()
 					  .domain([0,maxRefugee])
-					  .range([scatter_height-scatter_margin,scatter_margin/2]);
+					  .range([scatter_height-scatter_margin.bottom,scatter_margin.top]);
 
 	var yAxis = d3.svg.axis()
 					  .scale(yScale_scatter)
 					  .orient("left")
-					  .innerTickSize(scatter_margin-scatter_width)
+					  .innerTickSize((scatter_margin.left + scatter_margin.right)-scatter_width)
 					  .outerTickSize(0)
         			  .ticks(6)
         			  .tickFormat(d3.format("s"));
@@ -179,18 +180,33 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east.csv",function(data){
 					.attr("text-anchor","middle");
 
 	var xAxis_g = scatter_g.append("g")
-							 .attr("transform","translate(" + 0 + ","+ (scatter_height - scatter_margin) +")")
+							 .attr("transform","translate(" + 0 + ","+ (scatter_height - scatter_margin.bottom) +")")
 							 .attr("class","gdp_axis")
 							 .call(xAxis);
 
 	var yAxis_g = scatter_g.append("g")
-							 .attr("transform","translate(" + scatter_margin + ","+ 0 +")")
+							 .attr("transform","translate(" + scatter_margin.left + ","+ 0 +")")
 							 .attr("class","gdp_axis")
 							 .call(yAxis);
 
+	var yAxis_text = scatter_g.append("g")
+							  .attr("transform","translate("+ (scatter_margin.left - 50) + "," + (scatter_height - (scatter_margin.top+scatter_margin.bottom))/2 + ")rotate(-90)")
+							  .append("text")
+							  .attr("class","axis_text")
+							  .attr("text-anchor","middle")
+							  .text("Number of Refugees");
+
+	var xAxis_text = scatter_g.append("g")
+							  .attr("transform","translate("+ (scatter_width/2) + "," + (scatter_height - scatter_margin.bottom + 50) + ")")
+							  .append("text")
+							  .attr("class","axis_text")
+							  .attr("text-anchor","middle")
+							  .text("Number of GDP of middle east countries (constant 2011 international $)");
+
+
 	//** circle graph **//
 	
-/*
+
 	d3.csv("data/gdp_per_capita_2014.csv",function(data2){
 	
 	data2.forEach(function(item,i){
@@ -237,20 +253,20 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east.csv",function(data){
 	gdpCircle_g.append("line")
 				.attr("class","circle_line")
 				.attr("x1",function(d){
-					return circle_graph_width/2;
+					return circle_graph_width/2 - rScale_GDP_capita(d.GDP_capita);
 				})
-				.attr("x2",function(d,i){
+				.attr("x2",function(d){
+					 return circle_graph_width/2 - rScale_GDP_capita(d.GDP_capita);
+				})
+				.attr("y1",function(d,i){
 					 return 600 - i*20;
 				})
-				.attr("y1",function(d){
-					 return circle_graph_height/2 - rScale_GDP_capita(d.GDP_capita);
-				})
-				.attr("y2",function(d){
-					 return circle_graph_height/2 - rScale_GDP_capita(d.GDP_capita);
+				.attr("y2",function(d,i){
+					  return circle_graph_height/2;
 				})
 				.attr("stroke","#eeeeee")
 				.attr("stroke-width",0.5);
-	});*/
+	});
 
 
 

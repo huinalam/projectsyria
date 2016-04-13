@@ -1,101 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700|Roboto+Slab:400,100,300);
 
-body{
-    background-color: #111111;
-}
-body.chapter{    
-    margin: 0px;
-    width: 440px;
-}
-.timeline{
-    background-color: rgba(0,0,0,0);
-}
-h1.chapter{
-    color: #DDDDDD;
-    font-size: 20px;
-    text-align: left;
-}
-h1.time{
-    color: #eeeeee;
-    font-size: 15px;
-    text-align: left;
-}
-.timeline_div_main{
-    width: 1030px;
-    height: auto;
-    margin: 40px auto 40px auto;
-    text-align: center;
-    background-color: #111111;
-    display: inline-block;
-}
 .timeline_div_column1{
     width: 580px;
     margin: 5px;
     height: auto;
     background-color: #111111;
     position: relative;
-    float: left;
-}
-.timeline_div_column2{
-    width: 410px;
-    margin: 5px;
-    height: 793px;
-    padding: 10px;
-    background-color: #111111;
-    position: relative;
-    float:left;
-}
-.timeline_div_content{
-    display: inline-block;
-    width: 450px;
-    margin: 10px;
-    height: 100%;
-    padding: 5px;
-}
-.timeline_chapter_title{
-    width: 420px;
-}
-.timeline_chapter_title >h2{
-    font-family: 'Lato', sans-serif;
-    font-weight: 400;
-    line-height: 120%;
-    margin: 0px 0px 20px 0px;
-    color: #cc3333;
-}
-.timeline_chapter_content{
-    font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    width: 410px;
-    height: auto;
-    background-color: #111111; 
-    font-size: 12px;
-    color: #cccccc;
-    display: inline-block;
-}
-.timeline_media_section{
-    font-family: Helvetica;
-    text-align: center;
-    width: 410px;
-    height: 320px;
-    font-size: 10px;
-    color: #eeeeee;
-    letter-spacing: 0.8px;
-}
-.who{
-    width: 190px;
-    height: 150px;
-    margin: 5px;
-    background-color: #111111; 
-    position: relative;
-    text-align: left;
-    float: left;
-}
-.what{
-    width: 190px;
-    height: 150px;
-    margin: 5px;
-    background-color: #111111; 
-    position: relative;
-    text-align: left;
     float: left;
 }
 .circle_event{
@@ -114,6 +24,30 @@ h1.time{
     font-weight: 300;
     font-family: 'Roboto Slab', serif;
     line-height: 150%;
+    text-indent: 30px;
+    color: #dfdfdf;
+}
+.timeline_div_article_content >h2{
+    margin-top: 0px;
+    font-family: 'Lato', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 120%;
+    color: #cc3333;
+}
+.timeline_div_article_content >h3{
+    margin-top: 0px;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 120%;
+    color: #eeeeee;
+}
+.timeline_div_article_content >p{
+    font-size: 15px;
+    font-weight: 300;
+    font-family: 'Roboto Slab', serif;
+    line-height: 180%;
     text-indent: 30px;
     color: #dfdfdf;
 }
@@ -136,7 +70,7 @@ h1.time{
 .timeline_head2{
     width:190px;
     height:auto;
-    margin: 10px;
+    margin: 10px 10px 0px 10px;
     position: relative;
     text-align: left;
     float: left;
@@ -145,7 +79,7 @@ h1.time{
 .timeline_head3{
     width: 220px;
     height:auto;
-    margin: 10px;
+    margin: 10px 10px 0px 10px;
     position: relative;
     text-align: left;
     float: left;
@@ -168,12 +102,14 @@ h1.time{
     height: auto;
     background-color: 000000;
 }
-.timeline_heading{
-    color: #eeeeee;
-    font-family: Helvetica;
-    font-weight: bold;
+h3.timeline_heading {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    font-family: 'Lato', sans-serif;
     font-size: 18px;
-    letter-spacing: 1px;
+    font-weight: 400;
+    line-height: 100%;
+    color: #eeeeee;
 }
 .exp{
     color: #eeeeee;
@@ -182,7 +118,7 @@ h1.time{
     line-height: 110%;
     font-size: 10px;
     margin-top: 10px;
-     letter-spacing: 1px;
+    letter-spacing: 1px;
 }
 .timeline_data_review{
     display: inline-block;
@@ -192,7 +128,7 @@ h1.time{
     float: left;
 }
 .timeline_data_review_num{
-    width: 150px;
+    width: 420px;
     float: left;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
@@ -328,6 +264,11 @@ h1.time{
     color: #ffcc00;
     border-color: #444444;
 }
+#barrel_bomb{
+    fill: #cc3300;
+    color: #cc3300;
+    border-color: #444444;
+}
 #etc{
     fill: #dddddd;
     color: #dddddd;
@@ -358,10 +299,19 @@ h1.time{
     font-size: 45px;
 }
 .ref_num{
+    width:190px;
+    margin: 10px;
+    float:left;
     color: #338866;
 }
 .death_num{
+    width: 190px;
+    margin: 10px;
+    float: left;
     color: #C23355;
+}
+.big_num{
+    font-size: 35px;
 }
 .chapter_selector{
     fill: rgba(125,140,155,0.5);
