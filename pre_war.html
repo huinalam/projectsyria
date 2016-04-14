@@ -91,7 +91,7 @@
 
             var $pre_war_refugee_map = $('#pre_war_refugee_map');
 
-            function fix_chart() {
+            function pre_war_fix_chart() {
                 var section_left = parseInt($pre_war_refugee_map.css("margin-left"));
                 var section_top = parseInt($pre_war_refugee_map.css("margin-top"));
 
@@ -106,10 +106,19 @@
                 });
             }
 
-            function unfix_chart() {
+            function pre_war_unfix_chart() {
                 $('#pre_war_fixed_chart').css("position", "static");
                 $('#pre_war_chapter_article_div').css({
                     "padding-left": 0
+                });
+            }
+            function pre_war_unfix_chart_bottom(timeline_bottom) {
+                $('#pre_war_fixed_chart').css({
+                    "position": "absolute",
+                    "top": timeline_bottom
+                });
+                $('#pre_war_chapter_article_div').css({
+                    "padding-left": chart_width
                 });
             }
 
@@ -123,7 +132,7 @@
 
                 // ==> start Scroll
                 if (pre_war_refugee_map_top < scroll_top && timeline_bottom > scroll_top) {
-                    fix_chart();
+                    pre_war_fix_chart();
                 } else {
                     if (timeline_bottom < scroll_top) {
                         //var sectionLeft = parseInt($('#timeline').css("margin-left"));
@@ -133,8 +142,9 @@
                         //    top: timeline_bottom,
                         //    left: sectionLeft
                         //});
+                        pre_war_unfix_chart_bottom(timeline_bottom);
                     } else {
-                        unfix_chart();
+                        pre_war_unfix_chart();
                     }
                 }
                 // <== end Scroll
@@ -145,7 +155,7 @@
                         // 2번째 챕터 이벤트
                         // *****************
                         console.log("event : " + idx);
-                         intro_popYear(chapter_list[idx]);
+                        intro_popYear(chapter_list[idx]);
                         break;
                     }
                 }
@@ -154,7 +164,7 @@
                     // 첫번째 챕터 이벤트
                     // *****************
                     console.log("first event");
-                     intro_popYear(chapter_list[0]);
+                    intro_popYear(chapter_list[0]);
                     return;
                 }
                 // <== end chapter
