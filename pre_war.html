@@ -10,8 +10,10 @@
         <div class="chapter_main_div chapter_title">
             <div class="chapter_title_wrapper">
                 <div class="chapter_title_div">
-                    <h1>CHANGES OF SYRIAN REFUGEE<br>
-                    ALONGSIDE WITH THEIR HISTORY OF DICTATORSHIP</h1>
+                    <h1>
+                        CHANGES OF SYRIAN REFUGEE<br>
+                        ALONGSIDE WITH THEIR HISTORY OF DICTATORSHIP
+                    </h1>
                 </div>
                 <div class="chapter_introduction_div">
                     <p>
@@ -84,16 +86,10 @@
             });
 
             var chart_width = $(".chapter_chart_div_s86").width();
-<<<<<<< HEAD
-
-            var chatper_divs = $(".intro_div_article");
-            var intro_chapter_offset_top = [];
-=======
             var chatper_divs = $(".pre_war_article");
             var chapter_offset_top = [];
->>>>>>> 3651dcaab0bc762ab3c6fb9c8c144fc96233f614
             for (var i = 0; i < chatper_divs.length; i++) {
-                intro_chapter_offset_top[i] = parseInt(chatper_divs.eq(i).offset().top);
+                chapter_offset_top[i] = parseInt(chatper_divs.eq(i).offset().top);
             }
 
             var $pre_war_refugee_map = $('#pre_war_refugee_map');
@@ -156,8 +152,8 @@
                 }
                 // <== end Scroll
                 // ==> start chapter
-                for (var idx = intro_chapter_offset_top.length - 1; idx >= 1 ; idx--) {
-                    if (intro_chapter_offset_top[idx] < scroll_top) {
+                for (var idx = chapter_offset_top.length - 1; idx >= 1 ; idx--) {
+                    if (chapter_offset_top[idx] < scroll_top) {
                         // *****************
                         // 2번째 챕터 이벤트
                         // *****************
@@ -166,7 +162,7 @@
                         break;
                     }
                 }
-                if (intro_chapter_offset_top[1] > scroll_top) {
+                if (chapter_offset_top[1] > scroll_top) {
                     // *****************
                     // 첫번째 챕터 이벤트
                     // *****************

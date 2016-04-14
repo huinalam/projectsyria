@@ -1,40 +1,14 @@
-//웹폰트 추가: Roboto + Slab
-	 WebFontConfig = {	
-                    google: { families: [ 'Roboto+Slab:100:latin', 'Source+Code+Pro:400,300,200:latin' ] }
-                  };
-                  (function() {
-                    var wf = document.createElement('script');
-                    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-                      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-                    wf.type = 'text/javascript';
-                    wf.async = 'true';
-                    var s = document.getElementsByTagName('script')[0];
-                    s.parentNode.insertBefore(wf, s);
-                  })();
+
     				//** SVG,PATH 설정
-    var w=860; //path가 그려질 svg크기
-    var h=680;
+    var map_width=860; //path가 그려질 svg크기
+    //var map_height=680;
+    var map_height = window.innerHeight - 260;
     var center = [32.8333, 44.9167];		  //지도의 중앙에 위치한 터키 좌표
 	/*var projection = d3.geo.conicConformal().center(center)   //투영법 및 스케인, path translate값 입력
 					.clipAngle(180)
 					.scale(550)
 					.translate([0,h/3 + 100])
 					.precision(.1);*/
-
-	var projection = d3.geo.mercator()
-					   .center(center)
-					   .scale((w+30)/2/Math.PI)
-					   .translate([w/2+30,h/2])
-					   .center(center)
-					   .precision(.1);
-
-	var path = d3.geo.path().projection(projection);  //path의 프로젝션값 설정 
-
-	var graticule = d3.geo.graticule();
-
-	var world_map_path;			//실제 지도를 그리는 path값
-	var world_map_label;
-	var legend;
 
 
 					//**연도 버튼, 국가리스트 배열 설정
@@ -56,7 +30,8 @@
     var map_legend_num =[1,1000,10000,100000,1000000,2000000];
 
     				//** 카토그램 및 파이 그래프에 필요한 색상들
- 	var color_list = ["#ccffee","#ccccaa","#cc8866","#bb2222","#AA2233","#660811"];
+ 	//var color_list = ["#ccffee","#ccccaa","#cc8866","#bb2222","#AA2233","#660811"];
+ 	var color_list =['#ffffb2','#fed976','#feb24c','#fd8d3c','#f03b20','#bd0026'];
 	var c_syria = "#772222";
 	
 	
@@ -69,44 +44,34 @@
  							.range([0,1500000]);		//레전드바에 칼라매핑을 하기 위한 실제수치변환 스케일
 
 
-	var projection2 = d3.geo.conicConformal()
+	var projection = d3.geo.conicConformal()
 					   .center(center)
 					   .scale(580)
-					   .translate([w/2,h/2])
+					   .translate([map_width/2,map_height/2])
 					   .center(center)
 					   .precision(.1);
 
-	var path2 = d3.geo.path().projection(projection2);  //path의 프로젝션값 설정 
-	var graticule2 = d3.geo.graticule();
+	var path = d3.geo.path().projection(projection);  //path의 프로젝션값 설정 
+	var graticule = d3.geo.graticule();
 
-	var focus_map_path;			//실제 지도를 그리는 path값
-	var focus_map_label;
+	var map_path;			//실제 지도를 그리는 path값
+	var map_label;
+	var map_number;
 	//레전드바에 칼라매핑을 하기 위한 실제수치변환 스케일
-
-
  					
-    var svg_focus_map = d3.select(".map_div_map")  //맵이 그려질 svg추가
+    var svg_map = d3.select(".map_div_map")  //맵이 그려질 svg추가
     				.append("svg")
-    				.attr("width",w)
-    				.attr("height",h)
-    				.attr("class","svg_map")
-
-    	svg_focus_map.append("rect")				//맵을 둘러싸고 있는 SVG경계선
-    				  .attr("x",0)
-    				  .attr("y",0)
-    				  .attr("width",w)
-    				  .attr("height",h)
-    				  .attr("class","svg_box");
-
-    	svg_focus_map.append("path")
-    				  .datum(graticule2)
-    				  .attr("class","graticule")
-    				  .attr("d",path2);
-
-    	
+    				.attr("width",map_width)
+    				.attr("height",map_height)
+    				.attr("class","svg_map");
 
 
-    var focus_group = svg_focus_map.append("g")		//맵 path를 묶을 그룹 추가
+	svg_map.append("path")
+				  .datum(graticule)
+				  .attr("class","graticule")
+				  .attr("d",path);
+
+    var path_group = svg_map.append("g")		//맵 path를 묶을 그룹 추가
     					.attr("transform","translate(20,0)")
     					.attr("class","world");
 
@@ -120,11 +85,8 @@
           });
 
 		data1 = data;
-		
-		
 	    color.domain(map_legend_num);
 	    
-
 
         popData1 = data1.filter(function(d) {return d.year == start_year});
 
@@ -157,12 +119,12 @@
 
 
 
-		focus_map_path = focus_group.append("g")
+		map_path = path_group.append("g")
 						.selectAll("path")
 						.data(map_json.features)
 						.enter()
 		 				.append("path")
-						.attr("d",path2)
+						.attr("d",path)
 						.attr("class","map_path")
 						.style("fill", function(d){
 							var value = d.properties.refugeesValue;
@@ -182,7 +144,7 @@
 						
 						});
 
-		focus_map_label = focus_group.append("g")
+		map_label = path_group.append("g")
 							.selectAll("text")
 							.data(map_json.features)
 							.enter()
@@ -197,13 +159,13 @@
 							})
 							.attr("transform", function(d){
 								if(d.properties.name == "Lebanon"){
-									return "translate(" + path2.centroid(d) +")" + "translate(-35,5)";
+									return "translate(" + path.centroid(d) +")" + "translate(-35,5)";
 								}
 								else if(d.properties.name == "Syria"){
-									return "translate(" + path2.centroid(d) +")";
+									return "translate(" + path.centroid(d) +")";
 								}
 								else{
-									return "translate(" + path2.centroid(d) +")" + "translate(0,-5)";
+									return "translate(" + path.centroid(d) +")" + "translate(0,-5)";
 								}	
 							})
 							.attr("text-anchor","middle")
@@ -212,8 +174,7 @@
 									if(d.properties.name == countryList[i])	
 										return d.properties.name;	
 								}
-								i
-							})
+							});
 							/*.style("fill",function(d,i){
 								if(d.properties.name!="Syria"){
 								 var value = d.properties.refugeesValue;
@@ -237,7 +198,7 @@
 							});*/
 
 
-		focus_map_number = focus_group.append("g")
+		map_number = path_group.append("g")
 							.selectAll("text")
 							.data(map_json.features)
 							.enter()
@@ -245,10 +206,10 @@
 							.attr("class","focus_map_number")
 							.attr("transform", function(d){
 								if(d.properties.name == "Lebanon"){
-									return "translate(" + path2.centroid(d) +")" + "translate(-35,17)";
+									return "translate(" + path.centroid(d) +")" + "translate(-35,17)";
 								}
 								else{
-									return "translate(" + path2.centroid(d) +")" + "translate(0,7)";
+									return "translate(" + path.centroid(d) +")" + "translate(0,7)";
 								}	
 							})
 							.attr("text-anchor","middle")
@@ -258,13 +219,12 @@
 										return d.properties.refugeesValue;
 									}
 								}
-								
 							});
 							
 				});
 
 
-    var legend_group = svg_focus_map.append("g")		//맵 path를 묶을 그룹 추가
+    var legend_group = svg_map.append("g")		//맵 path를 묶을 그룹 추가
     					.attr("transform","translate(0,0)")
     					.attr("class","world");
     
@@ -307,9 +267,84 @@
 				  })
 				  .attr("class","map_legend_text");
 
+	}); 
+	/*csv function 종료 */
+
+function resize_refugeeMap(){
+	var map_width=860; //path가 그려질 svg크기
+    var map_height = innerHeight - 260;
+
+	if((700<window.innerHeight)&&(window.innerHeight<950)){
+
+		projection = d3.geo.conicConformal()
+					   .center(center)
+					   .scale(580)
+					   .translate([map_width/2,map_height/2])
+					   .center(center)
+					   .precision(.1);
+
+		path = d3.geo.path().projection(projection);  //path의 프로젝션값 설정 
+	    graticule = d3.geo.graticule();
+
+	    svg_map.attr("width",map_width)
+			   .attr("height",map_height)
+			   .attr("class","svg_map");
+
+	    map_path.transition()
+	    		.attr("d",path)
+				.attr("class","map_path")
+				.style("fill", function(d){
+				var value = d.properties.refugeesValue;
+					value = +value;
+					if(d.properties.name == "Syria"){
+					return c_syria;
+					}
+					if(value==0){
+					console.log(d.properties.name);
+					return color_list[0];
+					}else if(value){
+					return color(value)
+					}
+					else{
+					return color_list[0];
+					}
+				});
+
+		map_label.attr("transform", function(d){
+						if(d.properties.name == "Lebanon"){
+							return "translate(" + path.centroid(d) +")" + "translate(-35,5)";
+						}
+						else if(d.properties.name == "Syria"){
+							return "translate(" + path.centroid(d) +")";
+						}
+						else{
+							return "translate(" + path.centroid(d) +")" + "translate(0,-5)";
+						}	
+					})
+				.attr("text-anchor","middle")
+				.text(function(d){
+					for(var i=0; i<countryList.length; i++){
+						if(d.properties.name == countryList[i])	
+							return d.properties.name;	
+					}
+				});
 
 
-	});
+		map_number.attr("transform", function(d){
+							if(d.properties.name == "Lebanon"){
+								return "translate(" + path.centroid(d) +")" + "translate(-35,17)";
+							}
+							else{
+								return "translate(" + path.centroid(d) +")" + "translate(0,7)";
+							}	
+						});
+
+
+
+
+
+	}
+}
 			
   
 

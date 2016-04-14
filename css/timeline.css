@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700|Roboto+Slab:400,100,300);
 
 .timeline_div_column1{
-    width: 580px;
-    margin: 5px;
+    width: 750px;
+    margin: 0px
     height: auto;
     background-color: #111111;
     position: relative;
@@ -145,7 +145,7 @@ h3.timeline_heading {
     fill: #dddddd;
 }
 .timeline_axis { /* axis labels */
-    fill: #dddddd;
+    fill: #999999;
     font-family: sans-serif;
     font-weight: lighter;
     font-size: 10px;
@@ -153,11 +153,11 @@ h3.timeline_heading {
 
 .timeline_axis line{ /* axis tick marks */
     stroke-width : 0.5;
-    stroke: #dddddd;
+    stroke: #999999;
     shape-rendering: crispEdges;
 }
 #date_axis line{
-    stroke: #888888;
+    stroke: #999999;
     stroke-dasharray: 2,2;
 }
 #date_axis path{
@@ -165,7 +165,7 @@ h3.timeline_heading {
 }
 .timeline_axis path { /* axis line */
     stroke-width : 0.5;
-    stroke: #dddddd;
+    stroke: #999999;
     shape-rendering: crispEdges;
 }
 /* timeline band */
@@ -314,6 +314,10 @@ h3.timeline_heading {
     font-size: 35px;
 }
 .chapter_selector{
-    fill: rgba(125,140,155,0.5);
-    stroke: #AAAAAA;
+    fill: rgba(0,0,0,0);
+    stroke: #aaaaaa;
+    stroke-width: 0.5px;
+}
+.chapter_mask{
+    fill: rgba(50,60,60,0.55);
 }

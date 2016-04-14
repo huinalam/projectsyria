@@ -29,7 +29,7 @@ var line_graph_year = ["1968-12-31","1980-12-31","1992-12-31","2011-12-31"];
 var chapter_list = [{start: "1967-01-31", end: "1967-12-31"},
                     {start: "1968-12-31", end: "1982-12-31"},
                     {start: "1982-12-31", end: "2000-12-31"},
-                    {start: "2000-01-01", end: "2001-12-31"},
+                    {start: "2000-01-01", end: "2011-12-31"},
                     {start: "2001-12-31", end: "2011-12-31"}];
 
 //svg group declare
@@ -272,7 +272,7 @@ function intrographTransition(year){
 
 function intro_popYear(chapter_list){
     var popData = intro_dataCon.filter(function(d){ return (parseDate(chapter_list.start) <= d.year)&&(d.year <= parseDate(chapter_list.end));})
-    //console.log(popData);
+    console.log(popData);
     intro_popData = popData;
 
     d3.select(".area_graph").selectAll("path")
