@@ -82,7 +82,7 @@ section{
 	width: 800px;
 	font-family: 'Arvo', serif;
 	font-size: 48px;
-	font-weight: 700;
+	font-weight: 400;
 	line-height: 120%;
 	letter-spacing: 2px;
 	word-wrap: 15px;
@@ -132,7 +132,12 @@ section{
 	text-indent: 30px;
 	color: #dfdfdf;
 }
-
+#red{
+	color: #cc3333;
+}
+#green{
+	color: #33bb66;
+}
 
 /** svg element **/
 .chart_title{
