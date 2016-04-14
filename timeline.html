@@ -294,11 +294,12 @@
         chapter_title_size_setting();
 
         //var timeline_offset = parseInt($('#timeline').offset().top);
+        var c4 = $("#c4");
+        var $timeline_div = $("#timeline_div");
 
         $window.resize(function() {
-
             var scroll_top = $window.scrollTop();
-            var timeline_bottom = parseInt($("#c4").offset().top) - parseInt($("#timeline_div").height());
+            var timeline_bottom = parseInt(c4.offset().top) - parseInt($timeline_div.height());
 
             //console.log("timeline_bottom : " + timeline_bottom + " // scroll_top : " + scroll_top);
 
@@ -311,7 +312,7 @@
                 if (timeline_bottom < scroll_top) {
                     var sectionLeft = parseInt($('#timeline').css("margin-left"));
                     //console.log("unFix bottom");
-                    $('#timeline_div').css({
+                    $timeline_div.css({
                         position: "absolute",
                         top: timeline_bottom,
                         left: sectionLeft
@@ -330,7 +331,7 @@
             var section_top = parseInt($('#timeline').css("margin-top"));
             var timeline_width = parseInt($("#timeline_div").css("width"));
 
-            $('#timeline_div').css({
+            $timeline_div.css({
                 position: "fixed",
                 top: section_top,
                 left: section_left
@@ -343,7 +344,7 @@
         }
 
         function section3_unFix_top() {
-            $('#timeline_div').css("position", "static");
+            $timeline_div.css("position", "static");
             $('#timeline_article').css({
                 "padding-left": 0
             });
@@ -371,7 +372,7 @@
         $window.on('scroll', function() {
             //console.log($window.scrollTop());
             var scroll_top = $window.scrollTop();
-            var timeline_bottom = parseInt($("#c4").offset().top) - parseInt($("#timeline_div").height());
+            var timeline_bottom = parseInt($("#c4").offset().top) - parseInt($timeline_div.height());
 
             //console.log("timeline_bottom : " + timeline_bottom + " // scroll_top : " + scroll_top);
 
@@ -384,7 +385,7 @@
                 if (timeline_bottom < scroll_top) {
                     var sectionLeft = parseInt($('#timeline').css("margin-left"));
                     //console.log("unFix bottom");
-                    $('#timeline_div').css({
+                    $timeline_div.css({
                         position: "absolute",
                         top: timeline_bottom,
                         left: sectionLeft

@@ -21,12 +21,12 @@
         </div>
     </secttion>
     <section>
-        <div class="chapter_main_div chapter_title" id="refugee_map">
-            <div class="chapter_chart_div_s86" id="fixed_chart">
+        <div class="chapter_main_div chapter_title" id="pre_war_refugee_map">
+            <div class="chapter_chart_div_s86" id="pre_war_fixed_chart">
                 <div class="intro_div_intrograph"></div>
             </div>
-            <div class="chapter_article_div" id="chapter_article_div">
-                <div class="intro_div_article div_s30" id="intro_article_p1">
+            <div class="chapter_article_div" id="pre_war_chapter_article_div">
+                <div class="pre_war_article intro_div_article div_s30" id="intro_article_p1">
                     <h2>
                         1946~1956<br>Independent from France
                     </h2>
@@ -34,20 +34,20 @@
                         After World War I, Arab Kingdom of Syria was announced but soon became French mandate. Later Syria took its independence in 1946, pushing French forces out of the nation due to Syrian nationalists and British pressure over Free French. In 1956, the coalition was intended by Egypt and Syria but gained no success.
                     </p>
                 </div>
-                <div class="intro_div_article div_s30" id="intro_article_p2">
+                <div class="pre_war_article intro_div_article div_s30" id="intro_article_p2">
                     <h2>
                         1960~1980<br>Hafez al-Assad Regime
                     </h2>
                     <p>Hafez al-Assad started his career in air force with his stance being consolidated during Jadid regime in 1960s. In 1970, Hafez led coup d’état without bloody incident, taking advantage of fragile Jadid. Hafez didn’t hesitate to visit local villages listening to real voices of citizens, totally different from the former leaders, and additionally decided to cut down the price of daily necessities, widening own popularity.</p>
                     <p>However, he overtook worshiping enactment by hanging his pictures in most public spaces and also by deifying himself as one similar to Mahomet. What was worse, extreme pursuit of private interests and political corruption resulted in Muslim Brotherhood Syria’s expansion.</p>
                 </div>
-                <div class="intro_div_article div_s30" id="intro_article_p3">
+                <div class="pre_war_article intro_div_article div_s30" id="intro_article_p3">
                     <h2>
                         1982<br>Hamma massacre<br>
                     </h2>
                     <p>Islamist uprising by itself aimed at overturning the regime especially in northern regions, while its climax was Hama massacre in 1982, killing 10,000-40,000 people by Syrian Army troops. It is said the city was bulldozed and destroyed by regime’s forces. In the meantime, the central government gained its full momentum to transform its political structure into an absolutistic way, eliminating discussion on measures against anti-government forces and also election process based on voting systems. Rapid turmoil not only in regional peace but also in its politics meant Syrian social structure became jeopardized in a serious manner: opposition activities became almost impossible; Emergency Law from 1963 to 2011 and; military courts applied martial law.</p>
                 </div>
-                <div class="intro_div_article div_s30" id="intro_article_p4">
+                <div class="pre_war_article intro_div_article div_s30" id="intro_article_p4">
                     <h2>
                         2000~2001<br>Bashar al-Assad Regime and Damascus Spring
                     </h2>
@@ -57,7 +57,7 @@
             </div>
         </div>
     </section>
-    <section id="section_bottom">
+    <section id="pre_war_section_bottom">
         <!---------------------->
         <!--차트 아래 내용 입력란-->
         <!---------------------->
@@ -73,62 +73,66 @@
 
             // 높이 설정
             // div로 gap을 주는 대신에, padding 값을 주었음
-            $(".intro_div_article").css({
+            $(".pre_war_article").css({
                 "padding-top": window.innerHeight / 2,
                 "padding-bottom": window.innerHeight / 2
             });
             // 처음 content의 padding-top은 0으로
-            $(".intro_div_article").eq(0).css({
+            $(".pre_war_article").eq(0).css({
                 "padding-top": 0
             });
 
             var chart_width = $(".chapter_chart_div_s86").width();
-
-            var chatper_divs = $(".intro_div_article");
+            var chatper_divs = $(".pre_war_article");
             var chapter_offset_top = [];
             for (var i = 0; i < chatper_divs.length; i++) {
                 chapter_offset_top[i] = parseInt(chatper_divs.eq(i).offset().top);
             }
 
-            function fix_chart() {
-                var section_left = parseInt($('#refugee_map').css("margin-left"));
-                var section_top = parseInt($('#refugee_map').css("margin-top"));
+            var $pre_war_refugee_map = $('#pre_war_refugee_map');
 
-                $('#fixed_chart').css({
+            function fix_chart() {
+                var section_left = parseInt($pre_war_refugee_map.css("margin-left"));
+                var section_top = parseInt($pre_war_refugee_map.css("margin-top"));
+
+                $('#pre_war_fixed_chart').css({
                     position: "fixed",
                     top: section_top,
                     left: section_left
                 });
 
-                $('#chapter_article_div').css({
+                $('#pre_war_chapter_article_div').css({
                     "padding-left": chart_width
                 });
             }
 
             function unfix_chart() {
-                $('#fixed_chart').css("position", "static");
-                $('#chapter_article_div').css({
+                $('#pre_war_fixed_chart').css("position", "static");
+                $('#pre_war_chapter_article_div').css({
                     "padding-left": 0
                 });
             }
 
-
+            var $pre_war_section_bottom = $("#pre_war_section_bottom");
+            var pre_war_fixed_chart = $("#pre_war_fixed_chart");
             //** ON_SCROLL EVENT **//
             $window.on('scroll', function () {
                 var scroll_top = $window.scrollTop();
-                var timeline_bottom = parseInt($("#section_bottom").offset().top) - parseInt($("#fixed_chart").height());
+                var timeline_bottom = parseInt($pre_war_section_bottom.offset().top) - parseInt(pre_war_fixed_chart.height());
+                var pre_war_refugee_map_top = parseInt($pre_war_refugee_map.offset().top);
+
                 // ==> start Scroll
-                if (window.innerHeight < scroll_top && timeline_bottom > scroll_top) {
+                if (pre_war_refugee_map_top < scroll_top && timeline_bottom > scroll_top) {
                     fix_chart();
                 } else {
                     if (timeline_bottom < scroll_top) {
-                        var sectionLeft = parseInt($('#timeline').css("margin-left"));
-                        //console.log("unFix bottom");
-                        $('#timeline_div').css({
-                            position: "absolute",
-                            top: timeline_bottom,
-                            left: sectionLeft
-                        });
+                        //var sectionLeft = parseInt($('#timeline').css("margin-left"));
+                        ////console.log("unFix bottom");
+                        //$('#timeline_div').css({
+                        //    position: "absolute",
+                        //    top: timeline_bottom,
+                        //    left: sectionLeft
+                        //});
                     } else {
                         unfix_chart();
                     }
@@ -157,7 +161,7 @@
             });
 
             function intro_size_setting() {
-                $(".intro_div_article").css("height", window.innerHeight);
+                $(".pre_war_article").css("height", window.innerHeight);
             }
             /** CHAPTER TITLE SETTING **/
             function chapter_title_size_setting() {
