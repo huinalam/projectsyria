@@ -142,6 +142,7 @@ d3.csv("data/refugees_total_year_2011_2014.csv",function(data){
 function lineTransition(year){
 
     var index = year - 2011;
+    
     timeAxis_circle.transition().duration(300)
                                 .attr("cx",x_scale_linegraph(parseDate(line_graph_year[index])))
                                 .attr("cy",y_scale_linegraph(0))

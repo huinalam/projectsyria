@@ -134,9 +134,11 @@ section{
 }
 #red{
 	color: #cc3333;
+	fill: #cc3333;
 }
 #green{
 	color: #33aa88;
+	fill: #33aa88;
 }
 
 /** svg element **/
@@ -146,7 +148,7 @@ section{
 	font-size: 24px;
 	margin: 5px;
 	font-weight: bold;
-	fill: #eeeeee;
+	fill: #dddddd;
 }
 .axis_text{
 	font-size: 13px;

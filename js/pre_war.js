@@ -53,7 +53,7 @@ var introgaph_title = intro_svg_intrograph.append("text")
          .attr("y",intro_intrograph_margin.top + 30)
          .text("Changes of Refugees during Syrian Modern History");
 
-var timeAxis_circle;
+var pre_timeAxis_circle;
 var intrograph_circle;
 var intrograph_line;
 var intrograph_area;
@@ -151,7 +151,7 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
     markingEvent(marking_events);
                               
     //**moving elelment setting **//
-    timeAxis_circle = intro_g_intrograph.append("circle")
+    pre_timeAxis_circle = intro_g_intrograph.append("circle")
                                          .attr("cx",x_scale_intrograph(parseDate(preline_graph_year[0])))
                                          .attr("cy",y_scale_intrograph(0))
                                          .attr("r",2)
@@ -255,7 +255,7 @@ function intrographTransition(year){
     var toYear = year + "-12-31"
     var index = year - 1968;
 
-    timeAxis_circle.transition().duration(300)
+    pre_timeAxis_circle.transition().duration(300)
                                 .attr("cx",x_scale_intrograph(parseDate(toYear)))
                                 .attr("cy",y_scale_intrograph(0));
 

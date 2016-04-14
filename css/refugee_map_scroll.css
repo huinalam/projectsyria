@@ -40,8 +40,11 @@
 }
 
 /*map svg element */
+.svg_map{
+	background: #111111;
+}
 .svg_box{
- 	fill: #222222;
+ 	fill: #cceedd;
 	stroke: #eeeeee;
 	stroke-width: 0.5px;
 	stroke-opacity: 0.3;
@@ -91,11 +94,13 @@
  	z-index: 0;
  }
 .dev{
- 	fill: #6699AA;
+ 	color: #33aa88;
+	fill: #33aa88;
  	font-size: 9px;
  }
 .me{
- 	fill: #AA2244;
+ 	color: #cc3333;
+	fill: #cc3333;
  	font-size: 9px;
  }
  .legend_text{

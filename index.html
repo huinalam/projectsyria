@@ -5,7 +5,6 @@
     <link href="css/main_structure.css" rel="stylesheet">
     <link href="css/refugee_map_scroll.css" rel="stylesheet">
     <link href="css/gdp_compare.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/correlation.css" rel="stylesheet">
     <link href="css/pre_war.css" rel="stylesheet">
     <link href="css/refugee_map_scroll.css" rel="stylesheet">
@@ -106,7 +105,7 @@
                 </div>
                 <div class="pre_war_article intro_div_article div_s30" id="intro_article_p4">
                     <h2>
-                        2000~2001<br>Bashar al-Assad Regime and Damascus Spring
+                        2000~2011<br>Bashar al-Assad Regime and Damascus Spring
                     </h2>
                     <p>His son, Bashar al-Assad gripped on the next inauguration right after his father’s death in 2000, lowering the age for the to-be president.</p>
                     <p>The Damascus Spring began within intellectuals’ in private salons with various subjects. In 2001, Bashar released political criminals including Muslim Brotherhood followers, seemingly showing its intention to accept social demand for a political innovation. However, repressive actions were severely applied by imprisonment and closure of places for discussion a year later.</p>
@@ -177,16 +176,14 @@
         <div class="chapter_main_div chapter_title" style="padding-top: 200px">
             <div class="chapter_title_div">
                 <h1>
-                    IMBALANCE IN MIDDLE EAST:<br>
-                    PERSIAN GULF&#39;s NEGLECT
+                    <span id="red">IMBALANCE IN MIDDLE EAST:</span><br>
+                    <span id="green">"PERSIAN GULF&#39;s NEGLECT"</span>
                 </h1>
             </div>
             <div class="chapter_introduction_div">
                 <p>Imbalanced distribution of refugees is confirmed on the map above. UNHCR calculated $4,552,032,037 for a total sum of funds with a view to supporting currently-enrolled refugees, of which only 7% of them have been funded. Eventually, the finance is essential to help the refugees survive and sustain fundamental quality of living, whereas a nation can't finance all the expenses for the refugees.</p>
 
-                <p>
-                    We've seen the imbalance of refugees distribution in Middle East by means of economic scope. Please look at the Scatter plot below. Axis x represents GDP of Middle East nations and axis y does the number of refugee acceptance. The size of circle reflects the number of refugees divided by GDP per capita, which indicates the number of refugees in comparison to each countries' relative economic status.
-                </p>
+                <p>We've seen the imbalance of refugees distribution in Middle East by means of economic scope. Please look at the Scatter plot below. Axis x represents GDP of Middle East nations and axis y does the number of refugee acceptance. The size of circle reflects the number of refugees divided by GDP per capita, which indicates the number of refugees in comparison to each countries' relative economic status.</p>
             </div>
         </div>
     </secttion>
@@ -231,13 +228,41 @@
      <div class="chapter_main_div chapter_title" style="padding-top: 200px">
         <div class="chapter_title_div">
             <h1>
-                WHY THEY ARE LEAVING SYRIA?<br>
+                <span id="red">WHAT FORCE<br>THEM TO LEAVE SYRIA?:</span><br>
+                <span id="green">WHAT DATA TOLD US ABOUT THE WAR</span>
             </h1>
         </div>
         <div class="chapter_introduction_div">
             <p>Our intention is to focus on why almost half of Syrian population had no choice but to leave the motherlands and which types of life threats have existed from the viewpoint of themselves. So we analyzed the data of syriatracker.crowdmap.com which reports several damages inflicted against civilians in and around Syria. Syria Tracker, website utilizing group intelligence, allows anonymous users to directly report cases of civilian deaths, massacre, genocide and also chemical warfare. You can find detailed process of analysis in the section of methodology.</p>
 
             <p>By extracted data, timeline says the type of civilian losses and its frequency, fatalities and number of refugees on a monthly and yearly basis. Hence, we intended to let our viewers find out relevance between each data by pointing out which groups are related to certain types of incidents and which sorts of incidents were occurred. From 2011 to April 2016, 7 chapters are dissected as of patterns of civil war and also major timeline cases.</p>
+        </div>
+        <div class="chapter_introduction_div">
+            <h2>DEFINITION OF 6 TYPES OF CIVILIAN DAMAGE</h2>
+            <div class="timeline_eventType_div">
+                <h3>BATTLE:</h3>
+                Military clashes between more than two groups. Many syrians have been killed by secondary damage from battles.
+            </div>
+            <div class="timeline_eventType_div">
+                <h3>SHELLING:</h3>
+                Attacks from artillery. Shelling is the most common ways to attack rebel and civil area of assad regime. 
+            </div>
+            <div class="timeline_eventType_div">
+                <h3>AIR STRIKE</h3>
+                Attacks made by aircract. These include attack with missile and also droping explosive weapones to the ground.
+            </div>
+            <div class="timeline_eventType_div">
+                <h3>CHEMICAL WEAPONE</h3>
+                Attacks with toxic chemical. First usage of chemical weapone was identifed in August 2011 in "Syria tracker"
+            </div>
+            <div class="timeline_eventType_div">
+                <h3>BARREL BOMB</h3>
+                Barrel bomb contains explosive material with full of sharpen metal
+            </div>
+            <div class="timeline_eventType_div">
+                <h3>DIRECT ATTACK</h3>
+                Barrel bomb contains explosive material with full of sharpen metal
+            </div>
         </div>
     </div>
     <section>
@@ -618,7 +643,8 @@
 
             var $pre_war_section_bottom = $("#pre_war_section_bottom");
             var pre_war_fixed_chart = $("#pre_war_fixed_chart");
-            //** ON_SCROLL EVENT **//
+
+            //** ON_SCROLL EVENT **// prewar scroll event control
             $window.on('scroll', function () {
                 var scroll_top = $window.scrollTop();
                 var timeline_bottom = parseInt($pre_war_section_bottom.offset().top) - parseInt(pre_war_fixed_chart.height());
@@ -674,6 +700,21 @@
                 chapter_title_size_setting();
                 intro_size_setting();
                 set_chapter_offset();
+
+                var scroll_top = $window.scrollTop();
+                var timeline_bottom = parseInt($pre_war_section_bottom.offset().top) - parseInt(pre_war_fixed_chart.height());
+                var pre_war_refugee_map_top = parseInt($pre_war_refugee_map.offset().top);
+
+                // ==> start Scroll
+                if (pre_war_refugee_map_top < scroll_top && timeline_bottom > scroll_top) {
+                    pre_war_fix_chart();
+                } else {
+                    if (timeline_bottom < scroll_top) {
+                        pre_war_unfix_chart_bottom(timeline_bottom);
+                    } else {
+                        pre_war_unfix_chart();
+                    }
+                }
             });
 
         });
@@ -845,6 +886,10 @@
                 // ==> start chapter
                 for (var idx = chapter_offset_top.length - 1; idx >= 1; idx--) {
                     if (chapter_offset_top[idx] < scroll_top) {
+                        mapTransition((2011+idx));
+                        pieTransition(2011+idx);
+                        total_numTransition(2011+idx);
+                        lineTransition(2011+idx);
                         // *****************
                         // 2번째 챕터 이벤트
                         // *****************
@@ -869,8 +914,28 @@
             /******* Window 이밴트  ********/
             /******************************/
             $window.resize(function () {
+
                 section1_setposition();
                 chapter_title_size_setting();
+
+                var scroll_top = $window.scrollTop();
+                var timeline_bottom = parseInt(rms_section_bottom.offset().top) - parseInt($fixed_chart.height());
+                var timeline_top = parseInt($timeline_top.offset().top);
+                // ==> start Scroll
+                if (timeline_top < scroll_top && timeline_bottom > scroll_top) {
+                    //console.log("fix_chart");
+                    fix_chart();
+                } else {
+                    if (timeline_bottom < scroll_top) {
+                        //console.log("unFix bottom");
+                        unfix_chart_bottom(timeline_bottom);
+                    } else {
+                        //console.log("unfix_chart");
+                        unfix_chart();
+                    }
+                }
+
+                resize_refugeeMap()
             });
 
             //** ON_SCROLL EVENT **//
@@ -919,6 +984,7 @@
                 var timeline_bottom = parseInt(c4.offset().top) - parseInt($timeline_div.height());
                 var timeline_top = parseInt($timeline.offset().top);
 
+                timeline_resize();
                 //console.log("timeline_bottom : " + timeline_bottom + " // scroll_top : " + scroll_top);
 
                 // ==> start Scroll

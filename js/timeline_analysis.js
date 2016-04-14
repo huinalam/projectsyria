@@ -1,6 +1,6 @@
 ﻿    var timeline_margin = {top: 20, right: 10, bottom: 40, left: 10},   //Column div1,2의 width와 그 안에 들어갈 svg width
         outerWidth = 750;                                  
-        outerHeight = window.innerHeight - 100;
+        outerHeight = window.innerHeight - 160;
         //height = 650; //svg안에 차트가 그려질 영역의 높이와 timeline_yScale의 range
         timeline_width = outerWidth - timeline_margin.left - timeline_margin.right;
         timeline_height = outerHeight - timeline_margin.top - timeline_margin.bottom;
@@ -805,7 +805,7 @@ function timeline_resize(){
 
 
         outerWidth = 750;                                  
-        outerHeight = window.innerHeight - 100;
+        outerHeight = window.innerHeight - 160;
 
         main_svg.transition()
                 .attr("width",outerWidth)

@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700|Roboto+Slab:400,100,300);
-
+.timeline_eventType_div{
+    float:left;
+    width: 250px;
+    margin: 8px;
+}
 .timeline_div_column1{
     width: 750px;
     margin: 0px
