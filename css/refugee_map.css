@@ -23,10 +23,10 @@
 	float: left;
 }
 .map_div_article{
-	position: absolute !important;
+	/*position: absolute !important;*/
 }
 .map_div_linegraph{
-	position: absolute !important;
+	/*position: absolute !important;*/
 }
 .map_exp{
 	font-size: 13px;

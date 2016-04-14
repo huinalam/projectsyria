@@ -56,7 +56,7 @@
         </div>
     </section>
     <secttion>
-        <section id="section_bottom">
+        <section id="rms_section_bottom">
             <!---------------------->
             <!--차트 아래 내용 입력란-->
             <!---------------------->
@@ -257,12 +257,14 @@
                 });
             }
 
-            var $section_bottom = $("#section_bottom");
+            var rms_section_bottom = $("#rms_section_bottom");
+            var $timeline_top = $("#refugee_map");
             function scroll_event() {
                 var scroll_top = $window.scrollTop();
-                var timeline_bottom = parseInt($section_bottom.offset().top) - parseInt($fixed_chart.height());
+                var timeline_bottom = parseInt(rms_section_bottom.offset().top) - parseInt($fixed_chart.height());
+                var timeline_top = parseInt($timeline_top.offset().top);
                 // ==> start Scroll
-                if (window.innerHeight < scroll_top && timeline_bottom > scroll_top) {
+                if (timeline_top < scroll_top && timeline_bottom > scroll_top) {
                     //console.log("fix_chart");
                     fix_chart();
                 } else {

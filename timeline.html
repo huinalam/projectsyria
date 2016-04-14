@@ -256,151 +256,156 @@
     <script src="js/gdp_refugee_scatter.js"></script>
     <script src="js/timeline_analysis.js"></script>
     <script>
-    $(document).ready(function() {
-        var $window = $(window);
+        $(document).ready(function () {
+            var $window = $(window);
 
-        /** CHAPTER TITLE SETTING **/
-        function chapter_title_size_setting() {
-            $(".chapter_title").css({
-                "width": window.innerWidth,
-                "height": window.innerHeight
-            });
-            // div로 gap을 주는 대신에, padding 값을 주었음
-            //$(".timeline_div_articleGap").css("height", window.innerHeight);
-            $(".timeline_div_article_content").css({
-                "padding-top": window.innerHeight / 2,
-                "padding-bottom": window.innerHeight / 2
-            });
-            // 처음 content의 padding-top은 0으로
-            $(".timeline_div_article_content").eq(0).css({
-                "padding-top": 0
-            });
-        }
+            /** CHAPTER TITLE SETTING **/
+            function chapter_title_size_setting() {
+                $(".chapter_title").css({
+                    "width": window.innerWidth,
+                    "height": window.innerHeight
+                });
+                // div로 gap을 주는 대신에, padding 값을 주었음
+                //$(".timeline_div_articleGap").css("height", window.innerHeight);
+                $(".timeline_div_article_content").css({
+                    "padding-top": window.innerHeight / 2,
+                    "padding-bottom": window.innerHeight / 2
+                });
+                // 처음 content의 padding-top은 0으로
+                $(".timeline_div_article_content").eq(0).css({
+                    "padding-top": 0
+                });
+            }
 
-        chapter_title_size_setting();
+            chapter_title_size_setting();
 
-        //var timeline_offset = parseInt($('#timeline').offset().top);
+            //var timeline_offset = parseInt($('#timeline').offset().top);
+            var c4 = $("#c4");
+            var $timeline_div = $("#timeline_div");
+            var $timeline = $("#timeline");
 
-        $window.resize(function() {
+            $window.resize(function () {
+                var scroll_top = $window.scrollTop();
+                var timeline_bottom = parseInt(c4.offset().top) - parseInt($timeline_div.height());
+                var timeline_top = parseInt($timeline.offset().top);
 
-            var scroll_top = $window.scrollTop();
-            var timeline_bottom = parseInt($("#c4").offset().top) - parseInt($("#timeline_div").height());
+                //console.log("timeline_bottom : " + timeline_bottom + " // scroll_top : " + scroll_top);
 
-            //console.log("timeline_bottom : " + timeline_bottom + " // scroll_top : " + scroll_top);
-
-            // ==> start Scroll
-            if (window.innerHeight < scroll_top &&
-                timeline_bottom > scroll_top) {
-                //console.log("fix top");
-                section3_fix();
-            } else {
-                if (timeline_bottom < scroll_top) {
-                    var sectionLeft = parseInt($('#timeline').css("margin-left"));
-                    //console.log("unFix bottom");
-                    $('#timeline_div').css({
-                        position: "absolute",
-                        top: timeline_bottom,
-                        left: sectionLeft
-                    });
+                // ==> start Scroll
+                if (timeline_top < scroll_top && timeline_bottom > scroll_top) {
+                    //console.log("fix top");
+                    section3_fix();
                 } else {
-                    //console.log("unFix top");
-                    section3_unFix_top();
+                    if (timeline_bottom < scroll_top) {
+                        var sectionLeft = parseInt($('#timeline').css("margin-left"));
+                        //console.log("unFix bottom");
+                        $timeline_div.css({
+                            position: "absolute",
+                            top: timeline_bottom,
+                            left: sectionLeft
+                        });
+                    } else {
+                        //console.log("unFix top");
+                        section3_unFix_top();
+                    }
                 }
+
+            });
+
+            /** TIMELINE SECTION SETPOSITION **/
+            function section3_fix() {
+                var section_left = parseInt($('#timeline').css("margin-left"));
+                var section_top = parseInt($('#timeline').css("margin-top"));
+                var timeline_width = parseInt($("#timeline_div").css("width"));
+
+                $timeline_div.css({
+                    position: "fixed",
+                    top: section_top,
+                    left: section_left
+                });
+                console.log(timeline_width);
+
+                $('#timeline_article').css({
+                    "padding-left": timeline_width, // padding값을 timeline width값으로 수정했음.(사이즈 변경시 고려)
+                    width: "auto"
+                });
             }
 
-        });
+            function section3_unFix_top() {
+                $timeline_div.css("position", "static");
+                $('#timeline_article').css({
+                    "padding-left": 0,
+                    width: 420
+                });
+            }
 
-        /** TIMELINE SECTION SETPOSITION **/
-        function section3_fix() {
-            var section_left = parseInt($('#timeline').css("margin-left"));
-            var section_top = parseInt($('#timeline').css("margin-top"));
-            var timeline_width = parseInt($("#timeline_div").css("width"));
 
-            $('#timeline_div').css({
-                position: "fixed",
-                top: section_top,
-                left: section_left
+            var chatper_divs = $(".timeline_div_article_content");
+            //var chatper_divs = $(".timeline_div_articleGap");
+
+            var chapter_offset_top = [];
+            //var chapter_offset_height = [];
+            for (var i = 0; i < chatper_divs.length; i++) {
+                chapter_offset_top[i] = parseInt(chatper_divs.eq(i).offset().top);
+                //chapter_offset_height[i] = chatper_divs[i].scrollHeight;
+                console.log("chapter_offset_top[" + i + "] : " + chapter_offset_top[i]);
+                //console.log("chapter_offset_height[" + i + "] : " + chapter_offset_height[i]);
+            }
+
+            $(".timeline_div_article_content_1").scroll(function () {
+                var ele = $(".timeline_div_article_content_1");
+                console.log("scroll");
             });
-            console.log(timeline_width);
 
-            $('#timeline_article').css({
-                "padding-left": timeline_width // padding값을 timeline width값으로 수정했음.(사이즈 변경시 고려)
-            });
-        }
+            //** ON_SCROLL EVENT **//
+            $window.on('scroll', function () {
+                //console.log($window.scrollTop());
+                var scroll_top = $window.scrollTop();
+                var timeline_bottom = parseInt(c4.offset().top) - parseInt($timeline_div.height());
+                var timeline_top = parseInt($timeline.offset().top);
 
-        function section3_unFix_top() {
-            $('#timeline_div').css("position", "static");
-            $('#timeline_article').css({
-                "padding-left": 0
-            });
-        }
+                //console.log("timeline_bottom : " + timeline_bottom + " // scroll_top : " + scroll_top);
 
-
-        var chatper_divs = $(".timeline_div_article_content");
-        //var chatper_divs = $(".timeline_div_articleGap");
-
-        var chapter_offset_top = [];
-        //var chapter_offset_height = [];
-        for (var i = 0; i < chatper_divs.length; i++) {
-            chapter_offset_top[i] = parseInt(chatper_divs.eq(i).offset().top);
-            //chapter_offset_height[i] = chatper_divs[i].scrollHeight;
-            console.log("chapter_offset_top[" + i + "] : " + chapter_offset_top[i]);
-            //console.log("chapter_offset_height[" + i + "] : " + chapter_offset_height[i]);
-        }
-
-        $(".timeline_div_article_content_1").scroll(function() {
-            var ele = $(".timeline_div_article_content_1");
-            console.log("scroll");
-        });
-
-        //** ON_SCROLL EVENT **//
-        $window.on('scroll', function() {
-            //console.log($window.scrollTop());
-            var scroll_top = $window.scrollTop();
-            var timeline_bottom = parseInt($("#c4").offset().top) - parseInt($("#timeline_div").height());
-
-            //console.log("timeline_bottom : " + timeline_bottom + " // scroll_top : " + scroll_top);
-
-            // ==> start Scroll
-            if (window.innerHeight < scroll_top &&
-                timeline_bottom > scroll_top) {
-                //console.log("fix top");
-                section3_fix();
-            } else {
-                if (timeline_bottom < scroll_top) {
-                    var sectionLeft = parseInt($('#timeline').css("margin-left"));
-                    //console.log("unFix bottom");
-                    $('#timeline_div').css({
-                        position: "absolute",
-                        top: timeline_bottom,
-                        left: sectionLeft
-                    });
+                // ==> start Scroll
+                if (timeline_top < scroll_top &&
+                    timeline_bottom > scroll_top) {
+                    //console.log("fix top");
+                    section3_fix();
                 } else {
-                    //console.log("unFix top");
-                    section3_unFix_top();
+                    if (timeline_bottom < scroll_top) {
+                        var sectionLeft = parseInt($('#timeline').css("margin-left"));
+                        //console.log("unFix bottom");
+                        $timeline_div.css({
+                            position: "absolute",
+                            top: timeline_bottom,
+                            left: sectionLeft
+                        });
+                    } else {
+                        //console.log("unFix top");
+                        section3_unFix_top();
+                    }
                 }
-            }
-            // <== end Scroll
-            // ==> start chapter
-            for (var idx = chapter_offset_top.length - 1; idx >= 1 ; idx--) {
-                if (chapter_offset_top[idx] < scroll_top) {
-                    console.log("chapter idx : " + idx);
-                    // *****************
-                    // 여기다가 챕터에 따른 이벤트를 넣으세요
-                    // *****************
+                // <== end Scroll
+                // ==> start chapter
+                for (var idx = chapter_offset_top.length - 1; idx >= 1 ; idx--) {
+                    if (chapter_offset_top[idx] < scroll_top) {
+                        //console.log("chapter idx : " + idx);
+                        // *****************
+                        // 여기다가 챕터에 따른 이벤트를 넣으세요
+                        // *****************
 
-                    chapter_move(idx + 1);
-                    break;
+                        chapter_move(idx + 1);
+                        break;
+                    }
                 }
-            }
-            if (chapter_offset_top[1] > scroll_top) {
-                console.log("chapter_offset_top[1] > scroll_top");
-                chapter_move(1);
-                return;
-            }
-            // <== end chapter
+                if (chapter_offset_top[1] > scroll_top) {
+                    //console.log("chapter_offset_top[1] > scroll_top");
+                    chapter_move(1);
+                    return;
+                }
+                // <== end chapter
+            });
         });
-    });
     </script>
 </body>
 </html>

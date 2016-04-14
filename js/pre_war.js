@@ -272,7 +272,7 @@ function intrographTransition(year){
 
 function intro_popYear(chapter_list){
     var popData = intro_dataCon.filter(function(d){ return (parseDate(chapter_list.start) <= d.year)&&(d.year <= parseDate(chapter_list.end));})
-    console.log(popData);
+    //console.log(popData);
     intro_popData = popData;
 
     d3.select(".area_graph").selectAll("path")
