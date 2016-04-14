@@ -1,4 +1,4 @@
-﻿    var timeline_margin = {top: 80, right: 10, bottom: 40, left: 10},   //Column div1,2의 width와 그 안에 들어갈 svg width
+﻿    var timeline_margin = {top: 20, right: 10, bottom: 40, left: 10},   //Column div1,2의 width와 그 안에 들어갈 svg width
         outerWidth = 750;                                  
         outerHeight = window.innerHeight - 100;
         //height = 650; //svg안에 차트가 그려질 영역의 높이와 timeline_yScale의 range
@@ -405,8 +405,7 @@ timeline.yAxis = function(){
         .attr("id", "date_axis")
         .attr("transform", "translate(60,0)")
         .call(timeline_yAxis)
-        .call(customAxis)
-        .select("path");
+        .call(customAxis);
 
         d3.select("#date_axis").selectAll(".tick")
               .append("circle")
@@ -804,29 +803,26 @@ function timeline_resize(){
 
      if((700<window.innerHeight)&&(window.innerHeight<950)){
 
-        main_svg.transition()
-                .attr("width",outerWidth)
-                .attr("height",outerHeight);
 
         outerWidth = 750;                                  
         outerHeight = window.innerHeight - 100;
 
+        main_svg.transition()
+                .attr("width",outerWidth)
+                .attr("height",outerHeight);
+
         timeline_width = outerWidth - timeline_margin.left - timeline_margin.right;
         timeline_height = outerHeight - timeline_margin.top - timeline_margin.bottom;
 
+
+        //rescale axis//
         timeline_yScale.range([0, timeline_height]);
 
-        timeline_yAxis = d3.svg.axis()
-                            .scale(timeline_yScale)
-                            .orient("right")
-                            .tickSize(timeline_width-100,0)
-                            .ticks(12)
-                            .tickValues(dateTick_list)
-                            .tickFormat(function(d){ return d3.time.format("%b %Y")(d);});
+        timeline_yAxis.scale(timeline_yScale);
 
 
-            
-        timeline_yAxis_g.transition().call(timeline_yAxis);
+        console.log(timeline_yAxis);
+        timeline_yAxis_g.transition().call(timeline_yAxis).call(customAxis);
 
 
 

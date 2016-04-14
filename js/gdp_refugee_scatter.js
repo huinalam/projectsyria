@@ -31,10 +31,12 @@ var	scatter_title = scatter_g.append("text")
 				 .text("Number of Refugees & Economic Indicator");
 
 
-var circle_graph_g = scatter_svg.append("g")
+var capita_graph_g = scatter_svg.append("g")
 								.attr("transform","translate("+ scatter_width +"," + scatter_margin.top  + ")");
 
-var	circle_graph_title = circle_graph_g.append("text")
+
+
+var	circle_graph_title = capita_graph_g.append("text")
 						 .attr("class","chart_title")
 						 .attr("x",0)
 						 .attr("y",0)
@@ -136,7 +138,7 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east.csv",function(data){
 
 	rScale_GDP_capita = d3.scale.sqrt()
 					  .domain([0,maxGDP_pop])
-					  .range([0,100]);
+					  .range([2,40]);
 
 	lScale_GDP_capita = d3.scale.linear()
 					  .domain([0,maxGDP_pop])
@@ -197,11 +199,23 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east.csv",function(data){
 							  .text("Number of Refugees");
 
 	var xAxis_text = scatter_g.append("g")
-							  .attr("transform","translate("+ (scatter_width/2) + "," + (scatter_height - scatter_margin.bottom + 50) + ")")
+							  .attr("transform","translate("+ (scatter_width/2) + "," + (scatter_height - scatter_margin.bottom + 30) + ")")
 							  .append("text")
 							  .attr("class","axis_text")
-							  .attr("text-anchor","middle")
-							  .text("Number of GDP of middle east countries (constant 2011 international $)");
+							  .attr("text-anchor","middle");
+
+		xAxis_text.append("tspan")
+				  .attr("dy","1.1em")
+                  .attr("x",0)
+				  .text("GDP of middle east countries");
+
+		xAxis_text.append("tspan")
+				  .attr("dy","1.1em")
+                  .attr("x",0)
+				   .text("(constant 2011 international $)");
+							  
+							 
+							  
 
 
 	//** circle graph **//
@@ -215,28 +229,25 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east.csv",function(data){
 		country_code[i] = item.Country_Code;
 	});
 
-	var gdpCircle_g = circle_graph_g.selectAll("g")
+	var gdpCapita_g = capita_graph_g.append("g")
+									   .attr("transform","translate(0,80)");
+
+	var gdpCapita_text = gdpCapita_g.selectAll("g")
 								.data(data2)
 								.enter()
 								.append("g");
 
-	gdpCircle_g.append("circle")
-				  .attr("cx",circle_graph_width/2)
-				  .attr("cy",circle_graph_height/2)
-				  .attr("r",function(d){
-				  	return rScale_GDP_capita(d.GDP_capita);
+	gdpCapita_text.append("text")
+				  .attr("class","gdp_text")
+				  .attr("x",0)
+				  .attr("y",function(d,i){
+				  	return i*20;
 				  })
-				  .attr("fill",function(d){
-				  	return cScale_GDP_capita(d.GDP_capita);
-				  })
-				  .attr("opacity",1)
-				  .attr("stroke","#eeeeee")
-				  .attr("stroke-width",0.5)
-				  .style("z-index",function(d){
-				  	return 0 - rScale_GDP_capita(d.GDP_capita);
-				  })
+				  .text(function(d){
+				  	return (d.Country_Code + ": " + d3.format(".4r")(d.GDP_capita));
+				  });
 
-	gdpCircle_g.append("text")
+	/*gdpCircle_g.append("text")
 				  .attr("x",function(d,i){
 					 	return 600 - i*20;
 					 })
@@ -247,10 +258,10 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east.csv",function(data){
 					.text(function(d){
 						return d.Country_Code;
 					})
-					.attr("text-anchor","middle");
+					.attr("text-anchor","middle");*/
 
 
-	gdpCircle_g.append("line")
+	/*gdpCircle_g.append("line")
 				.attr("class","circle_line")
 				.attr("x1",function(d){
 					return circle_graph_width/2 - rScale_GDP_capita(d.GDP_capita);
@@ -265,7 +276,7 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east.csv",function(data){
 					  return circle_graph_height/2;
 				})
 				.attr("stroke","#eeeeee")
-				.attr("stroke-width",0.5);
+				.attr("stroke-width",0.5);*/
 	});
 
 

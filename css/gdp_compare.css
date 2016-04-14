@@ -72,3 +72,10 @@
 .scatter_exp_rect{
     fill: #dddddd;
 }
+.gdp_text{
+    letter-spacing: -0.5px;
+    font-family: "Courier New";
+    fill: #cccccc;
+    font-size: 17px;
+    fill: #eeeeee;
+}

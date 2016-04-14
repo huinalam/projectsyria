@@ -25,7 +25,7 @@ var intro_marking_g;
 var marking_events = [{year:"1971", title:"Hafez al-Assad became the President of Syria"},{year: "1982", title:"Hamma massacre: Occurrence of 10,000-40,000 casulties "},{ year: "2000", title:"Hafez's death and al-Assad Regime began"}];
 
 //year list to put in X scale
-var line_graph_year = ["1968-12-31","1980-12-31","1992-12-31","2011-12-31"]; 
+var preline_graph_year = ["1968-12-31","1980-12-31","1992-12-31","2011-12-31"]; 
 var chapter_list = [{start: "1967-01-31", end: "1967-12-31"},
                     {start: "1968-12-31", end: "1982-12-31"},
                     {start: "1982-12-31", end: "2000-12-31"},
@@ -74,7 +74,7 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
     var maxValue = d3.max(intro_dataCon,function(d){ return d.value});
 
     x_scale_intrograph = d3.time.scale()
-    						  .domain([parseDate(line_graph_year[0]),parseDate(line_graph_year[3])])
+    						  .domain([parseDate(preline_graph_year[0]),parseDate(preline_graph_year[3])])
     						  .range([intro_intrograph_margin.left,intro_width_intrograph - intro_intrograph_margin.right]);
 
     y_scale_intrograph = d3.scale.linear()
@@ -82,14 +82,14 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
     							 .range([intro_intrograph_margin.bottom, intro_height_intrograph - intro_intrograph_margin.top]);
 
     x_area = d3.time.scale()
-                          .domain([parseDate(line_graph_year[0]),parseDate(line_graph_year[3])])
+                          .domain([parseDate(preline_graph_year[0]),parseDate(preline_graph_year[3])])
                           .range([intro_intrograph_margin.left,intro_width_intrograph - intro_intrograph_margin.right]);
 
     y_area = d3.scale.linear()
                          .domain([maxValue,0])
                          .range([intro_intrograph_margin.bottom, intro_height_intrograph - intro_intrograph_margin.top]);
 
-   var refugee_sum_line = d3.svg.line()
+   var pre_refugee_sum_line = d3.svg.line()
                                 .x(function(d){return x_scale_intrograph(d.year)})
                                 .y(function(d){return y_scale_intrograph(d.value)})
                                 .interpolate("monotone");
@@ -100,11 +100,11 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
                                 .y1(function(d){ return y_area(d.value);})
                                 .interpolate("monotone");
 
-    refugee_sum_line_path = intro_g_intrograph.append("g")
+    pre_refugee_sum_line_path = intro_g_intrograph.append("g")
                                      .attr("transform","translate(0,0)")
                                      .append("path")
                                      .datum(intro_dataCon)
-                                     .attr("d",refugee_sum_line)
+                                     .attr("d",pre_refugee_sum_line)
                                      .attr("class","intro_graph");
 
     refugee_sum_area_path = intro_g_intrograph
@@ -123,7 +123,7 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
         .orient("bottom")
         .tickSize(5,0)
         .ticks(12)
-        .tickValues([parseDate(line_graph_year[0]),parseDate(line_graph_year[1]),parseDate(line_graph_year[2]),parseDate(line_graph_year[3])])
+        .tickValues([parseDate(preline_graph_year[0]),parseDate(preline_graph_year[1]),parseDate(preline_graph_year[2]),parseDate(preline_graph_year[3])])
         .tickFormat(function(d){ return toYear(d);});2
 
     var xAxis_g = intro_g_intrograph.append("g")
@@ -152,20 +152,20 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
                               
     //**moving elelment setting **//
     timeAxis_circle = intro_g_intrograph.append("circle")
-                                         .attr("cx",x_scale_intrograph(parseDate(line_graph_year[0])))
+                                         .attr("cx",x_scale_intrograph(parseDate(preline_graph_year[0])))
                                          .attr("cy",y_scale_intrograph(0))
                                          .attr("r",2)
                                          .attr("fill","#BB2233");
 
     intrograph_circle = intro_g_intrograph.append("circle")
-                                          .attr("cx",x_scale_intrograph(parseDate(line_graph_year[0])))
+                                          .attr("cx",x_scale_intrograph(parseDate(preline_graph_year[0])))
                                           .attr("cy",y_scale_intrograph(intro_dataCon[0].value))
                                           .attr("r",2)
                                           .attr("fill","#BB2233");
 
     intrograph_line = intro_g_intrograph.append("line")
-                                        .attr("x1",x_scale_intrograph(parseDate(line_graph_year[0])))
-                                        .attr("x2",x_scale_intrograph(parseDate(line_graph_year[0])))
+                                        .attr("x1",x_scale_intrograph(parseDate(preline_graph_year[0])))
+                                        .attr("x2",x_scale_intrograph(parseDate(preline_graph_year[0])))
                                         .attr("y1",y_scale_intrograph(0))
                                         .attr("y2",y_scale_intrograph(intro_dataCon[0].value))
                                         .attr("stroke","#BB2233")

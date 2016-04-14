@@ -3,7 +3,7 @@
 <head>
     <title>Project Syria - witnessism</title>
     <link href="css/main_structure.css" rel="stylesheet">
-    <link href="css/refugee_map.css" rel="stylesheet">
+    <link href="css/refugee_map_scroll.css" rel="stylesheet">
     <link href="css/gdp_compare.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/correlation.css" rel="stylesheet">
@@ -40,7 +40,7 @@
 
     <!--pre_war-->
     <secttion>
-        <div class="chapter_main_div chapter_title">
+         <div class="chapter_main_div chapter_title" style="padding-top: 200px">
             <div class="chapter_title_wrapper">
                 <div class="chapter_title_div">
                     <h1>
@@ -57,7 +57,7 @@
         </div>
     </secttion>
     <section>
-        <div class="chapter_main_div chapter_title" id="pre_war_refugee_map">
+        <div class="chapter_main_div" id="pre_war_refugee_map">
             <div class="chapter_chart_div_s86" id="pre_war_fixed_chart">
                 <div class="intro_div_intrograph"></div>
             </div>
@@ -101,7 +101,7 @@
 
     <!--refugee_map_scroll-->
     <secttion>
-        <div class="chapter_main_div chapter_title">
+         <div class="chapter_main_div chapter_title" style="padding-top: 200px">
             <div class="chapter_title_div">
                 <h1>
                     SYRIAN REFUGEE DISTRIBUTION<br>
@@ -116,7 +116,7 @@
         </div>
     </secttion>
     <section>
-        <div class="chapter_main_div chapter_title" id="refugee_map">
+        <div class="chapter_main_div" id="refugee_map">
             <div class="chapter_chart_div_s86" id="fixed_chart">
                 <div class="map_div_map"></div>
                 <div class="map_div_number">
@@ -154,7 +154,7 @@
             <!--차트 아래 내용 입력란-->
             <!---------------------->
         </section>
-        <div class="chapter_main_div chapter_title" style="padding-top: 300px">
+        <div class="chapter_main_div chapter_title" style="padding-top: 200px">
             <div class="chapter_title_div">
                 <h1>
                     IMBALANCE IN MIDDLE EAST:<br>
@@ -208,7 +208,7 @@
     <!--timeline-->
 
     <section id="intro"></section>
-    <div class="chapter_title" id="c1">
+     <div class="chapter_main_div chapter_title" style="padding-top: 200px">
         <div class="chapter_title_div">
             <h1>
                 WHY THEY ARE LEAVING SYRIA?<br>
@@ -224,6 +224,20 @@
         <div class="chapter_main_div" id="timeline">
             <div class="chapter_chart_div_s75" id="timeline_div">
                 <div class="timeline_div_column1">
+                    <div class="timeline_div_head">
+                        <div class="timeline_head1">
+                        </div>
+                        <div class="timeline_head2">
+                            <h3 class="timeline_heading">Event Type </h3>
+                            <div class="timeline_div_eventSelect">
+                                <p class="exp">"ypes of events which affect civilian damage</p>
+                             </div>
+                        </div>
+                        <div class="timeline_head3">
+                            <h3 class="timeline_heading">Deaths & Refugees</h3>
+                              <p class="exp">The number of death and refugee per a month</p>
+                        </div>
+                    </div>
                     <div id="timeline_chart"></div>
                 </div>
             </div>
@@ -429,26 +443,9 @@
             </div>
         </div>
     </section>
-    <div class="chapter_title" id="c4">
-        <div class="chapter_title_div">
-            <h1>
-                IMBALANCE IN MIDDLE EAST:<br>
-                PERSIAN GULF&#39;s NEGLECT
-            </h1>
-        </div>
-        <div class="chapter_introduction_div">
-            <p>
-                We've seen the imbalance of refugees distribution in Middle East by means of economic scope. Please look at the Scatter plot below. Axis x represents GDP of Middle East nations and axis y does the number of refugee acceptance. The size of circle reflects the number of refugees divided by GDP per capita, which indicates the number of refugees in comparison to each countries' relative economic status.
-            </p>
-        </div>
-    </div>
-    <section>
-        <div class="chapter_main_div" id="corelation">
-        </div>
-    </section>
 
     <!--correlation-->
-    <div class="chapter_main_div chapter_title">
+     <div class="chapter_main_div chapter_title" id='c4' style="padding-top: 200px">
         <div class="chapter_title_div">
             <h1>
                 NUMBERS SHOULD NOT BE<br>
@@ -502,8 +499,8 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
     <script src="js/refugee_map_world_map.js"></script>
+     <script src="js/refugee_map_linegraph.js"></script>
     <script src="js/mapTransition.js"></script>
-    <script src="js/refugee_map_linegraph.js"></script>
     <script src="js/portion_pie_chart.js"></script>
     <script src="js/gdp_refugee_scatter.js"></script>
     <script src="js/pre_war.js"></script>
@@ -641,9 +638,11 @@
             chapter_title_size_setting();
             /* intro chapter size setting */
             intro_size_setting();
+
             $window.resize(function () {
                 chapter_title_size_setting();
                 intro_size_setting();
+
             });
 
         });
@@ -665,15 +664,23 @@
                 switch (classfy[1]) {
                     case "gdp_year_button2011":
                         scatterTransition(2011);
+                        $(".gdp_div_textCol").eq(0).css("opacity",1);
+                        $(".gdp_div_textCol").not(':eq(0)').css("opacity",0.5);
                         break;
                     case "gdp_year_button2012":
                         scatterTransition(2012);
+                        $(".gdp_div_textCol").eq(1).css("opacity",1);
+                        $(".gdp_div_textCol").not(':eq(1)').css("opacity",0.5);
                         break;
                     case "gdp_year_button2013":
                         scatterTransition(2013);
+                        $(".gdp_div_textCol").eq(2).css("opacity",1);
+                        $(".gdp_div_textCol").not(':eq(2)').css("opacity",0.5);
                         break;
                     case "gdp_year_button2014":
                         scatterTransition(2014);
+                        $(".gdp_div_textCol").eq(3).css("opacity",1);
+                        $(".gdp_div_textCol").not(':eq(3)').css("opacity",0.5);
                         break;
                 }
             });
