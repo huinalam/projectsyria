@@ -155,11 +155,15 @@
 
             /** REFUGEE MAP SECTION SET POSITION **/
             function section1_setposition() {
+
                 var section_offset = parseInt($('#refugee_map').offset().top);
                 var section_left = parseInt($('#refugee_map').css("margin-left"));
                 var section_top = parseInt($('#refugee_map').css("margin-top"));
                 var map_width = parseInt($(".map_div_map").css("width"));
                 var map_years_height = parseInt($(".map_div_years").css("height"));
+
+
+
                 //console.log(section_left);
                 //console.log(section_top);
                 //console.log(map_years_height);
@@ -299,7 +303,10 @@
             /******************************/
             $window.resize(function () {
                 section1_setposition();
+                resize_refugeeMap(); //refugee map 리사이즈;
+                resize_linegraph(); // 2011~ 난민 linegrpah 리사이즈;
                 chapter_title_size_setting();
+                scroll_event();
             });
 
             //** ON_SCROLL EVENT **//

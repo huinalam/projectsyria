@@ -1,10 +1,10 @@
-﻿    var timeline_margin = {top: 5, right: 5, bottom: 5, left: 5},   //Column div1,2의 width와 그 안에 들어갈 svg width
+﻿    var timeline_margin = {top: 80, right: 10, bottom: 40, left: 10},   //Column div1,2의 width와 그 안에 들어갈 svg width
         outerWidth = 750;                                  
-        outerHeight = 800;
-        //height = 650; //svg안에 차트가 그려질 영역의 높이와 yScale의 range
-        width = outerWidth - timeline_margin.left - timeline_margin.right;
-        height = outerHeight - timeline_margin.top - timeline_margin.bottom;
-        timeline_height = height - 100;
+        outerHeight = window.innerHeight - 100;
+        //height = 650; //svg안에 차트가 그려질 영역의 높이와 timeline_yScale의 range
+        timeline_width = outerWidth - timeline_margin.left - timeline_margin.right;
+        timeline_height = outerHeight - timeline_margin.top - timeline_margin.bottom;
+        //timeline_height = height - 100;
 
     var timeline = {},   // The timeline data를 포함,label,axis시각적 요소까지 포함하는 timeline객첵 
         dataCon = {},       // Container for the data 각 item(사건)들의 시간,트랙,순서를 저장하는 객체
@@ -16,18 +16,30 @@
         bandNum = 0;     // Count of bands for ids
 
     var tracks = [];
-    var yScale;
+    var timeline_yScale;
     var xScale_band; //bargrapch xScale_band;
     var xScale_r;
     var xScale_d;
     var rScale_event;
     var rScale_group;
 
-    var yAxis; //axis함수에서 사용된 axis변
-    var yAxis_g;
+    var timeline_yAxis; //axis함수에서 사용된 axis변
+    var timeline_yAxis_g;
+    var dateTick_list = [parseDate("2011-01-01"),parseDate("2011-04-01"),
+                         parseDate("2011-07-01"),parseDate("2011-10-01"),
+                         parseDate("2012-01-01"),parseDate("2012-04-01"),
+                         parseDate("2012-07-01"),parseDate("2012-10-01"),
+                         parseDate("2013-01-01"),parseDate("2013-04-01"),
+                         parseDate("2013-07-01"),parseDate("2013-10-01"),
+                         parseDate("2014-01-01"),parseDate("2014-04-01"),
+                         parseDate("2014-07-01"),parseDate("2014-10-01"),
+                         parseDate("2015-01-01"),parseDate("2015-04-01"),
+                         parseDate("2015-07-01"),parseDate("2015-10-01"),
+                         parseDate("2016-01-01"),parseDate("2016-04-01")];
 
     //chapter selecor를 그리기위한 날짜
-    var chapter_date = [{start: parseDate("2011-03-01"), end: parseDate("2011-06-01")},
+    var chapter_date = [{start: parseDate("2011-01-01"), end: parseDate("2011-03-01")},
+                        {start: parseDate("2011-03-01"), end: parseDate("2011-06-01")},
                         {start: parseDate("2011-05-01"), end: parseDate("2012-07-01")},
                         {start: parseDate("2012-07-01"), end: parseDate("2013-04-01")},
                         {start: parseDate("2013-04-01"), end: parseDate("2014-01-01")},
@@ -42,7 +54,7 @@
     
     var main_svg = d3.select("#timeline_chart").append("svg") // 월별 난민 발생수를 bar chart
                     .attr("width",outerWidth)
-                    .attr("height",height);
+                    .attr("height",outerHeight);
 
     var tooltip3 = body.append("div")
         .attr("class", "tooltip_div");
@@ -52,7 +64,7 @@
     //** 섹션별 position 지정 value ** //
     var px_start = 90;
     var px_events = 120;
-    var px_refugees = 455;
+    var px_refugees = 450;
     var px_death = 600;
     
 
@@ -65,22 +77,19 @@
     var chart = main_svg.append("g")                       // 이벤트들의 밴드들이 그룹
             .attr("class", "chart")
             .attr("clip-path", "url(#chart-area)")
-            .attr("transform","translate("+ timeline_margin.left + ", 40)");
+            .attr("transform","translate("+ timeline_margin.left + "," + timeline_margin.top +")");
 
 
     var chart_y_top = 50;   //chart group내에서 차트 상단 경계선 y좌표
 
-    var chapter_selector = chart.append("g")
-                            .attr("transform","translate(90,0)")
-                            .append("rect");
 
     var line_graph_g = chart.append("g")
                         .attr("class","line_graph_g")
                         .attr("transform","translate(0,0)");
 
-    var legend_timeline_g = main_svg.append("g")
+    var legend_timeline_g = chart.append("g")
                         .attr("class","legend")
-                        .attr("transform", "translate(" + timeline_margin.left + "," + timeline_margin.top +")");
+                        .attr("transform", "translate(" + timeline_margin.left + "," + (timeline_height + 15) +")");
 
     var legend_type = legend_timeline_g.append("g")
                                      .selectAll("g")
@@ -115,7 +124,7 @@
 
     var legend_linegraph_g = chart.append("g")
                                 .attr("class","legend")
-                                .attr("transform", "translate(" + px_death + "," + (timeline_height + 15) +")");
+                                .attr("transform", "translate(" + (px_refugees + 20) + "," + (timeline_height + 15) +")");
 
     var legend_linegraph = legend_linegraph_g.append("g")
                                 .selectAll("g")
@@ -123,14 +132,14 @@
                                 .enter()
                                 .append("g")
                                 .attr("transform",function(d,i){
-                                    return "translate(10," + i*15 + ")";
+                                    return "translate(" + i*150 + ",10)";
                                 });
 
     var legend_lineg_circle = legend_linegraph
                                 .append("line")
                                 .attr("x1",0)
                                 .attr("y1",0)
-                                .attr("x2",15)
+                                .attr("x2",20)
                                 .attr("y2",0)
                                 .attr("stroke-width","2") 
                                 .attr("id", function(d){
@@ -144,7 +153,7 @@
 
     var legend_lineg_text = legend_linegraph
                                 .append("text")
-                                .attr("x",20)
+                                .attr("x",25)
                                 .attr("y",3)
                                 .attr("class","timeline_legend")
                                 .text(function(d){
@@ -341,6 +350,9 @@
 
         
             month += 1;
+            if(month<10){
+                month = "0" + month;
+            }
             return year + "." + month;
         
     }
@@ -357,7 +369,7 @@
 timeline.setScale = function(){
 
 
-    yScale = d3.time.scale()
+    timeline_yScale = d3.time.scale()
             .domain([parseDate("2011-01-01"), parseDate("2016-04-01")])
             .range([0, timeline_height]);
 
@@ -380,19 +392,19 @@ timeline.yAxis = function(){
             }
         }
 
-        yAxis = d3.svg.axis()
-        .scale(yScale)
+        timeline_yAxis = d3.svg.axis()
+        .scale(timeline_yScale)
         .orient("right")
-        .tickSize(width-100,0)
+        .tickSize(timeline_width-100,0)
         .ticks(12)
-        .tickValues([parseDate("2011-01-01"),parseDate("2011-07-01"),parseDate("2012-01-01"),parseDate("2012-07-01"),parseDate("2013-01-01"),parseDate("2013-07-01"),parseDate("2014-01-01"),parseDate("2014-07-01"),parseDate("2015-01-01"),parseDate("2015-07-01"),parseDate("2016-01-01"),parseDate("2016-04-01")])
-        .tickFormat(function(d){ return toYear_Month(d);});
+        .tickValues(dateTick_list)
+        .tickFormat(function(d){ return d3.time.format("%b %Y")(d);});
 
-        yAxis_g = chart.append("g")
+        timeline_yAxis_g = chart.append("g")
         .attr("class", "timeline_axis")
         .attr("id", "date_axis")
         .attr("transform", "translate(60,0)")
-        .call(yAxis)
+        .call(timeline_yAxis)
         .call(customAxis)
         .select("path");
 
@@ -401,7 +413,7 @@ timeline.yAxis = function(){
               .attr("cx",1)
               .attr("cy",0)
               .attr("r",2)
-              .attr("fill","#dddddd");
+              .attr("fill","#bbbbbb");
 
         d3.select("#date_axis").selectAll("text")
               .attr("x",-10)
@@ -433,30 +445,30 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
         var div_line_frequency = chart.append("line")
                     .attr("class","timeline_divLine")
                     .attr("x1",px_start)
-                    .attr("y1",yScale(parseDate("2011-01-01")))
+                    .attr("y1",timeline_yScale(parseDate("2011-01-01")))
                     .attr("x2",px_start)
                     .attr("y2",timeline_height);
 
         var div_line_death = chart.append("line")
                     .attr("class","timeline_divLine")
                     .attr("x1",px_death)
-                    .attr("y1",yScale(parseDate("2011-01-01")))
+                    .attr("y1",timeline_yScale(parseDate("2011-01-01")))
                     .attr("x2",px_death)
                     .attr("y2",timeline_height);
 
         var div_line_refugee = chart.append("line")
                         .attr("class","timeline_divLine")
                         .attr("x1",px_refugees)
-                        .attr("y1",yScale(parseDate("2011-01-01")))
+                        .attr("y1",timeline_yScale(parseDate("2011-01-01")))
                         .attr("x2",px_refugees)
                         .attr("y2",timeline_height);
 
         var div_line_end = chart.append("line")
                         .attr("class","timeline_divLine")
-                        .attr("x1",width-40)
-                        .attr("y1",yScale(parseDate("2011-01-01")))
-                        .attr("x2",width-40)
-                        .attr("y2",timeline_height-10);
+                        .attr("x1",timeline_width - 35)
+                        .attr("y1",timeline_yScale(parseDate("2011-01-01")))
+                        .attr("x2",timeline_width - 35)
+                        .attr("y2",timeline_height);
 
         div_line_frequency = chart.append("g")
                         .selectAll("line")
@@ -467,19 +479,11 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                         .attr("x1",function(d){
                             return xScale_events(d);
                         })
-                        .attr("y1",yScale(parseDate("2011-01-01")))
+                        .attr("y1",timeline_yScale(parseDate("2011-01-01")))
                         .attr("x2",function(d){
                             return xScale_events(d);
                         })
                         .attr("y2",timeline_height);
-
-        chapter_selector.attr("width",440)
-                        .attr("height",function(){
-                            return yScale(chapter_date[0].end)-yScale(chapter_date[0].start);
-                        })
-                        .attr("x",0)
-                        .attr("y",yScale(chapter_date[0].start))
-                        .attr("class","chapter_selector");      
 
        var min = 0;
        var max = 100;
@@ -493,6 +497,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("transform","translate(0,0)");
 
         var shelling_g = frequency.append("g")
+                            .attr("class","shelling_g")
                             .attr("transform","translate(" + xScale_events("shelling") + ",0)")
                             .selectAll("circle")
                             .data(event_data)
@@ -501,7 +506,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("class","circle_event")
                             .attr("cx",0)
                             .attr("cy",function(d,i){
-                                return yScale(d.date);
+                                return timeline_yScale(d.date);
                             })
                             .attr("r",function(d){
                                 return rScale_event(d.shelling);
@@ -509,6 +514,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("id","shelling");
 
         var air_strike_g = frequency.append("g")
+                            .attr("class","air_strike_g")
                             .attr("transform","translate(" + xScale_events("air_strike") + ",0)")
                             .selectAll("circle")
                             .data(event_data)
@@ -517,7 +523,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("class","circle_event")
                             .attr("cx",0)
                             .attr("cy",function(d,i){
-                                return yScale(d.date);
+                                return timeline_yScale(d.date);
                             })
                             .attr("r",function(d){
                                 return rScale_event(d.air_strike);
@@ -525,6 +531,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("id","air_strike");
 
         var battle_g = frequency.append("g")
+                            .attr("class","battle_g")
                             .attr("transform","translate(" + xScale_events("battle") + ",0)")
                             .selectAll("circle")
                             .data(event_data)
@@ -533,7 +540,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("class","circle_event")
                             .attr("cx",0)
                             .attr("cy",function(d,i){
-                                return yScale(d.date);
+                                return timeline_yScale(d.date);
                             })
                             .attr("r",function(d){
                                 return rScale_event(d.battle);
@@ -541,6 +548,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("id","battle");
 
         var chemical_g = frequency.append("g")
+                            .attr("class","chemical_g")
                             .attr("transform","translate(" + xScale_events("chemical") + ",0)")
                             .selectAll("circle")
                             .data(event_data)
@@ -549,7 +557,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("class","circle_event")
                             .attr("cx",0)
                             .attr("cy",function(d,i){
-                                return yScale(d.date);
+                                return timeline_yScale(d.date);
                             })
                             .attr("r",function(d){
                                 return rScale_event(d.chemical);
@@ -557,6 +565,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("id","chemical");
 
         var massacre_g = frequency.append("g")
+                            .attr("class","massacre_g")
                             .attr("transform","translate(" + xScale_events("massacre") + ",0)")
                             .selectAll("circle")
                             .data(event_data)
@@ -565,7 +574,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("class","circle_event")
                             .attr("cx",0)
                             .attr("cy",function(d,i){
-                                return yScale(d.date);
+                                return timeline_yScale(d.date);
                             })
                             .attr("r",function(d){
                                 return rScale_event(d.massacre);
@@ -573,6 +582,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("id","massacre");
 
         var barrel_bomb_g = frequency.append("g")
+                            .attr("class","barrel_bomb_g")
                             .attr("transform","translate(" + xScale_events("barrel_bomb") + ",0)")
                             .selectAll("circle")
                             .data(event_data)
@@ -581,7 +591,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("class","circle_event")
                             .attr("cx",0)
                             .attr("cy",function(d,i){
-                                return yScale(d.date);
+                                return timeline_yScale(d.date);
                             })
                             .attr("r",function(d){
                                 return rScale_event(d.barrel_bomb);
@@ -608,7 +618,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                    var max = d3.max(death_data, function(d){ return d.num});
                 
                     xScale_d = d3.scale.linear()
-                        .range([0,100])
+                        .range([0,95])
                         .domain([min,6000]);
 
                    var xAxis = d3.svg.axis()
@@ -621,6 +631,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
 
 
                     var point_group = line_graph_g.append("g")
+                                        .attr("class","point_group_d")
                                         .attr("transform","translate("+px_death+",0)")
                                         .selectAll("circle")
                                         .data(death_data)
@@ -633,10 +644,11 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                                         return xScale_d(d.num);
                                     })
                                     .attr("cy",function(d){
-                                        return yScale(d.date);
+                                        return timeline_yScale(d.date);
                                     });
                         
                     var line_group = line_graph_g.append("g")
+                                        .attr("class","line_group_d")
                                         .attr("transform","translate(" +px_death+",0)")
                                         .selectAll("line")
                                         .data(death_data)
@@ -646,18 +658,18 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("class", "line_d")
                             .attr("x1",xScale_d(0))
                             .attr("y1",function(d){
-                                    return yScale(d.date);
+                                    return timeline_yScale(d.date);
                             })
                             .attr("x2",function(d){
                                     return xScale_d(d.num);
                             })
                             .attr("y2",function(d){
-                                    return yScale(d.date);
+                                    return timeline_yScale(d.date);
                             });
 
                     var line = d3.svg.line()
                                 .x(function(d){ return xScale_d(d.num);})
-                                .y(function(d){ return yScale(d.date);})
+                                .y(function(d){ return timeline_yScale(d.date);})
 
 
                     line_graph_g.append("g")
@@ -684,7 +696,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                    var max = d3.max(refugee_data, function(d){ return d.num});
                 
                     xScale_r = d3.scale.linear()
-                        .range([145,0])
+                        .range([150,5])
                         .domain([min,max]);
 
                    var xAxis = d3.svg.axis()
@@ -697,6 +709,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
 
 
                     var point_group = line_graph_g.append("g")
+                                        .attr("class","point_group_r")
                                         .attr("transform","translate("+px_refugees+",0)")
                                         .selectAll("circle")
                                         .data(refugee_data)
@@ -709,10 +722,11 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                                         return xScale_r(d.num);
                                     })
                                     .attr("cy",function(d){
-                                        return yScale(d.date);
+                                        return timeline_yScale(d.date);
                                     });
                         
                     var line_group = line_graph_g.append("g")
+                                        .attr("class","line_group_r")
                                         .attr("transform","translate(" +px_refugees+",0)")
                                         .selectAll("line")
                                         .data(refugee_data)
@@ -722,18 +736,18 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("class", "line_r")
                             .attr("x1",xScale_r(0))
                             .attr("y1",function(d){
-                                    return yScale(d.date);
+                                    return timeline_yScale(d.date);
                             })
                             .attr("x2",function(d){
                                     return xScale_r(d.num);
                             })
                             .attr("y2",function(d){
-                                    return yScale(d.date);
+                                    return timeline_yScale(d.date);
                             });
 
                     var line = d3.svg.line()
                                 .x(function(d){ return xScale_d(d.num);})
-                                .y(function(d){ return yScale(d.date);})
+                                .y(function(d){ return timeline_yScale(d.date);})
 
 
                     line_graph_g.append("g")
@@ -742,28 +756,187 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .call(xAxis)
                             .append("text")
                             .attr("transform", "rotate(-90)")
-                            .attr("dy",".71em");    
+                            .attr("dy",".71em");  
+
+
+                    var chapter_mask1 = chart.append("g")
+                            .attr("transform","translate(0,0)")
+                            .append("rect")
+                            .attr("class","chapter_mask")
+                            .attr("id","chapter_mask1")
+                            .attr("width",timeline_width)
+                            .attr("height",function(){
+                                return timeline_yScale(chapter_date[1].start) - timeline_yScale(chapter_date[0].start)
+                            })
+                            .attr("x",px_start)
+                            .attr("y",timeline_yScale(parseDate("2011-01-01")));            
+
+                    var chapter_selector = chart.append("g")
+                            .attr("transform","translate(0,0)")
+                            .append("rect")
+                            .attr("class","chapter_selector")
+                            .attr("width",timeline_width)
+                            .attr("height",function(){
+                                return timeline_yScale(chapter_date[1].end)-timeline_yScale(chapter_date[1].start);
+                            })
+                            .attr("x",px_start)
+                            .attr("y",timeline_yScale(chapter_date[1].start));
+
+
+                    var chapter_mask2 = chart.append("g")
+                            .attr("transform","translate(0,0)")
+                            .append("rect")
+                            .attr("class","chapter_mask")
+                            .attr("id","chapter_mask2")
+                            .attr("width",timeline_width)
+                            .attr("height",function(){
+                                return timeline_yScale(chapter_date[7].end) - timeline_yScale(chapter_date[1].end)
+                            })
+                            .attr("x",px_start)
+                            .attr("y",timeline_yScale(chapter_date[1].end));  
+                                
     });
 
     
 });
+
+function timeline_resize(){
+
+     if((700<window.innerHeight)&&(window.innerHeight<950)){
+
+        main_svg.transition()
+                .attr("width",outerWidth)
+                .attr("height",outerHeight);
+
+        outerWidth = 750;                                  
+        outerHeight = window.innerHeight - 100;
+
+        timeline_width = outerWidth - timeline_margin.left - timeline_margin.right;
+        timeline_height = outerHeight - timeline_margin.top - timeline_margin.bottom;
+
+        timeline_yScale.range([0, timeline_height]);
+
+        timeline_yAxis = d3.svg.axis()
+                            .scale(timeline_yScale)
+                            .orient("right")
+                            .tickSize(timeline_width-100,0)
+                            .ticks(12)
+                            .tickValues(dateTick_list)
+                            .tickFormat(function(d){ return d3.time.format("%b %Y")(d);});
+
+
+            
+        timeline_yAxis_g.transition().call(timeline_yAxis);
+
+
+
+        //redraw eventCricle
+        d3.select(".shelling_g").selectAll("circle").transition()
+                  .attr("cy",function(d,i){
+                      return timeline_yScale(d.date);
+                  });
+
+        d3.select(".air_strike_g").selectAll("circle").transition()
+                  .attr("cy",function(d,i){
+                      return timeline_yScale(d.date);
+                  });
+
+        d3.select(".battle_g").selectAll("circle").transition()
+                  .attr("cy",function(d,i){
+                      return timeline_yScale(d.date);
+                  });
+
+        d3.select(".chemical_g").selectAll("circle").transition()
+                  .attr("cy",function(d,i){
+                      return timeline_yScale(d.date);
+                  });
+
+        d3.select(".massacre_g").selectAll("circle").transition()
+                  .attr("cy",function(d,i){
+                      return timeline_yScale(d.date);
+                  });
+
+        d3.select(".barrel_bomb_g").selectAll("circle").transition()
+                  .attr("cy",function(d,i){
+                      return timeline_yScale(d.date);
+                  });
+
+        //* redraw linegraph *//
+        d3.select(".point_group_d").selectAll("circle").transition()
+                  .attr("cy",function(d){
+                     return timeline_yScale(d.date);
+                  });
+
+        d3.select(".line_group_d").selectAll("circle").transition()
+                    .attr("x1",xScale_d(0))
+                    .attr("y1",function(d){
+                            return timeline_yScale(d.date);
+                    })
+                    .attr("x2",function(d){
+                            return xScale_d(d.num);
+                    })
+                    .attr("y2",function(d){
+                            return timeline_yScale(d.date);
+                    });
+
+
+        d3.select(".point_group_r").selectAll("circle").transition()
+                  .attr("cy",function(d){
+                     return timeline_yScale(d.date);
+                  });
+
+        d3.select(".line_group_r").selectAll("circle").transition()
+                    .attr("x1",xScale_r(0))
+                    .attr("y1",function(d){
+                            return timeline_yScale(d.date);
+                    })
+                    .attr("x2",function(d){
+                            return xScale_r(d.num);
+                    })
+                    .attr("y2",function(d){
+                            return timeline_yScale(d.date);
+                    });
+
+     }
+    
+
+}
 function chapter_move(index){
 
-    var i = index-1 ;
+    var i = index ;
     console.log("chapter move!");
 
-    chapter_selector.transition()
-                    .delay(500)
-                    .duration(500)
+    d3.select("#chapter_mask1").transition()
+                    .delay(300)
+                    .duration(300)
                     .ease("bounce")
                     .attr("height",function(){
-                        return yScale(chapter_date[i].end)-yScale(chapter_date[i].start);
+                        return timeline_yScale(chapter_date[i].start)-timeline_yScale(chapter_date[0].start);
                     })
-                    .attr("x",0)
-                    .attr("y",yScale(chapter_date[i].start))
-                    .attr("class","chapter_selector");
+                    .attr("x",px_start)
+                    .attr("y",timeline_yScale(chapter_date[0].start));
 
-    console.log(chapter_selector.attr("y"));
+    d3.select(".chapter_selector").transition()
+                    .delay(300)
+                    .duration(300)
+                    .ease("bounce")
+                    .attr("height",function(){
+                        return timeline_yScale(chapter_date[i].end)-timeline_yScale(chapter_date[i].start);
+                    })
+                    .attr("x",px_start)
+                    .attr("y",timeline_yScale(chapter_date[i].start));
+                    
+    d3.select("#chapter_mask2").transition()
+                    .delay(300)
+                    .duration(300)
+                    .ease("bounce")
+                    .attr("height",function(){
+                        return timeline_yScale(chapter_date[7].end) - timeline_yScale(chapter_date[i].end)
+                    })
+                    .attr("x",px_start)
+                    .attr("y",timeline_yScale(chapter_date[i].end));  
+  
+
 }
 
        

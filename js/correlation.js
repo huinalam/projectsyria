@@ -1,19 +1,19 @@
-var dataCon;
+var correlation_dataCon;
 var popData_year;
 var popData_group;
 var popData_group_event =[];
 
-var width = 600;
-var height = 600;
-var margin = 60; 
-var rect_size = (width - 2*margin)/6
-var main_svg = d3.select("#correlation_div_chart").append("svg")
-							   .attr("width",width)
-							   .attr("height",height);
-
+var correlation_width = 600;
+var correlation_height = 600;
+var correlation_margin = 60; 
+var rect_size = (correlation_width - 2*correlation_margin)/6
+var correlation_main_svg = d3.select("#correlation_div_chart").append("svg")
+							   .attr("width",correlation_width)
+							   .attr("height",correlation_height);
+							   
 var top_offset = 30;
 
-var text_g = main_svg.append("g")
+var text_g = correlation_main_svg.append("g")
 					 .attr("transform","translate(0,0)")
 					 .append("text")
 					 .attr("class","chart_title");
@@ -33,11 +33,11 @@ var text_g = main_svg.append("g")
           .attr("x",30)
 		  .text("in 'Syrian Tracker' Reports");
 
-var xScale;
-var yScale;
-var cScale;
+var correlation_xScale;
+var correlation_yScale;
+var correlation_cScale;
 
-var chapter_date = [{start: "2011-03-01", end: "2011-06-01"},
+/*var chapter_date = [{start: "2011-03-01", end: "2011-06-01"},
                     {start: "2011-05-01", end: "2012-07-01"},
                     {start: "2012-07-01", end: "2013-04-01"},
                     {start: "2013-04-01", end: "2014-02-01"},
@@ -50,22 +50,22 @@ var year_date = [{start:"2011-01-01", end: "2011-12-01"},
 				 {start:"2013-01-01", end: "2013-12-01"},
 				 {start:"2014-01-01", end: "2014-12-01"},
 				 {start:"2015-01-01", end: "2015-12-01"},
-				 {start:"2016-01-01", end: "2016-12-01"}];
+				 {start:"2016-01-01", end: "2016-12-01"}];*/
 
 var whole = {start:"2011-03-01", end:"2016-04-01"}
 
-var color_Range = ["#f0f0f0","#eab4b4","#dd0000"];
+var color_Range = ['#ffffb2','#fecc5c','#fd8d3c','#f03b20','#bd0026'];
 var maxValue;
 
-var svg_g = main_svg.append("g")
+var svg_g = correlation_main_svg.append("g")
 					.attr("transform","translate(0," + top_offset + ")");
 
-var main_g = svg_g.append("g")
+var correlation_main_g = svg_g.append("g")
 					 .attr("transform","translate(0,0)");
 var xAxis;
 var yAxis;
 
-var event_list = ["CHEMICAL","AIR STRIKE","BARREL BOMB","MASSACRE","SHELLING","CHEMICAL"];
+var event_list = ["CHEMICAL","AIR STRIKE","BARREL BOMB","MASSACRE","SHELLING","battle"];
 var group_list = ["IS","IC","RS","YPG","HZB","ASS"];
 
 for(var i=0; i<6; i++){
@@ -79,40 +79,39 @@ for(var i=0; i<6; i++){
 }
 d3.csv("data/long_df.csv",function(data){
 
-	dataCon = data;
+	correlation_dataCon = data;
 
-	dataCon.forEach(function(item){
+	correlation_dataCon.forEach(function(item){
 		item.date = parseDate(item.date);
 		item.value = +item.value;
 	});
 
-	//maxValue = d3.max(dataCon,function(d){ return d.value; });
-	maxValue = 2050;
-	xScale = d3.scale.ordinal()
+	//maxValue = d3.max(correlation_dataCon,function(d){ return d.value; });
+	correlation_xScale = d3.scale.ordinal()
 				    .domain(event_list)
-				    .rangePoints([margin,width - 3*margin]);
+				    .rangePoints([correlation_margin,correlation_width - 3*correlation_margin]);
 
-	yScale = d3.scale.ordinal()
+	correlation_yScale = d3.scale.ordinal()
 				    .domain(group_list)
-				    .rangePoints([height-3*margin,margin]);
+				    .rangePoints([correlation_height-3*correlation_margin,correlation_margin]);
 
 	xAxis = d3.svg.axis()
-				 .scale(xScale)
+				 .scale(correlation_xScale)
 				 .orient("bottom")
 				 .tickSize(5,1);
 
 	yAxis = d3.svg.axis()
-				 .scale(yScale)
+				 .scale(correlation_yScale)
 				 .orient("right")
 				 .tickSize(5,1);
 
 	var xAxis_g = svg_g.append("g")
-						.attr("transform","translate(" + margin/2 + "," + (height-3*margin/2) + ")")
+						.attr("transform","translate(" + correlation_margin/2 + "," + (correlation_height-3*correlation_margin/2) + ")")
 						.call(xAxis)
 						.attr("class","correlation_axis");
 
 	var yAxis_g = svg_g.append("g")
-						.attr("transform","translate(" + (width - 3*margin/2) + "," + margin/2 + ")")
+						.attr("transform","translate(" + (correlation_width - 3*correlation_margin/2) + "," + correlation_margin/2 + ")")
 						.call(yAxis)
 						.attr("class","correlation_axis correlation_y");
 
@@ -129,41 +128,42 @@ d3.csv("data/long_df.csv",function(data){
 		   	return d;
 		   });
 
-	cScale = d3.scale.linear()
+	correlation_cScale = d3.scale.linear()
 					 .range(color_Range)
-					 .domain([0,200,maxValue]);
+					 .domain([0,50,500,1000,2600]);
 
-	chart_g = main_g.selectAll("g")
+	chart_g = correlation_main_g.selectAll("g")
 				    .data(popData_group_event)
 				    .enter()
 				    .append("g");
 	
 	chart_g.append("rect")
 		  .attr("x",function(d){
-		  	return xScale(d.event);
+		  	return correlation_xScale(d.event);
 		  })
 		  .attr("y",function(d){
-		  	return yScale(d.group);
+		  	return correlation_yScale(d.group);
 		  })
 		  .attr("width",rect_size)
 		  .attr("height",rect_size)
 		  .attr("fill",function(d){
-		  	return cScale(d.value);
+		  	return correlation_cScale(d.value);
 		  })
 		  .attr("stroke","#ffffff")
 		  .attr("stroke-width",1);
 
 	chart_g.append("text")
+		  .attr("class","correlation_chart_num")
 		  .attr("x",function(d){
-		  	return xScale(d.event) + 35;
+		  	return correlation_xScale(d.event) + 35;
 		  })
 		  .attr("y",function(d){
-		  	return yScale(d.group) + 25;
+		  	return correlation_yScale(d.group) + 40;
 		  })
 		  .text(function(d){
 		  	return d.value;
 		  })
-		  .attr("text-anchor","end")
+		  .attr("text-anchor","middle");
 
 	d3.selectAll(".correlation_article_div").style("opacity",0);
 			d3.select("#ASS_article").style("opacity",1);
@@ -226,7 +226,7 @@ function popYear(chapter){
 	var end_date = parseDate(chapter.end);
 	console.log(start_date + " / " + end_date);
 
-	popData_year = dataCon.filter(function(d){ return (start_date <= d.date)&&(d.date <= end_date);})
+	popData_year = correlation_dataCon.filter(function(d){ return (start_date <= d.date)&&(d.date <= end_date);})
 	summarizeGroup();
 }
 function popGroup(group){
@@ -234,9 +234,9 @@ function popGroup(group){
 }
 function summarizeGroup(){
 	//*초기화*//
-	for(var i=0; i<11; i++){
-		for(var j=0; j<8; j++){
-			var index = i*8 + j;
+	for(var i=0; i<6; i++){
+		for(var j=0; j<6; j++){
+			var index = i*6 + j;
 			popData_group_event[index] = {};
 			popData_group_event[index].group = event_list[i];
 			popData_group_event[index].event = group_list[j];
@@ -257,16 +257,16 @@ function summarizeGroup(){
 		}
 	}
 
-	main_g.selectAll("rect")
+	correlation_main_g.selectAll("rect")
 		  .data(popData_group_event)
 		  .transition()
 		  .duration(300)
 		  .attr("fill",function(d){
-		  	return cScale(d.value);
+		  	return correlation_cScale(d.value);
 		  });
 
 
-	main_g.selectAll("text")
+	correlation_main_g.selectAll("text")
 		  .data(popData_group_event)
 		  .transition()
 		  .duration(300)
