@@ -23,7 +23,7 @@ function mapTransition(year){
 
 			}
 
-			map_number.data(map_json.features)
+			focus_map_number.data(map_json.features)
 	    			  .transition()
 	    			  .delay(function(d,i){
 	    				return i*5;
@@ -53,7 +53,7 @@ function mapTransition(year){
 	    			  });
 
 
-	    	map_path.data(map_json.features)
+	    	focus_map_path.data(map_json.features)
 	    			.transition()
 	    			.delay(function(d,i){
 	    				return i*5;
@@ -82,7 +82,7 @@ function mapTransition(year){
 
 
 
-	    	map_label.data(map_json.features)
+	    	focus_map_label.data(map_json.features)
 					.transition()
 					.delay(function(d,i){
 	    				return i*5;
@@ -111,5 +111,8 @@ function mapTransition(year){
 			                		return "#eeeeee";
 			                	}
 
-					});*/	    
+					});*/
+
+	    
+
 }

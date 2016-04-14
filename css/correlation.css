@@ -91,6 +91,7 @@
 	fill: #cccccc;
 	font-size: 11px;
 }
+
 .correlation_axis { /* axis labels */
     fill: #eeeeee;
     color: #eeeeee;
@@ -117,11 +118,4 @@
     font-family: sans-serif;
     font-weight: bold;
     font-size: 10px;
-}
-.correlation_chart_num{
-	font-family: 'Lato', sans-serif;
-	font-size: 11px;
-    letter-spacing: 0.5px;
-    word-spacing: 1.5px;
-    fill: #222222;
 }
