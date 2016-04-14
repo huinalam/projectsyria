@@ -867,7 +867,7 @@ function timeline_resize(){
                      return timeline_yScale(d.date);
                   });
 
-        d3.select(".line_group_d").selectAll("circle").transition()
+        d3.select(".line_group_d").selectAll("line").transition()
                     .attr("x1",xScale_d(0))
                     .attr("y1",function(d){
                             return timeline_yScale(d.date);
@@ -879,13 +879,12 @@ function timeline_resize(){
                             return timeline_yScale(d.date);
                     });
 
-
         d3.select(".point_group_r").selectAll("circle").transition()
                   .attr("cy",function(d){
                      return timeline_yScale(d.date);
                   });
 
-        d3.select(".line_group_r").selectAll("circle").transition()
+        d3.select(".line_group_r").selectAll("line").transition()
                     .attr("x1",xScale_r(0))
                     .attr("y1",function(d){
                             return timeline_yScale(d.date);
@@ -897,14 +896,24 @@ function timeline_resize(){
                             return timeline_yScale(d.date);
                     });
 
+        //* legend rescale *//
+        legend_timeline_g.transition()
+                         .attr("transform", "translate(" + timeline_margin.left + "," + (timeline_height + 15) +")");
+
+        legend_linegraph_g.transition()
+                          .attr("transform", "translate(" + (px_refugees + 20) + "," + (timeline_height + 15) +")");
      }
     
 
 }
 function chapter_move(index){
 
+
     var i = index ;
     console.log("chapter move!");
+    var i = index-1 ;
+    //console.log("chapter move!");
+
 
     d3.select("#chapter_mask1").transition()
                     .delay(300)
@@ -936,7 +945,6 @@ function chapter_move(index){
                     .attr("x",px_start)
                     .attr("y",timeline_yScale(chapter_date[i].end));  
   
-
 }
 
        
