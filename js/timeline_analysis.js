@@ -750,7 +750,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
 function chapter_move(index){
 
     var i = index-1 ;
-    console.log("chapter move!");
+    //console.log("chapter move!");
 
     chapter_selector.transition()
                     .delay(500)
@@ -763,7 +763,7 @@ function chapter_move(index){
                     .attr("y",yScale(chapter_date[i].start))
                     .attr("class","chapter_selector");
 
-    console.log(chapter_selector.attr("y"));
+    //console.log(chapter_selector.attr("y"));
 }
 
        
