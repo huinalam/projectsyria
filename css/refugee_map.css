@@ -57,10 +57,10 @@
 }
 
 .focus_map_label{
- 	fill: #DDDDDD;
+ 	fill: #888888;
  	font-family: "HelveticaNeue";
- 	font-weight: lighter;
- 	font-size: 8px;
+ 	font-weight: bolder;
+ 	font-size: 12px;
  	letter-spacing: 1.5px;
  }
 .syria_label{

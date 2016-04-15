@@ -32,7 +32,7 @@ var text_g = correlation_main_svg.append("g")
 		  .text("Attactk Event and Power Group");
 
 var infoText_g = correlation_main_svg.append("g")
-					 .attr("transform","translate(110,80)")
+					 .attr("transform","translate(170,90)")
 					 .append("text")
 					 .attr("class","correlation_exp")
 					 .text("Please click name of groups on the Y Axis to show summary");

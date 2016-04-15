@@ -32,7 +32,7 @@ var	scatter_title = scatter_g.append("text")
 
 
 var capita_graph_g = scatter_svg.append("g")
-								.attr("transform","translate("+ scatter_width +"," + scatter_margin.top  + ")");
+								.attr("transform","translate("+ (scatter_width + 50) +"," + scatter_margin.top  + ")");
 
 
 
@@ -230,7 +230,7 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east.csv",function(data){
 	});
 
 	var gdpCapita_g = capita_graph_g.append("g")
-									   .attr("transform","translate(0,80)");
+									   .attr("transform","translate(10,80)");
 
 	var gdpCapita_text = gdpCapita_g.selectAll("g")
 								.data(data2)

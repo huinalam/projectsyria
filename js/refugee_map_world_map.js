@@ -31,7 +31,7 @@
 
     				//** 카토그램 및 파이 그래프에 필요한 색상들
  	//var color_list = ["#ccffee","#ccccaa","#cc8866","#bb2222","#AA2233","#660811"];
- 	var color_list = ['#fee5d9','#fcbba1','#cc4433','#bb4433','#AA3322','#882211'];
+ 	var color_list = ['#fff5f0','#fc9272','#ef3b2c','#cb181d','#a50f15','#67000d']
 	var c_syria = "#772222";
 	
 	

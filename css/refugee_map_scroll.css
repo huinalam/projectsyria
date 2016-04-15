@@ -41,10 +41,10 @@
 
 /*map svg element */
 .svg_map{
-	background: #111111;
+	background: #cceedd;
 }
 .svg_box{
- 	fill: #cceedd;
+ 	fill: #bbeecc;
 	stroke: #eeeeee;
 	stroke-width: 0.5px;
 	stroke-opacity: 0.3;
@@ -61,10 +61,10 @@
 }
 
 .focus_map_label{
- 	fill: #DDDDDD;
+ 	fill: #223322;
  	font-family: "HelveticaNeue";
  	font-weight: lighter;
- 	font-size: 8px;
+ 	font-size: 9px;
  	letter-spacing: 1.5px;
  }
 .syria_label{
@@ -75,11 +75,11 @@
  	letter-spacing: 1.5px;
  }
  .focus_map_number{
- 	fill: #eeeeee;
+ 	fill: #223322;
  	background-color: #ffcc00;
- 	font-family: "HelveticaNeue";
+ 	font-family:"Courier New";
  	font-weight: lighter;
- 	font-size: 8px;
+ 	font-size: 10px;
  	letter-spacing: 1.5px;
  }
 .total_num{ 

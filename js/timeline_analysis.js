@@ -763,7 +763,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .append("rect")
                             .attr("class","chapter_mask")
                             .attr("id","chapter_mask1")
-                            .attr("width",timeline_width)
+                            .attr("width",605)
                             .attr("height",function(){
                                 return timeline_yScale(chapter_date[1].start) - timeline_yScale(chapter_date[0].start)
                             })
@@ -774,7 +774,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("transform","translate(0,0)")
                             .append("rect")
                             .attr("class","chapter_selector")
-                            .attr("width",timeline_width)
+                            .attr("width",605)
                             .attr("height",function(){
                                 return timeline_yScale(chapter_date[1].end)-timeline_yScale(chapter_date[1].start);
                             })
@@ -787,7 +787,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .append("rect")
                             .attr("class","chapter_mask")
                             .attr("id","chapter_mask2")
-                            .attr("width",timeline_width)
+                            .attr("width",605)
                             .attr("height",function(){
                                 return timeline_yScale(chapter_date[7].end) - timeline_yScale(chapter_date[1].end)
                             })
@@ -894,7 +894,7 @@ function timeline_resize(){
 
         //* legend rescale *//
         legend_timeline_g.transition()
-                         .attr("transform", "translate(" + timeline_margin.left + "," + (timeline_height + 15) +")");
+                         .attr("transform", "translate(" + 0 + "," + (timeline_height + 15) +")");
 
         legend_linegraph_g.transition()
                           .attr("transform", "translate(" + (px_refugees + 20) + "," + (timeline_height + 15) +")");
