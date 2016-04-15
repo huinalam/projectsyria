@@ -49,7 +49,7 @@
 
     var body = d3.select("body");
 
-    var legend_list1 =["shelling","air_strike","battle","chemical","massacre","barrel_bomb"];
+    var legend_list1 =["shelling","air_strike","battle","chemical","direct_attack","barrel_bomb"];
     var legend_list3 =["Refugee","Death"];
     
     var main_svg = d3.select("#timeline_chart").append("svg") // 월별 난민 발생수를 bar chart
@@ -563,9 +563,9 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             })
                             .attr("id","chemical");
 
-        var massacre_g = frequency.append("g")
-                            .attr("class","massacre_g")
-                            .attr("transform","translate(" + xScale_events("massacre") + ",0)")
+        var direct_attack_g = frequency.append("g")
+                            .attr("class","direct_attack_g")
+                            .attr("transform","translate(" + xScale_events("direct_attack") + ",0)")
                             .selectAll("circle")
                             .data(event_data)
                             .enter()
@@ -576,9 +576,9 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                                 return timeline_yScale(d.date);
                             })
                             .attr("r",function(d){
-                                return rScale_event(d.massacre);
+                                return rScale_event(d.direct_attack);
                             })
-                            .attr("id","massacre");
+                            .attr("id","direct_attack");
 
         var barrel_bomb_g = frequency.append("g")
                             .attr("class","barrel_bomb_g")
@@ -847,7 +847,7 @@ function timeline_resize(){
                       return timeline_yScale(d.date);
                   });
 
-        d3.select(".massacre_g").selectAll("circle").transition()
+        d3.select(".direct_attack_g").selectAll("circle").transition()
                   .attr("cy",function(d,i){
                       return timeline_yScale(d.date);
                   });

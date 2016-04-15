@@ -22,7 +22,7 @@ var x_area;
 var y_area;
 
 var intro_marking_g;
-var marking_events = [{year:"1971", title:"Hafez al-Assad became the President of Syria"},{year: "1982", title:"Hamma massacre: Occurrence of 10,000-40,000 casulties "},{ year: "2000", title:"Hafez's death and al-Assad Regime began"}];
+var marking_events = [{year:"1971", title:"Hafez al-Assad became the President of Syria"},{year: "1982", title:"Hamma massacre: 10,000-40,000 casulties "},{ year: "2000", title:"Hafez's death and al-Assad Regime began"}];
 
 //year list to put in X scale
 var preline_graph_year = ["1968-12-31","1980-12-31","1992-12-31","2011-12-31"]; 
