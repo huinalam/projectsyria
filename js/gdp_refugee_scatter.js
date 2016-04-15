@@ -1,8 +1,13 @@
-var svg_width = 860;
+/*var svg_width = 860;
 var svg_height = 560;
 
 var scatter_width = 600;
-var scatter_height = 500;
+var scatter_height = 500;*/
+var svg_width = 860;
+var svg_height = window.innerHeight - 350;
+
+var scatter_width = 600;
+var scatter_height = window.innerHeight - 390;
 //var scatter_margin = 50;
 //var scatter_top = 30;
 var scatter_margin = {left:100, right:50, bottom:100, top:30}
@@ -285,48 +290,52 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east.csv",function(data){
 
 });
 
-	function scatterTransition(year){
+function scatter_resize(){
 
-		popData = gdp_dataCon.filter(function(d) {return d.year == year});
+}
 
-		//scatter_g.selectAll("g").data(popData).transition();
+function scatterTransition(year){
 
-		scatter_chart_g.selectAll("circle")
-						.data(popData)
-						.transition()
-						.duration(2000)
-						.ease("quad")
-						.attr("cx",function(d){
-						 	return xScale_scatter(d.GDP)
-						 })
-						.attr("cy",function(d){
-						 	return yScale_scatter(d.refugee)
-						 })
-						.attr("r",function(d){
-						 	return rScale_value2(d.value2);
-						 })
-						.attr("fill",function(d){
-						 	return cScale_value2(d.value2);
-						 });
+	popData = gdp_dataCon.filter(function(d) {return d.year == year});
 
+	//scatter_g.selectAll("g").data(popData).transition();
 
-		scatter_chart_g.selectAll("text")
-						.data(popData)
-						.transition()
-						.duration(2000)
-						.ease("quad")
-						.attr("x",function(d){
-						 	return xScale_scatter(d.GDP)
-						 })
-						.attr("y",function(d){
-						 	return yScale_scatter(d.refugee)
-						 })
-						.attr("class","country_code")
-						.text(function(d){
-							return d.Country_Code;
-						})
-						.attr("text-anchor","middle");
+	scatter_chart_g.selectAll("circle")
+					.data(popData)
+					.transition()
+					.duration(2000)
+					.ease("quad")
+					.attr("cx",function(d){
+					 	return xScale_scatter(d.GDP)
+					 })
+					.attr("cy",function(d){
+					 	return yScale_scatter(d.refugee)
+					 })
+					.attr("r",function(d){
+					 	return rScale_value2(d.value2);
+					 })
+					.attr("fill",function(d){
+					 	return cScale_value2(d.value2);
+					 });
 
 
+	scatter_chart_g.selectAll("text")
+					.data(popData)
+					.transition()
+					.duration(2000)
+					.ease("quad")
+					.attr("x",function(d){
+					 	return xScale_scatter(d.GDP)
+					 })
+					.attr("y",function(d){
+					 	return yScale_scatter(d.refugee)
+					 })
+					.attr("class","country_code")
+					.text(function(d){
+						return d.Country_Code;
+					})
+					.attr("text-anchor","middle");
 
-	}
+
+
+}

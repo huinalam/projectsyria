@@ -274,7 +274,7 @@ function resize_refugeeMap(){
 	var map_width=860; //path가 그려질 svg크기
     var map_height = innerHeight - 260;
 
-	if((700<window.innerHeight)&&(window.innerHeight<950)){
+	if(700<window.innerHeight){
 
 		projection = d3.geo.conicConformal()
 					   .center(center)
