@@ -132,13 +132,14 @@
    display: none;
 }
 .correlation_button_group{
+	cursor:pointer;
     fill: #cc3333;
     font-family: sans-serif;
     font-weight: bold;
     font-size: 18px;
 }
 .correlation_button_event{
-    fill: #33cc33;
+    fill: #33cc33 !important;
     font-family: sans-serif;
     font-weight: bold;
     font-size: 10px;
@@ -149,4 +150,15 @@
     letter-spacing: 0.5px;
     word-spacing: 1.5px;
     fill: #222222;
+}
+.correlation_exp{
+	font-size: 13px;
+    font-weight: 300;
+    font-family: 'Roboto Slab', serif;
+    fill: #FFDD00;
+}
+.groupBox{
+	fill: none;
+	stroke-width: 2px;
+	stroke: #cc3333;
 }

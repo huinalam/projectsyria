@@ -154,8 +154,9 @@ section{
 	font-weight: 400;
 	font-size: 24px;
 	margin: 5px;
-	font-weight: bold;
-	fill: #dddddd;
+	letter-spacing: 0.5px;
+	word-spacing: 2px;
+	fill: #cccccc;
 }
 .axis_text{
 	font-size: 13px;

@@ -89,7 +89,7 @@
 
     var legend_timeline_g = chart.append("g")
                         .attr("class","legend")
-                        .attr("transform", "translate(" + timeline_margin.left + "," + (timeline_height + 15) +")");
+                        .attr("transform", "translate(" + 0 + "," + (timeline_height + 15) +")");
 
     var legend_type = legend_timeline_g.append("g")
                                      .selectAll("g")
@@ -124,7 +124,7 @@
 
     var legend_linegraph_g = chart.append("g")
                                 .attr("class","legend")
-                                .attr("transform", "translate(" + (px_refugees + 20) + "," + (timeline_height + 15) +")");
+                                .attr("transform", "translate(" + (px_refugees + 20) + "," + (timeline_height + 5) +")");
 
     var legend_linegraph = legend_linegraph_g.append("g")
                                 .selectAll("g")

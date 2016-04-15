@@ -162,7 +162,7 @@ h3.timeline_heading {
 }
 .timeline_legend{
     font-family: Helvetica;
-    font-size: 10px;
+    font-size: 9px;
     fill: #dddddd;
 }
 .timeline_axis { /* axis labels */
@@ -290,32 +290,6 @@ h3.timeline_heading {
     color: #cc3300;
     border-color: #444444;
 }
-#etc{
-    fill: #dddddd;
-    color: #dddddd;
-    border-color: #444444;
-}
-#HZB{
-    fill: #1177BB;
-    color: #22abc3;
-}
-
-#IR{
-    fill: #BB2244;
-    color: #C23355;
-}
-#IS{
-    fill: #ffcc00;
-    color: #ffcc00;
-}
-#RS{
-    fill: #dddddd;
-    color:#dddddd;
-}
-#US{
-    fill: #335533;
-    color:#335533;
-}
 #data_review_num{
     font-size: 45px;
 }
@@ -340,5 +314,5 @@ h3.timeline_heading {
     stroke-width: 0.5px;
 }
 .chapter_mask{
-    fill: rgba(50,60,60,0.55);
+    fill: rgba(255,255,255,0.2);
 }

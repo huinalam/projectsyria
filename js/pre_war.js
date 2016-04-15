@@ -49,9 +49,23 @@ intro_marking_g = intro_svg_intrograph.append("g")
 
 var introgaph_title = intro_svg_intrograph.append("text")
          .attr("class","chart_title")
-         .attr("x",intro_intrograph_margin.left - 10)
-         .attr("y",intro_intrograph_margin.top + 30)
-         .text("Changes of Refugees during Syrian Modern History");
+         .attr("x",intro_intrograph_margin.left + 100)
+         .attr("y",intro_intrograph_margin.top + 150);
+
+    introgaph_title.append("tspan")
+          .attr("dy","1.1em")
+          .attr("x",60)
+          .text("Changes of Refugees");
+
+    introgaph_title.append("tspan")
+          .attr("dy","1.1em")
+          .attr("x",60)
+          .text("during 4decades of");
+
+    introgaph_title.append("tspan")
+          .attr("dy","1.1em")
+          .attr("x",60)
+          .text("dictatorship");
 
 var pre_timeAxis_circle;
 var intrograph_circle;

@@ -10,8 +10,11 @@ var rect_size = (correlation_width - 2*correlation_margin)/6
 var correlation_main_svg = d3.select("#correlation_div_chart").append("svg")
 							   .attr("width",correlation_width)
 							   .attr("height",correlation_height);
+
+
+var groupBox;
 							   
-var top_offset = 30;
+var top_offset = 50;
 
 var text_g = correlation_main_svg.append("g")
 					 .attr("transform","translate(0,0)")
@@ -28,10 +31,11 @@ var text_g = correlation_main_svg.append("g")
           .attr("x",30)
 		  .text("Attactk Event and Power Group");
 
-	text_g.append("tspan")
-          .attr("dy","1.1em")
-          .attr("x",30)
-		  .text("in 'Syrian Tracker' Reports");
+var infoText_g = correlation_main_svg.append("g")
+					 .attr("transform","translate(110,80)")
+					 .append("text")
+					 .attr("class","correlation_exp")
+					 .text("Please click name of groups on the Y Axis to show summary");
 
 var correlation_xScale;
 var correlation_yScale;
@@ -65,7 +69,7 @@ var correlation_main_g = svg_g.append("g")
 var xAxis;
 var yAxis;
 
-var event_list = ["CHEMICAL","AIR STRIKE","BARREL BOMB","MASSACRE","SHELLING","battle"];
+var event_list = ["CHEMICAL","AIR STRIKE","BARREL BOMB","MASSACRE","SHELLING","BATTLE"];
 var group_list = ["IS","IC","RS","YPG","HZB","ASS"];
 
 for(var i=0; i<6; i++){
@@ -104,6 +108,8 @@ d3.csv("data/long_df.csv",function(data){
 				 .scale(correlation_yScale)
 				 .orient("right")
 				 .tickSize(5,1);
+
+
 
 	var xAxis_g = svg_g.append("g")
 						.attr("transform","translate(" + correlation_margin/2 + "," + (correlation_height-3*correlation_margin/2) + ")")
@@ -164,6 +170,8 @@ d3.csv("data/long_df.csv",function(data){
 		  	return d.value;
 		  })
 		  .attr("text-anchor","middle");
+
+  	  groupBox = chart_g.append("g");
 
 	d3.selectAll(".correlation_article_div").style("opacity",0);
 			d3.select("#ASS_article").style("opacity",1);
