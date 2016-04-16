@@ -1,5 +1,5 @@
 ﻿//인트로
-var frameFixed = { "unfixed": 0, "fixed": 1 };
+var frameStatus = { "unfixed": 0, "fixed": 1 };
 
 function preloader() {
     // 높이 설정
@@ -78,7 +78,7 @@ $(document).ready(function () {
     var $pre_war_section_bottom = $("#pre_war_section_bottom");
     var pre_war_fixed_chart = $("#pre_war_fixed_chart");
 
-    var pre_war_scroll_event_status = frameFixed.unfixed;
+    var pre_war_scroll_event_status = frameStatus.unfixed;
     var pre_war_scroll_event_chapter_idx = 0;
     function pre_war_scroll_event(scroll_top) {
         var timeline_bottom = parseInt($pre_war_section_bottom.offset().top) - parseInt(pre_war_fixed_chart.height());
@@ -86,16 +86,16 @@ $(document).ready(function () {
         var pre_war_refugee_map_top = parseInt($pre_war_refugee_map.offset().top) - section_top;
 
         // ==> start Scroll
-        if (pre_war_refugee_map_top < scroll_top && timeline_bottom > scroll_top && pre_war_scroll_event_status === frameFixed.unfixed) {
+        if (pre_war_refugee_map_top < scroll_top && timeline_bottom > scroll_top && pre_war_scroll_event_status === frameStatus.unfixed) {
             pre_war_fix_chart();
-            pre_war_scroll_event_status = frameFixed.fixed;
-        } else if (pre_war_scroll_event_status === frameFixed.fixed) {
+            pre_war_scroll_event_status = frameStatus.fixed;
+        } else if (pre_war_scroll_event_status === frameStatus.fixed) {
             if (timeline_bottom < scroll_top) {
                 pre_war_unfix_chart_bottom(timeline_bottom);
-                pre_war_scroll_event_status = frameFixed.unfixed;
+                pre_war_scroll_event_status = frameStatus.unfixed;
             } else if (pre_war_refugee_map_top > scroll_top) {
                 pre_war_unfix_chart();
-                pre_war_scroll_event_status = frameFixed.unfixed;
+                pre_war_scroll_event_status = frameStatus.unfixed;
             }
         }
         // <== end Scroll
@@ -287,7 +287,7 @@ $(document).ready(function () {
         });
     }
 
-    var refugee_map_status = frameFixed.unfixed;
+    var refugee_map_status = frameStatus.unfixed;
     var refugee_map_idx = 0;
     var rms_section_bottom = $("#rms_section_bottom");
     function refugee_map_scroll_event(scroll_top) {
@@ -295,16 +295,16 @@ $(document).ready(function () {
         var timeline_top = parseInt($refugee_map.offset().top);
 
         // ==> start Scroll
-        if (timeline_top < scroll_top && timeline_bottom > scroll_top && refugee_map_status === frameFixed.unfixed) {
+        if (timeline_top < scroll_top && timeline_bottom > scroll_top && refugee_map_status === frameStatus.unfixed) {
             fix_chart();
-            refugee_map_status = frameFixed.fix;
-        } else if (refugee_map_status === frameFixed.fix){
+            refugee_map_status = frameStatus.fix;
+        } else if (refugee_map_status === frameStatus.fix){
             if (timeline_bottom < scroll_top) {
                 unfix_chart_bottom(timeline_bottom);
-                refugee_map_status = frameFixed.unfixed;
+                refugee_map_status = frameStatus.unfixed;
             } else if (timeline_top > scroll_top) {
                 unfix_chart();
-                refugee_map_status = frameFixed.unfixed;
+                refugee_map_status = frameStatus.unfixed;
             }
         }
         // <== end Scroll
@@ -471,49 +471,58 @@ $(document).ready(function () {
     set_chapter_offset_top();
 
     //** ON_SCROLL EVENT **//
+    var timeline_status = frameStatus.unfixed;
+    var timeline_idx = 0;
     $window.on('scroll', function () {
         var scroll_top = $window.scrollTop();
+        set_chapter_offset_top();
 
         var timeline_bottom = parseInt(c4.offset().top) - parseInt($timeline_div.height());
         var timeline_top = parseInt($timeline.offset().top);
 
-        set_chapter_offset_top();
-        //console.log("timeline_bottom : " + timeline_bottom + " // scroll_top : " + scroll_top);
 
         // ==> start Scroll
-        if (timeline_top < scroll_top &&
-            timeline_bottom > scroll_top) {
-            //console.log("fix top");
+        if (timeline_top < scroll_top && timeline_bottom > scroll_top && timeline_status === frameStatus.unfixed) {
+            console.log("fix top");
             section3_fix();
-        } else {
+            timeline_status = frameStatus.fix;
+        } else if (timeline_status === frameStatus.fix) {
             if (timeline_bottom < scroll_top) {
-                var sectionLeft = parseInt($('#timeline').css("margin-left"));
-                //console.log("unFix bottom");
+                var sectionLeft = parseInt($timeline.css("margin-left"));
+                console.log("unFix bottom");
                 $timeline_div.css({
                     position: "absolute",
                     top: timeline_bottom,
                     left: sectionLeft
                 });
-            } else {
-                //console.log("unFix top");
+                timeline_status = frameStatus.unfixed;
+            } else if (timeline_top > scroll_top) {
+                console.log("unFix top");
                 section3_unFix_top();
+                timeline_status = frameStatus.unfixed;
             }
         }
         // <== end Scroll
         // ==> start chapter
         for (var idx = chapter_offset_top.length - 1; idx >= 1; idx--) {
             if (chapter_offset_top[idx] < scroll_top) {
-                //console.log("chapter idx : " + idx);
+                if (timeline_idx === idx + 2)
+                    return;
+                console.log("chapter idx : " + idx);
                 // *****************
                 // 여기다가 챕터에 따른 이벤트를 넣으세요
                 // *****************
                 chapter_move(idx + 2);
+                timeline_idx = idx + 2;
                 break;
             }
         }
         if (chapter_offset_top[1] > scroll_top) {
-            //console.log("chapter_offset_top[1] > scroll_top");
+            if (timeline_idx === 2)
+                return;
+            console.log("chapter_offset_top[1] > scroll_top");
             chapter_move(2);
+            timeline_idx = 2;
             return;
         }
         // <== end chapter
