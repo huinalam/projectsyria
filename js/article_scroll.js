@@ -10,7 +10,7 @@ function preloader() {
     });
     // 처음 content의 padding-top은 0으로
     $(".pre_war_article").eq(0).css({
-        "padding-top": 0
+        "padding-top": window.innerHeight / 4
     });
     $(".pre_war_article").eq(3).css({
         "padding-bottom": 0
@@ -42,7 +42,7 @@ $(document).ready(function () {
     var $pre_war_refugee_map = $('#pre_war_refugee_map');
 
     function pre_war_fix_chart() {
-        var section_left = parseInt($pre_war_refugee_map.css("margin-left"));
+        var section_left = parseInt($pre_war_refugee_map.offset().left);
         var section_top = parseInt($pre_war_refugee_map.css("margin-top"));
 
         $('#pre_war_fixed_chart').css({
@@ -50,6 +50,9 @@ $(document).ready(function () {
             top: section_top,
             left: section_left
         });
+
+        var chart = document.getElementById("pre_war_fixed_chart");
+        chart.style.left = section_left + "px";
 
         $('#pre_war_chapter_article_div').css({
             "padding-left": chart_width
@@ -228,7 +231,7 @@ $(document).ready(function () {
     });
     // 처음 content의 padding-top은 0으로
     $(".chapter_article").eq(0).css({
-        "padding-top": 0
+        "padding-top": window.innerHeight / 4
     });
 
     //fixed_chart
@@ -245,7 +248,7 @@ $(document).ready(function () {
 
 
     function fix_chart() {
-        var section_left = parseInt($refugee_map.css("margin-left"));
+        var section_left = parseInt($refugee_map.offset().left);
         var section_top = parseInt($refugee_map.css("margin-top"));
 
         $fixed_graph.css({
@@ -386,7 +389,7 @@ $(document).ready(function () {
         });
         // 처음 content의 padding-top은 0으로
         $(".timeline_div_article_content").eq(0).css({
-            "padding-top": 0
+            "padding-top": window.innerHeight / 4
         });
     }
     chapter_title_size_setting();
@@ -427,7 +430,7 @@ $(document).ready(function () {
 
     /** TIMELINE SECTION SETPOSITION **/
     function section3_fix() {
-        var section_left = parseInt($timeline.css("margin-left"));
+        var section_left = parseInt($timeline.offset().left);
         var section_top = parseInt($timeline.css("margin-top"));
         var timeline_width = parseInt($timeline_div.css("width"));
 
@@ -488,16 +491,13 @@ $(document).ready(function () {
             timeline_status = frameStatus.fix;
         } else if (timeline_status === frameStatus.fix) {
             if (timeline_bottom < scroll_top) {
-                var sectionLeft = parseInt($timeline.css("margin-left"));
-                console.log("unFix bottom");
                 $timeline_div.css({
                     position: "absolute",
                     top: timeline_bottom,
-                    left: sectionLeft
+                    left: parseInt($timeline.offset().left)
                 });
                 timeline_status = frameStatus.unfixed;
             } else if (timeline_top > scroll_top) {
-                console.log("unFix top");
                 section3_unFix_top();
                 timeline_status = frameStatus.unfixed;
             }
