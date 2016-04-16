@@ -290,8 +290,7 @@ $(document).ready(function () {
     var refugee_map_status = frameFixed.unfixed;
     var refugee_map_idx = 0;
     var rms_section_bottom = $("#rms_section_bottom");
-    function scroll_event() {
-        var scroll_top = $window.scrollTop();
+    function refugee_map_scroll_event(scroll_top) {
         var timeline_bottom = parseInt(rms_section_bottom.offset().top) - parseInt($fixed_chart.height());
         var timeline_top = parseInt($refugee_map.offset().top);
 
@@ -369,7 +368,8 @@ $(document).ready(function () {
 
     //** ON_SCROLL EVENT **//
     $window.on('scroll', function () {
-        scroll_event();
+        var scroll_top = $window.scrollTop();
+        refugee_map_scroll_event(scroll_top);
     });
 });
 
@@ -456,7 +456,6 @@ $(document).ready(function () {
     var chatper_divs = $(".timeline_div_article_content");
     var chapter_offset_top = [];
     var valid_value = 0;
-
     function set_chapter_offset_top() {
         for (var i = 0; i < chatper_divs.length; i++) {
             chapter_offset_top[i] = parseInt(chatper_divs.eq(i).offset().top);
@@ -469,7 +468,6 @@ $(document).ready(function () {
         valid_value = chapter_offset_top[0];
         //console.log("valid_value : " + valid_value);
     }
-
     set_chapter_offset_top();
 
     //** ON_SCROLL EVENT **//
