@@ -1,10 +1,7 @@
 ﻿//인트로
 var frameFixed = { "unfixed": 0, "fixed": 1 };
 
-// pre_war
-$(document).ready(function () {
-    var $window = $(window);
-
+function preloader() {
     // 높이 설정
     // div로 gap을 주는 대신에, padding 값을 주었음
     $(".pre_war_article").css({
@@ -15,6 +12,13 @@ $(document).ready(function () {
     $(".pre_war_article").eq(0).css({
         "padding-top": 0
     });
+}
+
+
+$(document).ready(function () {
+    var $window = $(window);
+
+    preloader();
 
     var $pre_war_chapter_article_div = $('#pre_war_chapter_article_div');
     $pre_war_chapter_article_div.css({
@@ -109,23 +113,7 @@ $(document).ready(function () {
         // <== end chapter
     });
 
-    function intro_size_setting() {
-        //$(".pre_war_article").css("height", window.innerHeight);
-    }
-
-    /** CHAPTER TITLE SETTING **/
-    function chapter_title_size_setting() {
-        //$(".chapter_title").css("height", window.innerHeight);
-    }
-
-    /* chapter title setting **/
-    chapter_title_size_setting();
-    /* intro chapter size setting */
-    intro_size_setting();
-
     $window.resize(function () {
-        chapter_title_size_setting();
-        intro_size_setting();
         set_chapter_offset();
 
         var scroll_top = $window.scrollTop();
@@ -147,9 +135,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-
     var $window = $(window);
-
 
     /******************************/
     /********* GDP 이밴트  *********/
@@ -180,36 +166,32 @@ $(document).ready(function () {
                 break;
         }
     });
-
-    /** CHAPTER TITLE SETTING **/
-    function chapter_title_size_setting() {
-        //$(".chapter_title").css("height", window.innerHeight);
-    }
+    
+    var $refugee_map = $('#refugee_map');
+    var $map_div_map = $('.map_div_map');
+    var $fixed_graph = $('#fixed_graph');
+    var $fixed_chart = $('#fixed_chart');
+    var $map_div_article = $('#map_div_article');
+    var chatper_divs = $(".chapter_article");
 
     /** REFUGEE MAP SECTION SET POSITION **/
     function section1_setposition() {
-        var section_offset = parseInt($('#refugee_map').offset().top);
-        var section_left = parseInt($('#refugee_map').css("margin-left"));
-        var section_top = parseInt($('#refugee_map').css("margin-top"));
-        var map_width = parseInt($(".map_div_map").css("width"));
-        var map_years_height = parseInt($(".map_div_years").css("height"));
-        //console.log(section_left);
-        //console.log(section_top);
-        //console.log(map_years_height);
+        var section_offset = parseInt($refugee_map.offset().top);
+        var section_left = parseInt($refugee_map.css("margin-left"));
+        var section_top = parseInt($refugee_map.css("margin-top"));
+        var map_width = parseInt($map_div_map.css("width"));
+        var map_years_height = parseInt($map_div_map.css("height"));
 
-        $(".map_div_linegraph").css("left", section_left + map_width);
-        $(".map_div_linegraph").css("top", section_offset + section_top + map_years_height);
-        $(".map_div_article").css("left", section_left + map_width);
-        $(".map_div_article").css("top", section_offset + section_top + map_years_height);
+        $(".map_div_linegraph").css({
+            "left": section_left + map_width,
+            "top": section_offset + section_top + map_years_height
+        });
+        $(".map_div_article").css({
+            "left": section_left + map_width,
+            "top": section_offset + section_top + map_years_height
+        });
     }
-
-    function section1_initialSetting() {
-
-    }
-
-    chapter_title_size_setting();
     section1_setposition();
-    section1_initialSetting();
 
 
     /******************************/
@@ -228,8 +210,7 @@ $(document).ready(function () {
 
     //fixed_chart
     //fixed_graph
-    var chart_width = $("#fixed_chart").width();
-    var chatper_divs = $(".chapter_article");
+    var chart_width = $fixed_chart.width();
     var chapter_offset_top = [];
     for (var i = 0; i < chatper_divs.length; i++) {
         chapter_offset_top[i] = parseInt(chatper_divs.eq(i).offset().top);
@@ -239,13 +220,10 @@ $(document).ready(function () {
         "padding-left": chart_width
     });
 
-    var $fixed_graph = $('#fixed_graph');
-    var $fixed_chart = $('#fixed_chart');
-    var $map_div_article = $('#map_div_article');
 
     function fix_chart() {
-        var section_left = parseInt($('#refugee_map').css("margin-left"));
-        var section_top = parseInt($('#refugee_map').css("margin-top"));
+        var section_left = parseInt($refugee_map.css("margin-left"));
+        var section_top = parseInt($refugee_map.css("margin-top"));
 
         $fixed_graph.css({
             position: "fixed",
@@ -267,11 +245,11 @@ $(document).ready(function () {
     function unfix_chart() {
         $fixed_graph.css({
             "position": "absolute",
-            "top": $("#refugee_map").offset().top
+            "top": $refugee_map.offset().top
         });
         $fixed_chart.css({
             "position": "absolute",
-            "top": $("#refugee_map").offset().top
+            "top": $refugee_map.offset().top
         });
     }
 
@@ -287,12 +265,11 @@ $(document).ready(function () {
     }
 
     var rms_section_bottom = $("#rms_section_bottom");
-    var $timeline_top = $("#refugee_map");
 
     function scroll_event() {
         var scroll_top = $window.scrollTop();
         var timeline_bottom = parseInt(rms_section_bottom.offset().top) - parseInt($fixed_chart.height());
-        var timeline_top = parseInt($timeline_top.offset().top);
+        var timeline_top = parseInt($refugee_map.offset().top);
         // ==> start Scroll
         if (timeline_top < scroll_top && timeline_bottom > scroll_top) {
             //console.log("fix_chart");
@@ -342,13 +319,11 @@ $(document).ready(function () {
     /******* Window 이밴트  ********/
     /******************************/
     $window.resize(function () {
-
         section1_setposition();
-        chapter_title_size_setting();
 
         var scroll_top = $window.scrollTop();
         var timeline_bottom = parseInt(rms_section_bottom.offset().top) - parseInt($fixed_chart.height());
-        var timeline_top = parseInt($timeline_top.offset().top);
+        var timeline_top = parseInt($refugee_map.offset().top);
         // ==> start Scroll
         if (timeline_top < scroll_top && timeline_bottom > scroll_top) {
             //console.log("fix_chart");
@@ -363,7 +338,7 @@ $(document).ready(function () {
             }
         }
 
-        resize_refugeeMap()
+        resize_refugeeMap();
     });
 
     //** ON_SCROLL EVENT **//
