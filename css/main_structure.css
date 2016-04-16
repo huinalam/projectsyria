@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700|Roboto+Slab:400,100,300);
 @import url(https://fonts.googleapis.com/css?family=Arvo:400,700);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700);
 
 body{
 	background-color: #111111 !important;
@@ -99,9 +100,21 @@ section{
 /* text */
 .chapter_title_div >h1{
 	width: 800px;
+	margin-bottom: 0.2em;
 	font-family: 'Arvo', serif;
 	font-size: 48px;
-	font-weight: 400;
+	font-weight: 700;
+	line-height: 120%;
+	letter-spacing: 2px;
+	word-wrap: 15px;
+}
+h1.subheading{
+	width: 800px;
+	margin-top: 0.2em;
+	margin-bottom: 0.6em;
+	font-family: 'Lora', serif;
+	font-size: 48px;
+	font-weight: 700;
 	line-height: 120%;
 	letter-spacing: 2px;
 	word-wrap: 15px;
