@@ -1,1 +1,1 @@
-﻿console.log("test webpack!");
+﻿require("./js/article_scroll.js");

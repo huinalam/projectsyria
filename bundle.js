@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7b268a62c8edba9641cb"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "328fe35c1a05f82d1405"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -573,18 +573,596 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	__webpack_require__(2);
-	module.exports = __webpack_require__(4);
+	__webpack_require__(3);
+	module.exports = __webpack_require__(5);
 
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	
+	__webpack_require__(2);
 
 /***/ },
 /* 2 */
+/***/ function(module, exports) {
+
+	console.log("start webpack!");
+	console.log("load article_scroll!!");
+
+
+	$(document).ready(function () {
+
+	    var $window = $(window);
+
+	    /** CHAPTER TITLE SETTING **/
+	    function chapter_title_size_setting() {
+	        //$(".chapter_title").css("height", window.innerHeight);
+	    }
+
+	    /* chapter title setting **/
+	    chapter_title_size_setting();
+
+	    $window.resize(function () {
+	        chapter_title_size_setting();
+
+	    });
+
+	});
+
+
+	$(document).ready(function () {
+
+	    var $window = $(window);
+
+	    // 높이 설정
+	    // div로 gap을 주는 대신에, padding 값을 주었음
+	    $(".pre_war_article").css({
+	        "padding-top": (window.innerHeight / 3) * 2,
+	        "padding-bottom": (window.innerHeight / 3) * 1
+	    });
+	    // 처음 content의 padding-top은 0으로
+	    $(".pre_war_article").eq(0).css({
+	        "padding-top": 0
+	    });
+
+	    var $pre_war_chapter_article_div = $('#pre_war_chapter_article_div');
+	    $pre_war_chapter_article_div.css({
+	        "padding-bottom": window.innerHeight / 3 * 2
+	    });
+
+	    var chart_width = $(".chapter_chart_div_s86").width();
+	    var chatper_divs = $(".pre_war_article");
+	    var chapter_offset_top = [];
+
+	    function set_chapter_offset() {
+	        console.log("pre_war : ");
+	        for (var i = 0; i < chatper_divs.length; i++) {
+	            chapter_offset_top[i] = parseInt(chatper_divs.eq(i).offset().top);
+	            console.log("pre_war [" + i + "] : " + chapter_offset_top[i]);
+	        }
+	    }
+
+	    set_chapter_offset();
+
+	    var $pre_war_refugee_map = $('#pre_war_refugee_map');
+
+	    function pre_war_fix_chart() {
+	        var section_left = parseInt($pre_war_refugee_map.css("margin-left"));
+	        var section_top = parseInt($pre_war_refugee_map.css("margin-top"));
+
+	        $('#pre_war_fixed_chart').css({
+	            position: "fixed",
+	            top: section_top,
+	            left: section_left
+	        });
+
+	        $('#pre_war_chapter_article_div').css({
+	            "padding-left": chart_width
+	        });
+	    }
+
+	    function pre_war_unfix_chart() {
+	        $('#pre_war_fixed_chart').css("position", "static");
+	        $('#pre_war_chapter_article_div').css({
+	            "padding-left": 0
+	        });
+	    }
+
+	    function pre_war_unfix_chart_bottom(timeline_bottom) {
+	        $('#pre_war_fixed_chart').css({
+	            "position": "absolute",
+	            "top": timeline_bottom
+	        });
+	        $('#pre_war_chapter_article_div').css({
+	            "padding-left": chart_width
+	        });
+	    }
+
+	    var $pre_war_section_bottom = $("#pre_war_section_bottom");
+	    var pre_war_fixed_chart = $("#pre_war_fixed_chart");
+
+	    //** ON_SCROLL EVENT **// prewar scroll event control
+	    $window.on('scroll', function () {
+	        var scroll_top = $window.scrollTop();
+	        var timeline_bottom = parseInt($pre_war_section_bottom.offset().top) - parseInt(pre_war_fixed_chart.height());
+	        var pre_war_refugee_map_top = parseInt($pre_war_refugee_map.offset().top);
+
+	        // ==> start Scroll
+	        if (pre_war_refugee_map_top < scroll_top && timeline_bottom > scroll_top) {
+	            pre_war_fix_chart();
+	        } else {
+	            if (timeline_bottom < scroll_top) {
+	                pre_war_unfix_chart_bottom(timeline_bottom);
+	            } else {
+	                pre_war_unfix_chart();
+	            }
+	        }
+	        // <== end Scroll
+	        // ==> start chapter
+	        for (var idx = chapter_offset_top.length - 1; idx >= 1; idx--) {
+	            if (chapter_offset_top[idx] < scroll_top) {
+	                // *****************
+	                // 2번째 챕터 이벤트
+	                // *****************
+	                //console.log("event : " + idx);
+	                intro_popYear(chapter_list[idx]);
+	                break;
+	            }
+	        }
+	        if (chapter_offset_top[1] > scroll_top) {
+	            // *****************
+	            // 첫번째 챕터 이벤트
+	            // *****************
+	            //console.log("first event");
+	            intro_popYear(chapter_list[0]);
+	            return;
+	        }
+	        // <== end chapter
+	    });
+
+	    function intro_size_setting() {
+	        //$(".pre_war_article").css("height", window.innerHeight);
+	    }
+
+	    /** CHAPTER TITLE SETTING **/
+	    function chapter_title_size_setting() {
+	        //$(".chapter_title").css("height", window.innerHeight);
+	    }
+
+	    /* chapter title setting **/
+	    chapter_title_size_setting();
+	    /* intro chapter size setting */
+	    intro_size_setting();
+
+	    $window.resize(function () {
+	        chapter_title_size_setting();
+	        intro_size_setting();
+	        set_chapter_offset();
+
+	        var scroll_top = $window.scrollTop();
+	        var timeline_bottom = parseInt($pre_war_section_bottom.offset().top) - parseInt(pre_war_fixed_chart.height());
+	        var pre_war_refugee_map_top = parseInt($pre_war_refugee_map.offset().top);
+
+	        // ==> start Scroll
+	        if (pre_war_refugee_map_top < scroll_top && timeline_bottom > scroll_top) {
+	            pre_war_fix_chart();
+	        } else {
+	            if (timeline_bottom < scroll_top) {
+	                pre_war_unfix_chart_bottom(timeline_bottom);
+	            } else {
+	                pre_war_unfix_chart();
+	            }
+	        }
+	    });
+
+	});
+
+	$(document).ready(function () {
+
+	    var $window = $(window);
+
+
+	    /******************************/
+	    /********* GDP 이밴트  *********/
+	    /******************************/
+	    /** EVENT HANDLER **/
+	    $(".gdp_div_textCol").on("click", function () {
+	        var classfy = $(this).attr('class').split(/\s+/);
+	        switch (classfy[1]) {
+	            case "gdp_year_button2011":
+	                scatterTransition(2011);
+	                $(".gdp_div_textCol").eq(0).css("opacity", 1);
+	                $(".gdp_div_textCol").not(':eq(0)').css("opacity", 0.5);
+	                break;
+	            case "gdp_year_button2012":
+	                scatterTransition(2012);
+	                $(".gdp_div_textCol").eq(1).css("opacity", 1);
+	                $(".gdp_div_textCol").not(':eq(1)').css("opacity", 0.5);
+	                break;
+	            case "gdp_year_button2013":
+	                scatterTransition(2013);
+	                $(".gdp_div_textCol").eq(2).css("opacity", 1);
+	                $(".gdp_div_textCol").not(':eq(2)').css("opacity", 0.5);
+	                break;
+	            case "gdp_year_button2014":
+	                scatterTransition(2014);
+	                $(".gdp_div_textCol").eq(3).css("opacity", 1);
+	                $(".gdp_div_textCol").not(':eq(3)').css("opacity", 0.5);
+	                break;
+	        }
+	    });
+
+	    /** CHAPTER TITLE SETTING **/
+	    function chapter_title_size_setting() {
+	        //$(".chapter_title").css("height", window.innerHeight);
+	    }
+
+	    /** REFUGEE MAP SECTION SET POSITION **/
+	    function section1_setposition() {
+	        var section_offset = parseInt($('#refugee_map').offset().top);
+	        var section_left = parseInt($('#refugee_map').css("margin-left"));
+	        var section_top = parseInt($('#refugee_map').css("margin-top"));
+	        var map_width = parseInt($(".map_div_map").css("width"));
+	        var map_years_height = parseInt($(".map_div_years").css("height"));
+	        //console.log(section_left);
+	        //console.log(section_top);
+	        //console.log(map_years_height);
+
+	        $(".map_div_linegraph").css("left", section_left + map_width);
+	        $(".map_div_linegraph").css("top", section_offset + section_top + map_years_height);
+	        $(".map_div_article").css("left", section_left + map_width);
+	        $(".map_div_article").css("top", section_offset + section_top + map_years_height);
+	    }
+
+	    function section1_initialSetting() {
+
+	    }
+
+	    chapter_title_size_setting();
+	    section1_setposition();
+	    section1_initialSetting();
+
+
+	    /******************************/
+	    /******* timeline 이밴트 *******/
+	    /******************************/
+	    // 높이 설정
+	    // div로 gap을 주는 대신에, padding 값을 주었음
+	    $(".chapter_article").css({
+	        "padding-top": window.innerHeight / 2,
+	        "padding-bottom": window.innerHeight / 2
+	    });
+	    // 처음 content의 padding-top은 0으로
+	    $(".chapter_article").eq(0).css({
+	        "padding-top": 0
+	    });
+
+	    //fixed_chart
+	    //fixed_graph
+	    var chart_width = $("#fixed_chart").width();
+	    var chatper_divs = $(".chapter_article");
+	    var chapter_offset_top = [];
+	    for (var i = 0; i < chatper_divs.length; i++) {
+	        chapter_offset_top[i] = parseInt(chatper_divs.eq(i).offset().top);
+	    }
+	    // 초기 고정
+	    $('#map_div_article').css({
+	        "padding-left": chart_width
+	    });
+
+	    var $fixed_graph = $('#fixed_graph');
+	    var $fixed_chart = $('#fixed_chart');
+	    var $map_div_article = $('#map_div_article');
+
+	    function fix_chart() {
+	        var section_left = parseInt($('#refugee_map').css("margin-left"));
+	        var section_top = parseInt($('#refugee_map').css("margin-top"));
+
+	        $fixed_graph.css({
+	            position: "fixed",
+	            top: section_top
+	            //"padding-left": chart_width + 30 // 마진 값 30
+	        });
+
+	        $fixed_chart.css({
+	            position: "fixed",
+	            top: section_top,
+	            left: section_left + 8
+	        });
+
+	        $map_div_article.css({
+	            "padding-left": chart_width
+	        });
+	    }
+
+	    function unfix_chart() {
+	        $fixed_graph.css({
+	            "position": "absolute",
+	            "top": $("#refugee_map").offset().top
+	        });
+	        $fixed_chart.css({
+	            "position": "absolute",
+	            "top": $("#refugee_map").offset().top
+	        });
+	    }
+
+	    function unfix_chart_bottom(timeline_bottom) {
+	        $fixed_graph.css({
+	            "position": "absolute",
+	            "top": timeline_bottom
+	        });
+	        $fixed_chart.css({
+	            "position": "absolute",
+	            "top": timeline_bottom
+	        });
+	    }
+
+	    var rms_section_bottom = $("#rms_section_bottom");
+	    var $timeline_top = $("#refugee_map");
+
+	    function scroll_event() {
+	        var scroll_top = $window.scrollTop();
+	        var timeline_bottom = parseInt(rms_section_bottom.offset().top) - parseInt($fixed_chart.height());
+	        var timeline_top = parseInt($timeline_top.offset().top);
+	        // ==> start Scroll
+	        if (timeline_top < scroll_top && timeline_bottom > scroll_top) {
+	            //console.log("fix_chart");
+	            fix_chart();
+	        } else {
+	            if (timeline_bottom < scroll_top) {
+	                //console.log("unFix bottom");
+	                unfix_chart_bottom(timeline_bottom);
+	            } else {
+	                //console.log("unfix_chart");
+	                unfix_chart();
+	            }
+	        }
+	        // <== end Scroll
+	        // ==> start chapter
+	        for (var idx = chapter_offset_top.length - 1; idx >= 1; idx--) {
+	            if (chapter_offset_top[idx] < scroll_top) {
+	                mapTransition((2011 + idx));
+	                pieTransition(2011 + idx);
+	                total_numTransition(2011 + idx);
+	                lineTransition(2011 + idx);
+	                // *****************
+	                // 2번째 챕터 이벤트
+	                // *****************
+	                //console.log("event : " + idx);
+	                //intro_popYear(chapter_list[idx]);
+	                break;
+	            }
+	        }
+	        if (chapter_offset_top[1] > scroll_top) {
+	            mapTransition((2011 + idx));
+	            pieTransition(2011 + idx);
+	            total_numTransition(2011 + idx);
+	            lineTransition(2011 + idx);
+	            // *****************
+	            // 첫번째 챕터 이벤트
+	            // *****************
+	            //console.log("first event");
+	            //intro_popYear(chapter_list[0]);
+	            return;
+	        }
+	        // <== end chapter
+	    }
+
+
+	    /******************************/
+	    /******* Window 이밴트  ********/
+	    /******************************/
+	    $window.resize(function () {
+
+	        section1_setposition();
+	        chapter_title_size_setting();
+
+	        var scroll_top = $window.scrollTop();
+	        var timeline_bottom = parseInt(rms_section_bottom.offset().top) - parseInt($fixed_chart.height());
+	        var timeline_top = parseInt($timeline_top.offset().top);
+	        // ==> start Scroll
+	        if (timeline_top < scroll_top && timeline_bottom > scroll_top) {
+	            //console.log("fix_chart");
+	            fix_chart();
+	        } else {
+	            if (timeline_bottom < scroll_top) {
+	                //console.log("unFix bottom");
+	                unfix_chart_bottom(timeline_bottom);
+	            } else {
+	                //console.log("unfix_chart");
+	                unfix_chart();
+	            }
+	        }
+
+	        resize_refugeeMap()
+	    });
+
+	    //** ON_SCROLL EVENT **//
+	    $window.on('scroll', function () {
+	        scroll_event();
+	    });
+	});
+
+	$(document).ready(function () {
+	    var $window = $(window);
+
+	    /** CHAPTER TITLE SETTING **/
+	    function chapter_title_size_setting() {
+	        //$(".chapter_title").css({
+	        //    "width": window.innerWidth,
+	        //    "height": window.innerHeight
+	        //});
+	        // div로 gap을 주는 대신에, padding 값을 주었음
+	        //$(".timeline_div_articleGap").css("height", window.innerHeight);
+	        $(".timeline_div_article_content").css({
+	            "padding-top": (window.innerHeight / 3) * 2,
+	            "padding-bottom": (window.innerHeight / 3) * 1
+	        });
+	        // 처음 content의 padding-top은 0으로
+	        $(".timeline_div_article_content").eq(0).css({
+	            "padding-top": 0
+	        });
+	        // 아래 article에 다시 padding을 줌
+	        //$(".timeline_div_article_content").eq(6).css({
+	        //    "padding-bottom": 0
+	        //});
+	    }
+
+	    chapter_title_size_setting();
+
+	    //var timeline_offset = parseInt($('#timeline').offset().top);
+	    var c4 = $("#c4");
+	    var $timeline_div = $("#timeline_div");
+	    var $timeline = $("#timeline");
+
+	    $window.resize(function () {
+	        var scroll_top = $window.scrollTop();
+	        var timeline_bottom = parseInt(c4.offset().top) - parseInt($timeline_div.height());
+	        var timeline_top = parseInt($timeline.offset().top);
+
+	        timeline_resize();
+	        //console.log("timeline_bottom : " + timeline_bottom + " // scroll_top : " + scroll_top);
+
+	        // ==> start Scroll
+	        if (timeline_top < scroll_top && timeline_bottom > scroll_top) {
+	            //console.log("fix top");
+	            section3_fix();
+	        } else {
+	            if (timeline_bottom < scroll_top) {
+	                var sectionLeft = parseInt($('#timeline').css("margin-left"));
+	                //console.log("unFix bottom");
+	                $timeline_div.css({
+	                    position: "absolute",
+	                    top: timeline_bottom,
+	                    left: sectionLeft
+	                });
+	            } else {
+	                //console.log("unFix top");
+	                section3_unFix_top();
+	            }
+	        }
+
+	    });
+
+	    /** TIMELINE SECTION SETPOSITION **/
+	    function section3_fix() {
+	        var section_left = parseInt($('#timeline').css("margin-left"));
+	        var section_top = parseInt($('#timeline').css("margin-top"));
+	        var timeline_width = parseInt($("#timeline_div").css("width"));
+
+	        $timeline_div.css({
+	            position: "fixed",
+	            top: section_top,
+	            left: section_left
+	        });
+	        console.log(timeline_width);
+
+	        $('#timeline_article').css({
+	            "padding-left": timeline_width, // padding값을 timeline width값으로 수정했음.(사이즈 변경시 고려)
+	            width: "auto"
+	        });
+	    }
+
+	    function section3_unFix_top() {
+	        $timeline_div.css("position", "static");
+	        $('#timeline_article').css({
+	            "padding-left": 0,
+	            width: 420
+	        });
+	    }
+
+
+	    var chatper_divs = $(".timeline_div_article_content");
+	    var chapter_offset_top = [];
+	    var valid_value = 0;
+
+	    function set_chapter_offset_top() {
+	        for (var i = 0; i < chatper_divs.length; i++) {
+	            chapter_offset_top[i] = parseInt(chatper_divs.eq(i).offset().top);
+	            // 연산을 줄이기 위해 중간에 취소
+	            if ((i === 0) && (valid_value === chapter_offset_top[i])) {
+	                break;
+	            }
+	            console.log("chapter_offset_top[" + i + "] : " + chapter_offset_top[i]);
+	        }
+	        valid_value = chapter_offset_top[0];
+	        //console.log("valid_value : " + valid_value);
+	    }
+
+	    set_chapter_offset_top();
+
+	    $(".timeline_div_article_content_1").scroll(function () {
+	        var ele = $(".timeline_div_article_content_1");
+	        console.log("scroll");
+	    });
+
+	    //** ON_SCROLL EVENT **//
+	    $window.on('scroll', function () {
+	        //console.log($window.scrollTop());
+	        var scroll_top = $window.scrollTop();
+	        var timeline_bottom = parseInt(c4.offset().top) - parseInt($timeline_div.height());
+	        var timeline_top = parseInt($timeline.offset().top);
+
+	        set_chapter_offset_top();
+	        //console.log("timeline_bottom : " + timeline_bottom + " // scroll_top : " + scroll_top);
+
+	        // ==> start Scroll
+	        if (timeline_top < scroll_top &&
+	            timeline_bottom > scroll_top) {
+	            //console.log("fix top");
+	            section3_fix();
+	        } else {
+	            if (timeline_bottom < scroll_top) {
+	                var sectionLeft = parseInt($('#timeline').css("margin-left"));
+	                //console.log("unFix bottom");
+	                $timeline_div.css({
+	                    position: "absolute",
+	                    top: timeline_bottom,
+	                    left: sectionLeft
+	                });
+	            } else {
+	                //console.log("unFix top");
+	                section3_unFix_top();
+	            }
+	        }
+	        // <== end Scroll
+	        // ==> start chapter
+	        for (var idx = chapter_offset_top.length - 1; idx >= 1; idx--) {
+	            if (chapter_offset_top[idx] < scroll_top) {
+	                //console.log("chapter idx : " + idx);
+	                // *****************
+	                // 여기다가 챕터에 따른 이벤트를 넣으세요
+	                // *****************
+
+	                chapter_move(idx + 2);
+	                break;
+	            }
+	        }
+	        if (chapter_offset_top[1] > scroll_top) {
+	            //console.log("chapter_offset_top[1] > scroll_top");
+	            chapter_move(2);
+	            return;
+	        }
+	        // <== end chapter
+	    });
+	});
+
+	$(document).ready(function () {
+	    var $window = $(window);
+
+	    /** EVENT HANDLER **/
+	    function chapter_title_size_setting() {
+	        $(".chapter_title").css("height", window.innerHeight);
+	        chapter_title_size_setting();
+	        $window.resize(function () {
+	            chapter_title_size_setting();
+	        });
+	    }
+	});
+
+/***/ },
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -624,7 +1202,7 @@
 					check();
 				}
 
-				__webpack_require__(3)(updatedModules, updatedModules);
+				__webpack_require__(4)(updatedModules, updatedModules);
 
 				if(upToDate()) {
 					console.log("[HMR] App is up to date.");
@@ -653,7 +1231,7 @@
 
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports) {
 
 	/*
@@ -684,12 +1262,12 @@
 
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__resourceQuery) {var url = __webpack_require__(5);
-	var SockJS = __webpack_require__(11);
-	var stripAnsi = __webpack_require__(75);
+	/* WEBPACK VAR INJECTION */(function(__resourceQuery) {var url = __webpack_require__(6);
+	var SockJS = __webpack_require__(12);
+	var stripAnsi = __webpack_require__(76);
 	var scriptElements = document.getElementsByTagName("script");
 	var scriptHost = scriptElements[scriptElements.length-1].getAttribute("src").replace(/\/[^\/]+$/, "");
 
@@ -787,7 +1365,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "?http://localhost:8000/"))
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -811,7 +1389,7 @@
 	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 	// USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-	var punycode = __webpack_require__(6);
+	var punycode = __webpack_require__(7);
 
 	exports.parse = urlParse;
 	exports.resolve = urlResolve;
@@ -883,7 +1461,7 @@
 	      'gopher:': true,
 	      'file:': true
 	    },
-	    querystring = __webpack_require__(8);
+	    querystring = __webpack_require__(9);
 
 	function urlParse(url, parseQueryString, slashesDenoteHost) {
 	  if (url && isObject(url) && url instanceof Url) return url;
@@ -1500,7 +2078,7 @@
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! https://mths.be/punycode v1.3.2 by @mathias */
@@ -2032,10 +2610,10 @@
 
 	}(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)(module), (function() { return this; }())))
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -2051,17 +2629,17 @@
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.decode = exports.parse = __webpack_require__(9);
-	exports.encode = exports.stringify = __webpack_require__(10);
+	exports.decode = exports.parse = __webpack_require__(10);
+	exports.encode = exports.stringify = __webpack_require__(11);
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -2147,7 +2725,7 @@
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -2217,14 +2795,14 @@
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
 
-	var transportList = __webpack_require__(12);
+	var transportList = __webpack_require__(13);
 
-	module.exports = __webpack_require__(59)(transportList);
+	module.exports = __webpack_require__(60)(transportList);
 
 	// TODO can't get rid of this until all servers do
 	if ('_sockjs_onload' in global) {
@@ -2234,45 +2812,45 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	module.exports = [
 	  // streaming transports
-	  __webpack_require__(13)
-	, __webpack_require__(30)
-	, __webpack_require__(40)
-	, __webpack_require__(42)
-	, __webpack_require__(45)(__webpack_require__(42))
+	  __webpack_require__(14)
+	, __webpack_require__(31)
+	, __webpack_require__(41)
+	, __webpack_require__(43)
+	, __webpack_require__(46)(__webpack_require__(43))
 
 	  // polling transports
-	, __webpack_require__(52)
-	, __webpack_require__(45)(__webpack_require__(52))
-	, __webpack_require__(54)
+	, __webpack_require__(53)
+	, __webpack_require__(46)(__webpack_require__(53))
 	, __webpack_require__(55)
-	, __webpack_require__(45)(__webpack_require__(54))
 	, __webpack_require__(56)
+	, __webpack_require__(46)(__webpack_require__(55))
+	, __webpack_require__(57)
 	];
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(15)
-	  , urlUtils = __webpack_require__(18)
-	  , inherits = __webpack_require__(26)
-	  , EventEmitter = __webpack_require__(27).EventEmitter
-	  , WebsocketDriver = __webpack_require__(29)
+	var utils = __webpack_require__(16)
+	  , urlUtils = __webpack_require__(19)
+	  , inherits = __webpack_require__(27)
+	  , EventEmitter = __webpack_require__(28).EventEmitter
+	  , WebsocketDriver = __webpack_require__(30)
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:websocket');
+	  debug = __webpack_require__(24)('sockjs-client:websocket');
 	}
 
 	function WebSocketTransport(transUrl) {
@@ -2360,10 +2938,10 @@
 
 	module.exports = WebSocketTransport;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -2460,12 +3038,12 @@
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
 
-	var random = __webpack_require__(16);
+	var random = __webpack_require__(17);
 
 	var onUnload = {}
 	  , afterUnload = false
@@ -2540,13 +3118,13 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/* global crypto:true */
-	var crypto = __webpack_require__(17);
+	var crypto = __webpack_require__(18);
 
 	// This string has length 32, a power of 2, so the modulus doesn't introduce a
 	// bias.
@@ -2575,7 +3153,7 @@
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -2599,16 +3177,16 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var URL = __webpack_require__(19);
+	var URL = __webpack_require__(20);
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:utils:url');
+	  debug = __webpack_require__(24)('sockjs-client:utils:url');
 	}
 
 	module.exports = {
@@ -2650,17 +3228,17 @@
 	  }
 	};
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var required = __webpack_require__(20)
-	  , lolcation = __webpack_require__(21)
-	  , qs = __webpack_require__(22)
+	var required = __webpack_require__(21)
+	  , lolcation = __webpack_require__(22)
+	  , qs = __webpack_require__(23)
 	  , relativere = /^\/(?!\/)/
 	  , protocolre = /^([a-z0-9.+-]+:)?(\/\/)?(.*)$/i; // actual protocol is first match
 
@@ -2928,7 +3506,7 @@
 
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2972,7 +3550,7 @@
 
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -3004,7 +3582,7 @@
 	 */
 	module.exports = function lolcation(loc) {
 	  loc = loc || global.location || {};
-	  URL = URL || __webpack_require__(19);
+	  URL = URL || __webpack_require__(20);
 
 	  var finaldestination = {}
 	    , type = typeof loc
@@ -3032,7 +3610,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3099,7 +3677,7 @@
 
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -3109,7 +3687,7 @@
 	 * Expose `debug()` as the module.
 	 */
 
-	exports = module.exports = __webpack_require__(24);
+	exports = module.exports = __webpack_require__(25);
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -3273,7 +3851,7 @@
 
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -3289,7 +3867,7 @@
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(25);
+	exports.humanize = __webpack_require__(26);
 
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -3476,7 +4054,7 @@
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 	/**
@@ -3607,7 +4185,7 @@
 
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
 
 	if (typeof Object.create === 'function') {
@@ -3636,13 +4214,13 @@
 
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , EventTarget = __webpack_require__(28)
+	var inherits = __webpack_require__(27)
+	  , EventTarget = __webpack_require__(29)
 	  ;
 
 	function EventEmitter() {
@@ -3693,7 +4271,7 @@
 
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3759,7 +4337,7 @@
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global.WebSocket || global.MozWebSocket;
@@ -3767,17 +4345,17 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , AjaxBasedTransport = __webpack_require__(31)
-	  , XhrReceiver = __webpack_require__(35)
-	  , XHRCorsObject = __webpack_require__(36)
-	  , XHRLocalObject = __webpack_require__(38)
-	  , browser = __webpack_require__(39)
+	var inherits = __webpack_require__(27)
+	  , AjaxBasedTransport = __webpack_require__(32)
+	  , XhrReceiver = __webpack_require__(36)
+	  , XHRCorsObject = __webpack_require__(37)
+	  , XHRLocalObject = __webpack_require__(39)
+	  , browser = __webpack_require__(40)
 	  ;
 
 	function XhrStreamingTransport(transUrl) {
@@ -3815,19 +4393,19 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , urlUtils = __webpack_require__(18)
-	  , SenderReceiver = __webpack_require__(32)
+	var inherits = __webpack_require__(27)
+	  , urlUtils = __webpack_require__(19)
+	  , SenderReceiver = __webpack_require__(33)
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:ajax-based');
+	  debug = __webpack_require__(24)('sockjs-client:ajax-based');
 	}
 
 	function createAjaxSender(AjaxObject) {
@@ -3868,23 +4446,23 @@
 
 	module.exports = AjaxBasedTransport;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , urlUtils = __webpack_require__(18)
-	  , BufferedSender = __webpack_require__(33)
-	  , Polling = __webpack_require__(34)
+	var inherits = __webpack_require__(27)
+	  , urlUtils = __webpack_require__(19)
+	  , BufferedSender = __webpack_require__(34)
+	  , Polling = __webpack_require__(35)
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:sender-receiver');
+	  debug = __webpack_require__(24)('sockjs-client:sender-receiver');
 	}
 
 	function SenderReceiver(transUrl, urlSuffix, senderFunc, Receiver, AjaxObject) {
@@ -3920,21 +4498,21 @@
 
 	module.exports = SenderReceiver;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , EventEmitter = __webpack_require__(27).EventEmitter
+	var inherits = __webpack_require__(27)
+	  , EventEmitter = __webpack_require__(28).EventEmitter
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:buffered-sender');
+	  debug = __webpack_require__(24)('sockjs-client:buffered-sender');
 	}
 
 	function BufferedSender(url, sender) {
@@ -4014,21 +4592,21 @@
 
 	module.exports = BufferedSender;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , EventEmitter = __webpack_require__(27).EventEmitter
+	var inherits = __webpack_require__(27)
+	  , EventEmitter = __webpack_require__(28).EventEmitter
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:polling');
+	  debug = __webpack_require__(24)('sockjs-client:polling');
 	}
 
 	function Polling(Receiver, receiveUrl, AjaxObject) {
@@ -4078,21 +4656,21 @@
 
 	module.exports = Polling;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , EventEmitter = __webpack_require__(27).EventEmitter
+	var inherits = __webpack_require__(27)
+	  , EventEmitter = __webpack_require__(28).EventEmitter
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:receiver:xhr');
+	  debug = __webpack_require__(24)('sockjs-client:receiver:xhr');
 	}
 
 	function XhrReceiver(url, AjaxObject) {
@@ -4155,16 +4733,16 @@
 
 	module.exports = XhrReceiver;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , XhrDriver = __webpack_require__(37)
+	var inherits = __webpack_require__(27)
+	  , XhrDriver = __webpack_require__(38)
 	  ;
 
 	function XHRCorsObject(method, url, payload, opts) {
@@ -4179,21 +4757,21 @@
 
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {'use strict';
 
-	var EventEmitter = __webpack_require__(27).EventEmitter
-	  , inherits = __webpack_require__(26)
-	  , utils = __webpack_require__(15)
-	  , urlUtils = __webpack_require__(18)
+	var EventEmitter = __webpack_require__(28).EventEmitter
+	  , inherits = __webpack_require__(27)
+	  , utils = __webpack_require__(16)
+	  , urlUtils = __webpack_require__(19)
 	  , XHR = global.XMLHttpRequest
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:browser:xhr');
+	  debug = __webpack_require__(24)('sockjs-client:browser:xhr');
 	}
 
 	function AbstractXHRObject(method, url, payload, opts) {
@@ -4368,16 +4946,16 @@
 
 	module.exports = AbstractXHRObject;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(15)))
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , XhrDriver = __webpack_require__(37)
+	var inherits = __webpack_require__(27)
+	  , XhrDriver = __webpack_require__(38)
 	  ;
 
 	function XHRLocalObject(method, url, payload /*, opts */) {
@@ -4394,7 +4972,7 @@
 
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -4428,15 +5006,15 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , AjaxBasedTransport = __webpack_require__(31)
-	  , XhrReceiver = __webpack_require__(35)
-	  , XDRObject = __webpack_require__(41)
+	var inherits = __webpack_require__(27)
+	  , AjaxBasedTransport = __webpack_require__(32)
+	  , XhrReceiver = __webpack_require__(36)
+	  , XDRObject = __webpack_require__(42)
 	  ;
 
 	// According to:
@@ -4466,21 +5044,21 @@
 
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
-	var EventEmitter = __webpack_require__(27).EventEmitter
-	  , inherits = __webpack_require__(26)
-	  , eventUtils = __webpack_require__(15)
-	  , browser = __webpack_require__(39)
-	  , urlUtils = __webpack_require__(18)
+	var EventEmitter = __webpack_require__(28).EventEmitter
+	  , inherits = __webpack_require__(27)
+	  , eventUtils = __webpack_require__(16)
+	  , browser = __webpack_require__(40)
+	  , urlUtils = __webpack_require__(19)
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:sender:xdr');
+	  debug = __webpack_require__(24)('sockjs-client:sender:xdr');
 	}
 
 	// References:
@@ -4571,19 +5149,19 @@
 
 	module.exports = XDRObject;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15), (function() { return this; }())))
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , AjaxBasedTransport = __webpack_require__(31)
-	  , EventSourceReceiver = __webpack_require__(43)
-	  , XHRCorsObject = __webpack_require__(36)
-	  , EventSourceDriver = __webpack_require__(44)
+	var inherits = __webpack_require__(27)
+	  , AjaxBasedTransport = __webpack_require__(32)
+	  , EventSourceReceiver = __webpack_require__(44)
+	  , XHRCorsObject = __webpack_require__(37)
+	  , EventSourceDriver = __webpack_require__(45)
 	  ;
 
 	function EventSourceTransport(transUrl) {
@@ -4607,19 +5185,19 @@
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , EventEmitter = __webpack_require__(27).EventEmitter
-	  , EventSourceDriver = __webpack_require__(44)
+	var inherits = __webpack_require__(27)
+	  , EventEmitter = __webpack_require__(28).EventEmitter
+	  , EventSourceDriver = __webpack_require__(45)
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:receiver:eventsource');
+	  debug = __webpack_require__(24)('sockjs-client:receiver:eventsource');
 	}
 
 	function EventSourceReceiver(url) {
@@ -4674,10 +5252,10 @@
 
 	module.exports = EventSourceReceiver;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global.EventSource;
@@ -4685,14 +5263,14 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , IframeTransport = __webpack_require__(46)
-	  , objectUtils = __webpack_require__(51)
+	var inherits = __webpack_require__(27)
+	  , IframeTransport = __webpack_require__(47)
+	  , objectUtils = __webpack_require__(52)
 	  ;
 
 	module.exports = function(transport) {
@@ -4725,7 +5303,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -4738,19 +5316,19 @@
 	//    http://msdn.microsoft.com/en-us/library/cc197015(v=VS.85).aspx
 	//    http://stevesouders.com/misc/test-postmessage.php
 
-	var inherits = __webpack_require__(26)
-	  , JSON3 = __webpack_require__(47)
-	  , EventEmitter = __webpack_require__(27).EventEmitter
-	  , version = __webpack_require__(49)
-	  , urlUtils = __webpack_require__(18)
-	  , iframeUtils = __webpack_require__(50)
-	  , eventUtils = __webpack_require__(15)
-	  , random = __webpack_require__(16)
+	var inherits = __webpack_require__(27)
+	  , JSON3 = __webpack_require__(48)
+	  , EventEmitter = __webpack_require__(28).EventEmitter
+	  , version = __webpack_require__(50)
+	  , urlUtils = __webpack_require__(19)
+	  , iframeUtils = __webpack_require__(51)
+	  , eventUtils = __webpack_require__(16)
+	  , random = __webpack_require__(17)
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:transport:iframe');
+	  debug = __webpack_require__(24)('sockjs-client:transport:iframe');
 	}
 
 	function IframeTransport(transport, transUrl, baseUrl) {
@@ -4868,17 +5446,17 @@
 
 	module.exports = IframeTransport;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! JSON v3.3.2 | http://bestiejs.github.io/json3 | Copyright 2012-2014, Kit Cambridge | http://kit.mit-license.org */
 	;(function () {
 	  // Detect the `define` function exposed by asynchronous module loaders. The
 	  // strict `define` check is necessary for compatibility with `r.js`.
-	  var isLoader = "function" === "function" && __webpack_require__(48);
+	  var isLoader = "function" === "function" && __webpack_require__(49);
 
 	  // A set of types used to distinguish objects from primitives.
 	  var objectTypes = {
@@ -5777,10 +6355,10 @@
 	  }
 	}).call(this);
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)(module), (function() { return this; }())))
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -5788,25 +6366,25 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports) {
 
 	module.exports = '1.0.3';
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
-	var eventUtils = __webpack_require__(15)
-	  , JSON3 = __webpack_require__(47)
-	  , browser = __webpack_require__(39)
+	var eventUtils = __webpack_require__(16)
+	  , JSON3 = __webpack_require__(48)
+	  , browser = __webpack_require__(40)
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:utils:iframe');
+	  debug = __webpack_require__(24)('sockjs-client:utils:iframe');
 	}
 
 	module.exports = {
@@ -5979,10 +6557,10 @@
 	    typeof global.postMessage === 'object') && (!browser.isKonqueror());
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15), (function() { return this; }())))
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -6012,15 +6590,15 @@
 
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , HtmlfileReceiver = __webpack_require__(53)
-	  , XHRLocalObject = __webpack_require__(38)
-	  , AjaxBasedTransport = __webpack_require__(31)
+	var inherits = __webpack_require__(27)
+	  , HtmlfileReceiver = __webpack_require__(54)
+	  , XHRLocalObject = __webpack_require__(39)
+	  , AjaxBasedTransport = __webpack_require__(32)
 	  ;
 
 	function HtmlFileTransport(transUrl) {
@@ -6043,21 +6621,21 @@
 
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , iframeUtils = __webpack_require__(50)
-	  , urlUtils = __webpack_require__(18)
-	  , EventEmitter = __webpack_require__(27).EventEmitter
-	  , random = __webpack_require__(16)
+	var inherits = __webpack_require__(27)
+	  , iframeUtils = __webpack_require__(51)
+	  , urlUtils = __webpack_require__(19)
+	  , EventEmitter = __webpack_require__(28).EventEmitter
+	  , random = __webpack_require__(17)
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:receiver:htmlfile');
+	  debug = __webpack_require__(24)('sockjs-client:receiver:htmlfile');
 	}
 
 	function HtmlfileReceiver(url) {
@@ -6132,19 +6710,19 @@
 
 	module.exports = HtmlfileReceiver;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15), (function() { return this; }())))
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , AjaxBasedTransport = __webpack_require__(31)
-	  , XhrReceiver = __webpack_require__(35)
-	  , XHRCorsObject = __webpack_require__(36)
-	  , XHRLocalObject = __webpack_require__(38)
+	var inherits = __webpack_require__(27)
+	  , AjaxBasedTransport = __webpack_require__(32)
+	  , XhrReceiver = __webpack_require__(36)
+	  , XHRCorsObject = __webpack_require__(37)
+	  , XHRLocalObject = __webpack_require__(39)
 	  ;
 
 	function XhrPollingTransport(transUrl) {
@@ -6174,16 +6752,16 @@
 
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , AjaxBasedTransport = __webpack_require__(31)
-	  , XdrStreamingTransport = __webpack_require__(40)
-	  , XhrReceiver = __webpack_require__(35)
-	  , XDRObject = __webpack_require__(41)
+	var inherits = __webpack_require__(27)
+	  , AjaxBasedTransport = __webpack_require__(32)
+	  , XdrStreamingTransport = __webpack_require__(41)
+	  , XhrReceiver = __webpack_require__(36)
+	  , XDRObject = __webpack_require__(42)
 	  ;
 
 	function XdrPollingTransport(transUrl) {
@@ -6203,7 +6781,7 @@
 
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -6216,10 +6794,10 @@
 	//   o you will get a spinning cursor
 	//   o for Konqueror a dumb timer is needed to detect errors
 
-	var inherits = __webpack_require__(26)
-	  , SenderReceiver = __webpack_require__(32)
-	  , JsonpReceiver = __webpack_require__(57)
-	  , jsonpSender = __webpack_require__(58)
+	var inherits = __webpack_require__(27)
+	  , SenderReceiver = __webpack_require__(33)
+	  , JsonpReceiver = __webpack_require__(58)
+	  , jsonpSender = __webpack_require__(59)
 	  ;
 
 	function JsonPTransport(transUrl) {
@@ -6244,22 +6822,22 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
-	var utils = __webpack_require__(50)
-	  , random = __webpack_require__(16)
-	  , browser = __webpack_require__(39)
-	  , urlUtils = __webpack_require__(18)
-	  , inherits = __webpack_require__(26)
-	  , EventEmitter = __webpack_require__(27).EventEmitter
+	var utils = __webpack_require__(51)
+	  , random = __webpack_require__(17)
+	  , browser = __webpack_require__(40)
+	  , urlUtils = __webpack_require__(19)
+	  , inherits = __webpack_require__(27)
+	  , EventEmitter = __webpack_require__(28).EventEmitter
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:receiver:jsonp');
+	  debug = __webpack_require__(24)('sockjs-client:receiver:jsonp');
 	}
 
 	function JsonpReceiver(url) {
@@ -6427,21 +7005,21 @@
 
 	module.exports = JsonpReceiver;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15), (function() { return this; }())))
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
-	var random = __webpack_require__(16)
-	  , urlUtils = __webpack_require__(18)
+	var random = __webpack_require__(17)
+	  , urlUtils = __webpack_require__(19)
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:sender:jsonp');
+	  debug = __webpack_require__(24)('sockjs-client:sender:jsonp');
 	}
 
 	var form, area;
@@ -6533,39 +7111,39 @@
 	  };
 	};
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15), (function() { return this; }())))
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
-	__webpack_require__(60);
+	__webpack_require__(61);
 
-	var URL = __webpack_require__(19)
-	  , inherits = __webpack_require__(26)
-	  , JSON3 = __webpack_require__(47)
-	  , random = __webpack_require__(16)
-	  , escape = __webpack_require__(61)
-	  , urlUtils = __webpack_require__(18)
-	  , eventUtils = __webpack_require__(15)
-	  , transport = __webpack_require__(62)
-	  , objectUtils = __webpack_require__(51)
-	  , browser = __webpack_require__(39)
-	  , log = __webpack_require__(63)
-	  , Event = __webpack_require__(64)
-	  , EventTarget = __webpack_require__(28)
-	  , loc = __webpack_require__(65)
-	  , CloseEvent = __webpack_require__(66)
-	  , TransportMessageEvent = __webpack_require__(67)
-	  , InfoReceiver = __webpack_require__(68)
+	var URL = __webpack_require__(20)
+	  , inherits = __webpack_require__(27)
+	  , JSON3 = __webpack_require__(48)
+	  , random = __webpack_require__(17)
+	  , escape = __webpack_require__(62)
+	  , urlUtils = __webpack_require__(19)
+	  , eventUtils = __webpack_require__(16)
+	  , transport = __webpack_require__(63)
+	  , objectUtils = __webpack_require__(52)
+	  , browser = __webpack_require__(40)
+	  , log = __webpack_require__(64)
+	  , Event = __webpack_require__(65)
+	  , EventTarget = __webpack_require__(29)
+	  , loc = __webpack_require__(66)
+	  , CloseEvent = __webpack_require__(67)
+	  , TransportMessageEvent = __webpack_require__(68)
+	  , InfoReceiver = __webpack_require__(69)
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
 	  // Make debug module available globally so you can enable via the console easily
-	  global.dbg = __webpack_require__(23);
+	  global.dbg = __webpack_require__(24);
 	  debug = global.dbg('sockjs-client:main');
 	}
 
@@ -6705,7 +7283,7 @@
 	  this._transport.send(escape.quote(data));
 	};
 
-	SockJS.version = __webpack_require__(49);
+	SockJS.version = __webpack_require__(50);
 
 	SockJS.CONNECTING = 0;
 	SockJS.OPEN = 1;
@@ -6917,14 +7495,14 @@
 
 	module.exports = function(availableTransports) {
 	  transports = transport(availableTransports);
-	  __webpack_require__(73)(SockJS, availableTransports);
+	  __webpack_require__(74)(SockJS, availableTransports);
 	  return SockJS;
 	};
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15), (function() { return this; }())))
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports) {
 
 	/* eslint-disable */
@@ -7403,12 +7981,12 @@
 
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var JSON3 = __webpack_require__(47);
+	var JSON3 = __webpack_require__(48);
 
 	// Some extra characters that Chrome gets wrong, and substitutes with
 	// something else on the wire.
@@ -7458,14 +8036,14 @@
 
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:utils:transport');
+	  debug = __webpack_require__(24)('sockjs-client:utils:transport');
 	}
 
 	module.exports = function(availableTransports) {
@@ -7512,10 +8090,10 @@
 	  };
 	};
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -7533,7 +8111,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -7561,7 +8139,7 @@
 
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -7578,13 +8156,13 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , Event = __webpack_require__(64)
+	var inherits = __webpack_require__(27)
+	  , Event = __webpack_require__(65)
 	  ;
 
 	function CloseEvent() {
@@ -7601,13 +8179,13 @@
 
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , Event = __webpack_require__(64)
+	var inherits = __webpack_require__(27)
+	  , Event = __webpack_require__(65)
 	  ;
 
 	function TransportMessageEvent(data) {
@@ -7622,25 +8200,25 @@
 
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var EventEmitter = __webpack_require__(27).EventEmitter
-	  , inherits = __webpack_require__(26)
-	  , urlUtils = __webpack_require__(18)
-	  , XDR = __webpack_require__(41)
-	  , XHRCors = __webpack_require__(36)
-	  , XHRLocal = __webpack_require__(38)
-	  , XHRFake = __webpack_require__(69)
-	  , InfoIframe = __webpack_require__(70)
-	  , InfoAjax = __webpack_require__(72)
+	var EventEmitter = __webpack_require__(28).EventEmitter
+	  , inherits = __webpack_require__(27)
+	  , urlUtils = __webpack_require__(19)
+	  , XDR = __webpack_require__(42)
+	  , XHRCors = __webpack_require__(37)
+	  , XHRLocal = __webpack_require__(39)
+	  , XHRFake = __webpack_require__(70)
+	  , InfoIframe = __webpack_require__(71)
+	  , InfoAjax = __webpack_require__(73)
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:info-receiver');
+	  debug = __webpack_require__(24)('sockjs-client:info-receiver');
 	}
 
 	function InfoReceiver(baseUrl, urlInfo) {
@@ -7715,16 +8293,16 @@
 
 	module.exports = InfoReceiver;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var EventEmitter = __webpack_require__(27).EventEmitter
-	  , inherits = __webpack_require__(26)
+	var EventEmitter = __webpack_require__(28).EventEmitter
+	  , inherits = __webpack_require__(27)
 	  ;
 
 	function XHRFake(/* method, url, payload, opts */) {
@@ -7748,22 +8326,22 @@
 
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
-	var EventEmitter = __webpack_require__(27).EventEmitter
-	  , inherits = __webpack_require__(26)
-	  , JSON3 = __webpack_require__(47)
-	  , utils = __webpack_require__(15)
-	  , IframeTransport = __webpack_require__(46)
-	  , InfoReceiverIframe = __webpack_require__(71)
+	var EventEmitter = __webpack_require__(28).EventEmitter
+	  , inherits = __webpack_require__(27)
+	  , JSON3 = __webpack_require__(48)
+	  , utils = __webpack_require__(16)
+	  , IframeTransport = __webpack_require__(47)
+	  , InfoReceiverIframe = __webpack_require__(72)
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:info-iframe');
+	  debug = __webpack_require__(24)('sockjs-client:info-iframe');
 	}
 
 	function InfoIframe(baseUrl, url) {
@@ -7821,19 +8399,19 @@
 
 	module.exports = InfoIframe;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15), (function() { return this; }())))
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var inherits = __webpack_require__(26)
-	  , EventEmitter = __webpack_require__(27).EventEmitter
-	  , JSON3 = __webpack_require__(47)
-	  , XHRLocalObject = __webpack_require__(38)
-	  , InfoAjax = __webpack_require__(72)
+	var inherits = __webpack_require__(27)
+	  , EventEmitter = __webpack_require__(28).EventEmitter
+	  , JSON3 = __webpack_require__(48)
+	  , XHRLocalObject = __webpack_require__(39)
+	  , InfoAjax = __webpack_require__(73)
 	  ;
 
 	function InfoReceiverIframe(transUrl) {
@@ -7863,20 +8441,20 @@
 
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var EventEmitter = __webpack_require__(27).EventEmitter
-	  , inherits = __webpack_require__(26)
-	  , JSON3 = __webpack_require__(47)
-	  , objectUtils = __webpack_require__(51)
+	var EventEmitter = __webpack_require__(28).EventEmitter
+	  , inherits = __webpack_require__(27)
+	  , JSON3 = __webpack_require__(48)
+	  , objectUtils = __webpack_require__(52)
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:info-ajax');
+	  debug = __webpack_require__(24)('sockjs-client:info-ajax');
 	}
 
 	function InfoAjax(url, AjaxObject) {
@@ -7916,26 +8494,26 @@
 
 	module.exports = InfoAjax;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var urlUtils = __webpack_require__(18)
-	  , eventUtils = __webpack_require__(15)
-	  , JSON3 = __webpack_require__(47)
-	  , FacadeJS = __webpack_require__(74)
-	  , InfoIframeReceiver = __webpack_require__(71)
-	  , iframeUtils = __webpack_require__(50)
-	  , loc = __webpack_require__(65)
+	var urlUtils = __webpack_require__(19)
+	  , eventUtils = __webpack_require__(16)
+	  , JSON3 = __webpack_require__(48)
+	  , FacadeJS = __webpack_require__(75)
+	  , InfoIframeReceiver = __webpack_require__(72)
+	  , iframeUtils = __webpack_require__(51)
+	  , loc = __webpack_require__(66)
 	  ;
 
 	var debug = function() {};
 	if (process.env.NODE_ENV !== 'production') {
-	  debug = __webpack_require__(23)('sockjs-client:iframe-bootstrap');
+	  debug = __webpack_require__(24)('sockjs-client:iframe-bootstrap');
 	}
 
 	module.exports = function(SockJS, availableTransports) {
@@ -8025,16 +8603,16 @@
 	  };
 	};
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var JSON3 = __webpack_require__(47)
-	  , iframeUtils = __webpack_require__(50)
+	var JSON3 = __webpack_require__(48)
+	  , iframeUtils = __webpack_require__(51)
 	  ;
 
 	function FacadeJS(transport) {
@@ -8061,11 +8639,11 @@
 
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var ansiRegex = __webpack_require__(76)();
+	var ansiRegex = __webpack_require__(77)();
 
 	module.exports = function (str) {
 		return typeof str === 'string' ? str.replace(ansiRegex, '') : str;
@@ -8073,7 +8651,7 @@
 
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports) {
 
 	'use strict';
