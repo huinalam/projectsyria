@@ -354,14 +354,11 @@ $(document).ready(function () {
         var timeline_top = parseInt($refugee_map.offset().top);
         // ==> start Scroll
         if (timeline_top < scroll_top && timeline_bottom > scroll_top) {
-            //console.log("fix_chart");
             fix_chart();
         } else {
             if (timeline_bottom < scroll_top) {
-                //console.log("unFix bottom");
                 unfix_chart_bottom(timeline_bottom);
             } else {
-                //console.log("unfix_chart");
                 unfix_chart();
             }
         }
@@ -405,23 +402,18 @@ $(document).ready(function () {
         var timeline_top = parseInt($timeline.offset().top);
 
         timeline_resize();
-        //console.log("timeline_bottom : " + timeline_bottom + " // scroll_top : " + scroll_top);
-
         // ==> start Scroll
         if (timeline_top < scroll_top && timeline_bottom > scroll_top) {
-            //console.log("fix top");
             section3_fix();
         } else {
             if (timeline_bottom < scroll_top) {
                 var sectionLeft = parseInt($timeline.css("margin-left"));
-                //console.log("unFix bottom");
                 $timeline_div.css({
                     position: "absolute",
                     top: timeline_bottom,
                     left: sectionLeft
                 });
             } else {
-                //console.log("unFix top");
                 section3_unFix_top();
             }
         }
@@ -439,8 +431,6 @@ $(document).ready(function () {
             top: section_top,
             left: section_left
         });
-        console.log(timeline_width);
-
         $timeline_article.css({
             "padding-left": timeline_width, // padding값을 timeline width값으로 수정했음.(사이즈 변경시 고려)
             width: "auto"
@@ -466,10 +456,8 @@ $(document).ready(function () {
             if ((i === 0) && (valid_value === chapter_offset_top[i])) {
                 break;
             }
-            console.log("chapter_offset_top[" + i + "] : " + chapter_offset_top[i]);
         }
         valid_value = chapter_offset_top[0];
-        //console.log("valid_value : " + valid_value);
     }
     set_chapter_offset_top();
 
@@ -481,19 +469,17 @@ $(document).ready(function () {
         set_chapter_offset_top();
 
         var timeline_bottom = parseInt(c4.offset().top) - parseInt($timeline_div.height());
-        var timeline_top = parseInt($timeline.offset().top);
-
+        var timeline_top = parseInt($timeline.offset().top) - parseInt($timeline.css("margin-top"));
 
         // ==> start Scroll
         if (timeline_top < scroll_top && timeline_bottom > scroll_top && timeline_status === frameStatus.unfixed) {
-            console.log("fix top");
             section3_fix();
             timeline_status = frameStatus.fix;
         } else if (timeline_status === frameStatus.fix) {
             if (timeline_bottom < scroll_top) {
                 $timeline_div.css({
                     position: "absolute",
-                    top: timeline_bottom,
+                    top: timeline_bottom + parseInt($timeline.css("margin-top")),
                     left: parseInt($timeline.offset().left)
                 });
                 timeline_status = frameStatus.unfixed;
@@ -508,7 +494,6 @@ $(document).ready(function () {
             if (chapter_offset_top[idx] < scroll_top) {
                 if (timeline_idx === idx + 2)
                     return;
-                console.log("chapter idx : " + idx);
                 // *****************
                 // 여기다가 챕터에 따른 이벤트를 넣으세요
                 // *****************
@@ -520,7 +505,6 @@ $(document).ready(function () {
         if (chapter_offset_top[1] > scroll_top) {
             if (timeline_idx === 2)
                 return;
-            console.log("chapter_offset_top[1] > scroll_top");
             chapter_move(2);
             timeline_idx = 2;
             return;
