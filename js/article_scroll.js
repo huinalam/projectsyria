@@ -165,30 +165,34 @@ $(document).ready(function () {
     /** EVENT HANDLER **/
     var $gdp_div_textCol = $(".gdp_div_textCol");
     
-    $gdp_div_textCol.eq(0).css("opacity", 1);
-    $gdp_div_textCol.not(':eq(0)').css("opacity", 0.5);
     $gdp_div_textCol.on("click", function () {
-        var classfy = $(this).attr('class').split(/\s+/);
+        var button = $(this);
+        $gdp_div_textCol.removeClass("gdp_div_textCol_click");
+        $gdp_div_textCol.addClass("gdp_div_textCol_unclick");
+        button.addClass("gdp_div_textCol_click");
+        button.removeClass("gdp_div_textCol_unclick");
+
+        var classfy = button.attr('class').split(/\s+/);
         switch (classfy[1]) {
             case "gdp_year_button2011":
                 scatterTransition(2011);
-                $gdp_div_textCol.eq(0).css("opacity", 1);
-                $gdp_div_textCol.not(':eq(0)').css("opacity", 0.5);
+                //$gdp_div_textCol.eq(0).css("opacity", 1);
+                //$gdp_div_textCol.not(':eq(0)').css("opacity", 0.5);
                 break;
             case "gdp_year_button2012":
                 scatterTransition(2012);
-                $gdp_div_textCol.eq(1).css("opacity", 1);
-                $gdp_div_textCol.not(':eq(1)').css("opacity", 0.5);
+                //$gdp_div_textCol.eq(1).css("opacity", 1);
+                //$gdp_div_textCol.not(':eq(1)').css("opacity", 0.5);
                 break;
             case "gdp_year_button2013":
                 scatterTransition(2013);
-                $gdp_div_textCol.eq(2).css("opacity", 1);
-                $gdp_div_textCol.not(':eq(2)').css("opacity", 0.5);
+                //$gdp_div_textCol.eq(2).css("opacity", 1);
+                //$gdp_div_textCol.not(':eq(2)').css("opacity", 0.5);
                 break;
             case "gdp_year_button2014":
                 scatterTransition(2014);
-                $gdp_div_textCol.eq(3).css("opacity", 1);
-                $gdp_div_textCol.not(':eq(3)').css("opacity", 0.5);
+                //$gdp_div_textCol.eq(3).css("opacity", 1);
+                //$gdp_div_textCol.not(':eq(3)').css("opacity", 0.5);
                 break;
         }
     });
