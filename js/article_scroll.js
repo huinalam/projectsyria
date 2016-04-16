@@ -10,7 +10,7 @@ function preloader() {
     });
     // 처음 content의 padding-top은 0으로
     $(".pre_war_article").eq(0).css({
-        "padding-top": 0
+        "padding-top": window.innerHeight / 4
     });
     $(".pre_war_article").eq(3).css({
         "padding-bottom": 0
@@ -42,7 +42,7 @@ $(document).ready(function () {
     var $pre_war_refugee_map = $('#pre_war_refugee_map');
 
     function pre_war_fix_chart() {
-        var section_left = parseInt($pre_war_refugee_map.css("margin-left"));
+        var section_left = parseInt($pre_war_refugee_map.offset().left);
         var section_top = parseInt($pre_war_refugee_map.css("margin-top"));
 
         $('#pre_war_fixed_chart').css({
@@ -50,6 +50,9 @@ $(document).ready(function () {
             top: section_top,
             left: section_left
         });
+
+        var chart = document.getElementById("pre_war_fixed_chart");
+        chart.style.left = section_left + "px";
 
         $('#pre_war_chapter_article_div').css({
             "padding-left": chart_width
@@ -162,30 +165,34 @@ $(document).ready(function () {
     /** EVENT HANDLER **/
     var $gdp_div_textCol = $(".gdp_div_textCol");
     
-    $gdp_div_textCol.eq(0).css("opacity", 1);
-    $gdp_div_textCol.not(':eq(0)').css("opacity", 0.5);
     $gdp_div_textCol.on("click", function () {
-        var classfy = $(this).attr('class').split(/\s+/);
+        var button = $(this);
+        $gdp_div_textCol.removeClass("gdp_div_textCol_click");
+        $gdp_div_textCol.addClass("gdp_div_textCol_unclick");
+        button.addClass("gdp_div_textCol_click");
+        button.removeClass("gdp_div_textCol_unclick");
+
+        var classfy = button.attr('class').split(/\s+/);
         switch (classfy[1]) {
             case "gdp_year_button2011":
                 scatterTransition(2011);
-                $gdp_div_textCol.eq(0).css("opacity", 1);
-                $gdp_div_textCol.not(':eq(0)').css("opacity", 0.5);
+                //$gdp_div_textCol.eq(0).css("opacity", 1);
+                //$gdp_div_textCol.not(':eq(0)').css("opacity", 0.5);
                 break;
             case "gdp_year_button2012":
                 scatterTransition(2012);
-                $gdp_div_textCol.eq(1).css("opacity", 1);
-                $gdp_div_textCol.not(':eq(1)').css("opacity", 0.5);
+                //$gdp_div_textCol.eq(1).css("opacity", 1);
+                //$gdp_div_textCol.not(':eq(1)').css("opacity", 0.5);
                 break;
             case "gdp_year_button2013":
                 scatterTransition(2013);
-                $gdp_div_textCol.eq(2).css("opacity", 1);
-                $gdp_div_textCol.not(':eq(2)').css("opacity", 0.5);
+                //$gdp_div_textCol.eq(2).css("opacity", 1);
+                //$gdp_div_textCol.not(':eq(2)').css("opacity", 0.5);
                 break;
             case "gdp_year_button2014":
                 scatterTransition(2014);
-                $gdp_div_textCol.eq(3).css("opacity", 1);
-                $gdp_div_textCol.not(':eq(3)').css("opacity", 0.5);
+                //$gdp_div_textCol.eq(3).css("opacity", 1);
+                //$gdp_div_textCol.not(':eq(3)').css("opacity", 0.5);
                 break;
         }
     });
@@ -228,7 +235,7 @@ $(document).ready(function () {
     });
     // 처음 content의 padding-top은 0으로
     $(".chapter_article").eq(0).css({
-        "padding-top": 0
+        "padding-top": window.innerHeight / 4
     });
 
     //fixed_chart
@@ -245,7 +252,7 @@ $(document).ready(function () {
 
 
     function fix_chart() {
-        var section_left = parseInt($refugee_map.css("margin-left"));
+        var section_left = parseInt($refugee_map.offset().left);
         var section_top = parseInt($refugee_map.css("margin-top"));
 
         $fixed_graph.css({
@@ -351,14 +358,11 @@ $(document).ready(function () {
         var timeline_top = parseInt($refugee_map.offset().top);
         // ==> start Scroll
         if (timeline_top < scroll_top && timeline_bottom > scroll_top) {
-            //console.log("fix_chart");
             fix_chart();
         } else {
             if (timeline_bottom < scroll_top) {
-                //console.log("unFix bottom");
                 unfix_chart_bottom(timeline_bottom);
             } else {
-                //console.log("unfix_chart");
                 unfix_chart();
             }
         }
@@ -386,7 +390,7 @@ $(document).ready(function () {
         });
         // 처음 content의 padding-top은 0으로
         $(".timeline_div_article_content").eq(0).css({
-            "padding-top": 0
+            "padding-top": window.innerHeight / 4
         });
     }
     chapter_title_size_setting();
@@ -402,23 +406,18 @@ $(document).ready(function () {
         var timeline_top = parseInt($timeline.offset().top);
 
         timeline_resize();
-        //console.log("timeline_bottom : " + timeline_bottom + " // scroll_top : " + scroll_top);
-
         // ==> start Scroll
         if (timeline_top < scroll_top && timeline_bottom > scroll_top) {
-            //console.log("fix top");
             section3_fix();
         } else {
             if (timeline_bottom < scroll_top) {
                 var sectionLeft = parseInt($timeline.css("margin-left"));
-                //console.log("unFix bottom");
                 $timeline_div.css({
                     position: "absolute",
                     top: timeline_bottom,
                     left: sectionLeft
                 });
             } else {
-                //console.log("unFix top");
                 section3_unFix_top();
             }
         }
@@ -427,7 +426,7 @@ $(document).ready(function () {
 
     /** TIMELINE SECTION SETPOSITION **/
     function section3_fix() {
-        var section_left = parseInt($timeline.css("margin-left"));
+        var section_left = parseInt($timeline.offset().left);
         var section_top = parseInt($timeline.css("margin-top"));
         var timeline_width = parseInt($timeline_div.css("width"));
 
@@ -436,8 +435,6 @@ $(document).ready(function () {
             top: section_top,
             left: section_left
         });
-        console.log(timeline_width);
-
         $timeline_article.css({
             "padding-left": timeline_width, // padding값을 timeline width값으로 수정했음.(사이즈 변경시 고려)
             width: "auto"
@@ -463,10 +460,8 @@ $(document).ready(function () {
             if ((i === 0) && (valid_value === chapter_offset_top[i])) {
                 break;
             }
-            console.log("chapter_offset_top[" + i + "] : " + chapter_offset_top[i]);
         }
         valid_value = chapter_offset_top[0];
-        //console.log("valid_value : " + valid_value);
     }
     set_chapter_offset_top();
 
@@ -478,26 +473,21 @@ $(document).ready(function () {
         set_chapter_offset_top();
 
         var timeline_bottom = parseInt(c4.offset().top) - parseInt($timeline_div.height());
-        var timeline_top = parseInt($timeline.offset().top);
-
+        var timeline_top = parseInt($timeline.offset().top) - parseInt($timeline.css("margin-top"));
 
         // ==> start Scroll
         if (timeline_top < scroll_top && timeline_bottom > scroll_top && timeline_status === frameStatus.unfixed) {
-            console.log("fix top");
             section3_fix();
             timeline_status = frameStatus.fix;
         } else if (timeline_status === frameStatus.fix) {
             if (timeline_bottom < scroll_top) {
-                var sectionLeft = parseInt($timeline.css("margin-left"));
-                console.log("unFix bottom");
                 $timeline_div.css({
                     position: "absolute",
-                    top: timeline_bottom,
-                    left: sectionLeft
+                    top: timeline_bottom + parseInt($timeline.css("margin-top")),
+                    left: parseInt($timeline.offset().left)
                 });
                 timeline_status = frameStatus.unfixed;
             } else if (timeline_top > scroll_top) {
-                console.log("unFix top");
                 section3_unFix_top();
                 timeline_status = frameStatus.unfixed;
             }
@@ -508,7 +498,6 @@ $(document).ready(function () {
             if (chapter_offset_top[idx] < scroll_top) {
                 if (timeline_idx === idx + 2)
                     return;
-                console.log("chapter idx : " + idx);
                 // *****************
                 // 여기다가 챕터에 따른 이벤트를 넣으세요
                 // *****************
@@ -520,7 +509,6 @@ $(document).ready(function () {
         if (chapter_offset_top[1] > scroll_top) {
             if (timeline_idx === 2)
                 return;
-            console.log("chapter_offset_top[1] > scroll_top");
             chapter_move(2);
             timeline_idx = 2;
             return;
