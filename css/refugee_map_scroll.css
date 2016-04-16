@@ -44,6 +44,7 @@
 /*map svg element */
 .svg_map{
 	background: #cceedd;
+	overflow: hidden;
 }
 .svg_box{
  	fill: #bbeecc;
