@@ -55,17 +55,17 @@ var introgaph_title = intro_svg_intrograph.append("text")
     introgaph_title.append("tspan")
           .attr("dy","1.1em")
           .attr("x",60)
-          .text("Changes of Refugees");
+          .text("The Number of Refugees");
 
     introgaph_title.append("tspan")
           .attr("dy","1.1em")
           .attr("x",60)
-          .text("during 4decades of");
+          .text("During 4decades of");
 
     introgaph_title.append("tspan")
           .attr("dy","1.1em")
           .attr("x",60)
-          .text("dictatorship");
+          .text("Dictatorship");
 
 var pre_timeAxis_circle;
 var intrograph_circle;
