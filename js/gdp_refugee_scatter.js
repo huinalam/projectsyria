@@ -94,11 +94,6 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east.csv",function(data){
 	var maxRefugee = d3.max(gdp_dataCon,function(d){ return d.refugee;});
 	var maxValue1 = d3.max(gdp_dataCon,function(d){ return d.value2;});
 	var maxValue2 = d3.max(gdp_dataCon,function(d){ return d.value2;});
-	console.log(maxValue1);
-	console.log(maxValue2);
-
-	
-
 	
 
 	xScale_scatter = d3.scale.linear()

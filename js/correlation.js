@@ -178,10 +178,9 @@ d3.csv("data/long_df.csv",function(data){
 
 	d3.selectAll(".correlation_button_group").on("click",function(){
 			var id = d3.select(this).attr("id");
-			console.log(id);
+
 			d3.selectAll(".correlation_article_div").style("opacity",0);
 			d3.select("#" + id + "_article").style("opacity",1);
-			console.log("#" + id + "_article");
 		});
 
 	popYear(whole);
@@ -232,7 +231,7 @@ function parseDate(dateString) {
 function popYear(chapter){
 	var start_date = parseDate(chapter.start);
 	var end_date = parseDate(chapter.end);
-	console.log(start_date + " / " + end_date);
+	
 
 	popData_year = correlation_dataCon.filter(function(d){ return (start_date <= d.date)&&(d.date <= end_date);})
 	summarizeGroup();

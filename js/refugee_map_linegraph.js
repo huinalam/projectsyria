@@ -200,7 +200,6 @@ function resize_linegraph(){
         timeAxis_circle.transition()
                        .attr("cy",function(){
                         var index = d3.select(this).attr("id");
-                        console.log(line_graph_year[index]);
 
                          return y_scale_linegraph(0);
                       });
@@ -208,7 +207,6 @@ function resize_linegraph(){
         linegraph_circle.transition()
                        .attr("cy",function(){
                         var index = d3.select(this).attr("id");
-                        console.log(line_graph_year[index]);
 
                          return y_scale_linegraph(line_data_Con[index].value);
                       });
@@ -216,13 +214,11 @@ function resize_linegraph(){
         linegraph_line.transition()
                       .attr("y1",function(){
                         var index = d3.select(this).attr("id");
-                        console.log(line_graph_year[index]);
 
                          return y_scale_linegraph(0)
                        })
                       .attr("y2",function(){
                         var index = d3.select(this).attr("id");
-                        console.log(line_graph_year[index]);
 
                          return y_scale_linegraph(line_data_Con[index].value)
                        });

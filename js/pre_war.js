@@ -190,7 +190,6 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
 });
 
 function markingEvent(marking_events){
-      console.log(intro_dataCon);
     var marking_events = intro_marking_g.selectAll("g")
                                         .data(marking_events)
                                         .enter();
@@ -199,7 +198,6 @@ function markingEvent(marking_events){
                   .attr("class","marking_events")
                   .attr("r",3)
                   .attr("cx",function(d){
-                    console.log(d.year);
                       var toYear = d.year + "-12-31"
                       return x_scale_intrograph(parseDate(toYear));
                   })    
@@ -213,7 +211,6 @@ function markingEvent(marking_events){
                   .attr("class","marking_events")
                   .attr("r",3)
                   .attr("cx",function(d){
-                    console.log(d.year);
                       var toYear = d.year + "-12-31"
                       return x_scale_intrograph(parseDate(toYear));
                   })    
@@ -225,12 +222,10 @@ function markingEvent(marking_events){
     marking_events.append("line")
                 .attr("class","marking_events_line")
                 .attr("x1",function(d){
-                    console.log(d.year);
                     var toYear = d.year + "-12-31"
                     return x_scale_intrograph(parseDate(toYear));
                 })
                 .attr("x2",function(d){
-                    console.log(d.year);
                     var toYear = d.year + "-12-31"
                     return x_scale_intrograph(parseDate(toYear));
                 })
@@ -246,7 +241,6 @@ function markingEvent(marking_events){
     marking_events.append("text")
                   .attr("class","chart_caption")
                   .attr("x",function(d){
-                    console.log(d.year);
                     var toYear = d.year + "-12-31"
                     return x_scale_intrograph(parseDate(toYear)) - 10;
                   })
@@ -286,7 +280,6 @@ function intrographTransition(year){
 
 function intro_popYear(chapter_list){
     var popData = intro_dataCon.filter(function(d){ return (parseDate(chapter_list.start) <= d.year)&&(d.year <= parseDate(chapter_list.end));})
-    //console.log(popData);
     intro_popData = popData;
 
     d3.select(".area_graph").selectAll("path")

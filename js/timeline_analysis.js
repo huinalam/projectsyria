@@ -269,12 +269,9 @@
             item.start = parseDate(item.start);
             if (item.end == "") {
                 
-                //console.log("2 item.end: " + item.end);
                 item.end = new Date(item.start.getFullYear() + instantOffset);
-                //console.log("3 item.end: " + item.end);
                 item.instant = true;
             } else {
-                //console.log("4 item.end: " + item.end);
                 item.end = parseDate(item.end);
                 item.instant = false;
             }
@@ -821,7 +818,6 @@ function timeline_resize(){
         timeline_yAxis.scale(timeline_yScale);
 
 
-        console.log(timeline_yAxis);
         timeline_yAxis_g.transition().call(timeline_yAxis).call(customAxis);
 
 
@@ -906,10 +902,7 @@ function chapter_move(index){
 
 
     var i = index ;
-    console.log("chapter move!");
     var i = index-1 ;
-    //console.log("chapter move!");
-
 
     d3.select("#chapter_mask1").transition()
                     .delay(300)

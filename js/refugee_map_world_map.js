@@ -134,7 +134,6 @@
 								return c_syria;
 							}
 							if(value==0){
-								console.log(d.properties.name);
 								return color_list[0];
 							}else if(value){
 								return color(value)
@@ -301,7 +300,6 @@ function resize_refugeeMap(){
 					return c_syria;
 					}
 					if(value==0){
-					console.log(d.properties.name);
 					return color_list[0];
 					}else if(value){
 					return color(value)

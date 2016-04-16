@@ -188,11 +188,8 @@ function total_numTransition(year){
              .duration(300)
              .tween("text",function(){
                  currentNum = this.textContent;
-                 console.log("currentNum"+ currentNum);
                  currentNum = currentNum.replace(/,/g,"");
-                 console.log("remove comma"+ currentNum);
                  currentNum = +currentNum;
-                 //console.log(currentNum);
                  var j = d3.interpolateRound(currentNum, total_num_list[index]);
 
                 return function(t){

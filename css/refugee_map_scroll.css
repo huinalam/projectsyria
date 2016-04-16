@@ -17,10 +17,12 @@
 .map_div_total{
 	width: 430px;
 	float: left;
+	text-align: right;
 }
 .map_div_portion{
 	width: 430px;
 	float: left;
+	text-align: right;
 }
 .map_div_article{
 	/*position: absolute !important;*/
