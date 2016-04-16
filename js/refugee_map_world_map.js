@@ -27,11 +27,12 @@
     var map_legend;
     var map_json;
     var duration =[]; //각 국가의 난민변화수량에 맞게 duration 
-    var map_legend_num =[1,1000,10000,100000,1000000,2000000];
+    var map_num_domain = [1,1000,50000,1000000,1500000];
+    var map_legend_num = [1,1000,10000,50000,100000,1000000,1500000];
 
     				//** 카토그램 및 파이 그래프에 필요한 색상들
  	//var color_list = ["#ccffee","#ccccaa","#cc8866","#bb2222","#AA2233","#660811"];
- 	var color_list = ['#fff5f0','#ffdd44','#ee8833','#cb2233','#a50f15','#67000d']
+ 	var color_list = ['#b8e2d3','#9CBEB4','#966977','#8f1135','#770025'];
 	var c_syria = "#772222";
 	
 	
@@ -85,12 +86,12 @@
           });
 
 		data1 = data;
-	    color.domain(map_legend_num);
+	    color.domain(map_num_domain);
 	    
 
         popData1 = data1.filter(function(d) {return d.year == start_year});
 
-		d3.json("data/world_map.geo.json", function(json){   	//시라이+중동+아프리카+유럽 포함된 지도. 
+		d3.json("data/middle_east_europe.geo.json", function(json){   	//시라이+중동+아프리카+유럽 포함된 지도. 
 
 		map_json = json;
 
@@ -274,7 +275,7 @@ function resize_refugeeMap(){
 	var map_width=860; //path가 그려질 svg크기
     var map_height = innerHeight - 260;
 
-	if((700<window.innerHeight)&&(window.innerHeight<950)){
+	if(700<window.innerHeight){
 
 		projection = d3.geo.conicConformal()
 					   .center(center)

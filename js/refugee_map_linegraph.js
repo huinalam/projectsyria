@@ -3,8 +3,8 @@ var map_svg_linegraph;
 var map_g_linegraph;
 
 //size, margin value
-var map_width_linegraph = 350;
-var map_height_linegraph = window.innerHeight - 80;
+var map_width_linegraph = 320;
+var map_height_linegraph = window.innerHeight - 100;
 
 var linegraph_margin = {
                 top:20,
@@ -164,7 +164,7 @@ function lineTransition(year){
 
 function resize_linegraph(){
 
-    if((700<window.innerHeight)&&(window.innerHeight<950)){
+    if(700<window.innerHeight){
        
         map_width_linegraph = 350;
         map_height_linegraph = window.innerHeight - 80;

@@ -2,6 +2,7 @@
 .timeline_eventType_div{
     float:left;
     width: 250px;
+    height: 180px;
     margin: 8px;
 }
 .timeline_eventType_div > h3{
@@ -17,7 +18,7 @@
     font-weight: 300;
     font-family: 'Roboto Slab', serif;
     line-height: 180%;
-    text-indent: 30px;
+    text-indent: 10px;
     color: #dfdfdf;
 
 }
@@ -310,9 +311,9 @@ h3.timeline_heading {
 }
 .chapter_selector{
     fill: rgba(0,0,0,0);
-    stroke: #aaaaaa;
+    stroke: #cc3333;
     stroke-width: 0.5px;
 }
 .chapter_mask{
-    fill: rgba(8,8,8,0.3);
+    fill: rgba(255,255,255,0.3);
 }

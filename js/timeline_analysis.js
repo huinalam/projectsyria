@@ -801,7 +801,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
 
 function timeline_resize(){
 
-     if((700<window.innerHeight)&&(window.innerHeight<950)){
+     if(700<window.innerHeight){
 
 
         outerWidth = 750;                                  

@@ -15,6 +15,7 @@ section{
 .chapter_title{
 	width: 100% !important;
 	margin: 50px 0 0 0 !important;
+	text-decoration: none;
 }
 .chapter_title_wrapper{
 	width: 100%;
@@ -73,7 +74,7 @@ section{
 	width: 300px;
 }
 .div_s45{
-	/*width: 420px;*/
+	width: 420px;
 }
 .div_s60{
 	width: 570px;
@@ -136,7 +137,7 @@ section{
 	font-weight: 300;
 	font-family: 'Roboto Slab', serif;
 	line-height: 180%;
-	text-indent: 30px;
+	text-indent: 10px;
 	color: #dfdfdf;
 }
 #red{
