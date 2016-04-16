@@ -1,29 +1,8 @@
-﻿console.log("start webpack!");
-console.log("load article_scroll!!");
+﻿//인트로
+var frameFixed = { "unfixed": 0, "fixed": 1 };
 
-
+// pre_war
 $(document).ready(function () {
-
-    var $window = $(window);
-
-    /** CHAPTER TITLE SETTING **/
-    function chapter_title_size_setting() {
-        //$(".chapter_title").css("height", window.innerHeight);
-    }
-
-    /* chapter title setting **/
-    chapter_title_size_setting();
-
-    $window.resize(function () {
-        chapter_title_size_setting();
-
-    });
-
-});
-
-
-$(document).ready(function () {
-
     var $window = $(window);
 
     // 높이 설정
@@ -47,10 +26,8 @@ $(document).ready(function () {
     var chapter_offset_top = [];
 
     function set_chapter_offset() {
-        console.log("pre_war : ");
         for (var i = 0; i < chatper_divs.length; i++) {
             chapter_offset_top[i] = parseInt(chatper_divs.eq(i).offset().top);
-            console.log("pre_war [" + i + "] : " + chapter_offset_top[i]);
         }
     }
 
@@ -557,17 +534,4 @@ $(document).ready(function () {
         }
         // <== end chapter
     });
-});
-
-$(document).ready(function () {
-    var $window = $(window);
-
-    /** EVENT HANDLER **/
-    function chapter_title_size_setting() {
-        $(".chapter_title").css("height", window.innerHeight);
-        chapter_title_size_setting();
-        $window.resize(function () {
-            chapter_title_size_setting();
-        });
-    }
 });
