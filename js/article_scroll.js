@@ -12,8 +12,10 @@ function preloader() {
     $(".pre_war_article").eq(0).css({
         "padding-top": 0
     });
+    $(".pre_war_article").eq(3).css({
+        "padding-bottom": 0
+    });
 }
-
 
 $(document).ready(function () {
     var $window = $(window);
@@ -127,7 +129,6 @@ $(document).ready(function () {
     //** ON_SCROLL EVENT **// prewar scroll event control
     $window.on('scroll', function () {
         var scroll_top = $window.scrollTop();
-
         pre_war_scroll_event(scroll_top);
     });
 
@@ -149,7 +150,6 @@ $(document).ready(function () {
             }
         }
     });
-
 });
 
 $(document).ready(function () {
@@ -160,28 +160,32 @@ $(document).ready(function () {
     /********* GDP 이밴트  *********/
     /******************************/
     /** EVENT HANDLER **/
-    $(".gdp_div_textCol").on("click", function () {
+    var $gdp_div_textCol = $(".gdp_div_textCol");
+    
+    $gdp_div_textCol.eq(0).css("opacity", 1);
+    $gdp_div_textCol.not(':eq(0)').css("opacity", 0.5);
+    $gdp_div_textCol.on("click", function () {
         var classfy = $(this).attr('class').split(/\s+/);
         switch (classfy[1]) {
             case "gdp_year_button2011":
                 scatterTransition(2011);
-                $(".gdp_div_textCol").eq(0).css("opacity", 1);
-                $(".gdp_div_textCol").not(':eq(0)').css("opacity", 0.5);
+                $gdp_div_textCol.eq(0).css("opacity", 1);
+                $gdp_div_textCol.not(':eq(0)').css("opacity", 0.5);
                 break;
             case "gdp_year_button2012":
                 scatterTransition(2012);
-                $(".gdp_div_textCol").eq(1).css("opacity", 1);
-                $(".gdp_div_textCol").not(':eq(1)').css("opacity", 0.5);
+                $gdp_div_textCol.eq(1).css("opacity", 1);
+                $gdp_div_textCol.not(':eq(1)').css("opacity", 0.5);
                 break;
             case "gdp_year_button2013":
                 scatterTransition(2013);
-                $(".gdp_div_textCol").eq(2).css("opacity", 1);
-                $(".gdp_div_textCol").not(':eq(2)').css("opacity", 0.5);
+                $gdp_div_textCol.eq(2).css("opacity", 1);
+                $gdp_div_textCol.not(':eq(2)').css("opacity", 0.5);
                 break;
             case "gdp_year_button2014":
                 scatterTransition(2014);
-                $(".gdp_div_textCol").eq(3).css("opacity", 1);
-                $(".gdp_div_textCol").not(':eq(3)').css("opacity", 0.5);
+                $gdp_div_textCol.eq(3).css("opacity", 1);
+                $gdp_div_textCol.not(':eq(3)').css("opacity", 0.5);
                 break;
         }
     });
@@ -283,56 +287,59 @@ $(document).ready(function () {
         });
     }
 
+    var refugee_map_status = frameFixed.unfixed;
+    var refugee_map_idx = 0;
     var rms_section_bottom = $("#rms_section_bottom");
-
     function scroll_event() {
         var scroll_top = $window.scrollTop();
         var timeline_bottom = parseInt(rms_section_bottom.offset().top) - parseInt($fixed_chart.height());
         var timeline_top = parseInt($refugee_map.offset().top);
+
         // ==> start Scroll
-        if (timeline_top < scroll_top && timeline_bottom > scroll_top) {
-            //console.log("fix_chart");
+        if (timeline_top < scroll_top && timeline_bottom > scroll_top && refugee_map_status === frameFixed.unfixed) {
             fix_chart();
-        } else {
+            refugee_map_status = frameFixed.fix;
+        } else if (refugee_map_status === frameFixed.fix){
             if (timeline_bottom < scroll_top) {
-                //console.log("unFix bottom");
                 unfix_chart_bottom(timeline_bottom);
-            } else {
-                //console.log("unfix_chart");
+                refugee_map_status = frameFixed.unfixed;
+            } else if (timeline_top > scroll_top) {
                 unfix_chart();
+                refugee_map_status = frameFixed.unfixed;
             }
         }
         // <== end Scroll
         // ==> start chapter
         for (var idx = chapter_offset_top.length - 1; idx >= 1; idx--) {
             if (chapter_offset_top[idx] < scroll_top) {
+                if (refugee_map_idx === idx)
+                    return;
+                // *****************
+                // 2번째 챕터 이벤트
+                // *****************
                 mapTransition((2011 + idx));
                 pieTransition(2011 + idx);
                 total_numTransition(2011 + idx);
                 lineTransition(2011 + idx);
-                // *****************
-                // 2번째 챕터 이벤트
-                // *****************
-                //console.log("event : " + idx);
-                //intro_popYear(chapter_list[idx]);
+                refugee_map_idx = idx;
                 break;
             }
         }
         if (chapter_offset_top[1] > scroll_top) {
-            mapTransition((2011 + idx));
-            pieTransition(2011 + idx);
-            total_numTransition(2011 + idx);
-            lineTransition(2011 + idx);
+            if (refugee_map_idx === 0)
+                return;
             // *****************
             // 첫번째 챕터 이벤트
             // *****************
-            //console.log("first event");
-            //intro_popYear(chapter_list[0]);
+            mapTransition((2011 + 0));
+            pieTransition(2011 + 0);
+            total_numTransition(2011 + 0);
+            lineTransition(2011 + 0);
+            refugee_map_idx = 0;
             return;
         }
         // <== end chapter
     }
-
 
     /******************************/
     /******* Window 이밴트  ********/
@@ -367,7 +374,6 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    retrun;
     var $window = $(window);
 
     /** CHAPTER TITLE SETTING **/
