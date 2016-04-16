@@ -47,7 +47,7 @@
 
 	var projection = d3.geo.conicConformal()
 					   .center(center)
-					   .scale(500)
+					   .scale(580)
 					   .translate([map_width/2,map_height/2])
 					   .center(center)
 					   .precision(.1);
@@ -91,7 +91,7 @@
 
         popData1 = data1.filter(function(d) {return d.year == start_year});
 
-		d3.json("data/world_map.geo.json", function(json){   	//시라이+중동+아프리카+유럽 포함된 지도. 
+		d3.json("data/world_map_min.geo.json", function(json){   	//시라이+중동+아프리카+유럽 포함된 지도. 
 
 		map_json = json;
 
@@ -229,8 +229,8 @@
     					.attr("class","world");
     
    legend_group.append("rect")
-   			   .attr("width",100)
-   			   .attr("height",130)
+   			   .attr("width",130)
+   			   .attr("height",180)
    			   .attr("fill","#222222");
 
     map_legend = legend_group.append("g")
@@ -240,12 +240,12 @@
 						  .enter()
 						  .append("g");
 
-	map_legend.append("rect").attr("x",15)
+	map_legend.append("rect").attr("x",20)
 							  .attr("y",function(d,i){
-							  	return map_legend_num.length*15 - i*15;
+							  	return map_legend_num.length*20 - i*20;
 							  })
-							  .attr("width",15)
-							  .attr("height",15)
+							  .attr("width",20)
+							  .attr("height",20)
 							  .attr("stroke","#cccccc")
 							  .attr("stroke-width",0.5)
 							  .attr("fill",function(d){
@@ -258,12 +258,12 @@
 				  	if(d==1){
 				  		d=0;
 				  	}
-				  	return "-" + d3.format(",")(d);
+				  	return " " + d3.format(",")(d);
 				  })
-				  .attr("x",35)
+				  .attr("x",50)
 				  .attr("y",function(d,i){
 				
-				  	return map_legend_num.length*15 - i*15 +10;
+				  	return map_legend_num.length*20 - i*20 + 10;
 				  })
 				  .attr("class","map_legend_text");
 
