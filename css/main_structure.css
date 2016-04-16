@@ -10,11 +10,16 @@ body{
 section{
 	display: block;
 }
-
+h4{
+	margin: 3px 0;
+}
 /* div */
+#topCahpter{
+	margin: 50px 0 0 0 !important;
+}
 .chapter_title{
 	width: 100% !important;
-	margin: 50px 0 0 0 !important;
+	margin: 500px 0 0 0 !important;
 	text-decoration: none;
 }
 .chapter_gap{
@@ -39,6 +44,10 @@ section{
 .chapter_introduction_div{
 	width: 800px;
 	margin: 50px auto 0 auto;
+	width:800px;
+	font-size: 15px;
+	font-weight: 300;
+	font-family: 'Roboto Slab', serif;
 }
 .chapter_main_div{
 	width: 1200px;
@@ -111,10 +120,6 @@ section{
 	color: #cc3333;
 }
 .chapter_introduction_div >p{
-	width:800px;
-	font-size: 15px;
-	font-weight: 300;
-	font-family: 'Roboto Slab', serif;
 	font-style: italic;
 	line-height: 150%;
 	text-indent: 5px;

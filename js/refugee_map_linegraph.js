@@ -224,7 +224,6 @@ function resize_linegraph(){
                        });
 
 
-
     }
 
 }
