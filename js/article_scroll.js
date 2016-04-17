@@ -1,4 +1,5 @@
-﻿//인트로
+﻿
+//인트로
 var frameStatus = { "unfixed": 0, "fixed": 1 };
 
 function preloader() {

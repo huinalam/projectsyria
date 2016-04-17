@@ -7,8 +7,8 @@ var compiler = webpack(config);
 var server = new WebpackDevServer(compiler, {
     contentBase: ".",
     hot: true,
-    filename: 'bundle.js',
-    publicPath: '/',
+    filename: '[name].js',
+    publicPath: '/static/',
     stats: {
         colors: true,
     },

@@ -1,18 +1,15 @@
 ﻿var path = require('path');
 var webpack = require('webpack');
-
+//var ExtractTextPlugin = require("extract-text-webpack-plugin");
+//var BundleTracker = require('webpack-bundle-tracker');
 
 var config = {
     entry: {
         bundle: [
-            "./frontend/entry.js",
-            'webpack/hot/dev-server',
-            'webpack-dev-server/client?http://localhost:8000/',
+            "./frontend/entry.js"
         ],
         navi: [
-            "./frontend/navi.js",
-            'webpack/hot/dev-server',
-            'webpack-dev-server/client?http://localhost:8000/',
+            "./frontend/navi.js"
         ]
     },
     output: {
@@ -31,7 +28,10 @@ var config = {
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        //new BundleTracker(),
+        new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.AggressiveMergingPlugin()
     ]
 };
 module.exports = config;
