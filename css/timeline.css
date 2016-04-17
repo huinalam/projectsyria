@@ -31,7 +31,7 @@
     float: left;
 }
 .circle_event{
-    opacity: 0.5;
+    opacity: 0.4;
 }
 .timeline_summary{
     display: table;
@@ -90,7 +90,7 @@
     float: left;
 }
 .timeline_head2{
-    width:350px;
+    width:330px;
     height:auto;
     margin: 10px 10px 0px 10px;
     position: relative;
@@ -163,11 +163,11 @@ h3.timeline_heading {
 }
 .timeline_legend{
     font-family: Helvetica;
-    font-size: 9px;
+    font-size: 10px;
     fill: #dddddd;
 }
 .timeline_axis { /* axis labels */
-    fill: #999999;
+    fill: #666666;
     font-family: sans-serif;
     font-weight: lighter;
     font-size: 10px;
@@ -175,11 +175,11 @@ h3.timeline_heading {
 
 .timeline_axis line{ /* axis tick marks */
     stroke-width : 0.5;
-    stroke: #999999;
+    stroke: #666666;
     shape-rendering: crispEdges;
 }
 #date_axis line{
-    stroke: #999999;
+    stroke: #666666;
     stroke-dasharray: 2,2;
 }
 #date_axis path{
@@ -187,7 +187,7 @@ h3.timeline_heading {
 }
 .timeline_axis path { /* axis line */
     stroke-width : 0.5;
-    stroke: #999999;
+    stroke: #666666;
     shape-rendering: crispEdges;
 }
 /* timeline band */
@@ -257,9 +257,9 @@ h3.timeline_heading {
     stroke-width: 1px;
 }
 #death{
-    fill: #C23355;
-    color: #C23355;
-    stroke: #C23355;
+    fill: #CC3333;
+    color: #CC3333;
+    stroke: #CC3333;
 }
 #shelling{
     fill: #BB2244;
@@ -310,10 +310,10 @@ h3.timeline_heading {
     font-size: 35px;
 }
 .chapter_selector{
-    fill: rgba(0,0,0,0);
-    stroke: #cc3333;
+    fill: rgba(16,16,16,0);
+    stroke: #cccccc;
     stroke-width: 0.5px;
 }
 .chapter_mask{
-    fill: rgba(255,255,255,0.3);
+    fill: rgba(2,2,2,0.35);
 }

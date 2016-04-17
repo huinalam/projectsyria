@@ -2,7 +2,7 @@
     				//** SVG,PATH 설정
     var map_width=860; //path가 그려질 svg크기
     //var map_height=680;
-    var map_height = window.innerHeight - 260;
+    var map_height = window.innerHeight - 310;
     var center = [32.8333, 44.9167];		  //지도의 중앙에 위치한 터키 좌표
 	/*var projection = d3.geo.conicConformal().center(center)   //투영법 및 스케인, path translate값 입력
 					.clipAngle(180)

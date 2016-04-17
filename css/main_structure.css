@@ -11,8 +11,77 @@ body{
 section{
 	display: block;
 }
+
+/* navigation */
+.nav_bar{
+	width: 100%;
+	height: 50px;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background-color: #222222;
+	z-index: 1;
+}
+.nav_list{
+	width: 100%;
+	height: 93%;
+	margin: 0px;
+}
+.nav_item{
+	font-family: 'Arvo', serif;
+	font-size: 15px;
+	color: #d0d0d0;
+	font-weight: 400;
+	margin: 15px 10px 5px 10px;
+}
+#main{
+	font-size: 15px;
+	color: #bb3333;
+	float: left;
+	font-weight: 700;
+}
+#main > a:hover{
+	color: #33aa88;
+	text-decoration: none;
+}
+#main > a:visited ,a:link{
+	color: #bb3333;
+	text-decoration: none;
+}
+#chapter_num{
+	font-family: 'Lato', sans-serif;
+	float: left;
+	margin: 15px 5px 5px 20px;
+}
+#current_chapter{
+	font-family: 'Lato', sans-serif;
+	float: left;
+	margin: 15px 5px 5px 5px;
+}
+#item{
+	font-family: 'Lato', sans-serif;
+	float: right;
+}
+#item > a:link{
+	color: #d0d0d0;
+	text-decoration: none;
+}
+#item > a:visited{
+	color: #d0d0d0;
+	text-decoration: none;
+}
+.progress_back{
+	width: 100%;
+	height: 7%;
+	background-color: #d0d0d0;
+}
+.progress_bar{
+	width: 0%;
+	height: 100%;
+	background-color: #cc3333;
+}
 /* div */
-#topCahpter{
+#topChapter{
 	padding-top: 0px !important;
 }
 .chapter_title{
@@ -123,7 +192,7 @@ h1.subheading{
 	margin: auto;
 }
 .chapter_introduction_div >h2{
-	margin-top: 0px;
+	margin: 30px 0 10px 0;
 	font-family: 'Lato', sans-serif;
 	font-size: 24px;
 	font-weight: 400;
@@ -131,12 +200,15 @@ h1.subheading{
 	color: #cc3333;
 }
 .chapter_introduction_div >p{
+	display: inline-block;
+	margin: 0 0 30px 0;
 	font-style: italic;
 	line-height: 150%;
 	text-indent: 5px;
 	color: #cccccc;
 }
 .chapter_article_div >h2{
+	margin: 30px 0 5px 0;
 	margin-top: 0px;
 	font-family: 'Lato', sans-serif;
 	font-size: 28px;
@@ -145,7 +217,7 @@ h1.subheading{
 	color: #cc3333;
 }
 .chapter_article_div >h3{
-	margin-top: 0px;
+	margin: 20px 0 5px 0;
 	font-family: 'Lato', sans-serif;
 	font-size: 18px;
 	font-weight: 400;
@@ -153,6 +225,7 @@ h1.subheading{
 	color: #eeeeee;
 }
 .chapter_article_div >p{
+	margin: 0 0 30px 0;
 	font-size: 15px;
 	font-weight: 300;
 	font-family: 'Roboto Slab', serif;

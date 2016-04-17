@@ -49,7 +49,7 @@
 
     var body = d3.select("body");
 
-    var legend_list1 =["shelling","air_strike","battle","chemical","direct_attack","barrel_bomb"];
+    var legend_list1 =["shelling","air_strike","direct_attack","battle","chemical","barrel_bomb"];
     var legend_list3 =["Refugee","Death"];
     
     var main_svg = d3.select("#timeline_chart").append("svg") // 월별 난민 발생수를 bar chart
@@ -89,7 +89,7 @@
 
     var legend_timeline_g = chart.append("g")
                         .attr("class","legend")
-                        .attr("transform", "translate(" + 0 + "," + (timeline_height + 15) +")");
+                        .attr("transform", "translate(" + 0 + "," + (timeline_height) +")");
 
     var legend_type = legend_timeline_g.append("g")
                                      .selectAll("g")
@@ -413,7 +413,8 @@ timeline.yAxis = function(){
 
         d3.select("#date_axis").selectAll("text")
               .attr("x",-10)
-              .style("text-anchor","end");
+              .style("text-anchor","end")
+              .style("fill","#bbbbbb");
 }
 
 function customAxis(g) {
@@ -635,7 +636,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
 
                         point_group.append("circle")
                                     .attr("id","death")
-                                    .attr("r","1")
+                                    .attr("r","2")
                                     .attr("cx",function(d){
                                         return xScale_d(d.num);
                                     })
@@ -713,7 +714,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
 
                         point_group.append("circle")
                                     .attr("id","refugee")
-                                    .attr("r","1")
+                                    .attr("r","2")
                                     .attr("cx",function(d){
                                         return xScale_r(d.num);
                                     })
