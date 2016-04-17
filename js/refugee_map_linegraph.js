@@ -2,6 +2,12 @@
 var map_svg_linegraph;
 var map_g_linegraph;
 
+var total_text;
+var total_num;
+var currentNum;
+
+var total_width = 270;
+var total_height = 170;
 //size, margin value
 var map_width_linegraph = 320;
 var map_height_linegraph = window.innerHeight - 100;
@@ -31,6 +37,15 @@ map_svg_linegraph = d3.select(".map_div_linegraph").append("svg")
 
 map_g_linegraph = map_svg_linegraph.append("g")
 								 .attr("transfrom","translate(0,0)");
+
+//total number svg declare
+var total_svg = d3.select(".map_div_total")   //total number
+                .append("svg")
+                .attr("width",total_width)
+                .attr("height",total_height);
+
+var total_g = total_svg.append("g")
+             .attr("transform","translate(0,0)");
 
 
 var timeAxis_circle;
@@ -137,6 +152,35 @@ d3.csv("data/refugees_total_year_2011_2014.csv",function(data){
                                         .attr("stroke-width",1)
                                         .attr("id",0);
 
+
+    //total Num setting
+
+     //** Total Number **//
+
+      total_text = total_g.append("g")
+                        .attr("transform","translate(10,10)")
+                        .append("text")
+                        .attr("class","chart_title");
+
+      total_text.append("tspan")
+                .attr("dy","1.1em")
+                .attr("x",0)
+                .text("Total Number of");
+
+      total_text.append("tspan")
+                .attr("dy","1.1em")
+                .attr("x",0)
+                .text("Syrian Refugees");
+
+      total_num = total_g.append("g")
+                         .attr("transform","translate(" + (total_width - 30) + ","+ total_height/2 +")")
+                         .attr("class","total_num")
+                         .append("text")
+                         .attr("text-anchor","end")
+                         .attr("x",0)
+                         .attr("y",30)
+                         .text(formatCom(line_data_Con[0].value));
+
 });
 
 function lineTransition(year){
@@ -160,6 +204,22 @@ function lineTransition(year){
                                .attr("id",index);
 
 
+}
+
+function total_numTransition(year){
+    var index = year - 2011
+    total_num.transition()
+             .duration(300)
+             .tween("text",function(){
+                 currentNum = this.textContent;
+                 currentNum = currentNum.replace(/,/g,"");
+                 currentNum = +currentNum;
+                 var j = d3.interpolateRound(currentNum, line_data_Con[index].value);
+
+                return function(t){
+                    d3.select(this).text(formatCom(j(t)));
+                }
+             });
 }
 
 function resize_linegraph(){

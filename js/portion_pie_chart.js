@@ -1,12 +1,8 @@
 var title_text;
-var total_text;
 var pie_arc;
 var pie_text;
-var total_text;
-var total_num;
-var currentNum;
+
 var example ="example";
-var total_num_list = [];
 
 var portion_height = 170;
 var portion_width = 280;
@@ -14,9 +10,6 @@ var pie_width = 160;
 var pie_height = 160;
 var outerRadius = pie_width/2;
 var innerRadius = 40;
-
-var total_width = 270;
-var total_height = 170;
 
 var formatCom = d3.format(",");
 
@@ -36,13 +29,7 @@ var pie_svg = d3.select(".map_div_portion")		//대륙간 비교 파이차
                 .attr("width",portion_width)
                 .attr("height",portion_height);
 
-var total_svg = d3.select(".map_div_total")   //대륙간 비교 파이차
-                .append("svg")
-                .attr("width",total_width)
-                .attr("height",total_height);
 
-var total_g = total_svg.append("g")
-             .attr("transform","translate(0,0)");
 
 d3.csv("data/refugees_sum_year_2011_2014.csv", function(error, data){
 
@@ -56,9 +43,7 @@ d3.csv("data/refugees_sum_year_2011_2014.csv", function(error, data){
       popData2 = data2.filter(function(d) {return d.year == start_year});
       
       sum = popData2[0].value + popData2[1].value;//각 연도 대륙별 합계
-      for(var i=0; i<4; i++){
-        total_num_list[i] = data2[i].value + data2[i+4].value;//두개 대륙 합계
-      }
+
 
 
 
@@ -153,50 +138,7 @@ d3.csv("data/refugees_sum_year_2011_2014.csv", function(error, data){
       		 .attr("class","legend_text");
 
 
-
-      //** Total Number **//
-
-      total_text = total_g.append("g")
-                        .attr("transform","translate(10,10)")
-                        .append("text")
-                        .attr("class","chart_title");
-
-      total_text.append("tspan")
-                .attr("dy","1.1em")
-                .attr("x",0)
-                .text("Total Number of");
-
-      total_text.append("tspan")
-                .attr("dy","1.1em")
-                .attr("x",0)
-                .text("Syrian Refugees");
-
-      total_num = total_g.append("g")
-                         .attr("transform","translate(" + (total_width - 30) + ","+ total_height/2 +")")
-                         .attr("class","total_num")
-                         .append("text")
-                         .attr("text-anchor","end")
-                         .attr("x",0)
-                         .attr("y",30)
-                         .text(formatCom(total_num_list[0]));
-
  });
-
-function total_numTransition(year){
-    var index = year - 2011
-    total_num.transition()
-             .duration(300)
-             .tween("text",function(){
-                 currentNum = this.textContent;
-                 currentNum = currentNum.replace(/,/g,"");
-                 currentNum = +currentNum;
-                 var j = d3.interpolateRound(currentNum, total_num_list[index]);
-
-                return function(t){
-                    d3.select(this).text(formatCom(j(t)));
-                }
-             });
-}
 
 
 function pieTransition(year){
