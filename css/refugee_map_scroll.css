@@ -92,18 +92,18 @@
  }
  .pie_text{
  	font-family: "Courier New";
- 	fill: #eeeeee;
- 	font-size: 15px;
+ 	fill: #222222;
+ 	font-size: 17px;
  	z-index: 0;
  }
 .dev{
- 	color: #33aa88;
-	fill: #33aa88;
+ 	color: #b8e2d3;
+ 	fill: #b8e2d3;
  	font-size: 9px;
  }
 .me{
- 	color: #cc3333;
-	fill: #cc3333;
+	color: #33aa88;
+	fill: #33aa88;
  	font-size: 9px;
  }
  .legend_text{
@@ -114,7 +114,7 @@
 .map_legend_text{
 	letter-spacing: -0.5px;
 	font-family: "Courier New";
-	fill: #cccccc;
+	fill: #222222;
 	font-size: 12px;
 }
 
@@ -147,4 +147,7 @@
     stroke-width : 0.5;
     stroke: #dddddd;
     shape-rendering: crispEdges;
+}
+.map_area{
+	fill:#cc3333;
 }

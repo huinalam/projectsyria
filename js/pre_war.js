@@ -18,18 +18,18 @@ var intro_dataCon;
 var intro_popData;
 var x_scale_intrograph;
 var y_scale_intrograph;
-var x_area;
-var y_area;
+var x_area_intrograph;
+var y_area_introgrpah;
 
 var intro_marking_g;
 var marking_events = [{year:"1971", title:"Hafez al-Assad became the President of Syria"},{year: "1982", title:"Hamma massacre: 10,000-40,000 casulties "},{ year: "2000", title:"Hafez's death and al-Assad Regime began"}];
 
 //year list to put in X scale
-var preline_graph_year = ["1968-12-31","1980-12-31","1992-12-31","2011-12-31"]; 
+var preline_graph_year = [parseDate("1968-12-31"),parseDate("1980-12-31"),parseDate("1992-12-31"),parseDate("2000-12-31"),parseDate("2011-12-31")]; 
 var chapter_list = [{start: "1967-01-31", end: "1967-12-31"},
                     {start: "1968-12-31", end: "1982-12-31"},
                     {start: "1982-12-31", end: "2000-12-31"},
-                    {start: "2000-01-01", end: "2011-12-31"},
+                    {start: "2000-01-01", end: "2001-12-31"},
                     {start: "2001-12-31", end: "2011-12-31"}];
 
 //svg group declare
@@ -88,18 +88,18 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
     var maxValue = d3.max(intro_dataCon,function(d){ return d.value});
 
     x_scale_intrograph = d3.time.scale()
-    						  .domain([parseDate(preline_graph_year[0]),parseDate(preline_graph_year[3])])
+    						  .domain([preline_graph_year[0],preline_graph_year[4]])
     						  .range([intro_intrograph_margin.left,intro_width_intrograph - intro_intrograph_margin.right]);
 
     y_scale_intrograph = d3.scale.linear()
     							 .domain([maxValue,0])
     							 .range([intro_intrograph_margin.bottom, intro_height_intrograph - intro_intrograph_margin.top]);
 
-    x_area = d3.time.scale()
-                          .domain([parseDate(preline_graph_year[0]),parseDate(preline_graph_year[3])])
+    x_area_intrograph = d3.time.scale()
+                          .domain([preline_graph_year[0],preline_graph_year[4]])
                           .range([intro_intrograph_margin.left,intro_width_intrograph - intro_intrograph_margin.right]);
 
-    y_area = d3.scale.linear()
+    y_area_introgrpah = d3.scale.linear()
                          .domain([maxValue,0])
                          .range([intro_intrograph_margin.bottom, intro_height_intrograph - intro_intrograph_margin.top]);
 
@@ -109,9 +109,9 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
                                 .interpolate("monotone");
 
    refugee_sum_area = d3.svg.area()
-                                .x(function(d) { return x_area(d.year);})
+                                .x(function(d) { return x_area_intrograph(d.year);})
                                 .y0(y_scale_intrograph(0))
-                                .y1(function(d){ return y_area(d.value);})
+                                .y1(function(d){ return y_area_introgrpah(d.value);})
                                 .interpolate("monotone");
 
     pre_refugee_sum_line_path = intro_g_intrograph.append("g")
@@ -121,9 +121,9 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
                                      .attr("d",pre_refugee_sum_line)
                                      .attr("class","intro_graph");
 
-    refugee_sum_area_path = intro_g_intrograph
+    var refugee_sum_area_path = intro_g_intrograph
                                      .append("g")
-                                     .attr("class","area_graph")
+                                     .attr("class","area_intrograph")
                                      .attr("transform","translate(0,0)")
                                      .append("path")
                                      .datum(intro_dataCon)
@@ -137,7 +137,7 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
         .orient("bottom")
         .tickSize(5,0)
         .ticks(12)
-        .tickValues([parseDate(preline_graph_year[0]),parseDate(preline_graph_year[1]),parseDate(preline_graph_year[2]),parseDate(preline_graph_year[3])])
+        .tickValues(preline_graph_year)
         .tickFormat(function(d){ return toYear(d);});2
 
     var xAxis_g = intro_g_intrograph.append("g")
@@ -165,27 +165,28 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
     markingEvent(marking_events);
                               
     //**moving elelment setting **//
-    pre_timeAxis_circle = intro_g_intrograph.append("circle")
-                                         .attr("cx",x_scale_intrograph(parseDate(preline_graph_year[0])))
+    /*pre_timeAxis_circle = intro_g_intrograph.append("circle")
+                                         .attr("cx",x_scale_intrograph(preline_graph_year[0]))
                                          .attr("cy",y_scale_intrograph(0))
                                          .attr("r",2)
                                          .attr("fill","#BB2233");
 
     intrograph_circle = intro_g_intrograph.append("circle")
-                                          .attr("cx",x_scale_intrograph(parseDate(preline_graph_year[0])))
+                                          .attr("cx",x_scale_intrograph(preline_graph_year[0]))
                                           .attr("cy",y_scale_intrograph(intro_dataCon[0].value))
                                           .attr("r",2)
                                           .attr("fill","#BB2233");
 
     intrograph_line = intro_g_intrograph.append("line")
-                                        .attr("x1",x_scale_intrograph(parseDate(preline_graph_year[0])))
-                                        .attr("x2",x_scale_intrograph(parseDate(preline_graph_year[0])))
+                                        .attr("x1",x_scale_intrograph(preline_graph_year[0]))
+                                        .attr("x2",x_scale_intrograph(preline_graph_year[0]))
                                         .attr("y1",y_scale_intrograph(0))
                                         .attr("y2",y_scale_intrograph(intro_dataCon[0].value))
                                         .attr("stroke","#BB2233")
-                                        .attr("stroke-width",1);
+                                        .attr("stroke-width",1);*/
 
     intro_popYear(chapter_list[0]);
+
 
 });
 
@@ -282,12 +283,12 @@ function intro_popYear(chapter_list){
     var popData = intro_dataCon.filter(function(d){ return (parseDate(chapter_list.start) <= d.year)&&(d.year <= parseDate(chapter_list.end));})
     intro_popData = popData;
 
-    d3.select(".area_graph").selectAll("path")
+    d3.select(".area_intrograph").selectAll("path")
                             .datum(intro_popData)
                             .attr("d",refugee_sum_area)
                             .transition()
-                            .duration(2000);
-
+                            .duration(0);
+                            
 }
 
 function wrap(text, width) {

@@ -10,7 +10,7 @@ var total_width = 270;
 var total_height = 170;
 //size, margin value
 var map_width_linegraph = 320;
-var map_height_linegraph = window.innerHeight - 100;
+var map_height_linegraph = window.innerHeight - 170;
 
 var linegraph_margin = {
                 top:20,
@@ -24,6 +24,8 @@ var linegraph_margin = {
 var line_data_Con;
 var x_scale_linegraph;
 var y_scale_linegraph;
+var x_area_linegraph;
+var y_area_linegraph;
 
 //year list to put in X scale
 var line_graph_year = ["2011-12-31","2012-12-31","2013-12-31","2014-12-31"]; 
@@ -53,6 +55,7 @@ var linegraph_circle;
 var linegraph_line;
 var refugee_sum_line 
 var refugee_sum_path;
+var refugee_total_area;
 
 
 var linegraph_yAxis;
@@ -81,6 +84,29 @@ d3.csv("data/refugees_total_year_2011_2014.csv",function(data){
     							 .domain([maxValue,0])
     							 .range([linegraph_margin.top, map_height_linegraph - linegraph_margin.bottom]);
 
+    x_area_linegraph = d3.time.scale()
+                          .domain([parseDate(line_graph_year[0]),parseDate(line_graph_year[3])])
+                          .range([linegraph_margin.left,map_width_linegraph - linegraph_margin.right]);
+
+    y_area_linegraph = d3.scale.linear()
+                         .domain([maxValue,0])
+                         .range([linegraph_margin.top, map_height_linegraph - linegraph_margin.bottom]);
+
+    refugee_total_area = d3.svg.area()
+                                .x(function(d) { return x_area_linegraph(d.date);})
+                                .y0(y_scale_linegraph(0))
+                                .y1(function(d){ return y_area_linegraph(d.value);})
+                                .interpolate("cardinal");
+
+    var refugee_total_area_path = map_g_linegraph
+                                     .append("g")
+                                     .attr("class","area_linegraph")
+                                     .attr("transform","translate(0,0)")
+                                     .append("path")
+                                     .datum(line_data_Con)
+                                     .attr("d",refugee_total_area)
+                                     .attr("class","map_area");
+
     refugee_sum_line = d3.svg.line(line_data_Con)
                                 .x(function(d){return x_scale_linegraph(d.date)})
                                 .y(function(d){return y_scale_linegraph(d.value)})
@@ -92,6 +118,7 @@ d3.csv("data/refugees_total_year_2011_2014.csv",function(data){
                                      .datum(line_data_Con)
                                      .attr("d",refugee_sum_line)
                                      .attr("class","line_graph");
+
 
     //** AXIS decalre and Setting **//
 
@@ -152,6 +179,7 @@ d3.csv("data/refugees_total_year_2011_2014.csv",function(data){
                                         .attr("stroke-width",1)
                                         .attr("id",0);
 
+    mapline_popYear(2011);
 
     //total Num setting
 
@@ -220,6 +248,19 @@ function total_numTransition(year){
                     d3.select(this).text(formatCom(j(t)));
                 }
              });
+}
+
+function mapline_popYear(year){
+    var index = year - 2011;
+    var popData = line_data_Con.filter(function(d){ return (parseDate(line_graph_year[0]) <= d.year)&&(d.year <= parseDate(line_graph_year[index]));});
+    intro_popData = popData;
+
+    d3.select(".area_linegraph").selectAll("path")
+                            .datum(intro_popData)
+                            .attr("d",refugee_total_area)
+                            .transition()
+                            .duration(0);
+                            
 }
 
 function resize_linegraph(){

@@ -2,7 +2,7 @@
     				//** SVG,PATH 설정
     var map_width=860; //path가 그려질 svg크기
     //var map_height=680;
-    var map_height = window.innerHeight - 310;
+    var map_height = window.innerHeight - 360;
     var center = [32.8333, 44.9167];		  //지도의 중앙에 위치한 터키 좌표
 	/*var projection = d3.geo.conicConformal().center(center)   //투영법 및 스케인, path translate값 입력
 					.clipAngle(180)
@@ -225,13 +225,13 @@
 
 
     var legend_group = svg_map.append("g")		//맵 path를 묶을 그룹 추가
-    					.attr("transform","translate(0,0)")
+    					.attr("transform","translate(0," + (map_height - 180) + ")")
     					.attr("class","world");
     
-   legend_group.append("rect")
+   /*legend_group.append("rect")
    			   .attr("width",130)
    			   .attr("height",180)
-   			   .attr("fill","#222222");
+   			   .attr("fill","#111111");*/
 
     map_legend = legend_group.append("g")
 						  .attr("transform","translate(0,0)")
@@ -272,7 +272,7 @@
 
 function resize_refugeeMap(){
 	var map_width=860; //path가 그려질 svg크기
-    var map_height = innerHeight - 260;
+    var map_height = innerHeight - 360;
 
 	if(700<window.innerHeight){
 

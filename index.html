@@ -35,7 +35,7 @@
             <div class="nav_item" id='item' style="margin-right: 5%"><a href="credit.html">Credits</a></div>
             <div class="nav_item" id='item' ><a href="methodology.html">Methodology</a></div>
             <div class="nav_item" id='item' >
-                <a href="https://drive.google.com/drive/u/0/folders/0BxMAbNnEwB5zRkdQdGt0eFdzNjQ" target="blank">
+                <a href="https://drive.google.com/drive/u/0/folders/0BxMAbNnEwB5zRkdQdGt0eFdzNjQ" target="_blank">
                     Data Sets
                 </a>
             </div>
@@ -143,7 +143,7 @@
                 </div>
                 <div class="pre_war_article intro_div_article div_s30" id="intro_article_p3">
                     <h2>
-                        1982:<br>
+                        1982<br>
                         Reign of Terror<br>Since Hamma massacre<br>
                     </h2>
                     <p>Islamist uprising by itself aimed at overturning the regime especially in northern regions, while its climax was Hama massacre in 1982, killing more than 25,000 people by Syrian Army troops(Syrian Human Rights Committee). It is said the city was bulldozed and destroyed by regime&#39;s forces. In the meantime, the central government gained its full momentum to transform its political structure into an absolutistic way, eliminating discussion on measures against anti-government forces and also election process based on voting systems.</p>
@@ -151,10 +151,19 @@
                 </div>
                 <div class="pre_war_article intro_div_article div_s30" id="intro_article_p4">
                     <h2>
-                        2000~2011<br>Bashar al-Assad Regime &amp; Damascus Spring
+                        2000~2001<br>Bashar al-Assad Regime &amp; Damascus Spring
                     </h2>
                     <p>His son, Bashar al-Assad gripped on the next inauguration right after his father&#39;s death in 2000, lowering the age for the to-be president.</p>
                     <p>The Damascus Spring began within intellectuals&#39; in private salons with various subjects. In 2001, Bashar released political criminals including Muslim Brotherhood followers, seemingly showing its intention to accept social demand for a political innovation. However, repressive actions were severely applied by imprisonment and closure of places for discussion a year later.</p>
+                </div>
+                <div class="pre_war_article intro_div_article div_s30" id="intro_article_p4">
+                    <h2>
+                        2001~2011<br>Intensive Opression &amp; After Damascus Spring
+                    </h2>
+                    <p>After August 2001, Syrian camps were restarted to be filled with political prisoners and rights activists, while Syrian government established series of action to control media and publication. Those who were prisoned were rights activists, parliament representatives, members of civil movements, journalists and also the public who had joined demonstration – confirmed list is written on the section of VI. Annex at this <a href="https://www.hrw.org/report/2010/07/16/wasted-decade/human-rights-syria-during-bashar-al-asads-first-ten-years-power" target="_blank">link.</a></p>
+
+                    <p>It is highly doubtful that Assad regime has been expanding its rights oppression into the inside of prisoners’ camp where external observation seems to be almost impossible. Human Rights Watch acquires the list that says who are believed to be shot dead in Sednaya prison. It is said 25 people were killed, one of whom was a military police. Upon this information, no confirmation or statement has been officially announced by the regime.</p>
+                    <p>Since the antipathy to such suppression became deteriorated, nationwide demonstration called “Day of Rage” sparked. With regime forces taking more violent actions against citizens, 4 unarmed demonstrators were killed in March 18th in Daraa, resulting in crucial tinderbox of civil war.</p>
                 </div>
             </div>
         </div>
@@ -181,7 +190,7 @@
     </secttion>
     <section>
         <div class="chapter_main_div" id="refugee_map">
-            <div class="chapter_chart_div_s86" id="fixed_chart" style="padding-top:50px">
+            <div class="chapter_chart_div_s86" id="fixed_chart" style="padding-top:70px">
                 <div class="map_div_map"></div>
                 <div class="map_div_number">
                     <div class="map_div_total"></div>
@@ -216,7 +225,7 @@
                     <p>The result of analyzing the distribution of Syrian refugees in two continents shows two aspects of imbalance. First of all, more than 60% of refugees have been staying in Germany and Sweden whereas Gulf states have showed its extreme reluctance for welcoming migrants. In 2014, it is said that only 18 Syrian refugees were accepted to stay in Saudi Arabia with its highest GDP figure in Gulf region.</p>
                 </div>
             </div>
-            <div class="chapter_article_div map_div_linegraph div_s30" id="fixed_graph" style="z-index: -1; position: absolute">
+            <div class="chapter_article_div map_div_linegraph div_s30" id="fixed_graph" style="z-index: -1; position: absolute; padding-top:70px">
             </div>
         </div>
     </section>
@@ -671,7 +680,6 @@
 
             for(var i=0; i<6; i++){
                 chapter_title_top[i] = parseInt($(".chapter_title").eq(i).offset().top) + parseInt($(".chapter_title").eq(i).css("padding-top"));
-                console.log(chapter_title_top[i]);
              }
 
              $window.on("scroll",function(){
@@ -711,8 +719,6 @@
                 var end_scroll = parseInt($("#end_div").offset().top);
                 var bar_percent = (parseInt($window.scrollTop())/end_scroll)*100;
 
-                console.log(end_scroll);
-                console.log(bar_percent);
                 $('.progress_bar').css("width", bar_percent + "%");
              }
 
