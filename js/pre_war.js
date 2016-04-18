@@ -4,12 +4,13 @@ var intro_g_intrograph;
 
 //size, margin value
 var intro_width_intrograph = 860;
-var intro_height_intrograph = 700;
+//var intro_height_intrograph = 700;
+var intro_height_intrograph = window.innerHeight - 160;
 var intro_intrograph_margin = {
-                top:20,
+                top:40,
                 left:80,
                 right:80,
-                bottom:40
+                bottom:80
             };
 //var graph_top_margin = 10;
 
@@ -48,7 +49,7 @@ intro_marking_g = intro_svg_intrograph.append("g")
                  .attr("transform","translate(0,0)");
 
 var introgaph_title_g = intro_svg_intrograph.append("g")
-                                            .attr("transform","translate(200,100)");
+                                            .attr("transform","translate(50,50)");
 
     introgaph_title = introgaph_title_g.append("text")
                                        .attr("class","chart_title")
@@ -293,6 +294,13 @@ function intro_popYear(chapter_list){
                             .duration(0);
                             
 }
+
+function intro_resize(){
+    intro_height_intrograph = window.innerHeight - 200; 
+
+}
+
+
 
 function wrap(text, width) {
   text.each(function() {
