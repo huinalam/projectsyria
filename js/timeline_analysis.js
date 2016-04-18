@@ -510,6 +510,23 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             })
                             .attr("id","shelling");
 
+        var direct_attack_g = frequency.append("g")
+                            .attr("class","direct_attack_g")
+                            .attr("transform","translate(" + xScale_events("direct_attack") + ",0)")
+                            .selectAll("circle")
+                            .data(event_data)
+                            .enter()
+                            .append("circle")
+                            .attr("class","circle_event")
+                            .attr("cx",0)
+                            .attr("cy",function(d,i){
+                                return timeline_yScale(d.date);
+                            })
+                            .attr("r",function(d){
+                                return rScale_event(d.direct_attack);
+                            })
+                            .attr("id","direct_attack");
+
         var air_strike_g = frequency.append("g")
                             .attr("class","air_strike_g")
                             .attr("transform","translate(" + xScale_events("air_strike") + ",0)")
@@ -560,23 +577,6 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                                 return rScale_event(d.chemical);
                             })
                             .attr("id","chemical");
-
-        var direct_attack_g = frequency.append("g")
-                            .attr("class","direct_attack_g")
-                            .attr("transform","translate(" + xScale_events("direct_attack") + ",0)")
-                            .selectAll("circle")
-                            .data(event_data)
-                            .enter()
-                            .append("circle")
-                            .attr("class","circle_event")
-                            .attr("cx",0)
-                            .attr("cy",function(d,i){
-                                return timeline_yScale(d.date);
-                            })
-                            .attr("r",function(d){
-                                return rScale_event(d.direct_attack);
-                            })
-                            .attr("id","direct_attack");
 
         var barrel_bomb_g = frequency.append("g")
                             .attr("class","barrel_bomb_g")

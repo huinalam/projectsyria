@@ -10,7 +10,7 @@ var intro_intrograph_margin = {
                 top:40,
                 left:80,
                 right:80,
-                bottom:80
+                bottom:40
             };
 //var graph_top_margin = 10;
 
@@ -147,7 +147,7 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
     var xAxis_g = intro_g_intrograph.append("g")
         .attr("class", "intrograph_axis")
         .attr("id", "intrograph_date_axis")
-        .attr("transform", "translate(0,"+(intro_height_intrograph - (intro_intrograph_margin.bottom-20))+")")
+        .attr("transform", "translate(0,"+(intro_height_intrograph - (intro_intrograph_margin.bottom - 10))+")")
         .call(xAxis);
 
 
