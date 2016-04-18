@@ -47,10 +47,13 @@ intro_g_intrograph = intro_svg_intrograph.append("g")
 intro_marking_g = intro_svg_intrograph.append("g")
                  .attr("transform","translate(0,0)");
 
-var introgaph_title = intro_svg_intrograph.append("text")
-         .attr("class","chart_title")
-         .attr("x",intro_intrograph_margin.left + 100)
-         .attr("y",intro_intrograph_margin.top + 150);
+var introgaph_title_g = intro_svg_intrograph.append("g")
+                                            .attr("transform","translate(200,100)");
+
+    introgaph_title = introgaph_title_g.append("text")
+                                       .attr("class","chart_title")
+                                       .attr("x",0)
+                                       .attr("y",0);
 
     introgaph_title.append("tspan")
           .attr("dy","1.1em")
