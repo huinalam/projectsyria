@@ -4,10 +4,10 @@ var svg_height = 560;
 var scatter_width = 600;
 var scatter_height = 500;*/
 var svg_width = 860;
-var svg_height = window.innerHeight - 350;
+var svg_height = window.innerHeight - 450;
 
 var scatter_width = 600;
-var scatter_height = window.innerHeight - 390;
+var scatter_height = svg_height - 50;
 //var scatter_margin = 50;
 //var scatter_top = 30;
 var scatter_margin = {left:100, right:50, bottom:100, top:30}
@@ -243,11 +243,22 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east.csv",function(data){
 				  .attr("class","gdp_text")
 				  .attr("x",0)
 				  .attr("y",function(d,i){
-				  	return i*20;
+				  	return i*17;
 				  })
 				  .text(function(d){
-				  	return (d.Country_Code + ": " + d3.format(".4r")(d.GDP_capita));
+				  	return (d.Country_Code)+":";
 				  });
+
+	gdpCapita_text.append("text")
+				  .attr("class","gdp_text")
+				  .attr("x",100)
+				  .attr("y",function(d,i){
+				  	return i*17;
+				  })
+				  .text(function(d){
+				  	return (d3.format(",.0f")(d.GDP_capita) + "$");
+				  })
+				  .attr("text-anchor","end");
 
 	/*gdpCircle_g.append("text")
 				  .attr("x",function(d,i){
@@ -292,10 +303,10 @@ function scatter_resize(){
 	if(700<window.innerHeight){
 
 		var svg_width = 860;
-		var svg_height = window.innerHeight - 350;
+		var svg_height = window.innerHeight - 450;
 
 		var scatter_width = 600;
-		var scatter_height = window.innerHeight - 390;
+		var scatter_height = svg_height - 50;
 
 		//**SVG resize **//
 		scatter_svg.transition()
