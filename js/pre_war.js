@@ -296,7 +296,8 @@ function intro_popYear(chapter_list){
 }
 
 function intro_resize(){
-    intro_height_intrograph = window.innerHeight - 200; 
+    intro_height_intrograph = window.innerHeight - 200;
+     
 
 }
 
