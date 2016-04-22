@@ -1,4 +1,4 @@
-﻿    var timeline_margin = {top: 20, right: 10, bottom: 40, left: 10},   //Column div1,2의 width와 그 안에 들어갈 svg width
+﻿    var timeline_margin = {top: 20, right: 10, bottom: 60, left: 10},   //Column div1,2의 width와 그 안에 들어갈 svg width
         outerWidth = 750;                                  
         outerHeight = window.innerHeight - 160;
         //height = 650; //svg안에 차트가 그려질 영역의 높이와 timeline_yScale의 range
@@ -50,6 +50,7 @@
     var body = d3.select("body");
 
     var legend_list1 =["shelling","air_strike","direct_attack","battle","chemical","barrel_bomb"];
+    var legend_text =["Shelling","Air Strike","Direct Attack","Battle","Chemical","Barrel Bomb"];
     var legend_list3 =["Refugee","Death"];
     
     var main_svg = d3.select("#timeline_chart").append("svg") // 월별 난민 발생수를 bar chart
@@ -112,15 +113,22 @@
     var legend_type_text = legend_type
                                     .append("text")
                                     .attr("x",0)
-                                    .attr("y",15)
-                                    .attr("class","timeline_legend")
+                                    .attr("y",5)
+                                    .attr("class","timeline_legend timeline_event")
                                     .attr("id",function(d){
                                         return d;
                                     })
-                                    .text(function(d){
-                                        return d;
+                                    .text(function(d,i){
+                                        return legend_text[i];
                                     })
-                                    .attr("text-anchor","middle");
+                                    .attr("text-anchor","middle")
+                                    .attr("dy","1px");
+
+         console.log(
+           d3.selectAll(".timeline_event").attr("dy")
+           );
+
+    legend_type.selectAll(".timeline_event").call(wrap,52);
 
     var legend_linegraph_g = chart.append("g")
                                 .attr("class","legend")

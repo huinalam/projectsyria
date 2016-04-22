@@ -127,6 +127,10 @@ d3.csv("data/long_df.csv",function(data){
 		   	return d;
 		   });
 
+		   console.log(
+		   xAxis_g.selectAll(".correlation_button_event").attr("dy")
+		   );
+
 	xAxis_g.selectAll(".correlation_button_event")
 			.call(wrap,60);
 

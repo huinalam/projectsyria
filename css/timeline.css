@@ -163,7 +163,7 @@ h3.timeline_heading {
 }
 .timeline_legend{
     font-family: Helvetica;
-    font-size: 10px;
+    font-size: 12px;
     fill: #dddddd;
 }
 .timeline_axis { /* axis labels */
