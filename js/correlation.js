@@ -69,7 +69,7 @@ var correlation_main_g = svg_g.append("g")
 var xAxis;
 var yAxis;
 
-var event_list = ["CHEMICAL","AIR STRIKE","BARREL BOMB","MASSACRE","SHELLING","BATTLE"];
+var event_list = ["CHEMICAL","AIR STRIKE","BARREL BOMB","DIRECT ATTACK","SHELLING","BATTLE"];
 var group_list = ["IS","IC","RS","YPG","HZB","ASS"];
 
 for(var i=0; i<6; i++){
@@ -126,6 +126,9 @@ d3.csv("data/long_df.csv",function(data){
 		   .attr("id",function(d){
 		   	return d;
 		   });
+
+	xAxis_g.selectAll(".correlation_button_event")
+			.call(wrap,60);
 
 
 	yAxis_g.selectAll("text")
