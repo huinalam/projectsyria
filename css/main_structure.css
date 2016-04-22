@@ -257,7 +257,10 @@ h1.subheading{
 }
 .axis_text{
 	font-size: 13px;
-	fill: #dddddd;
+	font-family: 'Lato', sans-serif;
+	letter-spacing: 0.3px;
+	word-spacing: 1px;
+	fill: #d0d0d0;
 }
 .chart_caption{
 	font-family: 'Roboto Condensed', sans-serif;
