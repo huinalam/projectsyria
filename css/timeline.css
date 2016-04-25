@@ -248,11 +248,11 @@ h3.timeline_heading {
     color:#338866;
     stroke:#338866;
 }
-.line_d {
+#line_d {
     stroke: #C23355;
     stroke-width: 1px;
 }
-.line_r {
+#line_r {
     stroke: #338866;
     stroke-width: 1px;
 }
