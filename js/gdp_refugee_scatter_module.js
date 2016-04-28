@@ -141,7 +141,7 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east_short.csv",function(data){
 
 	yScale_capita = d3.scale.linear()
 					  .domain([0,maxGDP_capita])
-					  .range([700-scatter_margin.bottom,scatter_margin.top]);
+					  .range([scatter_height-scatter_margin.bottom,scatter_margin.top]);
 
 	//** scatter **//
 

@@ -4,7 +4,7 @@ var svg_height = 560;
 var scatter_width = 600;
 var scatter_height = 500;*/
 var svg_width = 860;
-var svg_height = window.innerHeight - 450;
+var svg_height = window.innerHeight - 350;
 
 var scatter_width = 600;
 var scatter_height = svg_height - 50;
@@ -33,25 +33,44 @@ var	scatter_title = scatter_g.append("text")
 				 .attr("class","chart_title")
 				 .attr("x",scatter_margin.left - 10)
 				 .attr("y",-50)
-				 .text("Number of Refugees & Economic Indicator");
-
-
-var capita_graph_g = scatter_svg.append("g")
-								.attr("transform","translate("+ (scatter_width + 50) +"," + scatter_margin.top  + ")");
-
-
-
-var	circle_graph_title = capita_graph_g.append("text")
-						 .attr("class","chart_title")
-						 .attr("x",0)
-						 .attr("y",0)
-						 .text("GDP Per Capita");
+				 .text("Refugees & GDP of Resisdent Country");
 
 
 //** circle graph//
 
+var capita_graph_g = scatter_svg.append("g")
+								.attr("transform","translate("+ (scatter_width + 50) +"," + (scatter_margin.top-10)  + ")");
+
+var capita_graph_exp = capita_graph_g.append("text")
+			  						 .attr("class","axis_text")
+			  						 .attr("transform","translate(0," + (scatter_height - scatter_margin.bottom + 80) + ")");
+
+	capita_graph_exp.append("tspan")
+					.attr("dy","1.1em")
+					.attr("x",0)
+					.text("Comparison between");
+
+	capita_graph_exp.append("tspan")
+					.attr("dy","1.1em")
+					.attr("x",0)
+					.text("Number of Reguees &");
+
+	capita_graph_exp.append("tspan")
+					.attr("dy","1.1em")
+					.attr("x",0)
+					.text("Relative Economic Statue");
+
+var circle_graph_chart_g = capita_graph_g.append("g")
+										 .attr("transform","translate(0,20)");
+
+
+
+
+
+
 
 var yScale_gdp;
+var yScale_capita
 var yScale_gdp_pop;
 var yScale_refugee;
 var cScale_value1;
@@ -65,7 +84,9 @@ var yScale_scatter;
 var gdp_yAxis;
 
 var gdp_dataCon;
-var popData;
+var capita_dataCon;
+var popData_gdp;
+var popData_capita;
 var year = 2011;
 
 var c1 = "#55BFAA";
@@ -87,7 +108,7 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east_short.csv",function(data){
 		country_code[i] = item.Country_Code;
 	});
 
-	popData = data.filter(function(d) {return d.year == year});
+	popData_gdp = data.filter(function(d) {return d.year == year});
 
 	var maxGDP = d3.max(gdp_dataCon,function(d){ return d.GDP;});
 	var maxGDP_pop = d3.max(gdp_dataCon,function(d){ return d.GDP_capita;});
@@ -149,7 +170,7 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east_short.csv",function(data){
 	//** scatter **//
 
 	scatter_circle_g = scatter_chart_g.selectAll("g")
-									.data(popData)
+									.data(popData_gdp)
 									.enter()
 									.append("g"); 
 
@@ -228,6 +249,112 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east_short.csv",function(data){
 
 
 });
+
+d3.csv("data/refugee_gdp_2011_2014_middle_east_circle_graph.csv",function(data){
+
+	capita_dataCon = data;
+
+	capita_dataCon.forEach(function(item,i){
+		item.year = +item.year;
+		item.GDP = +item.GDP;
+		item.GDP_capita = +item.GDP_capita;
+		item.refugee = +item.refugee;
+		item.value1 = +item.value1;
+		item.value2 = +item.value2;
+		country_code[i] = item.Country_Code;
+	});
+
+	var maxCapita = d3.max(capita_dataCon,function(d){ return d.GDP_capita;});
+	var minCapita = d3.min(capita_dataCon,function(d){ return d.GDP_capita;});
+	var maxRefugee = d3.max(capita_dataCon,function(d){ return d.refugee;});
+	var maxValue2 = d3.max(capita_dataCon,function(d){ return d.value2;});
+
+	popData_capita = capita_dataCon.filter(function(d) {return d.year == year});
+
+	
+	yScale_capita = d3.scale.linear()
+					  .domain([minCapita,maxCapita])
+					  .range([svg_height-scatter_margin.bottom,scatter_margin.top]);
+
+	rScale_value2 = d3.scale.sqrt()
+					  .domain([0,maxValue2])
+					  .range([2,40]);
+
+	cScale_value2 = d3.scale.linear()
+					  .domain([0,maxValue2])
+					  .range([c1,c2]);
+
+	var circle_graph_country = circle_graph_chart_g.selectAll("g")
+												   .data(popData_capita)
+												   .enter()
+												   .append("g")
+												   .attr("class","circle_graph_country")
+
+		circle_graph_country.append("circle")
+							.attr("cx",0)
+							.attr("cy",function(d,i){
+								return i*(i*12) + 20;
+							})
+							.attr("r",function(d){
+								return rScale_value2(d.value2);
+							})
+							.attr("fill",function(d){
+								return cScale_value2(d.value2);
+							})
+							.attr("stroke","#eeeeee")
+				    		.attr("stroke-width",0.5);
+
+		circle_graph_chart_g.append("text")
+							.attr("x",90)
+							.attr("y",0)
+							.attr("class","country_code")
+							.text("Refugees")
+							.attr("text-anchor","end");
+
+		circle_graph_chart_g.append("text")
+							.attr("x",190)
+							.attr("y",0)
+							.attr("class","country_code")
+							.text("GDP per Capita")
+							.attr("text-anchor","end");
+
+		circle_graph_country.append("text")
+							.attr("x",0)
+							.attr("y",function(d,i){
+								return i*(i*12) + 20;
+							})
+							.attr("class","country_code")
+							.text(function(d){
+								return d.Country_Code;
+							})
+							.attr("text-anchor","middle");
+
+		circle_graph_country.append("text")
+							.attr("class","circle_capita country_code")
+							.attr("x",190)
+							.attr("y",function(d,i){
+								return i*(i*12) + 20;
+							})
+							.text(function(d){
+								return d3.format(",.0f")(d.GDP_capita) + "$";
+							})
+							.attr("text-anchor","end");
+
+		circle_graph_country.append("text")
+							.attr("class","circle_refugee country_code")
+							.attr("x",90)
+							.attr("y",function(d,i){
+								return i*(i*12) + 20;
+							})
+							.text(function(d){
+								return d.refugee;
+							})
+							.attr("text-anchor","end");
+
+
+
+});
+
 function scatter_scaleSetting(){
 	var svg_width = 860;
 	var svg_height = window.innerHeight - 450;
@@ -299,12 +426,13 @@ function scatter_resize(){
 
 function scatterTransition(year){
 
-	popData = gdp_dataCon.filter(function(d) {return d.year == year});
+	popData_gdp = gdp_dataCon.filter(function(d) {return d.year == year});
+	popData_capita = capita_dataCon.filter(function(d) {return d.year == year});
 
-	//scatter_g.selectAll("g").data(popData).transition();
+	//scatter_g.selectAll("g").data(popData_gdp).transition();
 
 	scatter_chart_g.selectAll("circle")
-					.data(popData)
+					.data(popData_gdp)
 					.transition()
 					.duration(2000)
 					.ease("quad")
@@ -323,7 +451,7 @@ function scatterTransition(year){
 
 
 	scatter_chart_g.selectAll("text")
-					.data(popData)
+					.data(popData_gdp)
 					.transition()
 					.duration(2000)
 					.ease("quad")
@@ -339,6 +467,55 @@ function scatterTransition(year){
 					})
 					.attr("text-anchor","middle");
 
+	circle_graph_chart_g.selectAll("circle")
+						.data(popData_capita)
+						.transition()
+						.duration(2000)
+						.ease("quad")
+						.attr("cx",0)
+							.attr("cy",function(d,i){
+								return i*(i*12) + 20;
+							})
+							.attr("r",function(d){
+								return rScale_value2(d.value2);
+							})
+							.attr("fill",function(d){
+								return cScale_value2(d.value2);
+							});
+
+
+	d3.selectAll(".circle_capita")
+							.data(popData_capita)
+							.transition()
+							.duration(2000)
+							.ease("quad")
+							.tween("text",function(d){
+			                 var currentNum = this.textContent;
+			                 currentNum = currentNum.replace(/,/g,"");
+			                 currentNum = currentNum.replace("$","");
+			                 currentNum = +currentNum;
+			                 var j = d3.interpolateRound(currentNum, d.GDP_capita);
+
+				                return function(t){
+				                    d3.select(this).text(formatCom(j(t)) + "$");
+				                }
+            				});
+
+	d3.selectAll(".circle_refugee")
+							.data(popData_capita)
+							.transition()
+							.duration(2000)
+							.ease("quad")
+							.tween("text",function(d){
+			                 var currentNum = this.textContent;
+			                 currentNum = currentNum.replace(/,/g,"");
+			                 currentNum = +currentNum;
+			                 var j = d3.interpolateRound(currentNum, d.refugee);
+
+				                return function(t){
+				                    d3.select(this).text(formatCom(j(t)));
+				                }
+            				});
 
 
 }

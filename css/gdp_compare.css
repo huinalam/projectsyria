@@ -24,7 +24,6 @@
     font-family: 'Roboto Slab', serif;
     line-height: 150%;
     text-indent: 10px;
-    color: #dfdfdf;
 }
 .scatter_exp >p{
     font-size: 13px;
@@ -78,4 +77,12 @@
     fill: #cccccc;
     font-size: 13px;
     fill: #eeeeee;
+}
+.chart_exp{
+    letter-spacing: -0.5px;
+    font-weight: 300;
+    font-family: 'Roboto Slab', serif;
+    font-style: italic;
+    fill: #ffdd00;
+    font-size: 11px;
 }

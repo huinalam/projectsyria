@@ -19,7 +19,6 @@
     font-family: 'Roboto Slab', serif;
     line-height: 180%;
     text-indent: 10px;
-    color: #dfdfdf;
 
 }
 .timeline_div_column1{
@@ -47,7 +46,6 @@
     font-family: 'Roboto Slab', serif;
     line-height: 120%;
     text-indent: 10px;
-    color: #dfdfdf;
 }
 .timeline_div_article_content >h2{
     margin-top: 0px;
@@ -71,7 +69,6 @@
     font-family: 'Roboto Slab', serif;
     line-height: 180%;
     text-indent: 30px;
-    color: #dfdfdf;
 }
 .timeline_div_head{
     width: 750px;

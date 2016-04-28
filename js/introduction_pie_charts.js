@@ -5,12 +5,14 @@ var intro_pie_margin = {left: 100, top: 100};
 var intro_pie1_svg = d3.select('#pie1')
 						.append("svg")
 						.attr("width",intro_pie_width)
-						.attr("height",intro_pie_height);
+						.attr("height",intro_pie_height)
+                        .style("float","left");
 
-var intro_pie2_svg = d3.select('#pie2')
+var intro_pie2_svg = d3.select('#pie1')
 						.append("svg")
 						.attr("width",intro_pie_width)
-						.attr("height",intro_pie_height);
+						.attr("height",intro_pie_height)
+                        .style("float","left");
 
 var continent_portion = [{cont:"mid", text:"MIDDLE EAST", refugee_value:3701082},
 						 {cont:"eu", text:"EUROPE", refugee_value:92540}];
