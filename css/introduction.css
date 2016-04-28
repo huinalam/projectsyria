@@ -1,0 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700);
+
+.wordcloud_text{
+	font-family: 'Droid Serif', serif;
+	cursor: pointer;
+}
+.introduction_pie_div{
+	display: inline-block;
+	float: left;
+	margin-bottom: 30px;
+}
+
+.eu{
+ 	color: #b8e2d3;
+ 	fill: #b8e2d3;
+ 	font-size: 9px;
+ }
+.gulf{
+ 	color: #b8e2d3;
+ 	fill: #b8e2d3;
+ 	font-size: 9px;
+ }
+.mid{
+	color: #229977;
+	fill: #229977;
+ 	font-size: 9px;
+ }
+ .tooltip{
+ 	fill: #eeeeee;
+ 	font-size: 15px;
+ 	letter-spacing: 1px;
+ }
