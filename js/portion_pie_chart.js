@@ -13,14 +13,12 @@ var innerRadius = 40;
 
 var formatCom = d3.format(",");
 
-var arc = d3.svg.arc()
+var portion_arc = d3.svg.arc()
                 .innerRadius(innerRadius)
                 .outerRadius(outerRadius);
 
 var pie = d3.layout
-            .pie()
-
-            
+            .pie()            
             .sort(null)
             .value(function(d) {return d.value;});
 
@@ -88,7 +86,7 @@ d3.csv("data/refugees_sum_year_2011_2014.csv", function(error, data){
       		 .data(pie(popData2))
              .enter()
              .append("path")
-              .attr("d",arc)
+              .attr("d",portion_arc)
               .each(function(d) {this._current = d;})
               .attr("class", function(d) { if(d.data.div =="sum_mid"){
                      return "me"
@@ -100,9 +98,9 @@ d3.csv("data/refugees_sum_year_2011_2014.csv", function(error, data){
       		 .data(pie(popData2))
              .enter()
              .append("text")
-             .attr("d",arc)
+             .attr("d",portion_arc)
              .attr("transform", function(d){
-                     return "translate(" + arc.centroid(d) + ")";
+                     return "translate(" + portion_arc.centroid(d) + ")";
              })
              .attr("text-anchor", "middle")
              .attr("class","pie_text")
@@ -150,7 +148,7 @@ function pieTransition(year){
 
           //arc_g = arc_g.data(pie(popData2));
 
-          pie_arc.selectAll("path").data(pie(popData2)).transition().duration(1000).ease("exp").attr("d",arc).attrTween("d",arcTween);
+          pie_arc.selectAll("path").data(pie(popData2)).transition().duration(1000).ease("exp").attr("d",portion_arc).attrTween("d",arcTween);
 
 
           
@@ -164,7 +162,7 @@ function pieTransition(year){
           pie_text.selectAll("text").data(pie(popData2)).transition()
                       .delay(1000)
                       .attr("transform", function(d){
-                              return "translate(" + arc.centroid(d) + ")";
+                              return "translate(" + portion_arc.centroid(d) + ")";
                       })
                       .attr("text-anchor", "middle")
                       .text(function(d){
@@ -186,6 +184,6 @@ function arcTween(a) {
       this._current = i(0);
 
         return function(t) {
-          return arc(i(t));
+          return portion_arc(i(t));
       };
 }
