@@ -23,6 +23,7 @@
     var rScale_event;
     var rScale_group;
 
+    var timeline_current_chapter=0;
 
     var timeline_yAxis; //axis함수에서 사용된 axis변
     var timeline_yAxis_g;
@@ -731,6 +732,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
 
 
                     var point_group = line_graph_g.append("g")
+                                        .attr("class","point_group_r")
                                         .attr("transform","translate("+px_refugees+",0)")
                                         .selectAll("circle")
                                         .data(refugee_data)
@@ -918,12 +920,44 @@ function timeline_resize(){
                             return timeline_yScale(d.date);
                     });
 
+        //* mask rescale *//
+        var i = timeline_current_chapter;
+         d3.select("#chapter_mask1").transition()
+                    .attr("height",function(){
+                        return timeline_yScale(chapter_date[i].start)-timeline_yScale(chapter_date[0].start);
+                    })
+                    .attr("x",px_start)
+                    .attr("y",timeline_yScale(chapter_date[0].start));
+
+        d3.select(".chapter_selector").transition()
+                    .attr("height",function(){
+                        return timeline_yScale(chapter_date[i].end)-timeline_yScale(chapter_date[i].start);
+                    })
+                    .attr("x",px_start)
+                    .attr("y",timeline_yScale(chapter_date[i].start));
+                    
+        d3.select("#chapter_mask2").transition()
+                    .ease("bounce")
+                    .attr("height",function(){
+                        return timeline_yScale(chapter_date[9].end) - timeline_yScale(chapter_date[i].end)
+                    })
+                    .attr("x",px_start)
+                    .attr("y",timeline_yScale(chapter_date[i].end));
+
+
         //* legend rescale *//
         legend_timeline_g.transition()
                          .attr("transform", "translate(" + 0 + "," + (timeline_height + 15) +")");
 
         legend_linegraph_g.transition()
                           .attr("transform", "translate(" + (px_refugees + 20) + "," + (timeline_height + 15) +")");
+
+        //* grid line rescale *//
+        d3.selectAll(".timeline_divLine")
+                    .transition()
+                    .attr("y1",timeline_yScale(parseDate("2011-01-01")))
+                    .attr("y2",timeline_yScale(parseDate("2016-04-01")));
+
      }
     
 
@@ -931,6 +965,7 @@ function timeline_resize(){
 function chapter_move(index){
 
     var i = index-1 ;
+    timeline_current_chapter = i;
 
     d3.select("#chapter_mask1").transition()
                     .delay(300)

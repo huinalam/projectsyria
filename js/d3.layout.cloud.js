@@ -24,7 +24,7 @@ module.exports = function() {
       timer = null,
       //random = Math.random,
       random = function(){
-        return 1.52;
+        return 2;
       };
       cloud = {},
       canvas = cloudCanvas;

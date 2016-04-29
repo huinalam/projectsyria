@@ -17,18 +17,18 @@ var headline_frequencys = [{"text":"Islamic State",id:"is", "size":7245, "nyt":6
 						   {"text":"United Nations",id:"un", "size":2429, "nyt":1952, "gd":477}];
 
 var color_cloud = d3.scale.linear()
-            .domain([10,100])
+            .domain([15,110])
             .range(["#b8e2d3", "#229977"]);
 
 var font_scale = d3.scale.linear()
 			.domain([0,7500])
-			.range([10,100])
+			.range([15,110])
 
 d3.layout.cloud().size([800,400])
 				 .words(headline_frequencys)
 				 .rotate(0)
 				 .fontSize(function(d){ return font_scale(d.size);})
-				 .padding(3.8)
+				 .padding(4)
 				 .on("end",draw)
 				 .start();
 

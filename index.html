@@ -60,7 +60,7 @@
 
                     <p>Amid this kind of chaos, this project was designed to shed light on notable incidents and cases due to migrant crisis caused by Civil War chiefly with two focuses.</p>
 
-                    <h2>What kinds of efforts have been made international community in a balanced manner?</h2>
+                    <h2>1.What kinds of efforts have been made international community in a balanced manner?</h2>
 
                     <p>Analysis on UNHCR&#39;s data about refugees enabled us to see imbalanced acceptance of displaced people from 2011 until now. Especially, more than 80% of refugees have found new destinations of Turkey, Lebanon and Jordan within Middle East region, which permitted viewers to find out social and economic issues from severe government expenditure. This issue is not only related to each nation&#39;s difficulty but also to refugees&#39; difficulty to keep their quality of living. However, other Gulf States of which economic standard is much higher have been reluctant to incorporate themselves into migrant crisis.</p>
                     
@@ -69,8 +69,9 @@
                         </div>
                     </div>
 
-                    <h2>Which players have been inflicting threats on Syrians within civil war?</h2>
+                    <h2>2.Which players have been inflicting threats on Syrians within civil war?</h2>
                     <div class="introduction_wordCloud"></div>
+                    <div class="exp"><p>The above wordcloud shows frequency of certain groups who mentioned in headline of Syrian Civil war related news from &#39;Newyork Times&#39; and &#39;the Guardian&#39;.</p></div>
                     <p>It is striking fact that the largest cause of the crisis is civil war. We could visualize the relevance between each data and number of fatalities on a monthly basis and also cases of civilian damages, refugees and etc., which further facilitated how deeply certain groups have involved in each incident. The fundamental intention of visualization is supposed to raise the question for the international community which questions we should voice up to relieve migrant crisis.</p>
                 </div>
             </div>
@@ -263,8 +264,9 @@
             <div class="chapter_chart_div_s86">
                 <div class="gdp_div_GraphCol" id='scatter_chart'>
                 </div>
-                <div class="scatter_exp">
-                    <p>Please click the below years to compare number of refugees on the scatter plot</p>
+                <div class="exp">
+                    <p>Please click the below years to compare number of refugees on the scatter plot.
+                    <img src="img/arrow_down.svg" height=15></p> 
                 </div>
                 <div class="gdp_div_textCol gdp_div_textCol_click gdp_year_button2011">
                     <div class="gdp_year_button gdp_year_button2011">
@@ -359,12 +361,12 @@
                         <div class="timeline_head2">
                             <h3 class="timeline_heading">Event Type </h3>
                             <div class="timeline_div_eventSelect">
-                                <p class="exp">Types of attacks affect civilian damage</p>
+                                <p class="timeline_exp">Types of attacks affect civilian damage</p>
                             </div>
                         </div>
                         <div class="timeline_head3">
                             <h3 class="timeline_heading">Deaths & Refugees</h3>
-                            <p class="exp">Death and Refugee per a month</p>
+                            <p class="timeline_exp">Death and Refugee per a month</p>
                         </div>
                     </div>
                     <div id="timeline_chart"></div>
@@ -600,17 +602,44 @@
                     <h3>Finding1: The Most intensive Damages</h3>
                     <p>One of the largest characteristics we have seen in timeline is the worst damage happened after June 2012 during a year. More than 1,400 shelling incidents were reported only in November 2011 with other types of air strikes and direct bombings were also publicized. This coincides with the right point when the highest fatalities occurred the figures delclared seem to have something to do with death tolls and direct attacks.</p>
 
-                    <h3>Finding2: Correlation</h3>
-                    <p>With a view to dissecting influence on monthly death tolls and number of refugees by how frequent six types of damage had been occurred, we tried to analyze result statistically. This analysis took advantage of Pearson&#39;s product-moment correlationalgorithm to work out linear correlation between two variants the more the final figure represents near 1, the stronger the correlation is.</p>
+                    <h3>Finding2: Correlation between type of attcks and the number of deaths and refugees</h3>
+                    <p>With a view to arranging influence on monthly death tolls and number of refugees by the frequency of 6 types of attacks, we tried to analyze result statistically. So to speak, Pearson&#39;s product-mement correlation was adapted as an algorism tool to connect the dots of interrelation between civilian assaults and the number of deaths or refugees. In this regards, the correlation becomes higher when the result stands near 1.</p>
 
-                    <p>Above all, shelling incidents present the number 0.78 with a highest correlation with monthly victims , whereas battles only do 0.16 with a lowest level. In other words, as the frequency got escalated, the number of fatalities also soared. Conversely, the battles which refer to confrontation among two or more military organizations relatively gave milder impact on whole deaths in total compared with other incidents.</p>
+                    <p>Primarily, the table below says the correlation between monthly fatalities and six types of assaults with absolute value of each attack being provided.</p>
+                    <div class="timeline_correlation_table">
+                        <div class="table_factor type">Type of <br>attacks</div>
+                        <div class="table_factor report">Number of <br>Total Reports</div>
+                        <div class="table_factor cor">Correlation<br> with death</div>
+                        <div class="table_cell type" id="shelling">Shelling</div>
+                        <div class="table_cell report" id="shelling">14797</div>
+                        <div class="table_cell cor" id="shelling">0.78</div>
+                        <div class="table_cell type" id="air_strike">Air Strike</div>
+                        <div class="table_cell report" id="air_strike">3543</div>
+                        <div class="table_cell cor" id="air_strike">0.61</div>
+                        <div class="table_cell type" id="battle">Battle</div>
+                        <div class="table_cell report" id="battle">5567</div>
+                        <div class="table_cell cor" id="battle">0.16</div>
+                        <div class="table_cell type" id="direct_attack">Direct Attack</div>
+                        <div class="table_cell report" id="direct_attack">8304</div>
+                        <div class="table_cell cor" id="direct_attack">0.63</div>
+                        <div class="table_cell type" id="barrel_bomb">Barrel Bomb</div>
+                        <div class="table_cell report" id="barrel_bomb">892</div>
+                        <div class="table_cell cor" id="barrel_bomb">0.049</div>
+                        <div class="table_cell type" id="chemical">Chemical weapone</div>
+                        <div class="table_cell report" id="chemical">342</div>
+                        <div class="table_cell cor" id="chemical">0.28</div>
+                    </div>
 
-                    <p>In terms of number of refugees each month, it does not demonstrate direct correlation with frequency of attacks. It�s because of the gap between the two of increasing refugees and deaths. However, when �time axisbe pushed forward, the correlation is increased to 0.00, showing that there are certain gap of 5 months between civilian damage and refugee crisis.</p>
+                    <p>Followed by the table, shelling incidents (0.78) and air strike (0.61) show the highest value in correlation, while barrel bomb (0.049) and battle (0.16) represent the lowest relevance. It&#39;s why we chose to mark figure of total reports in order to consider possible influence which quantity and intention of attacks might have on the correlation itself. Let&#39;s see each figure: shelling incidents are the most reported with the highest correlation but; air strikes are less reported than battles with the second highest interrelation – it implies that air strikes could result in massive killings with minor number of assaults or maintain the higher intention on civilian areas as the very target.</p>
 
-                    <h3>Finding3: New lense: Level of intention in Civil attack</h3>
-                    <p>Using daily fatalities data of Syrian Violation Document Center (VDC), monthly death tolls were calculated and this database clarifies cause of the death. Nevertheless, the correlation between type of damage and death tolls were analyzed to represent intention of attacks against civil communities as a certain number.</p>
+                    <p>In terms of number of refugees each month, it does not demonstrate direct correlation with frequency of attacks. It&#39;s because of the gap between the two of increasing refugees and deaths. However, when time axis be pushed forward by 5 months, the correlation is increased to 0.68, showing that there are 5 month-gap between civilian assaults and refugee crisis.</p>
 
-                    <p>The cause of deaths by VDC does not specify additional reasons whether the casualty was due to attacks against local community or due to fresh attacks after the first battles between militants. However, we tried to distinguish them from intended civilian attacks from the beginning by reflecting any types of damage or harm evidently occurred by more than 2 groups. For example, the result saying that it has shown low correlation between battle and monthly fatalities proves that the assaults against local civilians have relatively resulted in much more fatalities.</p>
+                    <h3>Finding3: Moving toward fresh perspective</h3>
+                    <p>The data used in the analysis process is from Syrian Violation Document Center with the cause of the deaths being recorded. Nevertheless, we tried to analyze the correlation between type of damage and death toll so as to make an assumption about the intention of attacks itself.</p>
+
+                    <p>The cause of deaths by VDE does not specify additional reasons whether the casualty was due to attacks against local community or due to fresh attacks after the first battles between militants.</p>
+
+                    <p>By making use of the category ‘battle’, however, it was also able to distinguish originally intended civilian attacks from secondly-led damage among battles. Looking at the data again, battles of 5,567 cases and its correlation with fatalities show considerably low degree of 0.16 but air strikes of 3,543 cases represent 0.61. In other words, though air strike has relative lower reports than battles, it causes almost quadrupled victims. Of course, deaths during battles can also not be justifiable but analytic process enables the viewers to see much more persons than expected dying owing to non-selective attacks, who may have zero relevance with civil war itself. The data once again confirms the cruelty of war.</p>
                 </div>
             </div>
         </div>
@@ -624,7 +653,7 @@
                     <span id="red">
                         NUMBERS<br>
                         SHOULD NOT BE IGNORED
-                    </span><
+                    </span>
                     <span id="green">"WHO'S INVOLVED?"</span>
                 </h1>
             </div>

@@ -25,16 +25,6 @@
     line-height: 150%;
     text-indent: 10px;
 }
-.scatter_exp >p{
-    font-size: 13px;
-    font-weight: 300;
-    font-family: 'Roboto Slab', serif;
-    font-style: italic;
-    line-height: 150%;
-    text-indent: 5px;
-    color: #FFDD00;
-    margin-left: 30px;
-}
 .gdp_year_button >h2{
     background-color: #cc3333;
     text-align: center:;
