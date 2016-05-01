@@ -2,6 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Arvo:400,700);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
 
 body{
 	background-color: #111111 !important;
@@ -89,7 +90,6 @@ section{
 	padding-top: 500px;
 	margin: 50px 0 0 0 !important;
 	text-decoration: none;
-	color: #ffffff;
 }
 .chapter_gap{
 	width: 100%;
@@ -102,7 +102,7 @@ section{
 }
 
 .chapter_title_back{
-	background-color: #d0d0d0; 
+	background-color: #111111; 
 	width: 100%;
 }
 .chapter_title_div{
@@ -112,7 +112,7 @@ section{
 }
 .chapter_introduction_div{
 	width: 800px;
-	margin: 50px auto 50px auto;
+	margin: 0px auto 50px auto;
 	width:800px;
 	font-size: 15px;
 	font-weight: 300;
@@ -175,11 +175,12 @@ section{
 .chapter_title_div >h1{
 	width: 800px;
 	margin-bottom: 0.2em;
-	font-family: 'Arvo', serif;
-	font-size: 48px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	letter-spacing: 3px;
+	word-spacing: 6px;
+	font-size:  80px;
 	font-weight: 700;
-	line-height: 120%;
-	letter-spacing: 2px;
+	line-height: 100%;
 	word-wrap: 15px;
 }
 h1.subheading{
@@ -196,15 +197,17 @@ h1.subheading{
 .chapter_title_wrapper{
 	margin: auto;
 }
-.chapter_introduction_div >h2{
-	letter-spacing: 0.5px;
-	word-spacing: 2px;
-	margin: 180px 0 30px 0;
-	font-family: 'Lato', sans-serif;
-	font-size: 36px;
+h2{
+	font-family: 'Open Sans Condensed', sans-serif;
 	font-weight: 700;
-	line-height: 120%;
-	color: #cc3333;
+	font-size: 2.5em;
+}
+.chapter_introduction_div >h2{
+	letter-spacing: 1.5px;
+	word-spacing: 3px;
+	margin: 180px 0 10px 0;
+	line-height: 110%;
+	color: #dd4444;
 }
 .chapter_introduction_div >p{
 	display: inline-block;
@@ -215,9 +218,6 @@ h1.subheading{
 .chapter_article_div >h2{
 	margin: 30px 0 5px 0;
 	margin-top: 0px;
-	font-family: 'Lato', sans-serif;
-	font-size: 28px;
-	font-weight: 700;
 	line-height: 120%;
 	color: #cc3333;
 }
@@ -245,7 +245,7 @@ h1.subheading{
     font-style: italic;
     line-height: 150%;
     text-indent: 5px;
-    color: #FFDD00;
+    color: #aaFF88;
     padding-top: 15px;
     margin: 5px 30px 0 5px;
 }
@@ -260,7 +260,7 @@ h1.subheading{
 
 /** svg element **/
 .chart_title{
-	font-family: 'Lato', sans-serif;
+	font-family: 'Open Sans Condensed', sans-serif;
 	font-weight: 700;
 	font-size: 24px;
 	margin: 5px;

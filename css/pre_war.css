@@ -4,9 +4,6 @@
 }
 .intro_div_article > h2{
     margin-top: 0px;
-    font-family: 'Lato', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
     line-height: 120%;
     color: #cc3333;
 }
@@ -19,9 +16,9 @@
 }
 .person_name{
     margin-top: 0px;
-    font-family: 'Lato', sans-serif;
-    font-size: 28px;
-    font-weight: 400;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
     line-height: 120%;
     color: #cc3333;
 }
@@ -47,7 +44,7 @@
     font-size: 18px;
     font-weight: 300;
     font-family: 'Lato', sans-serif;
-    font-weight: 400;
+    color: #eeeeee;
 }
 #year{
     margin: 3px 0 0 0 ;

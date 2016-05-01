@@ -4,16 +4,16 @@ var svg_height = 560;
 var scatter_width = 600;
 var scatter_height = 500;*/
 var svg_width = 860;
-var svg_height = window.innerHeight - 450;
+var svg_height = window.innerHeight - 350;
 
-var scatter_width = 600;
+var scatter_width = 650;
 var scatter_height = svg_height - 50;
 //var scatter_margin = 50;
 //var scatter_top = 30;
 var scatter_margin = {left:100, right:50, bottom:100, top:30}
 
 var circle_graph_width = 280;
-var circle_graph_height = 280;
+var circle_graph_height = svg_height - 50;
 var circle_graph_margin = 30;
 
 var country_list = ["ARE","EGY","IRQ","JOR","KWT","LBN","LBY","MAR","OMN","QAT","SAU","TUN","TUR","YEM"];

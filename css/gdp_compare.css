@@ -44,6 +44,13 @@
 	fill: #cccccc;
 	font-size: 11px;
 }
+.country_factor{
+    letter-spacing: -0.5px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    fill: #eeeeee;
+    font-size: 11px;
+}
 .gdp_axis { /* axis labels */
     fill: #888888;
     font-family: sans-serif;

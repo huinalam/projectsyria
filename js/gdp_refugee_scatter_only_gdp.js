@@ -4,17 +4,23 @@ var svg_height = 560;
 var scatter_width = 600;
 var scatter_height = 500;*/
 var svg_width = 860;
-var svg_height = window.innerHeight - 350;
+var svg_height;
+if(1000<window.innerHeight){
+	svg_height = window.innerHeight - 300;
+}else{
+	svg_height = 700;
+}
 
-var scatter_width = 600;
-var scatter_height = svg_height - 50;
+
+var scatter_width = 650;
+var scatter_height = svg_height - 80;
 //var scatter_margin = 50;
 //var scatter_top = 30;
 var scatter_margin = {left:100, right:50, bottom:100, top:30}
 
 var circle_graph_width = 280;
-var circle_graph_height = 280;
-var circle_graph_margin = 30;
+var circle_graph_height = window.innerHeight - 200;
+var circle_gMargin = {top:80,bottom: 100}
 
 var country_list = ["ARE","EGY","IRQ","JOR","KWT","LBN","LBY","MAR","OMN","QAT","SAU","TUN","TUR","YEM"];
 
@@ -32,18 +38,18 @@ var scatter_chart_g = scatter_g.append("g");
 var	scatter_title = scatter_g.append("text")
 				 .attr("class","chart_title")
 				 .attr("x",scatter_margin.left - 10)
-				 .attr("y",-50)
+				 .attr("y",-20)
 				 .text("Refugees & GDP of Resisdent Country");
 
 
 //** circle graph//
 
 var capita_graph_g = scatter_svg.append("g")
-								.attr("transform","translate("+ (scatter_width + 50) +"," + (scatter_margin.top-10)  + ")");
+								.attr("transform","translate("+ (scatter_width + 20) +"," + 0  + ")");
 
 var capita_graph_exp = capita_graph_g.append("text")
 			  						 .attr("class","axis_text")
-			  						 .attr("transform","translate(0," + (scatter_height - scatter_margin.bottom + 80) + ")");
+			  						 .attr("transform","translate(0," + (scatter_height - scatter_margin.bottom + 110) + ")");
 
 	capita_graph_exp.append("tspan")
 					.attr("dy","1.1em")
@@ -61,7 +67,7 @@ var capita_graph_exp = capita_graph_g.append("text")
 					.text("Relative Economic Statue");
 
 var circle_graph_chart_g = capita_graph_g.append("g")
-										 .attr("transform","translate(0,20)");
+										 .attr("transform","translate(0,0)");
 
 
 
@@ -87,25 +93,25 @@ var gdp_dataCon;
 var capita_dataCon;
 var popData_gdp;
 var popData_capita;
+var circle_yScale;
 var year = 2011;
 
 var c1 = "#55BFAA";
 var c2 = "#CC3333";
 
-var country_code = [];
+var country_code = ["QAT","YEM","EGY","JOR","TUR"];
 
 d3.csv("data/refugee_gdp_2011_2014_middle_east_short.csv",function(data){
 
 	gdp_dataCon = data;
 
-	gdp_dataCon.forEach(function(item,i){
+	gdp_dataCon.forEach(function(item){
 		item.year = +item.year;
 		item.GDP = +item.GDP;
 		item.GDP_capita = +item.GDP_capita;
 		item.refugee = +item.refugee;
 		item.value1 = +item.value1;
 		item.value2 = +item.value2;
-		country_code[i] = item.Country_Code;
 	});
 
 	popData_gdp = data.filter(function(d) {return d.year == year});
@@ -288,12 +294,17 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east_circle_graph.csv",function(data){
 												   .data(popData_capita)
 												   .enter()
 												   .append("g")
-												   .attr("class","circle_graph_country")
+												   .attr("class","circle_graph_country");
+
+
+	circle_yScale = d3.scale.ordinal()
+					  .domain(country_code)
+					  .rangeBands([circle_gMargin.top,circle_graph_height - circle_gMargin.bottom]);
 
 		circle_graph_country.append("circle")
 							.attr("cx",0)
-							.attr("cy",function(d,i){
-								return i*(i*12) + 20;
+							.attr("cy",function(d){
+								return circle_yScale(d.Country_Code);
 							})
 							.attr("r",function(d){
 								return rScale_value2(d.value2);
@@ -304,24 +315,27 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east_circle_graph.csv",function(data){
 							.attr("stroke","#eeeeee")
 				    		.attr("stroke-width",0.5);
 
-		circle_graph_chart_g.append("text")
-							.attr("x",90)
+		var circle_factor = circle_graph_chart_g.append("g")
+							.attr("transform","translate(0," + (circle_gMargin.top - 20) + ")");
+
+		circle_factor.append("text")
+							.attr("x",100)
 							.attr("y",0)
-							.attr("class","country_code")
+							.attr("class","country_factor")
 							.text("Refugees")
 							.attr("text-anchor","end");
 
-		circle_graph_chart_g.append("text")
+		circle_factor.append("text")
 							.attr("x",190)
 							.attr("y",0)
-							.attr("class","country_code")
+							.attr("class","country_factor")
 							.text("GDP per Capita")
 							.attr("text-anchor","end");
 
 		circle_graph_country.append("text")
 							.attr("x",0)
-							.attr("y",function(d,i){
-								return i*(i*12) + 20;
+							.attr("y",function(d){
+								return circle_yScale(d.Country_Code);
 							})
 							.attr("class","country_code")
 							.text(function(d){
@@ -332,8 +346,8 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east_circle_graph.csv",function(data){
 		circle_graph_country.append("text")
 							.attr("class","circle_capita country_code")
 							.attr("x",190)
-							.attr("y",function(d,i){
-								return i*(i*12) + 20;
+							.attr("y",function(d){
+								return circle_yScale(d.Country_Code);
 							})
 							.text(function(d){
 								return d3.format(",.0f")(d.GDP_capita) + "$";
@@ -342,9 +356,9 @@ d3.csv("data/refugee_gdp_2011_2014_middle_east_circle_graph.csv",function(data){
 
 		circle_graph_country.append("text")
 							.attr("class","circle_refugee country_code")
-							.attr("x",90)
-							.attr("y",function(d,i){
-								return i*(i*12) + 20;
+							.attr("x",100)
+							.attr("y",function(d){
+								return circle_yScale(d.Country_Code);
 							})
 							.text(function(d){
 								return d.refugee;
@@ -434,7 +448,7 @@ function scatterTransition(year){
 	scatter_chart_g.selectAll("circle")
 					.data(popData_gdp)
 					.transition()
-					.duration(2000)
+					.duration(1000)
 					.ease("quad")
 					.attr("cx",function(d){
 					 	return xScale_scatter(d.GDP)
@@ -453,7 +467,7 @@ function scatterTransition(year){
 	scatter_chart_g.selectAll("text")
 					.data(popData_gdp)
 					.transition()
-					.duration(2000)
+					.duration(1000)
 					.ease("quad")
 					.attr("x",function(d){
 					 	return xScale_scatter(d.GDP)
@@ -470,11 +484,11 @@ function scatterTransition(year){
 	circle_graph_chart_g.selectAll("circle")
 						.data(popData_capita)
 						.transition()
-						.duration(2000)
+						.duration(1000)
 						.ease("quad")
 						.attr("cx",0)
-							.attr("cy",function(d,i){
-								return i*(i*12) + 20;
+							.attr("cy",function(d){
+								return circle_yScale(d.Country_Code);
 							})
 							.attr("r",function(d){
 								return rScale_value2(d.value2);
