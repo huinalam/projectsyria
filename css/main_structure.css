@@ -178,7 +178,7 @@ section{
 	font-family: 'Open Sans Condensed', sans-serif;
 	letter-spacing: 3px;
 	word-spacing: 6px;
-	font-size:  80px;
+	font-size:  4.5em;
 	font-weight: 700;
 	line-height: 100%;
 	word-wrap: 15px;
@@ -249,6 +249,12 @@ h2{
     padding-top: 15px;
     margin: 5px 30px 0 5px;
 }
+.scroll_down{
+	display: block;
+	width:60px;
+	margin: 20px auto;
+	opacity: 0.8;
+}
 #red{
 	color: #cc3333;
 	fill: #cc3333;
@@ -256,6 +262,24 @@ h2{
 #green{
 	color: #33aa88;
 	fill: #33aa88;
+}
+.sorry{
+	width:100%;
+	padding:2em;
+	display: block;
+	margin: 0 auto;
+	font-family: 'Lato', sans-serif;
+	font-weight: 700;
+	line-height: 160%;
+	font-size: 3em;
+	letter-spacing: 0.06em;
+	word-spacing: 0.1em;
+	color: #dd4422;
+}
+.sorry_img{
+	width:65%;
+	display: block;
+	margin: 30px auto 0 auto;
 }
 
 /** svg element **/

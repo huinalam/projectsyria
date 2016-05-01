@@ -18,6 +18,19 @@ function preloader() {
     });
 }
 
+
+//** scroll arrow setting **//
+$(document).ready(function () {
+    var $window = $(window);
+
+     $window.on('scroll', function () {
+        var scroll_top = $window.scrollTop();
+        var opacity = (200 - (scroll_top%200))/220;
+
+        $(".scroll_down").css("opacity",opacity);
+
+    });
+});
 //** Chapter 1: "Syrian Refugee before Civil War" **//
 //**************************************************//
 

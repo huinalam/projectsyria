@@ -19,7 +19,7 @@ var scatter_height = svg_height - 80;
 var scatter_margin = {left:100, right:50, bottom:100, top:30}
 
 var circle_graph_width = 280;
-var circle_graph_height = window.innerHeight - 200;
+var circle_graph_height = scatter_height;
 var circle_gMargin = {top:80,bottom: 100}
 
 var country_list = ["ARE","EGY","IRQ","JOR","KWT","LBN","LBY","MAR","OMN","QAT","SAU","TUN","TUR","YEM"];
