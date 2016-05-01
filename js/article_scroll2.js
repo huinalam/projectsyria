@@ -20,7 +20,7 @@ function preloader() {
 
 
 //** scroll arrow setting **//
-$(document).ready(function () {
+/*$(document).ready(function () {
     var $window = $(window);
 
      $window.on('scroll', function () {
@@ -30,7 +30,7 @@ $(document).ready(function () {
         $(".scroll_down").css("opacity",opacity);
 
     });
-});
+});*/
 //** Chapter 1: "Syrian Refugee before Civil War" **//
 //**************************************************//
 
