@@ -6,9 +6,9 @@ var scatter_height = 500;*/
 var svg_width = 860;
 var svg_height;
 if(1000<window.innerHeight){
-	svg_height = window.innerHeight - 300;
+	svg_height = window.innerHeight - 400;
 }else{
-	svg_height = 700;
+	svg_height = 600;
 }
 
 
@@ -20,7 +20,7 @@ var scatter_margin = {left:100, right:50, bottom:100, top:30}
 
 var circle_graph_width = 280;
 var circle_graph_height = scatter_height;
-var circle_gMargin = {top:80,bottom: 100}
+var circle_gMargin = {top:80,bottom: 0}
 
 var country_list = ["ARE","EGY","IRQ","JOR","KWT","LBN","LBY","MAR","OMN","QAT","SAU","TUN","TUR","YEM"];
 
