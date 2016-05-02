@@ -8,10 +8,10 @@
     color: #cc3333;
 }
 .intro_div_article > p{
-    font-size: 15px;
+    font-size: 1.1em;
     font-weight: 300;
     font-family: 'Roboto Slab', serif;
-    line-height: 180%;
+    line-height: 160%;
     text-indent: 30px;
 }
 .person_name{

@@ -15,10 +15,10 @@
     color: #cccccc;
 }
 .timeline_eventType_div > p{
-    font-size: 13px;
+    font-size: 0.9em;
     font-weight: 300;
     font-family: 'Roboto Slab', serif;
-    line-height: 180%;
+    line-height: 150%;
     text-indent: 10px;
 
 }
@@ -64,10 +64,10 @@
     color: #eeeeee;
 }
 .timeline_div_article_content >p{
-    font-size: 15px;
+    font-size: 1.1em;
     font-weight: 300;
     font-family: 'Roboto Slab', serif;
-    line-height: 180%;
+    line-height: 160%;
     text-indent: 30px;
 }
 .timeline_div_head{
