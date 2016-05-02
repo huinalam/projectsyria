@@ -10,7 +10,7 @@ interface HelloWorldProps {
 
 
 class HelloWorld extends React.Component<HelloWorldProps, any> {
-    render() {
+    render() {        
         return <div>hello tsx? my name is {this.props.name}!! nice to meet you</div>
     }
     toString() {

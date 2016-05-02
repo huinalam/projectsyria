@@ -264,20 +264,29 @@ h2{
 	fill: #33aa88;
 }
 .sorry{
-	width:100%;
-	padding:2em;
+    z-index: 500000;
+    position: fixed;
+	width: 90%;
+    height: 100%;
+	padding:5%;
 	display: block;
 	margin: 0 auto;
 	font-family: 'Lato', sans-serif;
 	font-weight: 700;
-	line-height: 160%;
+	line-height: 130%;
 	font-size: 3em;
 	letter-spacing: 0.06em;
 	word-spacing: 0.1em;
 	color: #dd4422;
+    background: #111111;
+    top: 0px;
+    left: 0px;
+    visibility: hidden;
+    text-align: center;
 }
 .sorry_img{
-	width:65%;
+	width: 50%;
+    height: 50%;
 	display: block;
 	margin: 30px auto 0 auto;
 }
