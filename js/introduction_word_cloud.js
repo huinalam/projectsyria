@@ -1,5 +1,5 @@
 var intro_word_width = 800;
-var intro_word_height = 330;
+var intro_word_height = 400;
 
 /*var intro_word_svg = d3.select('.introduction_wordCloud')
 					   .append("svg")
@@ -42,7 +42,7 @@ function draw(words) {
                .append("g")
                 // without the transform, words words would get cutoff to the left and top, they would
                 // appear outside of the SVG area
-                .attr("transform", "translate(40,120)")
+                .attr("transform", "translate(40,190)")
                 .selectAll("g")
                 .data(words)
                 .enter().append("g")
@@ -87,7 +87,7 @@ function draw(words) {
           
           	var tooltip = d3.select(".wordcloud").append("g")
           						   .attr("class","cloud_tooltip")
-          						   .attr("transform","translate(" + (coords[0] + 55) + "," + (coords[1] - 70) + ")");
+          						   .attr("transform","translate(" + (coords[0] + 55) + "," + (coords[1] - 55) + ")");
 
           	tooltip.append("rect")
           		   .attr("x",-20)
