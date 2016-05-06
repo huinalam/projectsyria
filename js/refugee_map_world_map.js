@@ -14,7 +14,7 @@
 					//**연도 버튼, 국가리스트 배열 설정
   	var start_year = 2011;
     var buttonYears = [2009, 2010, 2011, 2012, 2013, 2014]; //선택될 연도 
-    var countryList = ["Syria","South Korea","Egypt", "Iraq","Iran", "Lebanon","Jordan","Turkey","Italy","France","Greece","United Kingdom", "Sweden", "Germany", "Libya", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //이름이 표시될 국가들
+    var countryList = ["Syria","South Korea","Egypt", "Iraq","Iran", "Lebanon","Jordan","Turkey","Italy","France","Spain","Portugal","Greece","United Kingdom", "Sweden", "Germany", "Libya", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //이름이 표시될 국가들
     var countryList2 = ["South Korea","Egypt", "Iraq", "Lebanon","Jordan","Turkey","Italy","France","Greece","United Kingdom", "Sweden", "Germany", "Libya", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //난민 숫자가 표시될 국가들
 
     				//** 전역변수로 갖고 있어야할 data들 또는 인터랙션에 따라 필터링해야 하는 data값들을 저장하는 변수들
@@ -161,6 +161,9 @@
 								if(d.properties.name == "Lebanon"){
 									return "translate(" + path.centroid(d) +")" + "translate(-35,5)";
 								}
+								else if(d.properties.name == "France"){
+									return "translate(" + path.centroid(d) +")" + "translate(65,-50)";
+								}
 								else if(d.properties.name == "Syria"){
 									return "translate(" + path.centroid(d) +")";
 								}
@@ -207,6 +210,9 @@
 							.attr("transform", function(d){
 								if(d.properties.name == "Lebanon"){
 									return "translate(" + path.centroid(d) +")" + "translate(-35,17)";
+								}
+								else if(d.properties.name == "France"){
+									return "translate(" + path.centroid(d) +")" + "translate(65,-38)";
 								}
 								else{
 									return "translate(" + path.centroid(d) +")" + "translate(0,7)";
