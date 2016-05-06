@@ -14,7 +14,7 @@
 					//**연도 버튼, 국가리스트 배열 설정
   	var start_year = 2011;
     var buttonYears = [2009, 2010, 2011, 2012, 2013, 2014]; //선택될 연도 
-    var countryList = ["Syria","South Korea","Egypt", "Iraq","Iran", "Lebanon","Jordan","Turkey","Italy","France","Spain","Portugal","Greece","United Kingdom", "Sweden", "Germany", "Libya", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //이름이 표시될 국가들
+    var countryList = ["Syria","South Korea","Egypt", "Iraq","Iran", "Lebanon","Jordan","Turkey","Italy","France","Spain","Greece","United Kingdom", "Sweden", "Germany", "Libya", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //이름이 표시될 국가들
     var countryList2 = ["South Korea","Egypt", "Iraq", "Lebanon","Jordan","Turkey","Italy","France","Greece","United Kingdom", "Sweden", "Germany", "Libya", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //난민 숫자가 표시될 국가들
 
     				//** 전역변수로 갖고 있어야할 data들 또는 인터랙션에 따라 필터링해야 하는 data값들을 저장하는 변수들
@@ -231,8 +231,8 @@
 
 
     var legend_group = svg_map.append("g")		//맵 path를 묶을 그룹 추가
-    					.attr("transform","translate(0," + (map_height - 180) + ")")
-    					.attr("class","world");
+    					.attr("class","legend_group")
+    					.attr("transform","translate(0," + (map_height - 180) + ")");
     
    /*legend_group.append("rect")
    			   .attr("width",130)
@@ -280,7 +280,7 @@ function resize_refugeeMap(){
 	var map_width=860; //path가 그려질 svg크기
     var map_height = innerHeight - 360;
 
-	if(700<window.innerHeight){
+	if(800<window.innerHeight){
 
 		projection = d3.geo.conicConformal()
 					   .center(center)
@@ -343,6 +343,9 @@ function resize_refugeeMap(){
 								return "translate(" + path.centroid(d) +")" + "translate(0,7)";
 							}	
 						});
+
+		d3.select(".legend_group")
+    	  .attr("transform","translate(0," + (map_height - 180) + ")");
 
 
 

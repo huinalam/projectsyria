@@ -342,6 +342,7 @@ $(document).ready(function () {
         }
 
         resize_refugeeMap();
+        resize_linegraph();
     });
 
     //** ON_SCROLL EVENT **//

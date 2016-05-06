@@ -261,10 +261,10 @@ function mapline_popYear(year){
 
 function resize_linegraph(){
 
-    if(700<window.innerHeight){
+    if(800<window.innerHeight){
        
         map_width_linegraph = 350;
-        map_height_linegraph = window.innerHeight - 80;
+        map_height_linegraph = window.innerHeight - 170;
 
         map_svg_linegraph.attr("height",map_height_linegraph);
 
