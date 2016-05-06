@@ -68,7 +68,7 @@ var linegraph_xAxis_g;
 d3.csv("data/refugees_total_year_2011_2014.csv",function(data){
 
 //data initiall setting
-	data.forEach(function(d){
+    data.forEach(function(d){
           d.value = +d.value;
           d.date = parseDate(d.date);
     });
@@ -78,12 +78,12 @@ d3.csv("data/refugees_total_year_2011_2014.csv",function(data){
     var maxValue = d3.max(line_data_Con,function(d){ return d.value});
 
     x_scale_linegraph = d3.time.scale()
-    						  .domain([parseDate(line_graph_year[0]),parseDate(line_graph_year[3])])
-    						  .range([linegraph_margin.left,map_width_linegraph - linegraph_margin.right]);
+                              .domain([parseDate(line_graph_year[0]),parseDate(line_graph_year[3])])
+                              .range([linegraph_margin.left,map_width_linegraph - linegraph_margin.right]);
 
     y_scale_linegraph = d3.scale.linear()
-    							 .domain([maxValue,0])
-    							 .range([linegraph_margin.top, map_height_linegraph - linegraph_margin.bottom]);
+                                 .domain([maxValue,0])
+                                 .range([linegraph_margin.top, map_height_linegraph - linegraph_margin.bottom]);
 
    /* x_area_linegraph = d3.time.scale()
                           .domain([parseDate(line_graph_year[0]),parseDate(line_graph_year[3])])

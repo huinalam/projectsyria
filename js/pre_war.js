@@ -29,7 +29,8 @@ var marking_events = [{year:"1971", title:"Hafez al-Assad became the President o
 var preline_graph_year = [parseDate("1968-12-31"),parseDate("1980-12-31"),parseDate("1992-12-31"),parseDate("2000-12-31"),parseDate("2011-12-31")]; 
 var chapter_list = [{start: "1967-01-31", end: "1967-12-31"},
                     {start: "1968-12-31", end: "1982-12-31"},
-                    {start: "1982-12-31", end: "2000-12-31"},
+                    {start: "1982-12-31"
+                    , end: "2000-12-31"},
                     {start: "2000-01-01", end: "2001-12-31"},
                     {start: "2001-12-31", end: "2011-12-31"}];
 
@@ -107,23 +108,13 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
                          .domain([maxValue,0])
                          .range([intro_intrograph_margin.bottom, intro_height_intrograph - intro_intrograph_margin.top]);
 
-   var pre_refugee_sum_line = d3.svg.line()
-                                .x(function(d){return x_scale_intrograph(d.year)})
-                                .y(function(d){return y_scale_intrograph(d.value)})
-                                .interpolate("monotone");
+    refugee_sum_area = d3.svg.area()
+                                  .x(function(d) { return x_area_intrograph(d.year);})
+                                  .y0(y_scale_intrograph(0))
+                                  .y1(function(d){ return y_area_introgrpah(d.value);})
+                                  .interpolate("monotone");
 
-   refugee_sum_area = d3.svg.area()
-                                .x(function(d) { return x_area_intrograph(d.year);})
-                                .y0(y_scale_intrograph(0))
-                                .y1(function(d){ return y_area_introgrpah(d.value);})
-                                .interpolate("monotone");
-
-    pre_refugee_sum_line_path = intro_g_intrograph.append("g")
-                                     .attr("transform","translate(0,0)")
-                                     .append("path")
-                                     .datum(intro_dataCon)
-                                     .attr("d",pre_refugee_sum_line)
-                                     .attr("class","intro_graph");
+   
 
     var refugee_sum_area_path = intro_g_intrograph
                                      .append("g")
@@ -133,6 +124,19 @@ d3.csv("data/refugees_by_years_df.csv",function(data){
                                      .datum(intro_dataCon)
                                      .attr("d",refugee_sum_area)
                                      .attr("class","intro_area");
+
+   var pre_refugee_sum_line = d3.svg.line()
+                                .x(function(d){return x_scale_intrograph(d.year)})
+                                .y(function(d){return y_scale_intrograph(d.value)})
+                                .interpolate("monotone");
+
+   pre_refugee_sum_line_path = intro_g_intrograph.append("g")
+                                     .attr("transform","translate(0,0)")
+                                     .append("path")
+                                     .datum(intro_dataCon)
+                                     .attr("d",pre_refugee_sum_line)
+                                     .attr("class","intro_graph");
+
 
     //** AXIS decalre and Setting **//
 
