@@ -275,17 +275,17 @@ h2{
 	line-height: 130%;
 	font-size: 3em;
 	letter-spacing: 0.06em;
-	word-spacing: 0.1em;
+	word-spacing: 0.05em;
 	color: #dd4422;
     background: #111111;
     top: 0px;
     left: 0px;
-    visibility: hidden;
+    /*visibility: hidden;*/
     text-align: center;
 }
 .sorry_img{
-	width: 50%;
-    height: 50%;
+	width: 40%;
+    height: 40%;
 	display: block;
 	margin: 30px auto 0 auto;
 }
