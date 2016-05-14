@@ -32,19 +32,25 @@
         //});
         location.replace("/sorry.html");
     } else {
-        var ua = navigator.userAgent.toLowerCase();
-        if (ua.indexOf('safari') != -1) {
-            if (ua.indexOf('chrome') > -1) {
-                location.replace("/pc/");
-            } else {
-                location.replace("/pc_safari/");
-            }
+        if (screen.width < 1200 || screen.height < 700) {
+            location.replace("/sorry.html");
         } else {
-             location.replace("/pc/");
         }
+        //var ua = navigator.userAgent.toLowerCase();
+        //if (ua.indexOf('safari') != -1) {
+        //    if (ua.indexOf('chrome') > -1) {
+        //        location.replace("/pc/");
+        //    } else {
+        //        location.replace("/pc_safari/");
+        //    }
+        //} else {
+        //     location.replace("/pc/");
+        //}
 
     }
 }
+
+moveToTarget();
 
 /*
 function size_cut_off() {
