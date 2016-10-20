@@ -4,11 +4,10 @@ $(document).ready(function () {
          var chapter_title_text = ["Introduction",
                                    "Syrian Refugees before Civil War",
                                    "Distribution of Syrian Refugees",
-                                   "Imbalance in the Middle East",
                                    "What force them to leave Syria?",
                                    "Numbers should not be ignored"];
 
-        for(var i=0; i<6; i++){
+        for(var i=0; i<5; i++){
             chapter_title_top[i] = parseInt($(".chapter_title").eq(i).offset().top) + parseInt($(".chapter_title").eq(i).css("padding-top"));
          }
 

@@ -1,21 +1,15 @@
-﻿    var timeline_margin = {top: 20, right: 10, bottom: 60, left: 10},   //Column div1,2의 width와 그 안에 들어갈 svg width
+﻿    var timeline_margin = {top: 5, right: 10, bottom: 30, left: 10},   //Column div1,2의 width와 그 안에 들어갈 svg width
         outerWidth = 750;                                  
         outerHeight = window.innerHeight - 180;
         //height = 650; //svg안에 차트가 그려질 영역의 높이와 timeline_yScale의 range
         timeline_width = outerWidth - timeline_margin.left - timeline_margin.right;
         timeline_height = outerHeight - timeline_margin.top - timeline_margin.bottom;
+        timeline_top = 65;
         //timeline_height = height - 100;
 
     var timeline = {},   // The timeline data를 포함,label,axis시각적 요소까지 포함하는 timeline객첵 
-        dataCon = {},       // Container for the data 각 item(사건)들의 시간,트랙,순서를 저장하는 객체
-        components = [], // All the components of the timeline for redrawing
-        bandGap = 10,    // Arbitray gap between to consecutive bands
-        band ={}; //band object
-        
-        bandY = 10,       // Y-Position of the next band
-        bandNum = 0;     // Count of bands for ids
+        dataCon = {};       // Container for the data 각 item(사건)들의 시간,트랙,순서를 저장하는 객체
 
-    var tracks = [];
     var timeline_yScale;
     var xScale_band; //bargrapch xScale_band;
     var xScale_r;
@@ -27,6 +21,25 @@
 
     var timeline_yAxis; //axis함수에서 사용된 axis변
     var timeline_yAxis_g;
+   
+    var dateList =[]; //montly box hover에 쓰일 date 배열
+    var year = 2011;
+    var month = 1;
+    var day = 1;
+
+
+    for(var i=0; i<6; i++){
+        for(var j=0; j<12; j++){
+            var date = (year+i) + "-" + (month+j) + "-" + day;
+            var index = i*12 + j;
+
+            dateList[index] = parseDate(date);
+            if((i==5)&&(j==3)){
+                break;
+            }
+        }
+    }
+
     var dateTick_list = [parseDate("2011-01-01"),parseDate("2011-04-01"),
                          parseDate("2011-07-01"),parseDate("2011-10-01"),
                          parseDate("2012-01-01"),parseDate("2012-04-01"),
@@ -53,31 +66,47 @@
 
     var body = d3.select("body");
 
-    var legend_list1 =["shelling","air_strike","direct_attack","battle","chemical","barrel_bomb"];
-    var legend_text =["Shelling","Air Strike","Direct Attack","Battle","Chemical","Barrel Bomb"];
-    var legend_list3 =["Refugee","Death"];
+    var legend_list1 = ["barrel_bomb","battle","shelling","chemical","air_strike","direct_attack"];
+    var legend_text = ["Barrel Bomb","Battle","Shelling","Chemical","Air Strike","Massacre"];
+    var legend_list3 = ["Death"];
     
     var main_svg = d3.select("#timeline_chart").append("svg") // 월별 난민 발생수를 bar chart
                     .attr("width",outerWidth)
                     .attr("height",outerHeight);
 
     var tooltip3 = body.append("div")
-        .attr("class", "tooltip_div");
+                       .attr("class", "tooltip_div");
 
-    var alpha = 40; //mouseovell시 명암변화
 
     //** 섹션별 position 지정 value ** //
-    var px_start = 90;
-    var px_events = 120;
-    var px_refugees = 450;
-    var px_death = 600;
+    var px_event = 90;
+    var px_yAxis;
+    var px_death = 550;
     
+    //** 이벤트 써클 오버서티 **//
+    var c_opacity1 = 0.45;
+    var c_opacity2 = 0.05;
+    var c_opacityR = 0.7;
+    var current_opacity;
+    var current_opacity2;
 
-    var xScale_events = d3.scale.ordinal().rangeBands([px_events,px_refugees])
+    var total_num =[892,
+                    5567,
+                    14797,
+                    342,
+                    3543,
+                    8304];
+
+    var total_death = 131220;
+
+                    
+
+    var xScale_events = d3.scale.ordinal().rangeBands([px_event,px_death])
                                           .domain(legend_list1);
 
-    var div_line_frequency;
+    px_yAxis = px_event - xScale_events.rangeBand()/2;
 
+    var div_line_frequency;
 
     var chart = main_svg.append("g")                       // 이벤트들의 밴드들이 그룹
             .attr("class", "chart")
@@ -85,15 +114,10 @@
             .attr("transform","translate("+ timeline_margin.left + "," + timeline_margin.top +")");
 
 
-    var chart_y_top = 50;   //chart group내에서 차트 상단 경계선 y좌표
-
-
-    var line_graph_g = chart.append("g")
-                        .attr("transform","translate(0,0)");
 
     var legend_timeline_g = chart.append("g")
                         .attr("class","legend")
-                        .attr("transform", "translate(" + 0 + "," + (timeline_height) +")");
+                        .attr("transform", "translate(" + 0 + "," + 0 +")");
 
     var legend_type = legend_timeline_g.append("g")
                                      .selectAll("g")
@@ -104,19 +128,22 @@
                                         return "translate(" + xScale_events(d) +",10)";
                                      });
 
-    var legend_type_circle = legend_type
-                                .append("circle")
-                                .attr("cx",0)
-                                .attr("cy",0)
-                                .attr("r",5)
-                                .attr("id", function(d){
-                                    return d;
-                                });
+
+    var legend_type_range = chart.append("g")
+                                 .attr("transform","translate(" +(0)+ ",40)")
+                                 .append("text")
+                                 .attr("class","timeline_legend num_range")
+                                 .attr("x",0)
+                                 .attr("y",0)
+                                 .text("Total")
+                                 .style("fill","#ffffff")
+                                 .attr("text-anchor","start");
+
 
     var legend_type_text = legend_type
                                     .append("text")
                                     .attr("x",0)
-                                    .attr("y",5)
+                                    .attr("y",0)
                                     .attr("class","timeline_legend timeline_event")
                                     .attr("id",function(d){
                                         return d;
@@ -124,15 +151,36 @@
                                     .text(function(d,i){
                                         return legend_text[i];
                                     })
-                                    .attr("text-anchor","middle")
-                                    .attr("dy","1px");
+                                    .attr("text-anchor","middle");
+
+     var legend_type_circle = legend_type
+                                .append("circle")
+                                .attr("cx",0)
+                                .attr("cy",11)
+                                .attr("r",5)
+                                .attr("id", function(d){
+                                    return d;
+                                });
+
+     var legend_type_num = legend_type
+                                .append("text")
+                                .attr("x",0)
+                                .attr("y",30)
+                                .attr("class","type_num")
+                                .attr("id",function(d){
+                                        return d;
+                                })
+                                .text(function(d,i){
+                                    return total_num[i];
+                                })
+                                .attr("text-anchor","middle");
 
 
-    legend_type.selectAll(".timeline_event").call(wrap,52);
+   // legend_type.selectAll(".timeline_event").call(wrap,52);
 
     var legend_linegraph_g = chart.append("g")
                                 .attr("class","legend")
-                                .attr("transform", "translate(" + (px_refugees + 20) + "," + (timeline_height + 5) +")");
+                                .attr("transform", "translate(" + (px_death) + "," + (0) +")");
 
     var legend_linegraph = legend_linegraph_g.append("g")
                                 .selectAll("g")
@@ -143,12 +191,23 @@
                                     return "translate(" + i*150 + ",10)";
                                 });
 
+    var legend_lineg_text = legend_linegraph
+                                .append("text")
+                                .attr("x",0)
+                                .attr("y",0)
+                                .attr("class","timeline_legend")
+                                .attr("id","death")
+                                .style("stroke-width",0)
+                                .text(function(d){
+                                    return d;    
+                                });
+
     var legend_lineg_circle = legend_linegraph
                                 .append("line")
-                                .attr("x1",0)
-                                .attr("y1",0)
+                                .attr("x1",2)
+                                .attr("y1",12)
                                 .attr("x2",20)
-                                .attr("y2",0)
+                                .attr("y2",12)
                                 .attr("stroke-width","2") 
                                 .attr("id", function(d){
                                     if(d=="Refugee"){
@@ -159,14 +218,16 @@
                                     }
                                 });
 
-    var legend_lineg_text = legend_linegraph
+    var legend_lineg_num = legend_linegraph
                                 .append("text")
-                                .attr("x",25)
-                                .attr("y",3)
-                                .attr("class","timeline_legend")
-                                .text(function(d){
-                                    return d;    
-                                });
+                                .attr('x',0)
+                                .attr('y',30)
+                                .attr("class","timeline_legend death_num")
+                                .attr("id","death")
+                                .style("stroke-width",0)
+                                .text(total_death);
+
+    
 
 
     //---------------------------------------------------------------------------
@@ -181,121 +242,6 @@
             instantOffset = 100* yearMills;
 
         dataCon.items = items;
-
-        function showItems(n){
-            var count = 0; n=n || 10;
-            
-            dataCon.items.forEach(function (d){
-                count++;
-                if(count > n) return;
-            })
-        }
-
-        function compareAscending(item1, item2){
-            // Every item must have two fields; 'start' and 'end'.
-            var result = item1.start - item2.start;
-            // earlier first
-            if(result <0){ return -1;}
-            if(result >0){ return 1;}
-            //longer furst
-            result = item2.end - item1.end;
-            if(result <0) {return 1;}
-            if(result >0) {return -1;}
-            return 0;
-        }
-
-        function compareDescending(item1, item2) {
-            // Every item must have two fields: 'start' and 'end'.
-            var result = item1.start - item2.start;
-            // later first
-            if (result < 0) { return 1; }
-            if (result > 0) { return -1; }
-            // shorter first
-            result = item2.end - item1.end;
-            if (result < 0) { return 1; }
-            if (result > 0) { return -1; }
-            return 0;
-        }
-
-        function calculateTracks(items, sortOrder, timeOrder){
-            var i,track;
-
-            sortOrder = sortOrder || "descending";
-            timeOrder = timeOrder || "backward";
-
-            function sortBackward(){
-                //older items end deeper
-                items.forEach(function (item){
-                    for(i=0, track=0; i<tracks.length; i++, track++){
-                        if(item.end < tracks[i]){ 
-                         break; }
-                    }
-            
-                    item.track = track;
-                    tracks[track] = item.end
-                });
-            }
-
-            function sortForward() {
-                // younger items end deeper
-                
-                items.forEach(function (item) {
-                    for (i = 0; i < tracks.length; i++) {
-                        if (item.start > tracks[i]) {  
-                            
-                            break; }
-                    }
-
-
-                    item.track = i;//i=track
-                    
-                    if(item.instant){
-                        
-                        var month = item.start.getMonth();
-                        item.end = new Date(item.start);
-                        item.end.setMonth(month+2);
-                        //item.start.setMonth(month-1);
-                        
-                    }
-                    tracks[i] = item.end;//각 트랙의 마지막 아이템의 
-                });
-            }
-
-            if(sortOrder ==="ascending")
-                dataCon.items.sort(compareAscending);
-            else
-                dataCon.items.sort(compareDescending);
-
-            if(timeOrder ==="forward")
-                sortForward();
-            else
-                sortBackward();
-        }
-
-        // Convert yearStrings into dates
-        dataCon.items.forEach(function (item){
-            item.start = parseDate(item.start);
-            if (item.end == "") {
-                
-                item.end = new Date(item.start.getFullYear() + instantOffset);
-                item.instant = true;
-            } else {
-                item.end = parseDate(item.end);
-                item.instant = false;
-            }
-            // The timeline never reaches into the future.
-            // This is an arbitrary decision.
-            // Comment out, if dates in the future should be allowed.
-            if (item.end > today) { item.end = today};
-        });
-
-        //calculateTracks(data.items);
-        // Show patterns
-        //calculateTracks(data.items, "ascending", "backward");
-        //calculateTracks(data.items, "descending", "forward");
-        // Show real data
-        //calculateTracks(dataCon.items, "descending", "backward");
-        calculateTracks(dataCon.items, "ascending", "forward");
         dataCon.nTracks = tracks.length;
         dataCon.minDate = d3.min(dataCon.items, function (d) { return d.start; });
         dataCon.minDate = parseDate("2010-12-01");
@@ -376,7 +322,7 @@ timeline.setScale = function(){
 
     timeline_yScale = d3.time.scale()
             .domain([parseDate("2011-01-01"), parseDate("2016-04-01")])
-            .range([0, timeline_height]);
+            .range([timeline_top, timeline_height]);
 
 };
 
@@ -393,36 +339,55 @@ timeline.yAxis = function(){
 
         for(var i=0; i<5; i++){
             for(var j=1; j<7; j++){
-                datelist.push("201" + i + "-" + j*2 +"-01");
+                datelist.push("201" + i + "-" + j*2 + "-01");
             }
         }
 
         timeline_yAxis = d3.svg.axis()
         .scale(timeline_yScale)
         .orient("right")
-        .tickSize(timeline_width-100,0)
-        .ticks(12)
-        .tickValues(dateTick_list)
-        .tickFormat(function(d){ return d3.time.format("%b %Y")(d);});
+        .tickSize(timeline_width - px_event,0)
+        .ticks(64)
+        //.tickValues(dateTick_list)
+        .tickFormat(function(d,i){ 
+            if(i%3==0){
+                    return d3.time.format("%b %Y")(d);
+                }
+                else{
+                    return " ";
+                }
+            
+        });
 
         timeline_yAxis_g = chart.append("g")
         .attr("class", "timeline_axis")
         .attr("id", "date_axis")
-        .attr("transform", "translate(60,0)")
+        .attr("transform", "translate(" + (px_event-xScale_events.rangeBand()/2) +",0)")
         .call(timeline_yAxis)
         .call(customAxis);
 
-        d3.select("#date_axis").selectAll(".tick")
+       /* d3.select("#date_axis").selectAll(".tick")
               .append("circle")
-              .attr("cx",1)
+              .attr("class",function(d,i){
+                    return "tickMonth_" + i;
+               })
+              .attr("cx",0)
               .attr("cy",0)
               .attr("r",2)
-              .attr("fill","#bbbbbb");
+              .attr("fill","#999999");*/
 
         d3.select("#date_axis").selectAll("text")
+              .attr("class",function(d,i){
+                    return "tickMonth_" + i;
+               })
               .attr("x",-10)
               .style("text-anchor","end")
               .style("fill","#bbbbbb");
+
+        d3.select("#date_axis").selectAll("line")
+              .attr("class",function(d,i){
+                    return "lineMonth_" + i;
+               });
 }
 
 function customAxis(g) {
@@ -442,6 +407,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
           
                     });
 
+
         dataCon = event_data;
 
         timeline.setScale();
@@ -449,9 +415,9 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
 
         var div_line_frequency = chart.append("line")
                     .attr("class","timeline_divLine")
-                    .attr("x1",px_start)
+                    .attr("x1",px_event - xScale_events.rangeBand()/2)
                     .attr("y1",timeline_yScale(parseDate("2011-01-01")))
-                    .attr("x2",px_start)
+                    .attr("x2",px_event - xScale_events.rangeBand()/2)
                     .attr("y2",timeline_height);
 
         var div_line_death = chart.append("line")
@@ -461,34 +427,14 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                     .attr("x2",px_death)
                     .attr("y2",timeline_height);
 
-        var div_line_refugee = chart.append("line")
-                        .attr("class","timeline_divLine")
-                        .attr("x1",px_refugees)
-                        .attr("y1",timeline_yScale(parseDate("2011-01-01")))
-                        .attr("x2",px_refugees)
-                        .attr("y2",timeline_height);
 
         var div_line_end = chart.append("line")
                         .attr("class","timeline_divLine")
-                        .attr("x1",timeline_width - 35)
+                        .attr("x1",timeline_width - 38)
                         .attr("y1",timeline_yScale(parseDate("2011-01-01")))
-                        .attr("x2",timeline_width - 35)
+                        .attr("x2",timeline_width - 38)
                         .attr("y2",timeline_height);
 
-        div_line_frequency = chart.append("g")
-                        .selectAll("line")
-                        .data(legend_list1)
-                        .enter()
-                        .append("line")
-                        .attr("class","timeline_divLine")
-                        .attr("x1",function(d){
-                            return xScale_events(d);
-                        })
-                        .attr("y1",timeline_yScale(parseDate("2011-01-01")))
-                        .attr("x2",function(d){
-                            return xScale_events(d);
-                        })
-                        .attr("y2",timeline_height);
 
        var min = 0;
        var max = 100;
@@ -496,6 +442,7 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
         rScale_event = d3.scale.linear()
             .range([0,2,10])
             .domain([0,1,max]);
+
 
         var frequency = chart.append("g")
                             .attr("class","frequency")
@@ -508,8 +455,8 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .data(event_data)
                             .enter()
                             .append("circle")
-                            .attr("class",function(d){
-                                return "circle_event" + " " + chapter_check(d) + "_circle";
+                            .attr("class",function(d,i){
+                                return "circle_event" + " " + chapter_check(d) + "_circle" + " " + "month_" +i;
                             })
                             .attr("cx",0)
                             .attr("cy",function(d,i){
@@ -527,8 +474,8 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .data(event_data)
                             .enter()
                             .append("circle")
-                            .attr("class",function(d){
-                                return "circle_event" + " " + chapter_check(d) + "_circle"; 
+                            .attr("class",function(d,i){
+                                return "circle_event" + " " + chapter_check(d) + "_circle" + " " + "month_" +i;
                              })
                             .attr("cx",0)
                             .attr("cy",function(d,i){
@@ -546,8 +493,8 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .data(event_data)
                             .enter()
                             .append("circle")
-                            .attr("class",function(d){
-                                return "circle_event" + " " + chapter_check(d) + "_circle";
+                            .attr("class",function(d,i){
+                                return "circle_event" + " " + chapter_check(d) + "_circle" + " " + "month_" +i;
                             })
                             .attr("cx",0)
                             .attr("cy",function(d,i){
@@ -565,8 +512,8 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .data(event_data)
                             .enter()
                             .append("circle")
-                            .attr("class",function(d){
-                                return "circle_event" + " " + chapter_check(d) + "_circle";
+                            .attr("class",function(d,i){
+                                return "circle_event" + " " + chapter_check(d) + "_circle" + " " + "month_" +i;
                             })
                             .attr("cx",0)
                             .attr("cy",function(d,i){
@@ -584,8 +531,8 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .data(event_data)
                             .enter()
                             .append("circle")
-                            .attr("class",function(d){
-                                return "circle_event" + " " + chapter_check(d) + "_circle";
+                            .attr("class",function(d,i){
+                                return "circle_event" + " " + chapter_check(d) + "_circle" + " " + "month_" +i;
                             })
                             .attr("cx",0)
                             .attr("cy",function(d,i){
@@ -603,8 +550,8 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .data(event_data)
                             .enter()
                             .append("circle")
-                            .attr("class",function(d){
-                                return "circle_event" + " " + chapter_check(d) + "_circle";
+                            .attr("class",function(d,i){
+                                return "circle_event" + " " + chapter_check(d) + "_circle" + " " + "month_" +i;
                             })
                             .attr("cx",0)
                             .attr("cy",function(d,i){
@@ -615,11 +562,24 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             })
                             .attr("id","barrel_bomb");
 
+        div_line_frequency = chart.append("g")
+                        .selectAll("line")
+                        .data(legend_list1)
+                        .enter()
+                        .append("line")
+                        .attr("class","timeline_divLine event_divLine")
+                        .attr("x1",function(d){
+                            return xScale_events(d);
+                        })
+                        .attr("y1",timeline_yScale(parseDate("2011-01-01")))
+                        .attr("x2",function(d){
+                            return xScale_events(d);
+                        })
+                        .attr("y2",timeline_height);
+
 
          timeline.yAxis();
 
-
-        
 
         d3.csv("data/death_per_month.csv", function(death_data){  // 난민 누적수
 
@@ -635,8 +595,8 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                    var max = d3.max(death_data, function(d){ return d.num});
                 
                     xScale_d = d3.scale.linear()
-                        .range([0,95])
-                        .domain([min,6000]);
+                        .range([0,143])
+                        .domain([min,7000]);
 
                    var xAxis = d3.svg.axis()
                             .scale(xScale_d)
@@ -646,6 +606,8 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .tickFormat(d3.format("s"))
                             .tickSize(6, 0);
 
+                    var line_graph_g = chart.append("g")
+                                            .attr("transform","translate(0,0)");
 
                     var point_group = line_graph_g.append("g")
                                         .attr("class","point_group_d")
@@ -655,17 +617,19 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                                         .enter();
 
                         point_group.append("circle")
-                                    .attr("class", function(d){
-                                            return "line_graph_g" + " " + chapter_check(d) + "_line";
+                                    .attr("class", function(d,i){
+                                            return "line_graph_g" + " " + chapter_check(d) + "_line" + " " + "circle_month_" +i;
                                     })
                                     .attr("id","death")
-                                    .attr("r","2")
+                                    .attr("r","1.5")
                                     .attr("cx",function(d){
                                         return xScale_d(d.num);
                                     })
                                     .attr("cy",function(d){
                                         return timeline_yScale(d.date);
-                                    });
+                                    })
+                                    .style("opacity",c_opacity1)
+
                         
                     var line_group = line_graph_g.append("g")
                                         .attr("class","line_group_d")
@@ -674,21 +638,24 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                                         .data(death_data)
                                         .enter();
 
+
                         line_group.append("line") 
-                            .attr("class", function(d){
-                                    return "line_graph_g" + " " + chapter_check(d) + "_line";
-                            })
-                            .attr("id", "line_d")
-                            .attr("x1",xScale_d(0))
-                            .attr("y1",function(d){
-                                    return timeline_yScale(d.date);
-                            })
-                            .attr("x2",function(d){
-                                    return xScale_d(d.num);
-                            })
-                            .attr("y2",function(d){
-                                    return timeline_yScale(d.date);
-                            });
+                                    .attr("class", function(d,i){
+                                            return "line_graph_g" + " " + chapter_check(d) + "_line" + " " + "line_month_" +i;
+                                    })
+                                    .attr("id", "line_d")
+                                    .attr("x1",xScale_d(0))
+                                    .attr("y1",function(d){
+                                            return timeline_yScale(d.date);
+                                    })
+                                    .attr("x2",function(d){
+                                            return xScale_d(d.num);
+                                    })
+                                    .attr("y2",function(d){
+                                            return timeline_yScale(d.date);
+                                    })
+                                    .style("opacity",c_opacity1);
+
 
                     var line = d3.svg.line()
                                 .x(function(d){ return xScale_d(d.num);})
@@ -697,96 +664,23 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
 
                     line_graph_g.append("g")
                             .attr("class","x timeline_axis")
-                            .attr("transform", "translate("+px_death+",0)")
+                            .attr("transform", "translate("+px_death+"," + timeline_top +")")
                             .call(xAxis)
                             .append("text")
                             .attr("transform", "rotate(-90)")
-                            .attr("dy",".71em");    
-    });
+                            .attr("dy",".71em");
+
+                    var guideLine = line_graph_g.append("line")
+                                                .attr("class","timeline_divLine guideLine")
+                                                .attr("x1",px_death)
+                                                .attr("x2",px_death)
+                                                .attr("y1",timeline_yScale(parseDate("2011-01-01")))
+                                                .attr("y2",timeline_yScale(parseDate("2016-04-01")));
 
 
-    d3.csv("data/refugee_per_month.csv", function(refugee_data){  // 난민 누적수
-
-                     refugee_data.forEach(function (item){               
-
-                        item.date = parseDate(item.date);
-                        item.ac_num = +item.ac_num;
-                        item.num = +item.num;
-                    });
 
 
-                   var min = 0;
-                   var max = d3.max(refugee_data, function(d){ return d.num});
-                
-                    xScale_r = d3.scale.linear()
-                        .range([150,5])
-                        .domain([min,max]);
-
-                   var xAxis = d3.svg.axis()
-                            .scale(xScale_r)
-                            .orient("top")
-                            .ticks(4)
-                            .tickValues([0,125000,250000])
-                            .tickFormat(d3.format("s"))
-                            .tickSize(6, 0);
-
-
-                    var point_group = line_graph_g.append("g")
-                                        .attr("class","point_group_r")
-                                        .attr("transform","translate("+px_refugees+",0)")
-                                        .selectAll("circle")
-                                        .data(refugee_data)
-                                        .enter();
-
-                        point_group.append("circle")
-                                    .attr("class", function(d){
-                                            return "line_graph_g" + " " + chapter_check(d) + "_line";
-                                    })
-                                    .attr("id","refugee")
-                                    .attr("r","2")
-                                    .attr("cx",function(d){
-                                        return xScale_r(d.num);
-                                    })
-                                    .attr("cy",function(d){
-                                        return timeline_yScale(d.date);
-                                    });
-                        
-                    var line_group = line_graph_g.append("g")
-                                        .attr("class","line_group_r")
-                                        .attr("transform","translate(" +px_refugees+",0)")
-                                        .selectAll("line")
-                                        .data(refugee_data)
-                                        .enter();
-
-                        line_group.append("line") 
-                            .attr("class", function(d){
-                                    return "line_graph_g" + " " + chapter_check(d) + "_line";
-                            })
-                            .attr("id", "line_r")
-                            .attr("x1",xScale_r(0))
-                            .attr("y1",function(d){
-                                    return timeline_yScale(d.date);
-                            })
-                            .attr("x2",function(d){
-                                    return xScale_r(d.num);
-                            })
-                            .attr("y2",function(d){
-                                    return timeline_yScale(d.date);
-                            });
-
-                    var line = d3.svg.line()
-                                .x(function(d){ return xScale_d(d.num);})
-                                .y(function(d){ return timeline_yScale(d.date);})
-
-                    line_graph_g.append("g")
-                            .attr("class","x timeline_axis")
-                            .attr("transform", "translate("+px_refugees+",0)")
-                            .call(xAxis)
-                            .append("text")
-                            .attr("transform", "rotate(-90)")
-                            .attr("dy",".71em");  
-
-
+                /* Chapter mask*/
                     var chapter_mask1 = chart.append("g")
                             .attr("transform","translate(0,0)")
                             .append("rect")
@@ -796,18 +690,19 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("height",function(){
                                 return timeline_yScale(chapter_date[1].start) - timeline_yScale(chapter_date[0].start)
                             })
-                            .attr("x",px_start)
-                            .attr("y",timeline_yScale(parseDate("2011-01-01")));            
+                            .attr("x",px_yAxis)
+                            .attr("y",timeline_yScale(parseDate("2011-01-01")));     
+
 
                     var chapter_selector = chart.append("g")
                             .attr("transform","translate(0,0)")
                             .append("rect")
                             .attr("class","chapter_selector")
-                            .attr("width",605)
+                            .attr("width",timeline_width - px_event)
                             .attr("height",function(){
                                 return timeline_yScale(chapter_date[1].end)-timeline_yScale(chapter_date[1].start);
                             })
-                            .attr("x",px_start)
+                            .attr("x",px_yAxis)
                             .attr("y",timeline_yScale(chapter_date[1].start));
 
 
@@ -820,10 +715,131 @@ d3.csv("data/event_summary_df_whole.csv", function(event_data){
                             .attr("height",function(){
                                 return timeline_yScale(chapter_date[9].end) - timeline_yScale(chapter_date[1].end)
                             })
-                            .attr("x",px_start)
-                            .attr("y",timeline_yScale(chapter_date[1].end));  
-                                
+                            .attr("x",px_yAxis)
+                            .attr("y",timeline_yScale(chapter_date[1].end));   
+
+
+                /*chart monthly box for hover*/
+                chart.append("g").selectAll("rect").data(dateList)
+                                       .enter()
+                                       .append("rect")
+                                       .attr("class",function(d,i){
+                                            return "monthly_box" + " " + "month_" +i; 
+                                       })
+                                       .attr("x",px_event)
+                                       .attr("y",function(d,i){
+                                         return timeline_yScale(dateList[i] - (timeline_height/128));
+                                       })
+                                       .attr("width",600)
+                                       .attr("height",timeline_height/64)
+                                       .attr("opacity",0);
+
+                for(i=0; i<64; i++){
+                    (function(){
+                        var index = i;
+
+                        d3.selectAll(".month_" + index).on("mouseover",function(){
+                         //각 월에 해당하는요소 롤어보할 경우
+                            d3.selectAll(".month_" + (index-3) +":not(.monthly_box)").style("opacity",function(d){
+                                                                                        current_opacity = d3.select(this).style("opacity");
+                                                                                        return c_opacityR;
+                                                                                      })
+                                                                                     .style("stroke-width",1)
+                                                                                     .style("stroke","#ffffff");
+
+                            d3.selectAll(".line_month_" + (index-3)).style("opacity",function(d){
+                                                                                    current_opacity2 = d3.select(this).style("opacity");
+                                                                                    return c_opacityR + 0.2;
+                                                                            });
+                            d3.selectAll(".circle_month_" + (index-3)).style("opacity",c_opacityR + 0.2);
+
+                            d3.selectAll(".month_" + (index-3) +":not(.monthly_box)").moveToFront();
+
+                            d3.selectAll(".tickMonth_" + (index)).style("fill","#ffffff");
+                            d3.selectAll(".lineMonth_" + (index)).style("stroke","#ffffff");
+                            d3.selectAll(".event_divLine").style("stroke","#ffffff");
+
+                            var guideLine_x =px_death + xScale_d(death_data[index-3].num);
+                            console.log(guideLine_x);
+                            d3.selectAll(".guideLine").attr("x1",guideLine_x)
+                                                      .attr("x2",guideLine_x);
+
+
+                            d3.selectAll(".type_num").text(function(d){
+                               var id = d3.select(this).attr("id");
+                               
+                               if(id =="shelling"){
+                                    return dataCon[index-3].shelling;
+                                }
+                                else if(id =="barrel_bomb"){
+                                    return dataCon[index-3].barrel_bomb;
+                                }
+                                else if(id =="battle"){
+                                    return dataCon[index-3].battle;
+                                }
+                                else if(id =="air_strike"){
+                                    return dataCon[index-3].air_strike;
+                                }
+                                else if(id =="chemical"){
+                                    return dataCon[index-3].chemical;
+                                }
+                                else if(id =="direct_attack"){
+                                    return dataCon[index-3].direct_attack;
+                                }
+                            });
+
+                            d3.select(".num_range").text(d3.time.format("%b %Y")(dateList[index]));
+                            d3.select(".death_num").text(death_data[index].num);
+
+                        });
+
+                        d3.selectAll(".month_" + index).on("mouseout",function(){
+                        
+                           /* if((timeline_current_chapter!=1)&&(timeline_current_chapter!=9)){ //특정 챕터가 아닐경우 롤아웃시 opacity를 낮추면 안된다.
+                                d3.selectAll(".month_" + (index-3) +":not(.chapt" + (timeline_current_chapter-1) + "_circle)")
+                                                                                    .style("opacity",current_opacity);
+                            }*/
+                            
+
+                            d3.selectAll(".month_" + (index-3)).style("stroke-width",1)
+                                                               .style("stroke","#222222")
+                                                               .style("opacity",current_opacity);  
+                            d3.selectAll(".monthly_box").style("opacity",0);
+
+                            d3.selectAll(".line_month_" + (index-3)).style("opacity", current_opacity2);
+                            d3.selectAll(".circle_month_" + (index-3)).style("opacity", current_opacity2);
+
+                            d3.selectAll(".tickMonth_" + (index)).style("fill","#999999");
+                            d3.selectAll(".lineMonth_" + (index)).style("stroke","#666666");
+                            d3.selectAll(".event_divLine").style("stroke","#888888");
+
+                            d3.selectAll(".guideLine").attr("x1",px_death)
+                                                      .attr("x2",px_death);
+
+                            total_num =[892,
+                                        5567,
+                                        14797,
+                                        342,
+                                        3543,
+                                        8304];
+
+                            d3.selectAll(".type_num").text(function(d,i){
+                                                        return total_num[i];
+                                                    });
+                            d3.select(".num_range").text("Total");
+                            d3.select(".death_num").text(total_death);
+                        });
+
+                    })();
+                }
+                //d3.selectAll("")
+
+
+
+
     });
+
+
 
     
 });
@@ -845,7 +861,7 @@ function timeline_resize(){
 
 
         //rescale axis//
-        timeline_yScale.range([0, timeline_height]);
+        timeline_yScale.range([timeline_top, timeline_height]);
 
         timeline_yAxis.scale(timeline_yScale);
 
@@ -903,37 +919,20 @@ function timeline_resize(){
                             return timeline_yScale(d.date);
                     });
 
-        d3.select(".point_group_r").selectAll("circle").transition()
-                  .attr("cy",function(d){
-                     return timeline_yScale(d.date);
-                  });
-
-        d3.select(".line_group_r").selectAll("line").transition()
-                    .attr("x1",xScale_r(0))
-                    .attr("y1",function(d){
-                            return timeline_yScale(d.date);
-                    })
-                    .attr("x2",function(d){
-                            return xScale_r(d.num);
-                    })
-                    .attr("y2",function(d){
-                            return timeline_yScale(d.date);
-                    });
-
         //* mask rescale *//
         var i = timeline_current_chapter;
          d3.select("#chapter_mask1").transition()
                     .attr("height",function(){
                         return timeline_yScale(chapter_date[i].start)-timeline_yScale(chapter_date[0].start);
                     })
-                    .attr("x",px_start)
+                    .attr("x",px_event)
                     .attr("y",timeline_yScale(chapter_date[0].start));
 
         d3.select(".chapter_selector").transition()
                     .attr("height",function(){
                         return timeline_yScale(chapter_date[i].end)-timeline_yScale(chapter_date[i].start);
                     })
-                    .attr("x",px_start)
+                    .attr("x",px_event)
                     .attr("y",timeline_yScale(chapter_date[i].start));
                     
         d3.select("#chapter_mask2").transition()
@@ -941,7 +940,7 @@ function timeline_resize(){
                     .attr("height",function(){
                         return timeline_yScale(chapter_date[9].end) - timeline_yScale(chapter_date[i].end)
                     })
-                    .attr("x",px_start)
+                    .attr("x",px_event)
                     .attr("y",timeline_yScale(chapter_date[i].end));
 
 
@@ -950,7 +949,7 @@ function timeline_resize(){
                          .attr("transform", "translate(" + 0 + "," + (timeline_height + 15) +")");
 
         legend_linegraph_g.transition()
-                          .attr("transform", "translate(" + (px_refugees + 20) + "," + (timeline_height + 15) +")");
+                          .attr("transform", "translate(" + (px_death + 20) + "," + (timeline_height + 15) +")");
 
         //* grid line rescale *//
         d3.selectAll(".timeline_divLine")
@@ -974,7 +973,7 @@ function chapter_move(index){
                     .attr("height",function(){
                         return timeline_yScale(chapter_date[i].start)-timeline_yScale(chapter_date[0].start);
                     })
-                    .attr("x",px_start)
+                    .attr("x",px_yAxis)
                     .attr("y",timeline_yScale(chapter_date[0].start));
 
     d3.select(".chapter_selector").transition()
@@ -984,7 +983,7 @@ function chapter_move(index){
                     .attr("height",function(){
                         return timeline_yScale(chapter_date[i].end)-timeline_yScale(chapter_date[i].start);
                     })
-                    .attr("x",px_start)
+                    .attr("x",px_yAxis)
                     .attr("y",timeline_yScale(chapter_date[i].start));
                     
     d3.select("#chapter_mask2").transition()
@@ -994,7 +993,7 @@ function chapter_move(index){
                     .attr("height",function(){
                         return timeline_yScale(chapter_date[9].end) - timeline_yScale(chapter_date[i].end)
                     })
-                    .attr("x",px_start)
+                    .attr("x",px_yAxis)
                     .attr("y",timeline_yScale(chapter_date[i].end));
 
     if((1<i)&&(i<9)){ //*서브 챕터(1~7)일때 각 챕터만 보여주기
@@ -1003,27 +1002,27 @@ function chapter_move(index){
                               .delay(600)
                               .duration(300)  
                               .ease("bounce")
-                              .style("opacity",0.45);
+                              .style("opacity",c_opacity1);
 
         d3.selectAll(".circle_event:not(.chapt"+ (i-1) + "_circle)")
                               .transition()
                               .delay(600)
                               .duration(300)  
                               .ease("bounce")
-                              .style("opacity",0.05);
+                              .style("opacity",c_opacity2);
 
         d3.selectAll(".chapt" + (i-1) + "_line").transition()
                               .delay(600)
                               .duration(300)  
                               .ease("bounce")
-                              .style("opacity",1);
+                              .style("opacity",c_opacity1 + 0.2);
 
          d3.selectAll(".line_graph_g:not(.chapt" + (i-1) + "_line)")
                               .transition()
                               .delay(600)
                               .duration(300)  
                               .ease("bounce")
-                              .style("opacity",0.3);
+                              .style("opacity",c_opacity2 + 0.2);
 
     }
     else{ //*처음과 끝에는 다 보여주기
@@ -1033,18 +1032,18 @@ function chapter_move(index){
                               .delay(600)
                               .duration(300)  
                               .ease("bounce")
-                              .style("opacity",0.45);
+                              .style("opacity",c_opacity1);
 
         d3.selectAll(".line_graph_g")
                               .transition()
                               .delay(600)
                               .duration(300)  
                               .ease("bounce")
-                              .style("opacity",1);
-
-    }
-  
+                              .style("opacity",c_opacity1 + 0.2);
+                              
+    } 
 }
+
 function chapter_check(d){
    if((chapter_date[2].start<=d.date)&&(d.date<=chapter_date[2].end)){
         return "chapt1";

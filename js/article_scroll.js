@@ -189,6 +189,8 @@ $(document).ready(function () {
     var chapter_divs = $(".map_article");
     var chapter_offset_top = [];
 
+   
+
     /** REFUGEE MAP SECTION SET POSITION **/
     function section1_setposition() {
         var section_offset = parseInt($refugee_map.offset().top);
@@ -386,7 +388,7 @@ $(document).ready(function () {
         var chapter_bottom = parseInt(c4.offset().top) - parseInt($timeline_div.height());
         var chapter_top = parseInt($timeline.offset().top);
 
-        timeline_resize();
+        //timeline_resize();
         // ==> start Scroll
         if (chapter_top < scroll_top && chapter_bottom > scroll_top) {
             section3_fix();
