@@ -8,7 +8,7 @@ body{
 	margin:5% 5% 5% 5%;
 	background-color: #ffffff;
 }
-@media screen and (min-width: 368px){
+@media screen and (min-width: 360px){
 	.container{
 		width: 100%;
 		min-width: 368px;
