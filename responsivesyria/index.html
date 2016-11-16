@@ -23,9 +23,14 @@ $(document).ready(function(){
 	console.log(vizHeight);
 	$(".viz").css("height",vizHeight);
 
+	vizHeight = $(".viz").css("width");
+	$(".viz").css("height",vizHeight);
+	$(".viz").html($window.width());
+
 	$window.on("resize",function(){
 		vizHeight = $(".viz").css("width");
 		$(".viz").css("height",vizHeight);
+		$(".viz").html($window.width());
 	});
 	
 });
