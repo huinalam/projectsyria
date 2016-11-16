@@ -4,9 +4,22 @@ body{
 }
 .narrative{
 	width: 90%;
-	height: 500px;
-	margin:5% 5% 5% 5%;
+	height: 800px;
+	margin:5% 5% 20% 5%;
 	background-color: #ffffff;
+}
+.header{
+	width: 98%;
+	height: 500px;
+	margin: 1%;
+	background-color: #aaaaaa;
+}
+.bottom{
+	display:flex;
+	width: 98%;
+	height: 100px;
+	margin: 1%;
+	background-color: #333333;
 }
 @media screen and (min-width: 360px){
 	.container{
@@ -16,8 +29,6 @@ body{
 		margin: auto;
 	}
 	.viz{
-		position: fixed;
-		top: 0px;
 		width:98%;
 		height: 100px;
 		margin: 1%;
@@ -27,7 +38,6 @@ body{
 	}
 	.text{
 		position: relative;
-		top:100px;
 		width:98%;
 		margin: 1%;
 		float: none;
@@ -42,8 +52,6 @@ body{
 			margin: auto;
 		}
 		.viz{
-			position: fixed;
-			top: 0px;
 			width:58%;
 			max-width: 696px;
 			height:100px;
@@ -52,13 +60,18 @@ body{
 			background-color: #00ccff;
 			z-index: 1;
 		}
+		.viz_fixed{
+			
+		}
 		.text{
 			position: relative;
 			width:38%;
 			margin: 1%;
 			float: left;
 			top:0px;
-			left:60%;
 			background-color: #ffcc00; 
+		}
+		.text_fixed{
+			margin-left:61%;
 		}
 }
