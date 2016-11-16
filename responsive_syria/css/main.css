@@ -1,0 +1,64 @@
+body{
+	margin: 0px;
+	padding: 0px;
+}
+.narrative{
+	width: 90%;
+	height: 500px;
+	margin:5% 5% 5% 5%;
+	background-color: #ffffff;
+}
+@media screen and (min-width: 368px){
+	.container{
+		width: 100%;
+		min-width: 368px;
+		height: auto;
+		margin: auto;
+	}
+	.viz{
+		position: fixed;
+		top: 0px;
+		width:98%;
+		height: 100px;
+		margin: 1%;
+		float: none;
+		background-color: #00ccff;
+		z-index: 1;
+	}
+	.text{
+		position: relative;
+		top:100px;
+		width:98%;
+		margin: 1%;
+		float: none;
+		background-color: #ffcc00; 
+	}
+}
+@media screen and (min-width: 768px){
+		.container{
+			width: 100%;
+			max-width: 1200px;
+			height: auto;
+			margin: auto;
+		}
+		.viz{
+			position: fixed;
+			top: 0px;
+			width:58%;
+			max-width: 696px;
+			height:100px;
+			margin: 1%;
+			float: left;
+			background-color: #00ccff;
+			z-index: 1;
+		}
+		.text{
+			position: relative;
+			width:38%;
+			margin: 1%;
+			float: left;
+			top:0px;
+			left:60%;
+			background-color: #ffcc00; 
+		}
+}
