@@ -96,7 +96,7 @@ body{
 	background-color: #ffffff;
 	width:96%;
 	margin: 2%;
-	float: none;
+	float: none; 
 	z-index: 999;
 }
 .viz_Mfixed{
