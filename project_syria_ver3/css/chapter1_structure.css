@@ -35,7 +35,6 @@ body{
 	margin-top: 0px;
 	line-height: 120%;
 	color: #eeeeee;
-
 }
 
 .chapter_title_div>h1{
@@ -91,6 +90,7 @@ body{
 		margin: auto;
 	}
 	.viz{
+		-webkit-backface-visibility: hidden; 
 		height: 300px;
 		padding-top: 2%;
 		display: inline-block;
@@ -121,6 +121,7 @@ body{
 			margin: auto;
 		}
 		.viz{
+			-webkit-backface-visibility: hidden; 
 			height: 300px;
 			display: inline-block;
 			padding-top: 2%;
