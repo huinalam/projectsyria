@@ -15,7 +15,7 @@ body{
 	background-color: #aaaaaa;
 }
 .bottom{
-	display:flex;
+	display: inline-block;
 	width: 98%;
 	height: 100px;
 	margin: 1%;
@@ -23,6 +23,7 @@ body{
 }
 @media screen and (min-width: 360px){
 	.container{
+		display: table;
 		width: 100%;
 		min-width: 368px;
 		height: auto;
@@ -36,7 +37,12 @@ body{
 		background-color: #00ccff;
 		z-index: 1;
 	}
+	.viz_Mfixed{
+			position: fixed;
+			top: 0px;
+		}
 	.text{
+		display: inline-block;
 		position: relative;
 		width:98%;
 		margin: 1%;
@@ -60,10 +66,12 @@ body{
 			background-color: #00ccff;
 			z-index: 1;
 		}
-		.viz_fixed{
-			
+		.viz_Dfixed{
+			position: fixed;
+			top: 0px;
 		}
 		.text{
+			display: inline-block;
 			position: relative;
 			width:38%;
 			margin: 1%;

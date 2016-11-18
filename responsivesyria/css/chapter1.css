@@ -1,0 +1,85 @@
+body{
+	margin: 0px;
+	padding: 0px;
+}
+.narrative{
+	width: 90%;
+	height: 800px;
+	margin:5% 5% 20% 5%;
+	background-color: #ffffff;
+}
+.header{
+	width: 98%;
+	height: 500px;
+	margin: 1%;
+	background-color: #aaaaaa;
+}
+.bottom{
+	display: inline-block;
+	width: 98%;
+	height: 100px;
+	margin: 1%;
+	background-color: #333333;
+}
+@media screen and (min-width: 360px){
+	.container{
+		display: table;
+		width: 100%;
+		min-width: 368px;
+		height: auto;
+		margin: auto;
+	}
+	.viz{
+		width:98%;
+		height: 100px;
+		margin: 1%;
+		float: none;
+		background-color: #00ccff;
+		z-index: 1;
+	}
+	.viz_Mfixed{
+			position: fixed;
+			top: 0px;
+		}
+	.text{
+		display: inline-block;
+		position: relative;
+		width:98%;
+		margin: 1%;
+		float: none;
+		background-color: #ffcc00; 
+	}
+}
+@media screen and (min-width: 768px){
+		.container{
+			width: 100%;
+			max-width: 1200px;
+			height: auto;
+			margin: auto;
+		}
+		.viz{
+			width:58%;
+			max-width: 696px;
+			height:100px;
+			margin: 1%;
+			float: left;
+			background-color: #00ccff;
+			z-index: 1;
+		}
+		.viz_Dfixed{
+			position: fixed;
+			top: 0px;
+		}
+		.text{
+			display: inline-block;
+			position: relative;
+			width:38%;
+			margin: 1%;
+			float: left;
+			top:0px;
+			background-color: #ffcc00; 
+		}
+		.text_fixed{
+			margin-left:61%;
+		}
+}

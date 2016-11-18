@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <link href="css/main.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="header"></div>
+		<div class="viz"></div>
+		<div class="text">
+			<div class="narrative">Narrative 1</div>
+			<div class="narrative">Narrative 2</div>
+			<div class="narrative">Narrative 3</div>
+		</div>
+		<div class="bottom"></div>
+	</div>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script>
+$(document).ready(function(){
+	/* 윈도우,컨테이너,시각화 div 객체 선언*/
+	var $window = $(window);
+	var container = {};
+	var vizHeight;
+
+	/*사이즈 초기화*/
+	vizHeight = $(".viz").css("width");
+	console.log(vizHeight);
+	$(".viz").css("height",vizHeight);
+	$(".viz").html($window.width());
+
+	/*div 스크롤 위치 확인*/
+	var vizTop = $(".viz").offset().top;
+	var bottomTop = $(".bottom").offset().top;
+
+	/*윈도우 리사이즈 함수*/
+	$window.on("resize",function(){
+		/*div 리사이즈*/
+		vizHeight = $(".viz").css("width");
+		$(".viz").css("height",vizHeight);
+		$(".viz").html($window.width());
+
+		/*시각화 div 스크롤 위치 확인*/
+		vizTop = $(".viz").offset().top;
+		bottomTop = $(".bottom").offset().top;
+
+		fix_check();
+	});
+
+	$window.on("scroll",function(){
+		fix_check();
+	});
+
+	function fix_check(){
+		var scrollTop = $window.scrollTop();
+		console.log(scrollTop);
+
+		
+		if((vizTop < scrollTop)&&(scrollTop < bottomTop)){//affix
+
+			if($window.width()<768){
+				//affix for mobile
+				$(".viz").addClass("viz_Mfixed");
+				//Text margin modification
+				$(".text").css("margin-top",vizHeight);
+				$(".text").css("margin-top",'+=2%');
+			}else{
+				//affix for desktop
+				$(".viz").addClass("viz_Dfixed");
+				$(".text").css("margin-left","61%");
+			}
+
+		}else{//un-affix
+			
+			if($window.width()<768){
+				//un-affix for mobile
+				$(".viz").removeClass("viz_Mfixed");
+				$(".viz").removeClass("viz_Dfixed");
+				$(".text").css("margin","1%");
+			}else{
+				//un-affix for desktop
+				$(".viz").removeClass("viz_Mfixed");
+				$(".viz").removeClass("viz_Dfixed");
+				$(".text").css("margin","1%");
+			}
+			console.log("unfix");
+		}
+	}// fix_check() end;
+	
+});
+</script>
+</body>
+</html>

@@ -43,25 +43,49 @@ $(document).ready(function(){
 		/*시각화 div 스크롤 위치 확인*/
 		vizTop = $(".viz").offset().top;
 		bottomTop = $(".bottom").offset().top;
+
+		fix_check();
 	});
 
 	$window.on("scroll",function(){
+		fix_check();
+	});
+
+	function fix_check(){
 		var scrollTop = $window.scrollTop();
 		console.log(scrollTop);
-		
-		if((vizTop < scrollTop)&&(scrollTop < bottomTop)){
-			$(".viz").css("position","fixed");
-			$(".viz").css("top","0px");
-			$(".text").addClass("text_fixed");
-			console.log("fix");
 
-		}else{
-			$(".viz").css("position","static");
-			$(".text").removeClass("text_fixed");
+		
+		if((vizTop < scrollTop)&&(scrollTop < bottomTop)){//affix
+
+			if($window.width()<768){
+				//affix for mobile
+				$(".viz").addClass("viz_Mfixed");
+				//Text margin modification
+				$(".text").css("margin-top",vizHeight);
+				$(".text").css("margin-top",'+=2%');
+			}else{
+				//affix for desktop
+				$(".viz").addClass("viz_Dfixed");
+				$(".text").css("margin-left","61%");
+			}
+
+		}else{//un-affix
+			
+			if($window.width()<768){
+				//un-affix for mobile
+				$(".viz").removeClass("viz_Mfixed");
+				$(".viz").removeClass("viz_Dfixed");
+				$(".text").css("margin","1%");
+			}else{
+				//un-affix for desktop
+				$(".viz").removeClass("viz_Mfixed");
+				$(".viz").removeClass("viz_Dfixed");
+				$(".text").css("margin","1%");
+			}
 			console.log("unfix");
 		}
-
-	});
+	}// fix_check() end;
 	
 });
 </script>
