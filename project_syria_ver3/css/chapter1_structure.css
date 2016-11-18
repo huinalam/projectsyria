@@ -98,11 +98,10 @@ body{
 		width:96%;
 		margin: 2%;
 		float: none;
-		z-index: 1;
+		z-index: 999;
 	}
 	.viz_Mfixed{
 		padding-top: 2%;
-		display: inline-block;
 		position: fixed;
 		top: 0px;
 	}
@@ -130,11 +129,10 @@ body{
 			max-width: 696px;
 			margin: 1%;
 			float: left;
-			z-index: 1;
+			z-index: 999;
 		}
 		.viz_Dfixed{
 			padding-top: 2%;
-			display: inline-block;
 			position: fixed;
 			top: 0px;
 		}
