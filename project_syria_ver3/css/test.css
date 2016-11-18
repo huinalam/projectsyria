@@ -98,6 +98,7 @@ body{
 	margin: 2%;
 	float: none;
 	z-index: 999;
+	-webkit-transform: translateZ(0);
 }
 .viz_Mfixed{
 	padding-top: 2%;
