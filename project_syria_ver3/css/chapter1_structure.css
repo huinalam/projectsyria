@@ -90,7 +90,6 @@ body{
 		margin: auto;
 	}
 	.viz{
-		-webkit-backface-visibility: hidden; 
 		height: 300px;
 		padding-top: 2%;
 		display: inline-block;
@@ -135,7 +134,7 @@ body{
 		.viz_Dfixed{
 			padding-top: 2%;
 			position: fixed;
-			top: 0px;
+			top: inherit;
 		}
 		.text{
 			
