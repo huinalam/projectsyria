@@ -91,9 +91,10 @@ body{
 		margin: auto;
 	}
 	.viz{
+		height: 300px;
 		padding-top: 2%;
 		display: inline-block;
-		background-color: #111215;
+		background-color: #ffffff;
 		width:96%;
 		margin: 2%;
 		float: none;
@@ -121,9 +122,10 @@ body{
 			margin: auto;
 		}
 		.viz{
+			height: 300px;
 			display: inline-block;
 			padding-top: 2%;
-			background-color: #111215;
+			background-color: #ffffff;
 			width:63%;
 			max-width: 696px;
 			margin: 1%;
