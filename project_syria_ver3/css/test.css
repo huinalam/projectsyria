@@ -121,7 +121,6 @@ body{
 			margin: auto;
 		}
 		.viz{
-			-webkit-backface-visibility: hidden; 
 			height: 300px;
 			display: inline-block;
 			padding-top: 2%;
@@ -133,6 +132,7 @@ body{
 			z-index: 999;
 		}
 		.viz_Dfixed{
+			-webkit-transform: translateZ(0);
 			padding-top: 2%;
 			position: fixed;
 			top: 0px;
