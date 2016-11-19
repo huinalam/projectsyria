@@ -85,7 +85,6 @@ body{
 
 .container{
 	width: 100%;
-	min-width: 450px;
 	height: auto;
 	margin: auto;
 }
