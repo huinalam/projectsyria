@@ -222,15 +222,16 @@ function reDraw(){
                          });
 
     d3.selectAll("tspan").transition()
-                                  .attr("x",function(d){
-                                        var toYear = d.year + "-12-31"
-                                        return x_line(parseDate(toYear)) - 10;
-                                      })
-                                  .attr("y",function(d){
-                                      var index = d.year - 1968;
-                                      return y_line(dataCon[index].value) - 370;
-                                  });
-    //d3.selectAll(".chart_caption").call(wrap,150);                   
+                          .attr("x",function(d){
+                                var toYear = d.year + "-12-31"
+                                return x_line(parseDate(toYear)) - 10;
+                              })
+                          .attr("y",function(d){
+                              var index = d.year - 1968;
+                              return y_line(dataCon[index].value) - 385;
+                          });
+
+    //d3.selectAll(".chart_caption").call(wrap,110);                   
 
 }//redraw function end;
 
@@ -267,11 +268,11 @@ function markingEvent(marking_events){
     marking_events.append("line")
                 .attr("class","marking_events_line l1")
                 .attr("x1",function(d){
-                    var toYear = d.year + "-12-31"
+                    var toYear = d.year + "-12-31";
                     return x_line(parseDate(toYear));
                 })
                 .attr("x2",function(d){
-                    var toYear = d.year + "-12-31"
+                    var toYear = d.year + "-12-31";
                     return x_line(parseDate(toYear));
                 })
                 .attr("y1",function(d){
@@ -286,12 +287,12 @@ function markingEvent(marking_events){
     marking_events.append("text")
                   .attr("class","chart_caption")
                   .attr("x",function(d){
-                    var toYear = d.year + "-12-31"
+                    var toYear = d.year + "-12-31";
                     return x_line(parseDate(toYear)) - 10;
                   })
                   .attr("y",function(d){
                       var index = d.year - 1968;
-                      return y_line(dataCon[index].value) - 370;
+                      return y_line(dataCon[index].value) - 385;
                   })
                   .attr("dy","15px")
                   .text(function(d){
@@ -299,7 +300,7 @@ function markingEvent(marking_events){
                   });
 
     d3.selectAll(".chart_caption")
-      .call(wrap,150);
+      .call(wrap,110);
 
 }
 
