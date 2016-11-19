@@ -153,25 +153,21 @@ function reDraw(){
     d3.select(".intro_graph").transition()
                              .attr("d",graph_line);
 
-    d3.select(".intro_area").remove();
-/*
+    //d3.select(".intro_area").remove();
+
     graph_area = d3.svg.area()
                           .x(function(d) { return x_line(d.year);})
                           .y0(y_line(0))
                           .y1(function(d){ return y_line(d.value);})
                           .interpolate("monotone");
 
-    var area_path = g_svg_chapter1
-                         .append("g")
-                         .attr("class","area_intrograph")
-                         .attr("transform","translate(0,0)")
-                         .append("path")
-                         .datum(dataCon)
+   d3.select(".intro_area")
+                         .transition()
                          .attr("d",graph_area)
                          .attr("class","intro_area");
 
     area_popYear(current_chapter);
-*/
+
     //rescale Axis
     d3.select(".xAxis").transition()
                        .attr("transform", "translate(0," + (height-margin.top) + ")")
