@@ -90,20 +90,20 @@ body{
 	margin: auto;
 }
 .viz{
+	-webkit-transform: translateZ(0);
 	height: 300px;
 	padding-top: 2%;
 	display: inline-block;
 	background-color: #ffffff;
 	width:96%;
 	margin: 2%;
-	float: none; 
+	float: none;
 	
 }
 .viz_Mfixed{
 	padding-top: 2%;
 	position: fixed;
 	top: 0;
-	-webkit-transform: translateZ(0);
 }
 .text{
 	

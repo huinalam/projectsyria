@@ -78,6 +78,7 @@ $(document).ready(function(){
 	var article_height = [];
 	var windowHeight;
 	var vizTop;
+	vizTop = $(".viz").offset().top;
 
 	//위치,사이즈 정보 갱신
 	initation();
@@ -86,14 +87,17 @@ $(document).ready(function(){
 	$window.on("resize",function(){
 		initation();
 		fix_check();
-		reDraw();
+		//reDraw();
+		console.log("scrollTop: " + scrollTop);
+		console.log("vizTop: " + vizTop);
 	});
 
 
 	$window.on("scroll",function(){
 		scrollTop = $window.scrollTop();
-		console.log(scrollTop);
 		fix_check();
+		console.log("scrollTop: " + scrollTop);
+		console.log("vizTop: " + vizTop);
 		//area_transition();
 	});
 
@@ -105,7 +109,7 @@ $(document).ready(function(){
 		$(".chapter_article_div").css("height",windowHeight);
 
 		/*div 스크롤 위치 확인*/
-		vizTop = $(".viz").offset().top;
+		
 		for(var i=0; i<5;i++){
 			article_top[i] = $(".chapter_article_div").eq(i).offset().top;
 			article_height[i] = $(".chapter_article_div").eq(i).height();
@@ -133,6 +137,7 @@ $(document).ready(function(){
 				$(".viz").addClass("viz_Dfixed");
 				$(".text").css("margin-left","64%");
 			}
+			console.log("fixed");
 
 		}else{//un-affix
 			
