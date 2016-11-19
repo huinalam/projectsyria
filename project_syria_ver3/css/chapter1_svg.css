@@ -82,9 +82,7 @@
 }
 .chart_caption{
     font-family: 'Roboto Condensed', sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-    word-spacing: 1.5px;
+    font-size: 0.8em;
     fill: #eeeeee;
 }
 
