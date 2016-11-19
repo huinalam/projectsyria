@@ -97,7 +97,7 @@ body{
 	width:96%;
 	margin: 2%;
 	float: none; 
-	z-index: 999;
+	
 }
 .viz_Mfixed{
 	padding-top: 2%;
@@ -129,7 +129,7 @@ body{
 			max-width: 696px;
 			margin: 1%;
 			float: left;
-			z-index: 999;
+			
 		}
 		.viz_Dfixed{
 			-webkit-transform: translateZ(0);
