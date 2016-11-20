@@ -19,15 +19,10 @@ var countryList = ["Syria","South Korea","Egypt", "Iraq","Iran", "Lebanon","Jord
 var countryList2 = ["South Korea","Egypt", "Iraq", "Lebanon","Jordan","Turkey","Italy","France","Greece","United Kingdom", "Sweden", "Germany", "Libya", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //난민 숫자가 표시될 국가들
 
 //SVG & Group & Map 
-
-
 var map_legend;
 var duration =[]; //각 국가의 난민변화수량에 맞게 duration 
 var map_num_domain = [1,1000,50000,1000000,1500000];
 var map_legend_num = [1,1000,10000,50000,100000,1000000,1500000];
-
-
-
 
 //scale & projection
 var center = [32.8333, 44.9167];		  //지도의 중앙에 위치한 터키 좌표

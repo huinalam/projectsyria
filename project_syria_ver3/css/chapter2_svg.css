@@ -1,0 +1,26 @@
+.focus_map_label{
+ 	fill: #ffffff;
+ 	font-family: "HelveticaNeue";
+ 	font-weight: lighter;
+ 	font-size: 0.5em;
+ 	letter-spacing: 0.1em;
+ }
+ .focus_map_number{
+ 	fill: #ffffff;
+ 	font-family: "Courier New";
+ 	font-size: 0.5em;
+ 	letter-spacing: 0.1em;
+ }
+ .graticule{
+	fill: none;
+	stroke: #aaaaaa;
+	stroke-width: 0.5px;
+	stroke-opacity: 0.3;
+}
+.syria_label{
+ 	fill: #DDDDDD;
+ 	font-family: "HelveticaNeue";
+ 	font-weight: bold;
+ 	font-size: 8px;
+ 	letter-spacing: 1.5px;
+ }
