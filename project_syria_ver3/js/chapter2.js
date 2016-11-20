@@ -15,6 +15,8 @@ var popData;
 var map_json;
 var start_year = 2011;
 var Years = [2011, 2012, 2013, 2014]; //선택될 연도 
+var countryList = ["Syria","South Korea","Egypt", "Iraq","Iran", "Lebanon","Jordan","Turkey","Italy","France","Spain","Greece","United Kingdom", "Sweden", "Germany", "Libya", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //이름이 표시될 국가들
+var countryList2 = ["South Korea","Egypt", "Iraq", "Lebanon","Jordan","Turkey","Italy","France","Greece","United Kingdom", "Sweden", "Germany", "Libya", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //난민 숫자가 표시될 국가들
 
 //SVG & Group & Map 
 
@@ -62,13 +64,13 @@ var svg_chapter2 = d3.select(".viz").append("svg")
                                     .style("background-color","#111215");
 
     svg_chapter2.append("path")
-    	   .datum(graticule)
-    	   .attr("class","graticule")
-    	   .attr("d",path);
+          	   .datum(graticule)
+          	   .attr("class","graticule")
+          	   .attr("d",path);
 
     var path_group = svg_chapter2.append("g")
-    							 .attr("transform","translate(0,0)")
-    							 .attr("class","world");
+                  							 .attr("transform","translate(0,0)")
+                  							 .attr("class","world");
 
 
 
@@ -128,6 +130,68 @@ var svg_chapter2 = d3.select(".viz").append("svg")
                                   }
                                 });
 
+
+          map_label = path_group.append("g")
+                                .selectAll("text")
+                                .data(map_json.features)
+                                .enter()
+                                .append("text")
+                                .attr("class",function(d){
+                                  if(d.properties.name=="Syria"){
+                                    return "syria_label label";
+                                  }
+                                  else{
+                                    return "focus_map_label label";
+                                  }
+                                })
+                                .attr("transform", function(d){
+                                  if(d.properties.name == "Lebanon"){
+                                    return "translate(" + path.centroid(d) +")" + "translate(-35,5)";
+                                  }
+                                  else if(d.properties.name == "France"){
+                                    return "translate(" + path.centroid(d) +")" + "translate(65,-50)";
+                                  }
+                                  else if(d.properties.name == "Syria"){
+                                    return "translate(" + path.centroid(d) +")";
+                                  }
+                                  else{
+                                    return "translate(" + path.centroid(d) +")" + "translate(0,-5)";
+                                  } 
+                                })
+                                .attr("text-anchor","middle")
+                                .text(function(d){
+                                  for(var i=0; i<countryList.length; i++){
+                                    if(d.properties.name == countryList[i]) 
+                                      return d.properties.name; 
+                                  }
+                                });
+
+          map_number = path_group.append("g")
+                                  .selectAll("text")
+                                  .data(map_json.features)
+                                  .enter()
+                                  .append("text")
+                                  .attr("class","focus_map_number")
+                                  .attr("transform", function(d){
+                                    if(d.properties.name == "Lebanon"){
+                                      return "translate(" + path.centroid(d) +")" + "translate(-35,17)";
+                                    }
+                                    else if(d.properties.name == "France"){
+                                      return "translate(" + path.centroid(d) +")" + "translate(65,-38)";
+                                    }
+                                    else{
+                                      return "translate(" + path.centroid(d) +")" + "translate(0,7)";
+                                    } 
+                                  })
+                                  .attr("text-anchor","middle")
+                                  .text(function(d){
+                                    for(var i=0; i<countryList.length; i++){
+                                      if(countryList[i]===d.properties.name){
+                                        return d.properties.refugeesValue;
+                                      }
+                                    }
+                                  });
+
       });// end of json functuin
 
     	
@@ -152,8 +216,38 @@ function reDraw(){
 
     path = d3.geo.path().projection(projection);  //path의 프로젝션값 설정 
     
+    //다시 그리기
     map_path.transition()
             .attr("d",path);
+
+    //라벨, 숫자 재위치
+    path_group.selectAll(".label").attr("transform", function(d){
+                if(d.properties.name == "Lebanon"){
+                  return "translate(" + path.centroid(d) +")" + "translate(-35,5)";
+                }
+                else if(d.properties.name == "France"){
+                  return "translate(" + path.centroid(d) +")" + "translate(65,-50)";
+                }
+                else if(d.properties.name == "Syria"){
+                  return "translate(" + path.centroid(d) +")";
+                }
+                else{
+                  return "translate(" + path.centroid(d) +")" + "translate(0,-5)";
+                } 
+            });
+
+    path_group.selectAll(".focus_map_number")
+              .attr("transform", function(d){
+                  if(d.properties.name == "Lebanon"){
+                    return "translate(" + path.centroid(d) +")" + "translate(-35,17)";
+                  }
+                  else if(d.properties.name == "France"){
+                    return "translate(" + path.centroid(d) +")" + "translate(65,-38)";
+                  }
+                  else{
+                    return "translate(" + path.centroid(d) +")" + "translate(0,7)";
+                  } 
+                });
 
 
 
