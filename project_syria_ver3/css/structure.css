@@ -44,11 +44,13 @@ h1.title{
 	margin-bottom: 0.2em;
 	max-width: 800px;
 	font-family: 'League Gothic', sans-serif;
-	font-size: 4em;
+	font-size: 3.5em;
 	letter-spacing: 0.05em;
 	word-spacing: 0.1em;
 	font-weight: normal;
 	font-style: normal;
+	font-weight: 100;
+	line-height: 100%;
 	
 }
 .chapter_article_div >h2{
