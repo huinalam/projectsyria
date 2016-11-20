@@ -5,6 +5,7 @@ var margin = {
               bottom:0,
               right:40
               };
+              
 width = parseInt(d3.select(".viz").style('width'));
 height = width * 0.8;
 

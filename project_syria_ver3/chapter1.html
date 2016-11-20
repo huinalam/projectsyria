@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	 <link href="css/chapter1_structure.css" rel="stylesheet">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+	 <link href="css/fonts.css" rel="stylesheet">
+	 <link href="css/structure.css" rel="stylesheet">
 	 <link href="css/chapter1_svg.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<div class="header">
 			<div class="chapter_title_div">
-				<h1>
+				<h1 class="title">
                     <span id="red">SYRIAN REFUGEE<br>BEFORE CIVIL WAR</span><br>
                     <span id="green">MEASURE OF REPRESSION</span>
                 </h1>
@@ -87,13 +88,16 @@ $(document).ready(function(){
 		initation();
 		fix_check();
 		reDraw();
+		console.log("scrollTop: " + scrollTop);
+		console.log("vizTop: " + vizTop);
 	});
 
 
 	$window.on("scroll",function(){
 		scrollTop = $window.scrollTop();
-		console.log(scrollTop);
 		fix_check();
+		console.log("scrollTop: " + scrollTop);
+		console.log("vizTop: " + vizTop);
 		area_transition();
 	});
 
@@ -105,7 +109,7 @@ $(document).ready(function(){
 		$(".chapter_article_div").css("height",windowHeight);
 
 		/*div 스크롤 위치 확인*/
-		vizTop = $(".viz").offset().top;
+		vizTop = $(".header").height();
 		for(var i=0; i<5;i++){
 			article_top[i] = $(".chapter_article_div").eq(i).offset().top;
 			article_height[i] = $(".chapter_article_div").eq(i).height();
@@ -117,7 +121,7 @@ $(document).ready(function(){
 	function fix_check(){
 		if(vizTop < scrollTop){//affix
 
-			if($window.width()<820){
+			if($window.width()<821){
 				//affix for mobile
 				//console.log("mobile");
 				$(".viz").addClass("viz_Mfixed");
@@ -133,10 +137,11 @@ $(document).ready(function(){
 				$(".viz").addClass("viz_Dfixed");
 				$(".text").css("margin-left","64%");
 			}
+			console.log("fixed");
 
 		}else{//un-affix
 			
-			if($window.width()<820){
+			if($window.width()<821){
 				//un-affix for mobile
 				$(".viz").removeClass("viz_Mfixed");
 				$(".viz").removeClass("viz_Dfixed");

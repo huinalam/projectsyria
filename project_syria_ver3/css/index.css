@@ -1,0 +1,90 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700|Roboto+Slab:400,100,300);
+@import url(https://fonts.googleapis.com/css?family=Arvo:400,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url('https://fonts.googleapis.com/css?family=Muli:300');
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+
+body{
+	margin: 0px;
+	padding: 0px;
+	color: #D0D8DA;
+	background-color: #111215;
+}
+p{
+	font-size: 1em;
+	font-family: 'Muli', sans-serif;
+	font-weight: 300;
+}
+.container{
+	width: 100%;
+	height: auto;
+	margin: auto;
+}
+.header{
+	max-width: 800px;
+	width: 98%;
+	height:100%;
+	margin: 1%;
+}
+h1.title{
+	color: #eeeeee;
+	margin-bottom: 0.2em;
+	max-width: 800px;
+	font-family: 'League Gothic Condensed', sans-serif;
+	font-size: 8em;
+	letter-spacing: 0.05em;
+	word-spacing: 0.1em;
+	font-weight: normal;
+	font-style: normal;
+	
+}
+h2{
+	font-family: 'League Gothic', sans-serif;
+	font-weight: 100;
+	font-size: 2em;
+	margin: 30px 0 5px 0;
+	margin-top: 0px;
+	line-height: 120%;
+	color: #eeeeee;
+}
+
+.wordcloud{
+	width: 96%;
+	margin: 2%;
+	text-align: center;
+}
+.block-1{
+	width: 98%;
+	margin: 6% 1%;
+}
+.block-2{
+	font-family: 'League Gothic', sans-serif;
+	font-weight: 100;
+	font-size: 2em;
+	display: inline-block;
+	position: relative;
+	float: left;
+	width: 98%;
+	margin: 1%;
+	background-color: #eeeeee;
+}
+
+@media screen and (min-width: 820px){
+	.block-2{
+		display: inline-block;
+		position: relative;
+		float: left;
+		max-width: 400px;  
+		width: 48%;
+		margin: 1%;
+		background-color: #eeeeee;
+	}
+	.container{
+			width: 100%;
+			max-width: 800px;
+			height: auto;
+			margin: auto;
+	}
+
+}
