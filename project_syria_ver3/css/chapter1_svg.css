@@ -41,8 +41,8 @@
 /** line_graph **/
 .intro_graph{
  	fill: none;
- 	stroke-width: 3px;
- 	stroke: #333333;
+ 	stroke-width: 0.15em;
+ 	stroke: #eeeeee;
  	stroke-dasharray: 3,3;
  	shape-rendering: crisp;
  }

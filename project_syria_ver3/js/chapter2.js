@@ -14,7 +14,7 @@ var dataCon;
 var popData;
 var map_json;
 var start_year = 2011;
-var Years = [2011, 2012, 2013, 2014]; //선택될 연도 
+var years = [2011, 2012, 2013, 2014]; //선택될 연도 
 var countryList = ["Syria","South Korea","Egypt", "Iraq","Iran", "Lebanon","Jordan","Turkey","Italy","France","Spain","Greece","United Kingdom", "Sweden", "Germany", "Libya", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //이름이 표시될 국가들
 var countryList2 = ["South Korea","Egypt", "Iraq", "Lebanon","Jordan","Turkey","Italy","France","Greece","United Kingdom", "Sweden", "Germany", "Libya", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //난민 숫자가 표시될 국가들
 
@@ -90,7 +90,6 @@ var svg_chapter2 = d3.select(".viz").append("svg")
           var dataCountry = popData[i].destination;
           var refugeesValue = popData[i].refugees_value;
       
-
           for(var j =0; j<map_json.features.length; j++){
             
             var jsonCountry = json.features[j].properties.name;
@@ -174,6 +173,9 @@ var svg_chapter2 = d3.select(".viz").append("svg")
                                     else if(d.properties.name == "France"){
                                       return "translate(" + path.centroid(d) +")" + "translate(65,-38)";
                                     }
+                                    else if(d.properties.name == "Syria"){
+                                      return "";
+                                    }
                                     else{
                                       return "translate(" + path.centroid(d) +")" + "translate(0,7)";
                                     } 
@@ -186,6 +188,54 @@ var svg_chapter2 = d3.select(".viz").append("svg")
                                       }
                                     }
                                   });
+
+
+             var legend_group = svg_chapter2.append("g")   //맵 path를 묶을 그룹 추가
+                                       .attr("class","legend_group")
+                                       .attr("transform","translate(0,0)");
+
+              legend_group.append("rect")
+                          .attr("x",0)
+                          .attr("y",0)
+                          .attr("width",100)
+                          .attr("height",100)
+                          .attr("fill","#111111");
+
+              map_legend = legend_group.append("g")
+                            .attr("transform","translate(0,0)")
+                            .selectAll('g')
+                            .data(map_legend_num)
+                            .enter()
+                            .append("g");
+
+
+
+              map_legend.append("rect").attr("x",10)
+                            .attr("y",function(d,i){
+                              return map_legend_num.length*10 - i*10;
+                            })
+                            .attr("width",10)
+                            .attr("height",10)
+                            .attr("stroke","#cccccc")
+                            .attr("stroke-width",0.5)
+                            .attr("fill",function(d){
+                              return color(d);
+                            });
+                            
+              map_legend.append("text")
+                        .attr("text-anchor","start")
+                        .text(function(d){
+                          if(d==1){
+                            d=0;
+                          }
+                          return " " + d3.format(",")(d);
+                        })
+                        .attr("x",25)
+                        .attr("y",function(d,i){
+                      
+                          return map_legend_num.length*10 - i*10 + 10;
+                        })
+                        .attr("class","map_legend_text");
 
       });// end of json functuin
 
@@ -233,17 +283,131 @@ function reDraw(){
 
     path_group.selectAll(".focus_map_number")
               .attr("transform", function(d){
-                  if(d.properties.name == "Lebanon"){
-                    return "translate(" + path.centroid(d) +")" + "translate(-35,17)";
+                if(d.properties.name != "Syria"){
+                      if(d.properties.name == "Lebanon"){
+                        return "translate(" + path.centroid(d) +")" + "translate(-35,17)";
+                      }
+                      else if(d.properties.name == "France"){
+                        return "translate(" + path.centroid(d) +")" + "translate(65,-38)";
+                      }
+                      else{
+                        return "translate(" + path.centroid(d) +")" + "translate(0,7)";
+                      } 
                   }
-                  else if(d.properties.name == "France"){
-                    return "translate(" + path.centroid(d) +")" + "translate(65,-38)";
-                  }
-                  else{
-                    return "translate(" + path.centroid(d) +")" + "translate(0,7)";
-                  } 
                 });
 
+}
+
+function mapTransition(year){
+          
+      popData = dataCon.filter(function(d) {return d.year == year}); //새 데이터 갱신
 
 
+     //---popData에 매칭되는 값을 map_json에 입력하
+
+      for(var i=0; i<popData.length; i++){
+        
+        var dataCountry = popData[i].destination;
+        var refugeesValue = popData[i].refugees_value;
+      
+        for(var j =0; j<map_json.features.length; j++){
+          
+          var jsonCountry = map_json.features[j].properties.name;
+          
+          if(dataCountry == jsonCountry){
+            map_json.features[j].properties.refugeesValue = refugeesValue;
+            break;
+          }
+        }
+
+      }
+
+      map_number.data(map_json.features)
+              .transition()
+              .delay(function(d,i){
+              return i*5;
+               })
+              .duration(function(d,i){
+   
+              currentNum = +this.textContent;
+                duration[i] = Math.abs(currentNum - d.properties.refugeesValue)/1000;
+                if(duration[i]<200){
+                  duration[i] = 200;
+                }
+                return duration[i];
+              
+            })
+              .ease("exp")
+              .tween("text", function(d){
+                  for(var i=0;i<countryList.length;i++){
+                    if(d.properties.name == countryList[i]){
+                      var currentNum = +this.textContent;
+                      var j = d3.interpolateRound(currentNum, d.properties.refugeesValue);
+
+                      return function(t){
+                        this.textContent = j(t);
+                      };
+                  }
+                }
+              });
+
+
+        map_path.data(map_json.features)
+            .transition()
+            .delay(function(d,i){
+              return i*5;
+            })
+            .duration(function(d,i){
+              return duration[i];
+            })
+            .ease("exp")
+            .style("fill", function(d){
+              var value = d.properties.refugeesValue;
+              value = +value;
+              if(d.properties.name == "Syria"){
+                return c_syria;
+              }
+              if(value==0){
+                return color_list[0];
+              }else if(value){
+                return color(value)
+              }
+              else{
+                return color_list[0];
+              }
+            
+            });
+
+
+
+        map_label.data(map_json.features)
+          .transition()
+          .delay(function(d,i){
+              return i*5;
+            })
+          .duration(function(d,i){
+              return duration[i];
+            })
+          .ease("exp");
+          /*.style("fill",function(d,i){
+            if(d.properties.name!="Syria"){
+                 var value = d.properties.refugeesValue;
+                 
+                 if(value!=0){
+                   var rgb =  d3.rgb(color(value));
+                 }
+                 else{
+                  rgb = d3.rgb(c1);
+                 }
+
+                          rgb.r +=alpha;
+                          rgb.g +=alpha;
+                          rgb.b +=alpha;
+
+                          return rgb;
+                        }else{
+                          return "#eeeeee";
+                        }
+
+          });*/     
 }

@@ -1,0 +1,23 @@
+.timeline_axis { /* axis labels */
+    fill: #eeeeee;
+    font-family: sans-serif;
+    font-weight: lighter;
+    font-size: 10px;
+}
+.timeline_axis line{ /* axis tick marks */
+    stroke-width : 0.5;
+    stroke: #eeeeee;
+    shape-rendering: crispEdges;
+}
+.timeline_axis path { /* axis line */
+    stroke-width : 0.5;
+    stroke: #eeeeee;
+    shape-rendering: crispEdges;
+}
+#date_axis line{
+    stroke: #666666;
+    stroke-dasharray: 2,2;
+}
+#date_axis path{
+    display: none;
+}

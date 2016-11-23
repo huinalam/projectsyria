@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <head>
 	 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 	 <link href="css/fonts.css" rel="stylesheet">
@@ -86,7 +85,7 @@ $(document).ready(function(){
 		fix_check();
 		console.log("scrollTop: " + scrollTop);
 		console.log("vizTop: " + vizTop);
-		//area_transition();
+		map_transition();
 	});
 
 	function initation(){
@@ -97,7 +96,7 @@ $(document).ready(function(){
 		$(".chapter_article_div").css("height",windowHeight);
 
 		/*div 스크롤 위치 확인*/
-		vizTop = $(".header").height();
+		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom"));
 		for(var i=0; i<4;i++){
 			article_top[i] = $(".chapter_article_div").eq(i).offset().top;
 			article_height[i] = $(".chapter_article_div").eq(i).height();
@@ -119,11 +118,15 @@ $(document).ready(function(){
 				$(".text").css("margin-top",vizHeight);
 				$(".text").css("margin-top",'+=2%');
 				$(".text").css("margin-left","1%");
+				$(".viz").css("left","0px");
 			}else{
 				//affix for desktop
 				//console.log("desktop");
 				$(".viz").addClass("viz_Dfixed");
-				$(".text").css("margin-left","64%");
+				var left = $(".container").css("margin-left");
+				$(".viz").css("left",left);
+				var marginLeft = $(".viz").width() +(3*parseInt($(".viz").css("margin-left"))); 
+				$(".text").css("margin-left",marginLeft);
 			}
 			console.log("fixed");
 
@@ -144,31 +147,22 @@ $(document).ready(function(){
 		}
 	}// fix_check() end;
 
-	function area_transition(){
+	function map_transition(){
 		if((vizTop<scrollTop)&&(scrollTop<(article_top[1]-article_height[0]))){
-
-			current_chapter = chapter_list[0];
-			area_popYear(chapter_list[0]);
+			console.log("chapter1");
+			mapTransition(years[0]);
 
 		}else if(((article_top[1]-article_height[0])<scrollTop)&&(scrollTop<(article_top[2]-article_height[1]))){
-
-			current_chapter = chapter_list[1];
-			area_popYear(chapter_list[1]);
+			console.log("chapter2");
+			mapTransition(years[1]);
 
 		}else if(((article_top[2]-article_height[1])<scrollTop)&&(scrollTop<(article_top[3]-article_height[2]))){
 
-			current_chapter = chapter_list[2];
-			area_popYear(chapter_list[2]);
+			mapTransition(years[2]);
 
-		}else if(((article_top[3]-article_height[2])<scrollTop)&&(scrollTop<(article_top[4]-article_height[3]))){
+		}else if(((article_top[3]-article_height[2])<scrollTop)){
 
-			current_chapter = chapter_list[3];
-			area_popYear(chapter_list[3]);
-
-		}else if((article_top[4]-article_height[3])<scrollTop){
-
-			
-			area_popYear(chapter_list[4]);
+			mapTransition(years[3]);
 		}
 	}
 	

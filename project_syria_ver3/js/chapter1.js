@@ -7,6 +7,7 @@ var margin = {
               };
               
 width = parseInt(d3.select(".viz").style('width'));
+//width = (d3.select("body").width())*0.63;
 height = width * 0.8;
 
 //DATA

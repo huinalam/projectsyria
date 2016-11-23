@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+	 <link href="css/fonts.css" rel="stylesheet">
+	 <link href="css/structure.css" rel="stylesheet">
+	 <link href="css/chapter3.css" rel="stylesheet">
+	 <link href="css/chapter3_svg.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="chapter_title_div">
+                <h1 class="title">
+                    <span id="red">WHAT FORCE THEM<br> TO LEAVE SYRIA?:</span>
+                </h1>
+            </div>
+            <div class="chapter_introduction_div">
+                <p>Our intention is to focus on why almost half of Syrian population had no choice but to leave the motherlands and which types of life threats have existed from the viewpoint of themselves. So we analyzed the data of syriatracker.crowdmap.com which reports several damages inflicted against civilians in and around Syria. Syria Tracker, website utilizing group intelligence, allows anonymous users to directly report cases of civilian deaths, massacre, genocide and also chemical warfare. You can find detailed process of analysis in the section of methodology.</p>
+
+                <p>By extracted data, timeline says the type of civilian losses and its frequency, fatalities and number of refugees on a monthly and yearly basis. Hence, we intended to let our viewers find out relevance between each data by pointing out which groups are related to certain types of incidents and which sorts of incidents were occurred. From 2011 to April 2016, 7 chapters are dissected as of patterns of civil war and also major timeline cases.</p>
+            </div>
+		</div>
+		<div class="chapter_introduction_div">
+            <h2>DEFINITIONS OF 6 TYPES OF CIVILIAN DAMAGE USED IN ANALYSIS</h2>
+            <div class="block-32 definition">
+                <h3 id="battle">BATTLE</h3>
+                <p>refers to military conflicts among two or more groups. Syrian tracker involves not only in fatalities from combats but also in fatalities from bombings or shootings derived from battles.</p>
+            </div>
+            <div class="block-32 definition">
+                <h3 id="shelling">SHELLING</h3>
+                <p>: refers to assaults by artillery fire-forces that have been using by Assad regime in a most universal level. Though it is usually applied to battles with anti-regime forces, shelling cases have been also found in civilian areas.</p>
+            </div>
+            <div class="block-32 definition">
+                <h3 id="air_strike">AIR STRIKE</h3>
+                <p>is an attack of aerial bombardment on a specific target using missile, bombing incidents by military aircrafts.</p>
+            </div>
+            <div class="block-32 definition">
+                <h3 id="chemical">CHEMICAL WEAPONE</h3>
+                <p>is a munition that uses chemicals formulated to inflict death or harm on human beings. It was June 2012 when the regime used chemical munition for the first time but the issue caught world-wide attention by August 2013.</p>
+            </div>
+            <div class="block-32 definition">
+                <h3 id="barrel_bomb">BARREL BOMB</h3>
+                <p>is made from a barrel-like metal container with high explosives and shrapnel. It is typically bombed by aircrafts but strictly forbidden by UN convention.</p>
+            </div>
+            <div class="block-32 definition">
+                <h3 id="direct_attack">DIRECT ATTACK</h3>
+                <p>includes all the other attacks not pointed out above. This terminology may include direct attacks against individual or groups such as sniping, execution and massacre.</p>
+            </div>
+        </div>
+		<div class="viz">
+		</div>
+		<div class="text">
+		</div>
+	</div>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+	<script src="js/chapter3.js"></script>
+	<script>
+		$(document).ready(function(){
+			$window = $(window);
+			$window.on("resize",function(){
+				reDraw();
+			});
+		});
+	</script>
+</body>
+</html>

@@ -109,7 +109,7 @@ $(document).ready(function(){
 		$(".chapter_article_div").css("height",windowHeight);
 
 		/*div 스크롤 위치 확인*/
-		vizTop = $(".header").height();
+		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom"));
 		for(var i=0; i<5;i++){
 			article_top[i] = $(".chapter_article_div").eq(i).offset().top;
 			article_height[i] = $(".chapter_article_div").eq(i).height();
@@ -131,11 +131,16 @@ $(document).ready(function(){
 				$(".text").css("margin-top",vizHeight);
 				$(".text").css("margin-top",'+=2%');
 				$(".text").css("margin-left","1%");
+				$(".viz").css("left","0px");
 			}else{
 				//affix for desktop
 				//console.log("desktop");
 				$(".viz").addClass("viz_Dfixed");
-				$(".text").css("margin-left","64%");
+				var left = $(".container").css("margin-left");
+				$(".viz").css("left",left);
+				var marginLeft =  $(".viz").width() +(3*parseInt($(".viz").css("margin-left"))); 
+				//$(".text").css("margin-left",marginLeft);
+				$(".text").css("margin-left","66%");
 			}
 			console.log("fixed");
 
