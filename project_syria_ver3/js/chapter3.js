@@ -23,6 +23,8 @@ var timeline_yAxis;
 var timeline_yAxis_g;
 var timeline_xAxis; 
 var timeline_xAxis_g;
+var death_xAxis;
+var death_xAxis_g;
 
 var dateList =[]; //montly box hover에 쓰일 date 배열
 var year = 2011;
@@ -75,7 +77,7 @@ var svg_chapter3 = d3.select(".viz").append("svg")
                                     .attr("class","intro_svg_intrograph")
                                     .attr("width",width)
                                     .attr("height",height)
-                                    .style("background-color","#111215");
+                                    .style("background-color","#111111");
 
 var g_svg_chapter3 = svg_chapter3.append("g")
                                  .attr("transform","translate(" + margin.left + "," + margin.top + ")");
@@ -137,6 +139,9 @@ function reDraw(){
 
   reScale();
 
+  timeline_yAxis
+    .tickSize(innerWidth - checkPoint[0] ,0);
+
   d3.select(".yAxis_timeline").transition()
                               .attr("transform", "translate(" + checkPoint[0] +",0)")
                               .call(timeline_yAxis);
@@ -149,12 +154,14 @@ function reDraw(){
                               .attr("x",-10)
                               .style("text-anchor","end")
                               .style("fill","#bbbbbb");
-
+/*
   d3.select(".yAxis_timeline").selectAll("line")
                               .transition()
                               .attr("class",function(d,i){
                                     return "lineMonth_" + i;
                                });
+*/
+  timeline_xAxis.tickSize(-innerHeight,0)
 
   d3.select(".xAxis_timeline").transition()
                               .attr("transform","translate(0,0)")
@@ -203,7 +210,7 @@ function timeline_yAxis(){
     timeline_yAxis = d3.svg.axis()
     .scale(timeline_yScale)
     .orient("right")
-    .tickSize(innerWidth- checkPoint[0] ,0)
+    .tickSize(innerWidth - checkPoint[0] ,0)
     .ticks(64)
     //.tickValues(dateTick_list)
     .tickFormat(function(d,i){ 
@@ -238,7 +245,7 @@ function timeline_yAxis(){
 }
 
 function death_xAxis(){
-  var death_xAxis = d3.svg.axis()
+  death_xAxis = d3.svg.axis()
                           .scale(xScale_d)
                           .orient("top")
                           .ticks(4)
@@ -246,11 +253,10 @@ function death_xAxis(){
                           .tickFormat(d3.format("s"))
                           .tickSize(6,0);
 
-  var death_xAxis_g = g_svg_chapter3.append("g")
+  death_xAxis_g = g_svg_chapter3.append("g")
                                     .attr("class","timeline_axis death_xAxis")
                                     .attr("transform", "translate(0,0)")
                                     .call(death_xAxis);
-
 
 }
 

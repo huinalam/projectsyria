@@ -26,6 +26,7 @@ p{
 	margin: 1%;
 }
 .chapter_introduction_div{
+	display: inline-block;
 }
 .chapter_article_div{
 	display: inline-block;
