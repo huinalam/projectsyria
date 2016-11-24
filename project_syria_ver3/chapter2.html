@@ -92,15 +92,16 @@ $(document).ready(function(){
 		//위치,사이즈 정보 갱신
 		/*사이즈 초기화*/
 		windowHeight = $window.height();
-		$(".header").css("main-height",windowHeight);
+		$(".header").css("height",windowHeight);
 		$(".chapter_article_div").css("height",windowHeight);
 
-		/*div 스크롤 위치 확인*/
-		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom"));
+	
 		for(var i=0; i<4;i++){
 			article_top[i] = $(".chapter_article_div").eq(i).offset().top;
 			article_height[i] = $(".chapter_article_div").eq(i).height();
 		}
+		/*div 스크롤 위치 확인*/
+		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom"));
 
 	}
 
@@ -113,10 +114,9 @@ $(document).ready(function(){
 				//console.log("mobile");
 				$(".viz").addClass("viz_Mfixed");
 				//Text margin modification
-				vizHeight = $(".viz").css("height");
+				vizHeight = parseInt($(".viz").height()) + parseInt($(".viz").css("padding-top")) + 2*parseInt($(".viz").css("margin-top"));
 				//console.log(vizHeight);
 				$(".text").css("margin-top",vizHeight);
-				$(".text").css("margin-top",'+=2%');
 				$(".text").css("margin-left","1%");
 				$(".viz").css("left","0px");
 			}else{

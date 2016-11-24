@@ -103,8 +103,8 @@ h3{
 
 
 .container{
-	width: 96%;
-	margin:0 1% 0 1%;
+	width: 100%;
+	margin:0;
 	height: auto;
 }
 .block{
@@ -141,7 +141,6 @@ h3{
 	left:0px;
 }
 .text{
-	position: relative;
 	width:98%;
 	margin: 1%;
 	float: none;

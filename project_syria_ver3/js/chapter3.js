@@ -8,7 +8,7 @@ height = width;
 
 var margin = {
               top: 20,
-              left: width*0.05,
+              left: width*0.07,
               bottom:10,
               right: width*0.01
               };
