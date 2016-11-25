@@ -2,7 +2,7 @@
     fill: #eeeeee;
     font-family: sans-serif;
     font-weight: lighter;
-    font-size: 10px;
+    font-size: 0.5em;
 }
 .timeline_axis line{ /* axis tick marks */
     stroke-width : 0.5;
@@ -14,10 +14,46 @@
     stroke: #eeeeee;
     shape-rendering: crispEdges;
 }
+
+
+.event_circle{
+    opacity: 0.5;
+}
 #date_axis line{
     stroke: #666666;
     stroke-dasharray: 2,2;
 }
 #date_axis path{
     display: none;
+}
+
+#shelling{
+    fill:#F50057;
+    color:#F50057;
+    border-color: #B71C1C;
+}
+#air_strike{
+    fill: #2196F3;
+    color: #2196F3;
+    border-color: #444444;
+}
+#battle{
+    fill: #12CF43;
+    color:#12CF43;
+    border-color: #444444;
+}
+#chemical{
+    fill: #B2FF59;
+    color: #B2FF59;
+    border-color: #444444;
+}
+#direct_attack{
+    fill: #FFEA00;
+    color: #FFEA00;
+    border-color: #444444;
+}
+#barrel_bomb{
+    fill: #FF5252;
+    color: #FF5252;
+    border-color: #444444;
 }

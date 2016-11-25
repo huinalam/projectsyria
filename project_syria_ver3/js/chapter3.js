@@ -1,6 +1,4 @@
 // size variable
-
-              
 width = parseInt(d3.select(".viz").style('width'));
 console.log(width);
 //width = (d3.select("body").width())*0.63;
@@ -86,11 +84,11 @@ var innerWidth = width - (margin.left + margin.right);
 var innerHeight = height - (margin.top + margin.bottom);
 
 var checkPoint =[
-                  0.05 * innerWidth, //X-Axis,Y-Axis 시작 교차점
+                  0.03 * innerWidth, //X-Axis,Y-Axis 시작 교차점
                   0.05 * innerWidth, //Ordinal Scale 시작점 (공격패턴)
                   0.70 * innerWidth, //Ordinal Scale 종료
                   0.75 * innerWidth, //Linear Scale 시작점(사망)
-                  1.00 * innerWidth  //Llinear Scale, canvas 끝
+                  0.99 * innerWidth  //Llinear Scale, canvas 끝
                  ];
 
 //Scale Setting
@@ -100,20 +98,68 @@ var timeline_yScale = d3.time.scale()
                              .domain([parseDate("2011-01-01"), parseDate("2016-04-01")])
                              .range([0, innerHeight]);
 
- var xScale_d = d3.scale.linear()
+var xScale_d = d3.scale.linear()
                         .range([checkPoint[3],checkPoint[4]])
                         .domain([0,7000]); 
+
+var rScale;
 
 //Call Axis
 timeline_yAxis();
 timeline_xAxis();
 death_xAxis();
 
+//Drwaing burbble chart with actual data
+d3.csv("data/event_num_long.csv",function(event_data){
+
+  event_data.forEach(function (item){               
+                        item.date = parseDate(item.date);
+                        item.value = +item.value;
+                    });
+
+  dataCon = event_data;
+  var max = d3.max(event_data,function(d){return d.value});
+  console.log(max);
+
+  var maxRange = innerWidth/12;
+
+  rScale = d3.scale.sqrt()
+                   .domain([0,max])
+                   .range([0,maxRange]);
+
+  var g_chart = g_svg_chapter3.append("g")
+                            .attr("transform","translate(" + 0 + ",0)");
+
+  g_chart.selectAll("circle")
+         .data(dataCon)
+         .enter()
+         .append("circle")
+         .attr("class","event_circle")
+         .attr("id",function(d){
+            return d.event_type;
+         })
+         .attr("r",function(d){
+            return rScale(d.value);
+         })
+         .attr("cx",function(d){
+            return xScale_events(d.event_type) + xScale_events.rangeBand()/2;
+         })
+         .attr("cy",function(d){
+            return timeline_yScale(d.date);
+         })
+         .attr("stroke-width","0.25px")
+         .attr("stroke","#111111")
+
+});
+
+
+
+
 function reDraw(){
   
   width = parseInt(d3.select(".viz").style('width'));
   //width = (d3.select("body").width())*0.63;
-  height = width * 0.8;
+  height = width;
   margin = {
             top: 20,
             left: width*0.05,
@@ -125,11 +171,11 @@ function reDraw(){
   innerHeight = height - (margin.top + margin.bottom);  
 
   checkPoint =[
-                  0.05 * innerWidth, //X-Axis,Y-Axis 시작 교차점
+                  0.03 * innerWidth, //X-Axis,Y-Axis 시작 교차점
                   0.05 * innerWidth, //Ordinal Scale 시작점 (공격패턴)
                   0.70 * innerWidth, //Ordinal Scale 종료
                   0.75 * innerWidth, //Linear Scale 시작점(사망)
-                  1.00 * innerWidth  //Llinear Scale, canvas 끝
+                  0.97 * innerWidth  //Llinear Scale, canvas 끝
               ];
 
 
@@ -139,8 +185,10 @@ function reDraw(){
 
   reScale();
 
+
+  //Axis rescale
   timeline_yAxis
-    .tickSize(innerWidth - checkPoint[0] ,0);
+    .tickSize(checkPoint[4] -checkPoint[0],0);
 
   d3.select(".yAxis_timeline").transition()
                               .attr("transform", "translate(" + checkPoint[0] +",0)")
@@ -154,13 +202,7 @@ function reDraw(){
                               .attr("x",-10)
                               .style("text-anchor","end")
                               .style("fill","#bbbbbb");
-/*
-  d3.select(".yAxis_timeline").selectAll("line")
-                              .transition()
-                              .attr("class",function(d,i){
-                                    return "lineMonth_" + i;
-                               });
-*/
+
   timeline_xAxis.tickSize(-innerHeight,0)
 
   d3.select(".xAxis_timeline").transition()
@@ -172,6 +214,20 @@ function reDraw(){
                            .call(death_xAxis);
 
 
+
+  //chart rescale
+   d3.selectAll(".event_circle")
+         .transition()
+         .attr("r",function(d){
+            return rScale(d.value);
+         })
+         .attr("cx",function(d){
+            return xScale_events(d.event_type) + xScale_events.rangeBand()/2;
+         })
+         .attr("cy",function(d){
+            return timeline_yScale(d.date);
+         });    
+
 }
 
 function reScale(){
@@ -179,6 +235,9 @@ function reScale(){
   xScale_events.rangeBands([checkPoint[1],checkPoint[2]]);
   timeline_yScale.range([0, innerHeight]);
   xScale_d.range([checkPoint[3],checkPoint[4]]);
+
+  var maxRange = innerWidth/12;
+  rScale.range([0,maxRange]);
 
 }
 
@@ -210,7 +269,7 @@ function timeline_yAxis(){
     timeline_yAxis = d3.svg.axis()
     .scale(timeline_yScale)
     .orient("right")
-    .tickSize(innerWidth - checkPoint[0] ,0)
+    .tickSize(checkPoint[4] -checkPoint[0] ,0)
     .ticks(64)
     //.tickValues(dateTick_list)
     .tickFormat(function(d,i){ 
@@ -225,7 +284,7 @@ function timeline_yAxis(){
      timeline_yAxis_g = g_svg_chapter3.append("g")
                                      .attr("class", "timeline_axis yAxis_timeline")
                                      .attr("id", "date_axis")
-                                     .attr("transform", "translate(" + checkPoint[0] +",0)")
+                                     .attr("transform", "translate(" + 0 +",0)")
                                      .call(timeline_yAxis)
                                      .call(customAxis);
 
