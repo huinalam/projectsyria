@@ -51,6 +51,8 @@
 			</div>
 		</div>
 		<div class="bottom"></div>
+		<div class="mask">
+		</div>
 	</div>
 <script src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
@@ -114,11 +116,13 @@ $(document).ready(function(){
 				//console.log("mobile");
 				$(".viz").addClass("viz_Mfixed");
 				//Text margin modification
-				vizHeight = parseInt($(".viz").height()) + parseInt($(".viz").css("padding-top")) + 2*parseInt($(".viz").css("margin-top"));
+				vizHeight = parseInt($(".viz").height()) + parseInt($(".viz").css("padding-top")) + parseInt($(".viz").css("margin-top")) + parseInt($(".viz").css("margin-bottom"));
 				//console.log(vizHeight);
 				$(".text").css("margin-top",vizHeight);
 				$(".text").css("margin-left","1%");
 				$(".viz").css("left","0px");
+				//mask for text fade-out
+				$(".mask").css("top",vizHeight).css("width","100%");
 			}else{
 				//affix for desktop
 				//console.log("desktop");
@@ -126,7 +130,7 @@ $(document).ready(function(){
 				var left = $(".container").css("margin-left");
 				$(".viz").css("left",left);
 				var marginLeft = $(".viz").width() +(3*parseInt($(".viz").css("margin-left"))); 
-				$(".text").css("margin-left",marginLeft);
+				$(".text").css("margin-left","66%");
 			}
 			console.log("fixed");
 
@@ -137,6 +141,8 @@ $(document).ready(function(){
 				$(".viz").removeClass("viz_Mfixed");
 				$(".viz").removeClass("viz_Dfixed");
 				$(".text").css("margin","1%");
+				//masek for fade-out
+				$(".mask").css("top",0).css("width",0);
 			}else{
 				//un-affix for desktop
 				$(".viz").removeClass("viz_Mfixed");

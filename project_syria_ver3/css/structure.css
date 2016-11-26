@@ -128,7 +128,7 @@ h3{
 }
 .viz{
 	z-index: 999;
-	padding-top: 4%;
+	padding-top: 5em;
 	background-color: #111215;
 	width:96%;
 	margin: 2%;
@@ -143,11 +143,11 @@ h3{
 }
 .mask{
 	width:0;
-	height:100px;
+	height:8em;
 	position: fixed;
 	top:0;
 	left:0;
-	background: linear-gradient(#111215, rgba(0,0,0,0));
+	background: linear-gradient(#111215 10%, rgba(0,0,0,0));
 }
 .text{
 	width:98%;
@@ -170,8 +170,9 @@ h3{
 		}
 		.container{
 			width: 92%;
-			margin:0 4% 0 4%;
+			margin:0 auto 0 auto;
 			height: auto;
+			max-width: 1200px;
 		}
 		.block{
 			display: inline-block;
@@ -193,16 +194,18 @@ h3{
 		}
 		.viz{
 			z-index: 999;
-			padding-top: 4%;
+			padding-top: 5em;
 			background-color: #111215;
 			width:63%;
 			margin: 1%;
 			float: left;
+			max-width: 695.52px;
 			
 		}
 		.viz_Dfixed{
 			position: fixed;
 			width: 57.96% !important;
+			max-width: 695.52px;
 			margin: 0.92% !important;
 			top: 0px;
 			left:0px;

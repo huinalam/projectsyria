@@ -207,72 +207,75 @@ d3.csv("data/event_num_long.csv",function(event_data){
          .attr("stroke-width","0.25px")
          .attr("stroke","#111111")
 
+
+         d3.csv("data/death_per_month.csv",function(death_data){
+  
+            //NOTE
+            //
+            death_data.forEach(function(item){
+                        item.date = parseDate(item.date);
+                        item.num = +item.num;
+            });
+
+            dataCon2 = death_data;
+
+            //Scale setting
+            var max = d3.max(death_data,function(d){return d.value});
+            console.log(max);
+
+            xScale_d = d3.scale.linear()
+                                  .range([checkPoint[3],checkPoint[4]])
+                                  .domain([0,7000]); 
+
+            //NOTE Call Axis
+            death_xAxis();
+
+            var g_line_chart = g_svg_chapter3.append("g")
+                                             .attr("transform","translate(0,0)");
+
+            g_line_chart.selectAll("line")
+                        .data(dataCon2)
+                        .enter()
+                        .append("line")
+                        .attr("class","death_line")
+                        .attr("id","death")
+                        .attr("x1",xScale_d(0))
+                        .attr("x2",function(d){
+                            return xScale_d(d.num);
+                        })
+                        .attr("y1",function(d){
+                            return timeline_yScale(d.date);
+                        })
+                        .attr("y2",function(d){
+                            return timeline_yScale(d.date);
+                        });
+
+            g_line_chart.selectAll("circle")
+                        .data(dataCon2)
+                        .enter()
+                        .append("circle")
+                        .attr("class","death_circle")
+                        .attr("id","death")
+                        .attr("cx",function(d){
+                          return xScale_d(d.num);
+                        })
+                        .attr("cy",function(d){
+                          return timeline_yScale(d.date);
+                        })
+                        .attr("r","0.13em");
+
+
+
+
+          });
+
 });
 //2.Drwaing burbble chart with actual data,CSV function start--End
 
 
 
 //
-d3.csv("data/death_per_month.csv",function(death_data){
-  
-  //NOTE
-  //
-  death_data.forEach(function(item){
-              item.date = parseDate(item.date);
-              item.num = +item.num;
-  });
 
-  dataCon2 = death_data;
-
-  //Scale setting
-  var max = d3.max(death_data,function(d){return d.value});
-  console.log(max);
-
-  xScale_d = d3.scale.linear()
-                        .range([checkPoint[3],checkPoint[4]])
-                        .domain([0,7000]); 
-
-  //NOTE Call Axis
-  death_xAxis();
-
-  var g_line_chart = g_svg_chapter3.append("g")
-                                   .attr("transform","translate(0,0)");
-
-  g_line_chart.selectAll("line")
-              .data(dataCon2)
-              .enter()
-              .append("line")
-              .attr("class","death_line")
-              .attr("id","death")
-              .attr("x1",xScale_d(0))
-              .attr("x2",function(d){
-                  return xScale_d(d.num);
-              })
-              .attr("y1",function(d){
-                  return timeline_yScale(d.date);
-              })
-              .attr("y2",function(d){
-                  return timeline_yScale(d.date);
-              });
-
-  g_line_chart.selectAll("circle")
-              .data(dataCon2)
-              .enter()
-              .append("circle")
-              .attr("class","death_circle")
-              .attr("id","death")
-              .attr("cx",function(d){
-                return xScale_d(d.num);
-              })
-              .attr("cy",function(d){
-                return timeline_yScale(d.date);
-              })
-              .attr("r","0.1em");
-
-
-
-
-});
 
 
 
@@ -338,6 +341,13 @@ function reDraw(){
                               .attr("transform","translate(0,0)")
                               .call(timeline_xAxis);
 
+  timeline_xAxis_g.selectAll("text")
+                  .transition()
+                  .attr("y","-1em")
+                  .text(function(d,i){
+                    return legend_text[i];
+                  });
+
   d3.select(".death_xAxis").transition()
                            .attr("transform", "translate(0,0)")
                            .call(death_xAxis);
@@ -378,7 +388,7 @@ function reDraw(){
       .attr("cy",function(d){
         return timeline_yScale(d.date);
       })
-      .attr("r",2);
+      .attr("r","0.13em");
 
 
 
@@ -412,6 +422,16 @@ function timeline_xAxis(){
                                    .attr("id","date_axis")
                                    .attr("transform","translate(0,0)")
                                    .call(timeline_xAxis);
+
+  timeline_xAxis_g.selectAll("text")
+                  .attr("id",function(d){
+                    return d;
+                  })
+                  .attr("y","-1em")
+                  .text(function(d,i){
+                    return legend_text[i];
+                  });
+
                                  
 }
 
