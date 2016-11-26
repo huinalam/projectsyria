@@ -17,7 +17,10 @@
 
 
 .event_circle{
-    opacity: 0.5;
+    stroke-width:0.5px;
+    stroke: #222222;
+    opacity: 0.3;
+    mix-blend-mode: screen;
 }
 #date_axis line{
     stroke: #666666;
@@ -56,4 +59,10 @@
     fill: #FF5252;
     color: #FF5252;
     border-color: #444444;
+}
+#death{
+    fill: #FF4081;
+    color: #FF4081;
+    stroke: #FF4081;
+    stroke-width: 1px;
 }
