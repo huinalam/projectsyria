@@ -14,7 +14,7 @@ height = width * 0.8;
 var dataCon;
 
 //SVG & Group
-var svg_chapter1 = d3.select(".viz").append("svg")
+var svg_chapter1 = d3.select(".svg").append("svg")
                                     .attr("class","intro_svg_intrograph")
                                     .attr("width",width)
                                     .attr("height",height)

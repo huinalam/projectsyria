@@ -132,6 +132,7 @@ h3{
 	background-color: #111215;
 	width:96%;
 	margin: 2%;
+	margin-top: 0%;
 	float: none;
 	
 }
@@ -139,6 +140,14 @@ h3{
 	position: fixed;
 	top: 0px;
 	left:0px;
+}
+.mask{
+	width:0;
+	height:100px;
+	position: fixed;
+	top:0;
+	left:0;
+	background: linear-gradient(#111215, rgba(0,0,0,0));
 }
 .text{
 	width:98%;
@@ -197,6 +206,11 @@ h3{
 			margin: 0.92% !important;
 			top: 0px;
 			left:0px;
+		}
+		.mask{
+			opacity:0;
+			width:0;
+			height:0;
 		}
 		.text{
 			position: relative;

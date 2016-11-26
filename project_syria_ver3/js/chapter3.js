@@ -131,7 +131,7 @@ var innerWidth = width - (margin.left + margin.right);
 var innerHeight = height - (margin.top + margin.bottom);
 
 var checkPoint =[
-                  0.03 * innerWidth, //X-Axis,Y-Axis 시작 교차점
+                  0.04 * innerWidth, //X-Axis,Y-Axis 시작 교차점
                   0.05 * innerWidth, //Ordinal Scale 시작점 (공격패턴)
                   0.70 * innerWidth, //Ordinal Scale 종료
                   0.75 * innerWidth, //Linear Scale 시작점(사망)
@@ -267,7 +267,7 @@ d3.csv("data/death_per_month.csv",function(death_data){
               .attr("cy",function(d){
                 return timeline_yScale(d.date);
               })
-              .attr("r",2);
+              .attr("r","0.1em");
 
 
 
@@ -300,7 +300,7 @@ function reDraw(){
   innerHeight = height - (margin.top + margin.bottom);  
 
   checkPoint =[
-                  0.03 * innerWidth, //X-Axis,Y-Axis 시작 교차점
+                  0.04 * innerWidth, //X-Axis,Y-Axis 시작 교차점
                   0.05 * innerWidth, //Ordinal Scale 시작점 (공격패턴)
                   0.70 * innerWidth, //Ordinal Scale 종료
                   0.75 * innerWidth, //Linear Scale 시작점(사망)
