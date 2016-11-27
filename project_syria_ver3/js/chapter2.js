@@ -67,7 +67,7 @@ var svg_chapter2 = d3.select(".viz").append("svg")
                   							 .attr("transform","translate(0,0)")
                   							 .attr("class","world");
 
-
+/*
 
     d3.csv("data/refugee_2004_2014_world_ac.csv",function(data){
 
@@ -240,7 +240,7 @@ var svg_chapter2 = d3.select(".viz").append("svg")
       });// end of json functuin
 
     	
-    });
+    });*/
 
 function reDraw(){
 

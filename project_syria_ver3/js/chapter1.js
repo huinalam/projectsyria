@@ -14,11 +14,11 @@ height = width * 0.8;
 var dataCon;
 
 //SVG & Group
-var svg_chapter1 = d3.select(".svg").append("svg")
+var svg_chapter1 = d3.select(".viz").append("svg")
                                     .attr("class","intro_svg_intrograph")
                                     .attr("width",width)
                                     .attr("height",height)
-                                    .style("background-color","#111215");
+                                    .style("background-color","rgba(0,0,0,0)");
 
 var g_svg_chapter1 = svg_chapter1.append("g")
                                  .attr("transform","translate(0,0)");

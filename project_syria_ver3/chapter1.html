@@ -7,24 +7,21 @@
 	 <link href="css/chapter1_svg.css" rel="stylesheet">
 </head>
 <body>
+	<div class="header_background" id="chapt1">
+	</div>
+	<div class="header">
+		<h1 class="title">
+            <span id="red">SYRIAN REFUGEES DURING </span><br>
+            <span id="green">HALF CENTURY OF DICTATORSHIP</span>
+        </h1>
+		<div class="chapter_introduction_div">
+            <p>With a view to understanding occurrence of the crisis and the background of civil war, it&#39;d better look into Syrian history of two Assads&#39; dictatorship for 50 years and types of suppression which the regimes have pushed against. And how these facts are coincided with the number of refugees each time.</p>
+        </div>
+	</div>
 	<div class="container">
-		<div class="header" id="chapt1">
-			<div class="chapter_title_div">
-				<h1 class="title">
-                    <span id="red">SYRIAN REFUGEES DURING </span><br>
-                    <span id="green">HALF CENTURY OF DICTATORSHIP</span>
-                </h1>
-			</div>
-			<div class="chapter_introduction_div">
-                <p>The data on refugees recorded in UNHCR start from 1968. With a view to understanding occurrence of the crisis and the background of civil war, it&#39;d better look into Syrian history of two Assads&#39; dictatorship for 50 years and types of suppression which the regimes have pushed against. This chapter concentrates on Syrian modern history after its independence from France to current regime of second Assad: what kinds of crackdown Syrian people have confronted and how these facts are coincided with the number of refugees each time.</p>
-            </div>
-		</div>
 		<div class="viz">
-			<div class="svg">
 				<h2>History of Syrian Refugees</h2>
-			</div>
 		</div>
-
 		<div class="text">
 			<div class="chapter_article_div" id="a1">
 				 <h2>
@@ -74,7 +71,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 <script src="js/chapter1.js"></script>
 <script>
-$(document).ready(function(){
+$(window).load(function(){
 	/* 윈도우,컨테이너,시각화 div 객체 선언*/
 	var $window = $(window);
 	var container = {};
@@ -83,6 +80,7 @@ $(document).ready(function(){
 	var article_top = [];
 	var article_height = [];
 	var windowHeight;
+	var headerTop;
 	var vizTop;
 
 	//위치,사이즈 정보 갱신
@@ -100,6 +98,7 @@ $(document).ready(function(){
 
 	$window.on("scroll",function(){
 		scrollTop = $window.scrollTop();
+		fade_out();
 		fix_check();
 		//console.log("scrollTop: " + scrollTop);
 
@@ -123,6 +122,16 @@ $(document).ready(function(){
 		/*div 스크롤 위치 확인*/
 		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom"));
 
+		/*헤더 위치 확인*/
+		headerTop = $(".chapter_introduction_div").offset().top;
+		console.log(headerTop);
+		$(".header_background").css("top",headerTop);
+	}
+
+	function fade_out(){
+		var range = vizTop - scrollTop 
+		var opacity = range/vizTop; 
+		$(".header_background").animate({opacity: opacity},10);
 	}
 
 
