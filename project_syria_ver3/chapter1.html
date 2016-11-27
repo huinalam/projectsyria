@@ -8,11 +8,11 @@
 </head>
 <body>
 	<div class="container">
-		<div class="header">
+		<div class="header" id="chapt1">
 			<div class="chapter_title_div">
 				<h1 class="title">
-                    <span id="red">SYRIAN REFUGEE<br>BEFORE CIVIL WAR</span><br>
-                    <span id="green">MEASURE OF REPRESSION</span>
+                    <span id="red">SYRIAN REFUGEES DURING </span><br>
+                    <span id="green">HALF CENTURY OF DICTATORSHIP</span>
                 </h1>
 			</div>
 			<div class="chapter_introduction_div">
@@ -140,7 +140,8 @@ $(document).ready(function(){
 				$(".text").css("margin-left","1%");
 				$(".viz").css("left","0px");
 				//mask for text fade-out
-				$(".mask").css("top",vizHeight).css("width","100%");
+				var maskTop = parseInt($(".viz").height()) + parseInt($(".viz").css("padding-top")) + parseInt($(".viz").css("margin-top"));
+				$(".mask").css("top",maskTop).css("width","100%");
 			}else{
 				//affix for desktop
 				console.log("desktop");

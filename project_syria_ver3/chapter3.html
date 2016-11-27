@@ -299,10 +299,11 @@
                         //console.log(vizHeight);
                         $(".text").css("margin-top",vizHeight);
                         $(".text").css("margin-top",'+=2%');
-                        $(".text").css("margin-left","1%");
+                        $(".text").css("margin-left","1%");xw
                         $(".viz").css("left","0px");
-                        //mask for text fade-out
-                        $(".mask").css("top",vizHeight).css("width","100%");
+                       //mask for text fade-out
+                        var maskTop = parseInt($(".viz").height()) + parseInt($(".viz").css("padding-top")) + parseInt($(".viz").css("margin-top"));
+                        $(".mask").css("top",maskTop).css("width","100%");
                     }else{
                         //affix for desktop
                         //console.log("desktop");

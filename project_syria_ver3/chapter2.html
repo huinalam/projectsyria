@@ -122,7 +122,8 @@ $(document).ready(function(){
 				$(".text").css("margin-left","1%");
 				$(".viz").css("left","0px");
 				//mask for text fade-out
-				$(".mask").css("top",vizHeight).css("width","100%");
+				var maskTop = parseInt($(".viz").height()) + parseInt($(".viz").css("padding-top")) + parseInt($(".viz").css("margin-top"));
+				$(".mask").css("top",maskTop).css("width","100%");
 			}else{
 				//affix for desktop
 				//console.log("desktop");
