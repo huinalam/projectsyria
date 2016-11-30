@@ -1,0 +1,51 @@
+.definition >p{
+	margin:0px;
+	padding:1%;
+	font-size: 0.8em;
+	font-weight: 300;
+	font-family: 'Muli', sans-serif;
+	height: 100px;
+}
+
+.timeline_data_review{
+    display: inline-block;
+}
+.timeline_data_review_chart{
+    width: 250px;
+    float: left;
+}
+.timeline_data_review_num{
+    width: 420px;
+    float: left;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+.timeline_correlation_table{
+    margin: 20px 0 20px 0;
+    width: 420px;
+    display: table;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    color: #cccccc;
+}
+.table_factor{
+    float: left;
+    margin:5px;
+}
+.table_cell{
+    font-weight: 100;
+    float: left;
+    margin:5px;
+}
+.ref_num{
+    width:190px;
+    margin: 10px;
+    float:left;
+    color: #338866;
+}
+.death_num{
+    width: 190px;
+    margin: 10px;
+    float: left;
+    color: #FF1744;
+}

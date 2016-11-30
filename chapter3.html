@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<head>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+	 <link href="css/fonts.css" rel="stylesheet">
+     <link href="css/nav.css" rel="stylesheet">
+	 <link href="css/structure.css" rel="stylesheet">
+	 <link href="css/chapter3.css" rel="stylesheet">
+	 <link href="css/chapter3_svg.css" rel="stylesheet">
+</head>
+<body>
+    <div class="nav_bar">
+        <ul class="topnav" id="mainTopnav">
+            <li class="nav_item" id='main'><a href="index.html">PROJECT SYRIA</a></li>
+            <li class="nav_item" id='item'><a href="chapter1.html">CHAPTER1</a></li>
+            <li class="nav_item" id='item' ><a href="chapter2.html">CHAPTER2</a></li>
+            <li class="nav_item" id='item' ><a href="chapter3.html">CHAPTER3</a></li>
+            <li class="nav_item icon">
+                <a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
+        </li>
+        </ul>
+        <div class="progress_back">
+             <div class="progress_bar2"></div>
+        </div>
+        <div class="progress_back">
+             <div class="progress_bar"></div>
+        </div>
+    </div>
+    <div class="header_background" id="chapt3">
+    </div>
+    <div class="header">
+        <div class="chapter_title_div">
+            <h1 class="title">
+                <span id="red">WHAT FORCE THEM<br> TO LEAVE SYRIA?:</span>
+            </h1>
+        </div>
+        <div class="chapter_introduction_div">
+            <p>Our intention is to focus on why almost half of Syrian population had no choice but to leave the motherlands and which types of life threats have existed from the viewpoint of themselves. So we analyzed the data of syriatracker.crowdmap.com which reports several damages inflicted against civilians in and around Syria. Syria Tracker, website utilizing group intelligence, allows anonymous users to directly report cases of civilian deaths, massacre, genocide and also chemical warfare. You can find detailed process of analysis in the section of methodology.</p>
+        </div>
+    </div>
+	<div class="container">
+		<div class="chapter_introduction_div" id="damage_type">
+            <h2>6 TYPES OF CIVILIAN DAMAGE</h2>
+            <div class="block-32 definition">
+                <h3 id="battle">BATTLE</h3>
+                <p>refers to military conflicts among two or more groups. Syrian tracker involves not only in fatalities from combats but also in fatalities from bombings or shootings derived from battles.</p>
+            </div>
+            <div class="block-32 definition">
+                <h3 id="shelling">SHELLING</h3>
+                <p>: refers to assaults by artillery fire-forces that have been using by Assad regime in a most universal level. Though it is usually applied to battles with anti-regime forces, shelling cases have been also found in civilian areas.</p>
+            </div>
+            <div class="block-32 definition">
+                <h3 id="air_strike">AIR STRIKE</h3>
+                <p>is an attack of aerial bombardment on a specific target using missile, bombing incidents by military aircrafts.</p>
+            </div>
+            <div class="block-32 definition">
+                <h3 id="chemical">CHEMICAL WEAPONE</h3>
+                <p>is a munition that uses chemicals formulated to inflict death or harm on human beings. It was June 2012 when the regime used chemical munition for the first time but the issue caught world-wide attention by August 2013.</p>
+            </div>
+            <div class="block-32 definition">
+                <h3 id="barrel_bomb">BARREL BOMB</h3>
+                <p>is made from a barrel-like metal container with high explosives and shrapnel. It is typically bombed by aircrafts but strictly forbidden by UN convention.</p>
+            </div>
+            <div class="block-32 definition">
+                <h3 id="direct_attack">DIRECT ATTACK</h3>
+                <p>includes all the other attacks not pointed out above. This terminology may include direct attacks against individual or groups such as sniping, execution and massacre.</p>
+            </div>
+        </div>
+		<div class="viz">
+		</div>
+		<div class="text">
+            <div class="chapter_article_div" id="a0">
+                <h2>
+                    About Data Used<br>
+                </h2>
+                <p>We visualized three kinds of time series data set on the left side of timeline on a monthly basis.</p>
+                <h3>Frequency of private damage</h3>
+                <p>First data refers to the frequency of 6 types of civiliansdamage during Syrian civil war, while the location of circles demonstrates time of incidents and its scale does frequency. The data was complied from <a hrer="https://syriatracker.crowdmap.com/" target="_blank">Syrian tracker</a> and facebook timeline of Syrian Human Right Network as mentioned before.</p>
+                 <h3>The number of refugee per a month</h3>
+                <p>Second data was analyzed to check up monthly increasing figures of refugees by looking up the data provided by <a href="http://data.unhcr.org/syrianrefugees/regional.php" target="_blank">UNHCR</a> This data set has been collected since January 2012, incorporating total number of refugees registered in Turkey, Labanon, Jordan, Iraq and Egypt. However, there was certain phase when the whole registered number of them became decreased the very month was marked as zero refugees newly generatedeg.sep, 2015)</p>
+                <p>Though this data has limitation in timely and local boundary, it poses own significance as the only data which enable us to find out changing pattern of refugees on a monthly basis. Green line graph on the left says the monthly figure of refugees.</p>
+                 <h3>The number of death per a month</h3>
+                <p>Final data set deals with deaths toll during whole civil war period based on the data of Syrian violation document center. Equal to other data sets, it is also monthly-basis source with red color line indicating monthly fatalities.</p>
+                <p>In other words, certain rules of patterns can be detected by observing timeline on the left the series of civilian damage and; figures of refugees and fatalities each month. This would facilitate what has been happening in 7 each period of civil war.</p>
+            </div>
+            <div class="chapter_article_div" id="a1">
+                <h2>
+                    1.Peaceful protest<br>(2011 March ~ 2011 June)
+                </h2>
+                <h3>Summary</h3>
+                <p>This period saw widespread and also huge congregations owing to the impact of Arab Spring. Day of Rage when large-scale demonstrations took place in Aleppo and Damascus on March 15th, the first victims were recorded due to shooting toward protesters by government forces. According to USDOT, the suspicion was raised toward Iran, the biggest alliance of Assad’s regime given that the IRGC-QF (Islamic Revolutionary Guard Corps Quad Force) may have arrived in Syria via private airliner YAS in March..</p>
+                <h3>Data Review</h3>
+                <div class="timeline_data_review">
+                    <div class="timeline_data_review_chart" id='data_review_c1'>
+                    </div>
+                    <div class="timeline_data_review_num">
+                        <div class="ref_num">
+                            <span class="big_num">0</span>
+                            <br>of refugees
+                        </div>
+                        <div class="death_num">
+                            <span class="big_num">489</span>
+                            <br>of deaths
+                        </div>
+                        for 14months
+                    </div>
+                </div>
+                <p> The period before full-fledged war is said to have 5 shootings and 2 shelling cases against civilians by government forces. Other reports related to another groups have not been reported until now. According to VDC (Violation Documentation Center), the death toll reached 1,348.</p>
+            </div>
+            <div class="chapter_article_div" id="a2">
+                <h2>
+                    2.Early war<br>
+                    (2011 May ~ 2012 July)
+                </h2>
+                <h3>Summary</h3>
+                <p>The period when the phase of civil war initiated involved in deployment of armored forces in major cities such as Homs, Darra and Damascus. (May of 2011) As the suppression against civilians became much more deteriorated, runaway soldiers started to establish its own forces called Free Syria Army. ‘The national’ says the Assad regime purposedly released extremists acquitted of heinous crimes for attracting not only themselves but also their forces to install divisions. On July that year, government forces made 216 victims wounded or dead suppressing demonstrators in Hama.</p>
+                <h3>Data Review</h3>
+                <div class="timeline_data_review">
+                    <div class="timeline_data_review_num">
+                        <span class="ref_num">
+                            <span id="data_review_num">72,292</span>
+                            <br>
+                            of refugees
+                        </span>
+                        <span class="death_num">
+                            <span id="data_review_num">13,335</span>
+                            <br>
+                            of deaths<br>
+                        </span>
+                        <br>
+                        for 14months
+                    </div>
+                </div>
+                <p>With mortalities observed in a manner of upsurge, 3,000 fatalities occurred only in July of 2012. This period also coincides with the suspicions and actual reports that Assad regime committed air bombing (78), shelling cases(48), direct shootings and genocides, adding that Russian military intervention started to be observed: 4 shelling and two air strikes. Although the issue of chemical warfares in Syria gained its worldwide attention by 2013, two cases had been already found in September 2012.</p>
+            </div>
+            <div class="chapter_article_div" id="a3">
+                <h2>
+                    3.Involvement of Islamic Power<br>
+                    (2012 Jan ~ 2013 Apr)
+                </h2>
+                <h3>Summary</h3>
+                <p>On 2012, several other factions around Middle East came to be incorporated. Notably, Kruds people who had been willing to gain independence from Syria established YPG, known as People’s Defence units succeeded occupying some northern area of the country, while Lebanese armed group of Hezbollah was deployed in battlefields as major supporting partner of the regime. From October of 2012, several battles between Assad’s and anti-regime forces were erupted in 7 cities including al-Quasayr, then another format of battles between YPG and rebel forces appeared in northern area in November. Obama administration gave permission of CIA training program for rebel forces in April, 2013.</p>
+                <h3>Data Review</h3>
+                <div class="timeline_data_review">
+                    <div class="timeline_data_review_chart" id='data_review_c2'>
+                    </div>
+                    <div class="timeline_data_review_num">
+                        <span class="ref_num">
+                            <span id="data_review_num">779,812</span>
+                            <br>
+                            of refugees
+                        </span>
+                        <span class="death_num">
+                            <span id="data_review_num">31,060</span>
+                            <br>
+                            of deaths<br>
+                        </span>
+                        <br>
+                        for 14months
+                    </div>
+                </div>
+                <p>The number of deaths reached the highest point on a monthly-average basis throughout whole civil war period: August of 2012 with 6,000 fatalities and; April of 2013 with more than 250,000 refugees. The Assad regime committed bombings and shelling incidents of 364 and 224 cases, respectively. The civilian attacks utilizing barrel bombing (58 cases) were also reported. Russian presences were continuously observed.</p>
+            </div>
+            <div class="chapter_article_div" id="a4">
+                <h2>
+                    4.Escalation of the War & born of ISIS<br>
+                    (2013 Jan ~ 2014 Jan)
+                </h2>
+                <h3>Summary</h3>
+                <p>The worsened inner split of al-Qaeda’s Syria branch resulted in the birth of ISIS in April. In the meantime, Assad regime killed 213 civilians by activating chemical weapons in August. Though Moscow pressured Damascus to give up the usage of chemical weapons and Syria accepted the proposal outwardly in September, continuous weapon uses have been observed. In the same month, rebel forces trained by CIA were deployed in al-Nusra, the Syrian branch of al-Qaeda. In first month of 2014, ISIS occupied Raqqa where government forces had controlled.</p>
+                <h3>Data Review</h3>
+                <div class="timeline_data_review">
+                    <div class="timeline_data_review_chart" id='data_review_c2'>
+                    </div>
+                    <div class="timeline_data_review_num">
+                        <span class="ref_num">
+                            <span id="data_review_num">868,731</span>
+                            <br>
+                            of refugees
+                        </span>
+                        <span class="death_num">
+                            <span id="data_review_num">20,709</span>
+                            <br>
+                            of deaths<br>
+                        </span>
+                        <br>
+                        for 14months
+                    </div>
+                </div>
+                <p>Severe attacks toward local communities are clearly found: 1,446 bombing cases and 671 shelling incidents with 164 chemical weapons-applied assaults. The unexpected civilian damage of 47 cases were also undeniable owing to United Nations’ intervention for ISIS repulse. The military operations of Hezbollah and IS also came on the rise, albeit with lesser cases reported than those inflicted by UN.</p>
+            </div>
+            <div class="chapter_article_div" id="a5">
+                <h2>
+                    5.Aggressive intervention<br>(2014 Jan ~ 2014 Dec)
+                </h2>
+                <h3>Summary</h3>
+                <p>As ISIS expanded itself further, it had no choice but to have more combats against Kurds and other rebel forces. Sarah Birke, an Arab expert at the Economist argued that al-Nusra shows strong tendency against Assad regime but ISIS focuses on its own hegemony. International coalition led by Washington overtook its aggressive operation against IS-occupied regions in Syria in September, 2014. Although US supported anti-Assad forces once again through Pentagon training program, the target of this program was rebel forces against ISIS, not the dictator’s regime.</p>
+                <h3>Data Review</h3>
+                <div class="timeline_data_review">
+                    <div class="timeline_data_review_chart" id='data_review_c2'>
+                    </div>
+                    <div class="timeline_data_review_num">
+                        <span class="ref_num">
+                            <span id="data_review_num">548,309</span>
+                            <br>
+                            of refugees
+                        </span>
+                        <span class="death_num">
+                            <span id="data_review_num">18,929</span>
+                            <br>
+                            of deaths<br>
+                        </span>
+                        <br>
+                        for 14months
+                    </div>
+                </div>
+                <p>Keeping a similar level of attacks on local areas by regime forces, total number of operations called upon astonishment: 1,393 bombings, 635 shelling cases and 131 strikes of barrel bombings with 40 cases more year of year. The damage resulting from UN and Russia seem to be decreased, albeit notable increase of operations by Islamic State.</p>
+            </div>
+            <div class="chapter_article_div" id="a6">
+                <h2>
+                    6.Extension of the War and Russia's official intervention<br>(2014 Dec ~ 2015 Dec)
+                </h2>
+                <h3>Summary</h3>
+                <p>9 major combats were taken place from March to August of 2015 and extreme complexity can be found in terms of struggles for expansion including Assad forces, rebel forces, Hezbollah, IS and finally Kurds. In September of 2015, Russia officially announced its military intervention in Syria under the reason of a repulse against ISIS forces. However, local media outlets including ‘Halab today’ has been distributing the videos relevant to their suspicions that Russian targets in Syria have been anti-regime forces-held regions and other civilian areas.</p>
+                <div class="timeline_data_review">
+                    <div class="timeline_data_review_chart" id='data_review_c2'>
+                    </div>
+                    <div class="timeline_data_review_num">
+                        <span class="ref_num">
+                            <span id="data_review_num">541,607</span>
+                            <br>
+                            of refugees
+                        </span>
+                        <span class="death_num">
+                            <span id="data_review_num">15,156</span>
+                            <br>
+                            of deaths<br>
+                        </span>
+                        <br>
+                        for 14months
+                    </div>
+                </div>
+                <p>Since March 2014, approximately 2,500 deaths have continued each month. Even though the number of refugees seemed to show its decrease on a monthly basis, the refugees registered were at its far-highest point on March 2015 and January 2016. Compared to the past period, military operations of other groups were a bit less reported but the assaults on civilian areas were not ceased. The extent of damage inflicted by barrel bomb reached 893 cases eight times higher over last year.</p>
+            </div>
+            <div class="chapter_article_div" id="a7">
+                <h2>
+                    7.Cease fire attempt and withdrawal of Russia<br>( 2016 Jan ~ present)
+                </h2>
+                <h3>Summary</h3>
+                <p>On February 27th of 2016, UN Security Council passed the resolution N. 2254 which has its aim at preparing for armistice of Syrian Civil War. <!-- 분량때문에 어떻게할지 고민중!-->However, the actual question was the validity of the resolution. After a truce agreement, both sides has been arguing that each side is clearly violating the agreement. Within continuous chaos, Russia decided to withdraw its residing forces, sending one fighter jet back to Moscow in March 15th.</p>
+                <div class="timeline_data_review">
+                    <div class="timeline_data_review_chart" id='data_review_c2'>
+                    </div>
+                    <div class="timeline_data_review_num">
+                        <span class="ref_num">
+                            <span id="data_review_num">189,956</span>
+                            <br>
+                            of refugees
+                        </span>
+                        <span class="death_num">
+                            <span id="data_review_num">1,137</span>
+                            <br>
+                            of deaths<br>
+                        </span>
+                        <br>
+                        for 14months
+                    </div>
+                </div>
+                <p>Indicating recent for months, sieges posed toward civilians have dropped remarkably with operations of regime and Russia being reported, however. The decrease of bombings and shelling cases was seemingly found, whereas direct target became civilians once again in a higher rate around June 2015, leading more than 2,500 mortalities every month. Information on Russian operations is expected to represent its activities before official withdrawal.</p>
+            </div>
+            <div class="chapter_article_div" id="a8">
+                <h2>
+                    Summary of timeline analysis
+                </h2>
+                <h3>Finding1: The Most intensive Damages</h3>
+                <p>One of the largest characteristics we have seen in timeline is the worst damage happened after June 2012 during a year. More than 1,400 shelling incidents were reported only in November 2011 with other types of air strikes and direct bombings were also publicized. This coincides with the right point when the highest fatalities occurred the figures delclared seem to have something to do with death tolls and direct attacks.</p>
+
+                <h3>Finding2: Correlation between type of attcks and the number of deaths and refugees</h3>
+                <p>With a view to arranging influence on monthly death tolls and number of refugees by the frequency of 6 types of attacks, we tried to analyze result statistically. So to speak, Pearson&#39;s product-mement correlation was adapted as an algorism tool to connect the dots of interrelation between civilian assaults and the number of deaths or refugees. In this regards, the correlation becomes higher when the result stands near 1.</p>
+
+                <p>Primarily, the table below says the correlation between monthly fatalities and six types of assaults with absolute value of each attack being provided.</p>
+                <div class="timeline_correlation_table">
+                    <div class="table_factor type">Type of <br>attacks</div>
+                    <div class="table_factor report">Number of <br>Total Reports</div>
+                    <div class="table_factor cor">Correlation<br> with death</div>
+                    <div class="table_cell type" id="shelling">Shelling</div>
+                    <div class="table_cell report" id="shelling">14797</div>
+                    <div class="table_cell cor" id="shelling">0.78</div>
+                    <div class="table_cell type" id="air_strike">Air Strike</div>
+                    <div class="table_cell report" id="air_strike">3543</div>
+                    <div class="table_cell cor" id="air_strike">0.61</div>
+                    <div class="table_cell type" id="battle">Battle</div>
+                    <div class="table_cell report" id="battle">5567</div>
+                    <div class="table_cell cor" id="battle">0.16</div>
+                    <div class="table_cell type" id="direct_attack">Direct Attack</div>
+                    <div class="table_cell report" id="direct_attack">8304</div>
+                    <div class="table_cell cor" id="direct_attack">0.63</div>
+                    <div class="table_cell type" id="barrel_bomb">Barrel Bomb</div>
+                    <div class="table_cell report" id="barrel_bomb">892</div>
+                    <div class="table_cell cor" id="barrel_bomb">0.049</div>
+                    <div class="table_cell type" id="chemical">Chemical weapone</div>
+                    <div class="table_cell report" id="chemical">342</div>
+                    <div class="table_cell cor" id="chemical">0.28</div>
+                </div>
+
+                <p>Followed by the table, shelling incidents (0.78) and air strike (0.61) show the highest value in correlation, while barrel bomb (0.049) and battle (0.16) represent the lowest relevance. It&#39;s why we chose to mark figure of total reports in order to consider possible influence which quantity and intention of attacks might have on the correlation itself. Let&#39;s see each figure: shelling incidents are the most reported with the highest correlation but; air strikes are less reported than battles with the second highest interrelation – it implies that air strikes could result in massive killings with minor number of assaults or maintain the higher intention on civilian areas as the very target.</p>
+
+                <p>In terms of number of refugees each month, it does not demonstrate direct correlation with frequency of attacks. It&#39;s because of the gap between the two of increasing refugees and deaths. However, when time axis be pushed forward by 5 months, the correlation is increased to 0.68, showing that there are 5 month-gap between civilian assaults and refugee crisis.</p>
+
+                <h3>Finding3: Moving toward fresh perspective</h3>
+                <p>The data used in the analysis process is from Syrian Violation Document Center with the cause of the deaths being recorded. Nevertheless, we tried to analyze the correlation between type of damage and death toll so as to make an assumption about the intention of attacks itself.</p>
+
+                <p>The cause of deaths by VDE does not specify additional reasons whether the casualty was due to attacks against local community or due to fresh attacks after the first battles between militants.</p>
+
+                <p>By making use of the category ‘battle’, however, it was also able to distinguish originally intended civilian attacks from secondly-led damage among battles. Looking at the data again, battles of 5,567 cases and its correlation with fatalities show considerably low degree of 0.16 but air strikes of 3,543 cases represent 0.61. In other words, though air strike has relative lower reports than battles, it causes almost quadrupled victims. Of course, deaths during battles can also not be justifiable but analytic process enables the viewers to see much more persons than expected dying owing to non-selective attacks, who may have zero relevance with civil war itself. The data once again confirms the cruelty of war.</p>
+            </div>
+        </div>
+    <div class="bottom" id="end_div">
+        <div class="arrow" id="prev">
+            <a href="index.html"><img class="arrow_img" src="img/prev_arrow.svg"><br>
+            "Distribution of Syrian Refugee"</a>
+        </div>
+        <div class="arrow" id="next">
+            <a href="index.html"><img class="arrow_img" src="img/next_arrow.svg"><br>
+            To Home<br></a>
+        </div>
+    </div>
+	</div>
+    <div class="mask">
+    </div>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <script src="js/d3_code_move.js"></script>
+	<script src="js/chapter3.js"></script>
+     <script>
+        function myFunction() {
+            var x = document.getElementById("mainTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+	<script>
+		$(document).ready(function(){
+			/* 윈도우,컨테이너,시각화 div 객체 선언*/
+            var $window = $(window);
+            var container = {};
+            var vizHeight;
+            var scrollTop
+            var article_top = [];
+            var article_height = [];
+            var windowHeight;
+            var vizTop;
+
+            initation();
+
+			$window.on("resize",function(){
+				initation();
+                fix_check();
+                reDraw();
+			});
+
+            $window.on("scroll",function(){
+                scrollTop = $window.scrollTop();
+                fade_out();
+                fix_check();
+                set_progress_bar();
+                chapter_transition();
+            });
+
+            function initation(){
+                //위치,사이즈 정보 갱신
+                /*사이즈 초기화*/
+                windowHeight = $window.height();
+                $(".header").css("height",windowHeight);
+                $(".chapter_article_div").css("height",windowHeight);
+
+
+                for(var i=0; i<$(".chapter_article_div").length;i++){
+                    article_top[i] = $(".chapter_article_div").eq(i).offset().top;
+                    article_height[i] = $(".chapter_article_div").eq(i).height();
+                }
+
+                /*div 스크롤 위치 확인*/
+                vizTop = $("#damage_type").offset().top + $("#damage_type").height();
+                for(var i=0; i<4;i++){
+                    article_top[i] = $(".chapter_article_div").eq(i).offset().top;
+                    article_height[i] = $(".chapter_article_div").eq(i).height();
+                }
+
+                /*헤더 위치 확인*/
+                headerTop = $(".chapter_introduction_div").offset().top;
+                $(".header_background").css("top",headerTop);
+            }
+
+            function fade_out(){
+                var range = vizTop - scrollTop 
+                var opacity = range/vizTop; 
+                $(".header_background").animate({opacity: opacity},10);
+            }
+
+            function set_progress_bar(){
+                var end_scroll = parseInt($("#end_div").offset().top) -  (windowHeight - parseInt($("#end_div").height()));
+                var bar_percent = (parseInt($window.scrollTop())/end_scroll)*100;
+
+                $('.progress_bar').css("width", bar_percent + "%");
+            }
+
+            function set_progress_bar2(start_scroll,end_scroll){
+                var range = end_scroll - start_scroll;
+                var bar_percent = 100 - (parseInt(end_scroll - $window.scrollTop())/range)*100;
+
+                $('.progress_bar2').css("width", bar_percent + "%");
+            }
+
+            function fix_check(){
+                if(vizTop < scrollTop){//affix
+
+                    if($window.width()<821){
+                        //affix for mobile
+                        //console.log("mobile");
+                        $(".viz").addClass("viz_Mfixed");
+                        //Text margin modification
+                        vizHeight = $(".viz").css("height");
+                        //console.log(vizHeight);
+                        $(".text").css("margin-top",vizHeight);
+                        $(".text").css("margin-top",'+=2%');
+                        $(".text").css("margin-left","1%");
+                        $(".viz").css("left","0px");
+                       //mask for text fade-out
+                        var maskTop = parseInt($(".viz").height()) + parseInt($(".viz").css("padding-top")) + parseInt($(".viz").css("margin-top"));
+                        $(".mask").css("top",maskTop).css("width","100%");
+                    }else{
+                        //affix for desktop
+                        //console.log("desktop");
+                        $(".viz").addClass("viz_Dfixed");
+                        var left = $(".container").css("margin-left");
+                        $(".viz").css("left",left);
+                        var marginLeft = $(".viz").width() +(3*parseInt($(".viz").css("margin-left"))); 
+                        $(".text").css("margin-left",marginLeft);
+                    }
+
+                }else{//un-affix
+                    
+                    if($window.width()<821){
+                        //un-affix for mobile
+                        $(".viz").removeClass("viz_Mfixed");
+                        $(".viz").removeClass("viz_Dfixed");
+                        $(".text").css("margin","1%");
+                        //masek for fade-out
+                        $(".mask").css("top",0).css("width",0);
+                    }else{
+                        //un-affix for desktop
+                        $(".viz").removeClass("viz_Mfixed");
+                        $(".viz").removeClass("viz_Dfixed");
+                        $(".text").css("margin","1%");
+                    }
+                    
+                }
+            }// fix_check() end;
+
+
+            function chapter_transition(){
+                if((vizTop<scrollTop)&&(scrollTop<(article_top[1]-article_height[0]))){
+                    
+                    chapter_move(0);
+                }
+                else if(((article_top[1]-article_height[0])<scrollTop)&&(scrollTop<(article_top[2]-article_height[1]))){
+                    
+                    chapter_move(1);
+
+                    var start_scroll = article_top[1]-article_height[0];
+                    var end_scroll = article_top[2]-article_height[1];
+                    set_progress_bar2(start_scroll,end_scroll);
+                }
+                else if(((article_top[2]-article_height[1])<scrollTop)&&(scrollTop<(article_top[3]-article_height[2]))){
+                    
+                    chapter_move(2);
+
+                    var start_scroll = article_top[2]-article_height[1];
+                    var end_scroll = article_top[3]-article_height[2];
+                    set_progress_bar2(start_scroll,end_scroll);
+                }
+                else if(((article_top[3]-article_height[2])<scrollTop)&&(scrollTop<(article_top[4]-article_height[3]))){
+                    
+                    chapter_move(3);
+
+                    var start_scroll = article_top[3]-article_height[2];
+                    var end_scroll = article_top[4]-article_height[3];
+                    set_progress_bar2(start_scroll,end_scroll);
+                }
+                else if(((article_top[4]-article_height[3])<scrollTop)&&(scrollTop<(article_top[5]-article_height[4]))){
+                    
+                    chapter_move(4);
+
+                    var start_scroll = article_top[4]-article_height[3];
+                    var end_scroll = article_top[5]-article_height[4];
+                    set_progress_bar2(start_scroll,end_scroll);
+                }
+                else if(((article_top[5]-article_height[4])<scrollTop)&&(scrollTop<(article_top[6]-article_height[5]))){
+                    
+                    chapter_move(5);
+
+                    var start_scroll = article_top[5]-article_height[4];
+                    var end_scroll = article_top[6]-article_height[5];
+                    set_progress_bar2(start_scroll,end_scroll);
+                }
+                else if(((article_top[6]-article_height[5])<scrollTop)&&(scrollTop<(article_top[7]-article_height[6]))){
+                    
+                    chapter_move(6);
+
+                    var start_scroll = article_top[6]-article_height[5];
+                    var end_scroll = article_top[7]-article_height[6];
+                    set_progress_bar2(start_scroll,end_scroll);
+                }
+                else if(((article_top[7]-article_height[6])<scrollTop)&&(scrollTop<(article_top[8]-article_height[7]))){
+                    
+                    chapter_move(7);
+
+                    var start_scroll = article_top[7]-article_height[6];
+                    var end_scroll = article_top[8]-article_height[7];
+                    set_progress_bar2(start_scroll,end_scroll);
+                }
+                else if(((article_top[8]-article_height[7])<scrollTop)){
+                    
+                    chapter_move(8);
+
+                    var start_scroll = article_top[8]-article_height[7];
+                    var end_scroll = parseInt($("#end_div").offset().top) -  (windowHeight - parseInt($("#end_div").height()));
+                    set_progress_bar2(start_scroll,end_scroll);
+                }
+                else{
+                    $('.progress_bar2').css("width", "0%");
+                }
+            }
+
+
+		});
+	</script>
+</body>
+</html>

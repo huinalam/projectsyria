@@ -199,10 +199,11 @@ h3{
 	text-decoration: none;
 }
 .arrow a:hover{
-	opacity:1;
+	opacity:1; 
 	text-decoration: none;
 	color:#eeeeee;
 }
+
 
 #prev{
 	display: inline-block;

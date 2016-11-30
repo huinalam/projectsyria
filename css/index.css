@@ -1,0 +1,147 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700|Roboto+Slab:400,100,300);
+@import url(https://fonts.googleapis.com/css?family=Arvo:400,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url('https://fonts.googleapis.com/css?family=Muli:300,700');
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+
+html{font-size: 14px;}
+body{
+	min-width: 360px;
+	margin: 0px;
+	padding: 0px;
+	color: #bbbcbd;
+	background-color: #111111;
+}
+p{
+	font-size: 0.85em;
+	font-family: 'Muli', sans-serif;
+	font-weight: 300;
+	line-height: 120%;
+	margin-bottom: 5%;
+}
+a:link {
+	color:#eeeeee;
+	text-decoration: none;
+}
+a:visited {
+	color:#eeeeee;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+	color:#eeeeee;
+}
+
+
+.container{
+	width: 100%;
+	height: auto;
+	margin: auto;
+	background-color: #11121A;
+}
+.header{
+	max-width: 800px;
+	width: 94%;
+	margin: 3%;
+}
+h1.title{
+	color: #99eeff;
+	margin-top: 0.6em;
+	margin-bottom: 0.2em;
+	max-width: 800px;
+	font-family: 'League Gothic Condensed', sans-serif;
+	font-size: 8em;
+	letter-spacing: 0.05em;
+	word-spacing: 0.1em;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 95%;
+	
+}
+h2{
+	font-family: 'Muli', sans-serif;
+	font-weight: 700;
+	font-size: 1.2em;
+	margin: 30px 0 5px 0;
+	margin-top: 0px;
+	line-height: 120%;
+	color: #f0f0f0;
+}
+
+.report{
+	display: inline-block;
+	height:15%;
+
+}
+
+
+.wordcloud{
+	width: 96%;
+	margin: 2%;
+	text-align: center;
+}
+.block-1{
+	display: inline-block;
+	background-color: #11121A;
+	width: 98%;
+	margin: 8% 1% 4% 1%;
+	border-style: solid;
+	border-width: 0 0 1px 0;
+	border-color: #eeeeee;
+}
+.block-2{
+	font-family: 'Muli', sans-serif;
+	font-weight: 300;
+	font-size: 1.2em;
+	text-align: left;
+	position: relative;
+	float: left;
+	width: 98%;
+	margin: 1%;
+	background-color: #111215;
+}
+@media screen and (min-width: 640px){
+	.block-2{
+		position: relative;
+		float: left;
+		max-width: 400px;  
+		width: 48%;
+		margin: 1%;
+		background-color: #111215;
+	}
+}
+@media screen and (min-width: 820px){
+	html{font-size: 16px;}
+	body{
+		margin: 0px;
+		padding: 0px;
+		color: #bbbcbd;
+		background-color: #111111;
+	}
+	p{
+		font-size: 0.85em;
+		font-family: 'Muli', sans-serif;
+		font-weight: 300;
+		line-height: 120%;
+	}
+	.block-2{
+		position: relative;
+		float: left;
+		max-width: 400px;  
+		width: 48%;
+		margin: 1%;
+		background-color: #11121A;
+	}
+	.container{
+			width: 100%;
+			max-width: 800px;
+			height: auto;
+			margin: auto;
+			border-style: solid;
+			border-width: 0 1px 0 1px;
+			border-color: #eeeeee;
+
+	}
+
+}

@@ -266,7 +266,7 @@
 				  	}
 				  	return " " + d3.format(",")(d);
 				  })
-				  .attr("x",50)
+				  .attr("x",0)
 				  .attr("y",function(d,i){
 				
 				  	return map_legend_num.length*20 - i*20 + 10;
