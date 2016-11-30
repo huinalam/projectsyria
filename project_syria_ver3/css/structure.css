@@ -11,13 +11,16 @@ body{
 	margin: 0px;
 	padding: 0px;
 	color: #D0D8DA;
-	background-color: #111215;
+	background-color: #111111;
 }
+
+
 p{
-	font-size: 1.1em;
+	font-size: 0.85em;
 	font-weight: 300;
 	font-family: 'Muli', sans-serif;
 }
+
 .header{
 	display: inline-block;
 	max-width: 800px;
@@ -28,6 +31,7 @@ p{
 }
 .header_background{
 	width:100%;
+	max-width: 1200px;
 	height:58%;
 	top:0%;
 	left: 0%;
@@ -37,8 +41,16 @@ p{
 	position:fixed;
 	z-index: -1;
 }
+
+
 #chapt1{
 	background-image: url("../img/father_son_dark.jpg");
+}
+#chapt2{
+	background-image: url("../img/refugee_move.jpg");
+}
+#chapt3{
+	background-image: url("../img/destroyed.jpg");
 }
 .chapter_introduction_div{
 	font-size: 0.8em;
@@ -52,7 +64,7 @@ p{
 	margin: 80% 5% 80% 5%;
 }
 .viz>h2{
-	font-family: 'League Gothic', sans-serif;
+	font-family: 'Muli', sans-serif;
 	font-weight: 100;
 	font-size: 2em;
 	margin: 30px 0 5px 0;
@@ -85,26 +97,26 @@ h2{
 	color: #cc3333;
 }
 h3{
-	font-family: 'League Gothic', sans-serif;
+	font-family: 'Muli', sans-serif;
 	font-weight: 100;
-	font-size: 1.5em;
+	font-size: 1em;
 	margin:5px 0 0 0;
 	line-height: 120%;
-	color: #cc3333;
+	color: #eeeeee;
 }
 .chapter_article_div >h2{
-	font-family: 'League Gothic', sans-serif;
-	font-weight: 100;
-	font-size: 2em;
+	font-family: 'Muli', sans-serif;
+	font-weight: 700;
+	font-size: 1.2em;
 	margin: 30px 0 5px 0;
 	margin-top: 0px;
 	line-height: 120%;
-	color: #cc3333;
+	color: #eeeeee;
 }
 
 .chapter_article_div >p{
 	margin: 0 0 30px 0;
-	font-size: 1.1em;
+	font-size: 0.85em;
 	font-weight: 300;
 	font-family: 'Muli', sans-serif;
 	line-height: 130%;
@@ -114,9 +126,12 @@ h3{
 .bottom{
 	display: inline-block;
 	width: 98%;
-	height: 100px;
-	margin: 1%;
-	background-color: #333333;
+	margin: 5% 2% 10% 2%;
+	z-index: 9999;
+}
+.arrow_img{
+	margin: 0.5em;
+	opacity: 0.8;
 }
 
 
@@ -124,7 +139,7 @@ h3{
 	width: 100%;
 	margin:0;
 	height: auto;
-	background-color: #111215;
+	background-color: #11121A;
 }
 .block{
 	display: inline-block;
@@ -143,16 +158,16 @@ h3{
 	max-width: 400px;  
 	width: 48%;
 	margin: 1%;
-	background-color: #eeeeee;
+	background-color: #11121A;
 }
 .viz{
 	z-index: 999;
-	padding-top: 3em;
+	padding-top: 6em;
 	width:96%;
 	margin: 2%;
 	margin-top: 0%;
 	float: none;
-	background-color: #111215;
+	background-color: #11121A;
 }
 .viz_Mfixed{
 	position: fixed;
@@ -168,10 +183,37 @@ h3{
 	background: linear-gradient(#111215 10%, rgba(0,0,0,0));
 }
 .text{
-	background-color:#111215;
+	background-color: #11121A;
 	width:98%;
 	margin: 1%;
 	float: none;
+}
+.arrow{
+	text-align: center;
+	font-family: 'Muli', sans-serif;
+	color:#eeeeee;
+	font-size: 1.0em;
+}
+.arrow > a:visited ,a:link{
+	color:#eeeeee;
+	opacity:0.8;
+	text-decoration: none;
+}
+.arrow a:hover{
+	opacity:1;
+	text-decoration: none;
+	color:#eeeeee;
+}
+
+#prev{
+	display: inline-block;
+	margin-left: 2%;
+	float: left;
+}
+#next{
+	display: inline-block;
+	margin-right: 2%;
+	float: right;
 }
 
 @media screen and (min-width: 820px){
@@ -182,7 +224,7 @@ h3{
 			font-weight: 300;
 		}
 		.container{
-			background-color:#111215;
+			background-color: #11121A;
 			width: 92%;
 			margin:0 auto 0 auto;
 			height: auto;
@@ -207,7 +249,7 @@ h3{
 			width: 48%;
 			margin: 1%;
 			height: 100px;
-			background-color: #eeeeee;
+			background-color: #11121A;
 		}
 		.block-32{
 			display: inline-block;
@@ -216,16 +258,16 @@ h3{
 			max-width: 400px;  
 			width: 30%;
 			margin: 1.6%;
-			background-color: #eeeeee;
+			background-color: #11121A;
 		}
 		.viz{
 			z-index: 999;
-			padding-top: 3em;
+			padding-top: 6em;
 			width:63%;
 			max-width: 695.52px;
 			margin: 1%;
 			float: left;
-			background-color: #111215;
+			background-color: #11121A;
 		}
 		.viz_Dfixed{
 			position: fixed;
@@ -241,7 +283,7 @@ h3{
 			height:0;
 		}
 		.text{
-			background-color: #111215;
+			background-color: #11121A;
 			position: relative;
 			width:33%;
 			margin: 1%;

@@ -2,23 +2,43 @@
 <head>
 	 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 	 <link href="css/fonts.css" rel="stylesheet">
+	 <link href="css/nav.css" rel="stylesheet">
 	 <link href="css/structure.css" rel="stylesheet">
 	 <link href="css/chapter2_svg.css" rel="stylesheet">
 </head>
 <body>
-	<div class="container">
-		<div class="header">
-			<div class="chapter_title_div">
-				<h1 class="title">
-                   <span id="red">DISTRIBUTION OF <br>THE SYRIAN REFUGEES</span><br>
-                   <span id="green">MAP OF THE IMBALANCE</span>
-                </h1>
-			</div>
-			<div class="chapter_introduction_div">
-                <p>As we see in previous chapter, the number of Syrian refugees has been roaring after inauguration of Bashar al-Assad in 2001. It turned into decrease in 2004 but kept rising after 2006. Armored forces were dispatched in May 2011 for suppressing nationwide demonstrations, while in similar time anti-forces of Free Syria Army were launched breakout of civil war. As the world knows, unprecedented migrant crisis has sparked up since 2011.</p>
-                <p>This chapter focuses on: how many refugees have expanded their footages toward other Middle East regions and Europe from the breakout to 2014 and; the fact that the data say in terms of the distribution of the displaced migrants.</p>
-            </div>
+	<div class="nav_bar">
+		<ul class="topnav" id="mainTopnav">
+		    <li class="nav_item" id='main'><a href="index.html">PROJECT SYRIA</a></li>
+		    <li class="nav_item" id='item'><a href="chapter1.html">CHAPTER1</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter2.html">CHAPTER2</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter3.html">CHAPTER3</a></li>
+		    <li class="nav_item icon">
+		    	<a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
+	    </li>
+		</ul>
+		<div class="progress_back">
+             <div class="progress_bar2"></div>
+        </div>
+		<div class="progress_back">
+             <div class="progress_bar"></div>
+        </div>
+	</div>
+	<div class="header_background" id="chapt2">
+	</div>
+	<div class="header">
+		<div class="chapter_title_div">
+			<h1 class="title">
+               <span id="red">DISTRIBUTION OF <br>THE SYRIAN REFUGEES</span><br>
+               <span id="green">MAP OF THE IMBALANCE</span>
+            </h1>
 		</div>
+		<div class="chapter_introduction_div">
+            <p>As the world knows, unprecedented migrant crisis has sparked up since 2011.
+            This chapter focuses on: how many refugees have expanded their footages toward other Middle East regions and Europe from the breakout to 2014 and; the fact that the data say in terms of the distribution of the displaced migrants.</p>
+        </div>
+	</div>
+	<div class="container">
 		<div class="viz">
 			<h2>History of Syrian Refugees</h2>
 		</div>
@@ -50,7 +70,18 @@
                 <p>The result of analyzing the distribution of Syrian refugees in two continents shows two aspects of imbalance. First of all, more than 60% of refugees have been staying in Germany and Sweden whereas Gulf states have showed its extreme reluctance for welcoming migrants. In 2014, it is said that only 18 Syrian refugees were accepted to stay in Saudi Arabia with its highest GDP figure in Gulf region.</p>
 			</div>
 		</div>
-		<div class="bottom"></div>
+		<div class="bottom" id="end_div">
+			<div class="arrow" id="prev">
+				<a href="chapter1.html"><img  src="img/prev_arrow.svg"><br>
+				To Chapter1<br>
+				"History of Syrian Refugees"</a>
+			</div>
+			<div class="arrow" id="next">
+				<a href="chapter3.html"><img src="img/next_arrow.svg"><br>
+				To Chapter3<br>
+				"Pattern of Civil Damage"</a>
+			</div>
+		</div>
 		<div class="mask">
 		</div>
 	</div>
@@ -58,7 +89,17 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 <script src="js/chapter2.js"></script>
 <script>
-$(document).ready(function(){
+ 	function myFunction() {
+	    var x = document.getElementById("mainTopnav");
+	    if (x.className === "topnav") {
+	        x.className += " responsive";
+	    } else {
+	        x.className = "topnav";
+	    }
+	}
+</script>
+<script>
+$(window).load(function(){
 	/* 윈도우,컨테이너,시각화 div 객체 선언*/
 	var $window = $(window);
 	var container = {};
@@ -68,6 +109,7 @@ $(document).ready(function(){
 	var article_height = [];
 	var windowHeight;
 	var vizTop;
+	var headerTop;
 
 	//위치,사이즈 정보 갱신
 	initation();
@@ -84,9 +126,9 @@ $(document).ready(function(){
 
 	$window.on("scroll",function(){
 		scrollTop = $window.scrollTop();
+		fade_out();
 		fix_check();
-		console.log("scrollTop: " + scrollTop);
-		console.log("vizTop: " + vizTop);
+		set_progress_bar();
 		map_transition();
 	});
 
@@ -105,6 +147,31 @@ $(document).ready(function(){
 		/*div 스크롤 위치 확인*/
 		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom"));
 
+		/*헤더 위치 확인*/
+		headerTop = $(".chapter_introduction_div").offset().top;
+		console.log(headerTop);
+		$(".header_background").css("top",headerTop);
+
+	}
+
+	function set_progress_bar(){
+            var end_scroll = parseInt($("#end_div").offset().top) -  (windowHeight - parseInt($("#end_div").height()));
+            var bar_percent = (parseInt($window.scrollTop())/end_scroll)*100;
+
+            $('.progress_bar').css("width", bar_percent + "%");
+     }
+
+    function set_progress_bar2(start_scroll,end_scroll){
+     		var range = end_scroll - start_scroll;
+            var bar_percent = 100 - (parseInt(end_scroll - $window.scrollTop())/range)*100;
+
+            $('.progress_bar2').css("width", bar_percent + "%");
+     }
+
+	function fade_out(){
+		var range = vizTop - scrollTop 
+		var opacity = range/vizTop; 
+		$(".header_background").animate({opacity: opacity},10);
 	}
 
 
@@ -159,17 +226,36 @@ $(document).ready(function(){
 			console.log("chapter1");
 			mapTransition(years[0]);
 
+			var start_scroll = vizTop;
+			var end_scroll = article_top[1]-article_height[0];
+			set_progress_bar2(start_scroll,end_scroll);
+
 		}else if(((article_top[1]-article_height[0])<scrollTop)&&(scrollTop<(article_top[2]-article_height[1]))){
 			console.log("chapter2");
 			mapTransition(years[1]);
+
+			var start_scroll = article_top[1]-article_height[0];
+			var end_scroll = article_top[2]-article_height[1];
+			set_progress_bar2(start_scroll,end_scroll);
 
 		}else if(((article_top[2]-article_height[1])<scrollTop)&&(scrollTop<(article_top[3]-article_height[2]))){
 
 			mapTransition(years[2]);
 
+			var start_scroll = article_top[2]-article_height[1];
+			var end_scroll = article_top[3]-article_height[2];
+			set_progress_bar2(start_scroll,end_scroll);
+
 		}else if(((article_top[3]-article_height[2])<scrollTop)){
 
 			mapTransition(years[3]);
+
+			var start_scroll = article_top[3]-article_height[2];
+			var end_scroll = parseInt($("#end_div").offset().top) -  (windowHeight - parseInt($("#end_div").height()));
+			set_progress_bar2(start_scroll,end_scroll);
+
+		}else{
+			$('.progress_bar2').css("width", "0%");
 		}
 	}
 	

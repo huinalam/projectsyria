@@ -1,0 +1,41 @@
+.chart_title{
+	font-family: 'Muli', sans-serif;
+	font-weight: 700;
+	font-size: 0.4em;
+	margin: 5px;
+	letter-spacing: 0.5px;
+	word-spacing: 2px;
+	fill: #eeeeee;
+}
+.chart_caption{
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 13px;
+    letter-spacing: 0.5px;
+    word-spacing: 1.5px;
+    fill: #eeeeee;
+}
+.legend_text{
+ 	font-family: "HelveticaNeue";
+ 	fill: #EEEEEE;
+ 	font-size: 10px;
+ }
+.eu{
+ 	color: #b8e2d3;
+ 	fill: #b8e2d3;
+ 	font-size: 9px;
+ }
+.gulf{
+ 	color: #b8e2d3;
+ 	fill: #b8e2d3;
+ 	font-size: 9px;
+ }
+.mid{
+	color: #229977;
+	fill: #229977;
+ 	font-size: 9px;
+ }
+ .tooltip{
+ 	fill: #eeeeee;
+ 	font-size: 15px;
+ 	letter-spacing: 1px;
+ }

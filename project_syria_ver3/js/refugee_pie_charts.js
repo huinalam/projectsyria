@@ -1,18 +1,16 @@
-var intro_pie_width = 400;
-var intro_pie_height = 300;
-var intro_pie_margin = {left: 100, top: 100};
+var intro_pie_width = 300;
+var intro_pie_height = 260;
+var intro_pie_margin = {left: 100, top: 50};
 
 var intro_pie1_svg = d3.select('#pie1')
 						.append("svg")
 						.attr("width",intro_pie_width)
-						.attr("height",intro_pie_height)
-                        .style("float","left");
+						.attr("height",intro_pie_height);
 
 var intro_pie2_svg = d3.select('#pie2')
 						.append("svg")
 						.attr("width",intro_pie_width)
-						.attr("height",intro_pie_height)
-                        .style("float","left");
+						.attr("height",intro_pie_height);
 
 var continent_portion = [{cont:"mid", text:"MIDDLE EAST", refugee_value:3701082},
 						 {cont:"eu", text:"EUROPE", refugee_value:92540}];
@@ -60,7 +58,7 @@ function drawing_introPie(){
                 .attr("transform", "translate(" + (outerRadius + intro_pie_margin.left) +","+ (outerRadius + intro_pie_margin.top) +")");
 
     var title_text1 = intro_pie1_svg.append("g")
-                        .attr("transform","translate(10,10)")
+                        .attr("transform","translate(15,30)")
                         .append("text")
                         .attr("class","chart_title");
 
@@ -81,7 +79,7 @@ function drawing_introPie(){
 
 
     var title_text2 = intro_pie2_svg.append("g")
-                        .attr("transform","translate(10,10)")
+                        .attr("transform","translate(15,30)")
                         .append("text")
                         .attr("class","chart_title");
 
@@ -126,7 +124,7 @@ function drawing_introPie(){
             });
 
     var pie_legend1 = intro_pie1_svg.append("g")
-    								.attr("transform","translate(0,250)");
+    								.attr("transform","translate(0,200)");
 
     pie_legend1.selectAll("rect")
     		   .data(continent_portion)
@@ -157,7 +155,7 @@ function drawing_introPie(){
 
 
     var pie_legend2 = intro_pie2_svg.append("g")
-    								.attr("transform","translate(15,250)");
+    								.attr("transform","translate(15,200)");
 
     pie_legend2.selectAll("rect")
     		   .data(mid_portion)

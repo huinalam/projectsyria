@@ -40,7 +40,7 @@ var scale_legend = d3.scale.linear()
 
 var projection = d3.geo.conicConformal()
 				   .center(center)
-				   .scale(580)
+				   .scale(width*0.98)
 				   .translate([width/2,height/2])
 				   .center(center)
 				   .precision(.1);
@@ -67,7 +67,7 @@ var svg_chapter2 = d3.select(".viz").append("svg")
                   							 .attr("transform","translate(0,0)")
                   							 .attr("class","world");
 
-/*
+
 
     d3.csv("data/refugee_2004_2014_world_ac.csv",function(data){
 
@@ -240,7 +240,7 @@ var svg_chapter2 = d3.select(".viz").append("svg")
       });// end of json functuin
 
     	
-    });*/
+    });
 
 function reDraw(){
 
@@ -254,6 +254,7 @@ function reDraw(){
 
     //Projection 재설정
     projection
+             .scale(width*0.98)
              .translate([width/2,height/2])
              .center(center)
              .precision(.1);

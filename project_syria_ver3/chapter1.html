@@ -4,9 +4,27 @@
 	 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 	 <link href="css/fonts.css" rel="stylesheet">
 	 <link href="css/structure.css" rel="stylesheet">
+	 <link href="css/nav.css" rel="stylesheet">
 	 <link href="css/chapter1_svg.css" rel="stylesheet">
 </head>
 <body>
+	<div class="nav_bar">
+		<ul class="topnav" id="mainTopnav">
+		    <li class="nav_item" id='main'><a href="index.html">PROJECT SYRIA</a></li>
+		    <li class="nav_item" id='item'><a href="chapter1.html">CHAPTER1</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter2.html">CHAPTER2</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter3.html">CHAPTER3</a></li>
+		    <li class="nav_item icon">
+		    	<a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
+	    </li>
+		</ul>
+		<div class="progress_back">
+             <div class="progress_bar2"></div>
+        </div>
+		<div class="progress_back">
+             <div class="progress_bar"></div>
+        </div>
+	</div>
 	<div class="header_background" id="chapt1">
 	</div>
 	<div class="header">
@@ -63,13 +81,33 @@
                 <p>Since the antipathy to such suppression became deteriorated, nationwide demonstration called &#39;Day of Rage&#39;sparked. With regime forces taking more violent actions against citizens, 4 unarmed demonstrators were killed in March 18th in Daraa, resulting in crucial tinderbox of civil war.</p>
 			</div>
 		</div>
-		<div class="bottom"></div>
+		<div class="bottom" id="end_div">
+			<div class="arrow" id="prev">
+				<a href="index.html"><img  src="img/prev_arrow.svg"><br>
+				To Home</a>
+			</div>
+			<div class="arrow" id="next">
+				<a href="chapter2.html"><img src="img/next_arrow.svg"><br>
+				To Chapter2<br>
+				"Distribution of Syrian Refugee"</a>
+			</div>
+		</div>
 		<div class="mask">
 		</div>
 	</div>
 <script src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 <script src="js/chapter1.js"></script>
+ <script>
+ 	function myFunction() {
+	    var x = document.getElementById("mainTopnav");
+	    if (x.className === "topnav") {
+	        x.className += " responsive";
+	    } else {
+	        x.className = "topnav";
+	    }
+	}
+ </script>
 <script>
 $(window).load(function(){
 	/* 윈도우,컨테이너,시각화 div 객체 선언*/
@@ -98,6 +136,7 @@ $(window).load(function(){
 
 	$window.on("scroll",function(){
 		scrollTop = $window.scrollTop();
+		set_progress_bar();
 		fade_out();
 		fix_check();
 		//console.log("scrollTop: " + scrollTop);
@@ -111,7 +150,7 @@ $(window).load(function(){
 		/*사이즈 초기화*/
 		windowHeight = $window.height();
 		$(".header").css("height",windowHeight);
-		$(".chapter_article_div").css("height",windowHeight);
+		$(".chapter_article_div").css("min-height",windowHeight);
 
 		
 		for(var i=0; i<5;i++){
@@ -127,6 +166,20 @@ $(window).load(function(){
 		console.log(headerTop);
 		$(".header_background").css("top",headerTop);
 	}
+
+	 function set_progress_bar(){
+            var end_scroll = parseInt($("#end_div").offset().top) -  (windowHeight - parseInt($("#end_div").height()));
+            var bar_percent = (parseInt($window.scrollTop())/end_scroll)*100;
+
+            $('.progress_bar').css("width", bar_percent + "%");
+     }
+
+     function set_progress_bar2(start_scroll,end_scroll){
+     		var range = end_scroll - start_scroll;
+            var bar_percent = 100 - (parseInt(end_scroll - $window.scrollTop())/range)*100;
+
+            $('.progress_bar2').css("width", bar_percent + "%");
+     }
 
 	function fade_out(){
 		var range = vizTop - scrollTop 
@@ -188,25 +241,48 @@ $(window).load(function(){
 			current_chapter = chapter_list[0];
 			area_popYear(chapter_list[0]);
 
+			var start_scroll = vizTop;
+			var end_scroll = article_top[1]-article_height[0];
+			set_progress_bar2(start_scroll,end_scroll);
+
 		}else if(((article_top[1]-article_height[0])<scrollTop)&&(scrollTop<(article_top[2]-article_height[1]))){
 
 			current_chapter = chapter_list[1];
 			area_popYear(chapter_list[1]);
+
+			var start_scroll = article_top[1]-article_height[0];
+			var end_scroll = article_top[2]-article_height[1];
+			set_progress_bar2(start_scroll,end_scroll);
 
 		}else if(((article_top[2]-article_height[1])<scrollTop)&&(scrollTop<(article_top[3]-article_height[2]))){
 
 			current_chapter = chapter_list[2];
 			area_popYear(chapter_list[2]);
 
+			var start_scroll = article_top[2]-article_height[1];
+			var end_scroll = article_top[3]-article_height[2];
+			set_progress_bar2(start_scroll,end_scroll);
+
 		}else if(((article_top[3]-article_height[2])<scrollTop)&&(scrollTop<(article_top[4]-article_height[3]))){
 
 			current_chapter = chapter_list[3];
 			area_popYear(chapter_list[3]);
 
-		}else if((article_top[4]-article_height[3])<scrollTop){
+			var start_scroll = article_top[3]-article_height[2];
+			var end_scroll = article_top[4]-article_height[3];
+			set_progress_bar2(start_scroll,end_scroll);
 
+		}else if((article_top[4]-article_height[3])<scrollTop){
 			
 			area_popYear(chapter_list[4]);
+
+			var start_scroll = article_top[4]-article_height[3];
+			var end_scroll = parseInt($("#end_div").offset().top) -  (windowHeight - parseInt($("#end_div").height()));
+			set_progress_bar2(start_scroll,end_scroll);
+
+		}
+		else{
+			 $('.progress_bar2').css("width", "0%");
 		}
 	}
 	

@@ -1,0 +1,126 @@
+
+
+/* navigation */
+.nav_bar{
+	width: 100%;
+	height: auto;
+	background-color: #22282c;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 9999;
+	text-align: center;
+}
+ul.topnav{
+	display: inline-block;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0px auto;
+	padding:0px;
+	z-index: 999;
+}
+li.nav_item{
+    list-style-type: none;
+	width: auto;
+	font-family: 'Muli', sans-serif;
+	font-size: 0.8em;
+	color: #d0d0d0;
+	font-weight: 400;
+	margin: 15px 0px 5px 0px;
+	padding: 0 10px 0 10px;
+}
+.icon{
+	display: none;
+}
+#main{
+	font-size: 15px;
+	color: #99eeff;
+	float: left;
+	font-weight: 700;
+	width:auto;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+#main > a:hover{
+	color: #99eeff;
+	text-decoration: none;
+}
+#main > a:visited ,a:link{
+	color: #99eeff;
+	text-decoration: none;
+}
+#chapter_num{
+	float: left;
+	margin: 15px 5px 5px 20px;
+}
+#current_chapter{
+	float: left;
+	margin: 15px 5px 5px 5px;
+}
+#item{
+	float: left;
+}
+#item > a:link{
+	color: #d0d0d0;
+	text-decoration: none;
+}
+#item > a:visited{
+	color: #d0d0d0;
+	text-decoration: none;
+}
+
+.progress_back{
+	width: 100%;
+	height: 0.4em;
+	background-color: #22282c;
+}
+.progress_bar{
+	width: 0%;
+	height: 100%;
+	background-color: #44667a;
+}
+.progress_bar2{
+	width: 0%;
+	height: 100%;
+	background-color: #30383c;
+}
+
+@media screen and (max-width: 640px){
+  
+  ul.topnav li:not(:first-child) {display: none;}
+  ul.topnav li.icon {
+  		width:auto;
+		float: right;
+		display: inline-block;
+	}
+
+  li.nav_item{
+	    list-style-type: none;
+		width: 98%;
+		font-family: 'Muli', sans-serif;
+		font-size: 1em;
+		color: #d0d0d0;
+		font-weight: 400;
+		margin: 1% 10px 1% 10px;
+		padding: 0 10px 0 10px;
+	}		
+}
+
+@media screen and (max-width: 640px){
+	  ul.topnav.responsive {position: relative;}
+	  ul.topnav.responsive li.icon {
+	    position: absolute;
+	    right: 0;
+	    top: 0;
+	  }
+	  ul.topnav.responsive li {
+	  	background-color: #22282c;
+	    float: none;
+	    display: inline;
+	  }
+	  ul.topnav.responsive li a {
+	    display: block;
+	    text-align: left;
+	  }
+}
+

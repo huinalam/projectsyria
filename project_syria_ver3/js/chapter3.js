@@ -17,6 +17,9 @@ Main code
   - Call Axis
   - Append Circles (burbble chart)
 
+
+3.Chapter Masking
+
 Function definitions
 ------------------------
 3. Redraw Function
@@ -32,9 +35,7 @@ Function definitions
 */
 
 
-
-
-
+var value = [];
 
 
 
@@ -42,7 +43,7 @@ Function definitions
 //1.Global Variable Declare - Start
 // NOTE size variable
 width = parseInt(d3.select(".viz").style('width'));
-console.log(width);
+
 //width = (d3.select("body").width())*0.63;
 height = width;
 
@@ -72,8 +73,7 @@ var dateTick_list = [parseDate("2011-01-01"),parseDate("2011-04-01"),
                      parseDate("2016-01-01"),parseDate("2016-04-01")];
 
 //chapter selecor를 그리기위한 날짜
-var chapter_date = [{start: parseDate("2011-01-01"), end: parseDate("2011-03-01")},
-                    {start: parseDate("2011-01-01"), end: parseDate("2016-04-01")},
+var chapter_date = [{start: parseDate("2011-01-01"), end: parseDate("2016-04-01")},
                     {start: parseDate("2011-03-01"), end: parseDate("2011-06-01")},
                     {start: parseDate("2011-05-01"), end: parseDate("2012-07-01")},
                     {start: parseDate("2012-07-01"), end: parseDate("2013-04-01")},
@@ -122,7 +122,7 @@ var svg_chapter3 = d3.select(".viz").append("svg")
                                     .attr("class","intro_svg_intrograph")
                                     .attr("width",width)
                                     .attr("height",height)
-                                    .style("background-color","#111111");
+                                    .style("background-color","#111215;");
 
 var g_svg_chapter3 = svg_chapter3.append("g")
                                  .attr("transform","translate(" + margin.left + "," + margin.top + ")");
@@ -135,8 +135,10 @@ var checkPoint =[
                   0.05 * innerWidth, //Ordinal Scale 시작점 (공격패턴)
                   0.70 * innerWidth, //Ordinal Scale 종료
                   0.75 * innerWidth, //Linear Scale 시작점(사망)
-                  0.99 * innerWidth  //Llinear Scale, canvas 끝
+                  0.98 * innerWidth  //Llinear Scale, canvas 끝
                  ];
+
+
 
 // NOTE 
 //Scale Setting
@@ -146,8 +148,18 @@ var timeline_yScale = d3.time.scale()
                              .domain([parseDate("2011-01-01"), parseDate("2016-04-01")])
                              .range([0, innerHeight]);
 
+var yScale_unit = innerHeight/64;
+
 var xScale_d;
 var rScale;
+
+//ETC
+//** 이벤트 써클 오버서티 **//
+var c_opacity1 = 0.45;
+var c_opacity2 = 0.05;
+var c_opacityR = 0.7;
+var current_opacity;
+var current_opacity2;
 
 //1.Global Variable Declare--END
 
@@ -169,7 +181,7 @@ d3.csv("data/event_num_long.csv",function(event_data){
 
   dataCon1 = event_data;
   var max = d3.max(event_data,function(d){return d.value});
-  console.log(max);
+  
 
   var maxRange = innerWidth/12;
 
@@ -182,16 +194,69 @@ d3.csv("data/event_num_long.csv",function(event_data){
   timeline_yAxis();
   timeline_xAxis();
 
+  g_svg_chapter3.append("rect")
+              .attr("class","chart_border")
+              .attr("x",checkPoint[0])
+              .attr("y",0)
+              .attr("width",checkPoint[4]-checkPoint[0])
+              .attr("height",innerHeight);
+
+  g_svg_chapter3.append("line")
+              .attr("class","border_line")
+              .attr("x1",checkPoint[3])
+              .attr("x2",checkPoint[3])
+              .attr("y1",0)
+              .attr("y2",innerHeight);
+
+  var guideLine = g_svg_chapter3.append("line")
+                              .attr("class","timeline_divLine guideLine")
+                              .attr("x1",checkPoint[3])
+                              .attr("x2",checkPoint[3])
+                              .attr("y1",timeline_yScale(parseDate("2011-01-01")))
+                              .attr("y2",timeline_yScale(parseDate("2016-04-01")));
+
+  //NOTE Chapter masking
+ /* var chapter_mask1 = g_svg_chapter3.append("rect")
+                                    .attr("class","chapter_mask")
+                                    .attr("id","chapter_mask1")
+                                    .attr("width",(checkPoint[2]-checkPoint[1]))
+                                    .attr("height",0)
+                                    .attr("x",checkPoint[1])
+                                    .attr("y",timeline_yScale(parseDate("2011-01-01")));*/
+
+  var chapter_selector = g_svg_chapter3.append("g")
+                                    .attr("transform","translate(0,0)")
+                                    .append("rect")
+                                    .attr("class","chapter_selector")
+                                    .attr("width",(checkPoint[4]-checkPoint[0]))
+                                    .attr("height",timeline_yScale(parseDate("2016-04-01"))-timeline_yScale(parseDate("2011-01-01")))
+                                    .attr("x",checkPoint[0])
+                                    .attr("y",timeline_yScale(parseDate("2011-01-01")));
+
+ /* var chapter_mask2 = g_svg_chapter3.append("rect")
+                                    .attr("class","chapter_mask")
+                                    .attr("id","chapter_mask1")
+                                    .attr("width",(checkPoint[2]-checkPoint[1]))
+                                    .attr("height",0)
+                                    .attr("x",checkPoint[1])
+                                    .attr("y",timeline_yScale(parseDate("2016-04-01")));*/
 
   //NOTE Append Circles (burbble chart)
   var g_burble_chart = g_svg_chapter3.append("g")
                             .attr("transform","translate(" + 0 + ",0)");
 
-  g_burble_chart.selectAll("circle")
+  g_burble_chart.selectAll("g")
          .data(dataCon1)
          .enter()
+         .append("g")
+         .attr("class",function(d,i){
+            return "group_event_" + (i%60);
+         })
          .append("circle")
-         .attr("class","event_circle")
+         .attr("value",function(d){return d.value;})
+         .attr("class",function(d,i){
+             return "circle_event" + " " + chapter_check(d) + "_circle" + " " + "month_" +(i%60);
+         })
          .attr("id",function(d){
             return d.event_type;
          })
@@ -221,7 +286,7 @@ d3.csv("data/event_num_long.csv",function(event_data){
 
             //Scale setting
             var max = d3.max(death_data,function(d){return d.value});
-            console.log(max);
+            
 
             xScale_d = d3.scale.linear()
                                   .range([checkPoint[3],checkPoint[4]])
@@ -233,11 +298,15 @@ d3.csv("data/event_num_long.csv",function(event_data){
             var g_line_chart = g_svg_chapter3.append("g")
                                              .attr("transform","translate(0,0)");
 
+
+
             g_line_chart.selectAll("line")
                         .data(dataCon2)
                         .enter()
                         .append("line")
-                        .attr("class","death_line")
+                        .attr("class", function(d,i){
+                                return "death_line" + " " + chapter_check(d) + "_line" + " " + "line_month_" +i;
+                        })
                         .attr("id","death")
                         .attr("x1",xScale_d(0))
                         .attr("x2",function(d){
@@ -254,7 +323,9 @@ d3.csv("data/event_num_long.csv",function(event_data){
                         .data(dataCon2)
                         .enter()
                         .append("circle")
-                        .attr("class","death_circle")
+                        .attr("class", function(d,i){
+                                return "death_circle" + " " + chapter_check(d) + "_line" + " " + "circle_month_" +i;
+                        })
                         .attr("id","death")
                         .attr("cx",function(d){
                           return xScale_d(d.num);
@@ -262,28 +333,119 @@ d3.csv("data/event_num_long.csv",function(event_data){
                         .attr("cy",function(d){
                           return timeline_yScale(d.date);
                         })
-                        .attr("r","0.13em");
+                        .attr("r","0.1em");
 
 
 
+            //NOTE Adding Monthly box
+            /*chart monthly box for hover*/
+            g_svg_chapter3.append("g").selectAll("rect").data(dateList)
+                                   .enter()
+                                   .append("rect")
+                                   .attr("class",function(d,i){
+                                        return "monthly_box" + " " + "month_" +i; 
+                                   })
+                                   .attr("x",checkPoint[0])
+                                   .attr("y",function(d,i){
+                                     return timeline_yScale(dateList[i]) - yScale_unit/2;
+                                   })
+                                   .attr("width",checkPoint[4]-checkPoint[0])
+                                   .attr("height",innerHeight/64)
+                                   .attr("opacity",0);
 
-          });
+            /*Adding Event Listener to Monthly box*/
+             for(i=0; i<64; i++){
+                (function(){
+                  var index=i;
+                  d3.selectAll(".month_" + index).on("mouseover",function(){
+                      console.log("month: " + index);
+
+                      d3.selectAll(".month_" + (index-3) +":not(.monthly_box)").style("opacity",function(d){
+                                                                                        current_opacity = d3.select(this).style("opacity");
+                                                                                        return c_opacityR;
+                                                                                      })
+                                                                                     .style("stroke-width",1)
+                                                                                     .style("stroke","#ffffff");
+
+                       d3.selectAll(".line_month_" + (index-3)).style("opacity",function(d){
+                                                                                    current_opacity2 = d3.select(this).style("opacity");
+                                                                                    return c_opacityR + 0.2;
+                                                                                  });
+                        d3.selectAll(".circle_month_" + (index-3)).style("opacity",c_opacityR + 0.2);  
+
+
+                        d3.selectAll(".month_" + (index-3) +":not(.monthly_box)").moveToFront();
+
+                        d3.selectAll(".tickMonth_" + (index)).style("fill","#aaaaaa");
+                        d3.selectAll(".lineMonth_" + (index)).style("stroke","#aaaaaa");
+                        d3.selectAll(".event_line").style("stroke","#666666");
+                        d3.selectAll(".guideLine").style("stroke","#aaaaaa");  
+
+                        var guideLine_x =xScale_d(death_data[index-3].num);
+                            
+                        d3.selectAll(".guideLine").attr("x1",guideLine_x)
+                                                  .attr("x2",guideLine_x);
+
+ 
+                        
+                        d3.selectAll(".group_event_" + (index-3)).append("text")
+                                                                 .attr("class","tooltip")
+                                                                 //.attr("id",function(d){
+                                                                 //   return d.event_type;
+                                                                 //})
+                                                                 .attr("x",function(d){
+                                                                    return xScale_events(d.event_type) + xScale_events.rangeBand()/2;
+                                                                 })
+                                                                 .attr("y",function(d){
+                                                                  console.log(d.date);
+                                                                    return timeline_yScale(d.date) + yScale_unit/2;
+
+                                                                 })
+                                                                 .text(function(d){
+                                                                    return d.value;
+                                                                 });
+                                      
+
+
+                      });//Rollover End
+
+
+                  d3.selectAll(".month_" + index).on("mouseout",function(){
+
+                        
+
+                       d3.selectAll(".month_" + (index-3)).style("stroke-width",1)
+                                                               .style("stroke","#222222")
+                                                               .style("opacity",current_opacity);
+                       d3.selectAll(".monthly_box").style("opacity",0);  
+
+                       d3.selectAll(".line_month_" + (index-3)).style("opacity", current_opacity2);
+                       d3.selectAll(".circle_month_" + (index-3)).style("opacity", current_opacity2);
+
+                       d3.selectAll(".tickMonth_" + (index)).style("fill","#aaaaaa");
+                       d3.selectAll(".lineMonth_" + (index)).style("stroke","#444444");
+                       d3.selectAll(".event_line").style("stroke","#444444");
+
+                       d3.selectAll(".guideLine").style("stroke","#444444");
+                       d3.selectAll(".guideLine").attr("x1",checkPoint[3])
+                                                 .attr("x2",checkPoint[3]);
+
+                       d3.selectAll(".group_event_" + (index-3)).selectAll("text").remove();
+
+                   });//Rollout end
+
+                  
+                  })();//function End
+                }
+
+
+          }); //CSV function end
 
 });
 //2.Drwaing burbble chart with actual data,CSV function start--End
 
 
-
 //
-
-
-
-
-
-
-
-
-
 
 //NOTE
 //3.Redraw function
@@ -307,26 +469,40 @@ function reDraw(){
                   0.05 * innerWidth, //Ordinal Scale 시작점 (공격패턴)
                   0.70 * innerWidth, //Ordinal Scale 종료
                   0.75 * innerWidth, //Linear Scale 시작점(사망)
-                  0.99 * innerWidth  //Llinear Scale, canvas 끝
+                  0.98 * innerWidth  //Llinear Scale, canvas 끝
               ];
 
 
-  svg_chapter3.transition()
+  svg_chapter3.transition().duration(0)
                .attr("width",width)
                .attr("height",height);
 
   reScale();
 
+  d3.select(".chart_border")
+              .transition().duration(0)
+              .attr("x",checkPoint[0])
+              .attr("y",0)
+              .attr("width",checkPoint[4]-checkPoint[0])
+              .attr("height",innerHeight);
+
+ d3.select(".border_line")
+              .transition().duration(0)
+              .attr("x1",checkPoint[3])
+              .attr("x2",checkPoint[3])
+              .attr("y1",0)
+              .attr("y2",innerHeight);
+
   //Axis rescale
   timeline_yAxis
-    .tickSize(checkPoint[4] -checkPoint[0],0);
+    .tickSize(checkPoint[4] - checkPoint[0],0);
 
-  d3.select(".yAxis_timeline").transition()
+  d3.select(".yAxis_timeline").transition().duration(0)
                               .attr("transform", "translate(" + checkPoint[0] +",0)")
                               .call(timeline_yAxis);
 
   d3.select(".yAxis_timeline").selectAll("text")
-                              .transition()
+                              .transition().duration(0)
                               .attr("class",function(d,i){
                                     return "tickMonth_" + i;
                                })
@@ -337,24 +513,31 @@ function reDraw(){
 
   timeline_xAxis.tickSize(-innerHeight,0)
 
-  d3.select(".xAxis_timeline").transition()
+  d3.select(".xAxis_timeline").transition().duration(0)
                               .attr("transform","translate(0,0)")
                               .call(timeline_xAxis);
-
+                              
   timeline_xAxis_g.selectAll("text")
-                  .transition()
+                  .transition().duration(0)
                   .attr("y","-1em")
                   .text(function(d,i){
                     return legend_text[i];
                   });
 
-  d3.select(".death_xAxis").transition()
+  d3.select(".death_xAxis").transition().duration(0)
                            .attr("transform", "translate(0,0)")
                            .call(death_xAxis);
 
+
+  d3.select(".guideLine").transition().duration(0)
+            .attr("x1",checkPoint[3])
+            .attr("x2",checkPoint[3])
+            .attr("y1",timeline_yScale(parseDate("2011-01-01")))
+            .attr("y2",timeline_yScale(parseDate("2016-04-01")));
+
   //chart rescale
-   d3.selectAll(".event_circle")
-         .transition()
+   d3.selectAll(".circle_event")
+         .transition().duration(0)
          .attr("r",function(d){
             return rScale(d.value);
          })
@@ -367,7 +550,7 @@ function reDraw(){
 
 
    d3.selectAll(".death_line")
-      .transition()
+      .transition().duration(0)
       .attr("x1",xScale_d(0))
       .attr("x2",function(d){
           return xScale_d(d.num);
@@ -381,15 +564,27 @@ function reDraw(){
 
 
     d3.selectAll(".death_circle")
-      .transition()
+      .transition().duration(0)
       .attr("cx",function(d){
         return xScale_d(d.num);
       })
       .attr("cy",function(d){
         return timeline_yScale(d.date);
       })
-      .attr("r","0.13em");
+      .attr("r","0.1em");
 
+    d3.selectAll(".monthly_box")
+       .transition().duration(0)
+       .attr("x",checkPoint[0])
+       .attr("y",function(d,i){
+         return timeline_yScale(dateList[i]) - yScale_unit/2;
+       })
+       .attr("width",checkPoint[4]-checkPoint[0])
+       .attr("height",innerHeight/64)
+       .attr("opacity",0);
+
+  //Chapter selector rescale
+  chapter_move(timeline_current_chapter);
 
 
 }
@@ -403,6 +598,7 @@ function reScale(){
 
   xScale_events.rangeBands([checkPoint[1],checkPoint[2]]);
   timeline_yScale.range([0, innerHeight]);
+  yScale_unit = innerHeight/64;
   xScale_d.range([checkPoint[3],checkPoint[4]]);
 
   var maxRange = innerWidth/12;
@@ -422,6 +618,8 @@ function timeline_xAxis(){
                                    .attr("id","date_axis")
                                    .attr("transform","translate(0,0)")
                                    .call(timeline_xAxis);
+                                   
+
 
   timeline_xAxis_g.selectAll("text")
                   .attr("id",function(d){
@@ -432,6 +630,8 @@ function timeline_xAxis(){
                     return legend_text[i];
                   });
 
+  timeline_xAxis_g.selectAll("line")
+                  .attr("class","event_line");
                                  
 }
 
@@ -547,10 +747,111 @@ function parseDate(dateString) {
       return date;
   }
 
-
 //Custom Axis
 function customAxis(g) {
   g.selectAll("text")
       .attr("x", -50)
       .attr("dy", 3);
+}
+
+function chapter_move(index){
+   var i = index ;
+   timeline_current_chapter = i;
+
+
+    //Cahpter select
+    d3.select(".chapter_selector").transition().duration(0)
+                    .delay(150)
+                    .duration(300)
+                    .ease("bounce")
+                    .attr("width",checkPoint[4]-checkPoint[0])
+                    .attr("height",function(){
+                        return timeline_yScale(chapter_date[i].end)-timeline_yScale(chapter_date[i].start);
+                    })
+                    .attr("x",checkPoint[0])
+                    .attr("y",timeline_yScale(chapter_date[i].start));
+
+
+    //Opacity highlgiht
+    if((0<i)&&(i<8)){ //*서브 챕터(1~7)일때 각 챕터만 보여주기
+        console.log("chapter: " + i)
+        d3.selectAll(".chapt" + i + "_circle").transition().duration(0)
+                              .delay(150)
+                              .duration(300)  
+                              .ease("bounce")
+                              .style("opacity",c_opacity1);
+
+        d3.selectAll(".circle_event:not(.chapt"+ i + "_circle)")
+                              .transition().duration(0)
+                              .delay(150)
+                              .duration(300)  
+                              .ease("bounce")
+                              .style("opacity",c_opacity2);
+
+        d3.selectAll(".death_circle:not(.chapt"+ i + "_circle)")
+                              .transition().duration(0)
+                              .delay(150)
+                              .duration(300)  
+                              .ease("bounce")
+                              .style("opacity",c_opacity2 + 0.2);
+
+        d3.selectAll(".chapt" + i + "_line").transition().duration(0)
+                              .delay(150)
+                              .duration(300)  
+                              .ease("bounce")
+                              .style("opacity",c_opacity1 + 0.2);
+
+        d3.selectAll(".death_line:not(.chapt" + i + "_line)")
+                              .transition().duration(0)
+                              .delay(150)
+                              .duration(300)  
+                              .ease("bounce")
+                              .style("opacity",c_opacity2 + 0.2);
+
+    }
+    else{ //*처음과 끝에는 다 보여주기
+
+        d3.selectAll(".circle_event")
+                              .transition().duration(0)
+                              .delay(150)
+                              .duration(300)  
+                              .ease("bounce")
+                              .style("opacity",c_opacity1);
+
+        d3.selectAll(".death_line")
+                              .transition().duration(0)
+                              .delay(150)
+                              .duration(300)  
+                              .ease("bounce")
+                              .style("opacity",c_opacity1 + 0.2);
+
+        d3.selectAll(".death_circle")
+                              .transition().duration(0)
+                              .delay(150)
+                              .duration(300)  
+                              .ease("bounce")
+                              .style("opacity",c_opacity1 + 0.2);
+                              
+    } 
+
+}
+
+function chapter_check(d){
+   if((chapter_date[1].start<=d.date)&&(d.date<=chapter_date[1].end)){
+        return "chapt1";
+   }else if((chapter_date[2].start<=d.date)&&(d.date<=chapter_date[2].end)){
+        return "chapt2";
+   }else if((chapter_date[3].start<=d.date)&&(d.date<=chapter_date[3].end)){
+        return "chapt3";
+   }else if((chapter_date[4].start<=d.date)&&(d.date<=chapter_date[4].end)){
+        return "chapt4";
+   }else if((chapter_date[5].start<=d.date)&&(d.date<=chapter_date[5].end)){
+        return "chapt5";
+   }else if((chapter_date[6].start<=d.date)&&(d.date<=chapter_date[6].end)){
+        return "chapt6";
+   }else if((chapter_date[7].start<=d.date)&&(d.date<=chapter_date[7].end)){
+        return "chapt7";
+   }else if((chapter_date[8].start<=d.date)&&(d.date<=chapter_date[8].end)){
+        return "chapt8";
+   }
 }

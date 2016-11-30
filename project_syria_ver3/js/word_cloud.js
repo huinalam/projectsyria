@@ -1,10 +1,10 @@
-var intro_word_width = 800;
-var intro_word_height = 400;
+var width = parseInt(d3.select("#wordcloud").style('width'));
+var height = 0.4 * width;
 
 /*var intro_word_svg = d3.select('.introduction_wordCloud')
 					   .append("svg")
-					   .attr("width",intro_word_width)
-					   .attr("height",intro_word_height);*/
+					   .attr("width",width)
+					   .attr("height",height);*/
 
 var headline_frequencys = [{"text":"Islamic State",id:"is", "size":7245, "nyt":6496, "gd":749},
 		                   {"text":"Iran", id:"ir", "size":1543, "nyt":1208, "gd":335},
@@ -17,32 +17,32 @@ var headline_frequencys = [{"text":"Islamic State",id:"is", "size":7245, "nyt":6
 						   {"text":"United Nations",id:"un", "size":2429, "nyt":1952, "gd":477}];
 
 var color_cloud = d3.scale.linear()
-            .domain([15,110])
+            .domain([15,90])
             .range(["#b8e2d3", "#229977"]);
 
 var font_scale = d3.scale.linear()
 			.domain([0,7500])
-			.range([15,110])
+			.range([15,90])
 
-d3.layout.cloud().size([800,400])
+d3.layout.cloud().size([width,height])
 				 .words(headline_frequencys)
 				 .rotate(0)
 				 .fontSize(function(d){ return font_scale(d.size);})
-				 .padding(4)
+				 .padding(1)
 				 .on("end",draw)
 				 .start();
 
 function draw(words) {
 
-        d3.select('.wordcloud')
+        d3.select('#wordcloud')
 			   .append("svg")
-			   .attr("width",intro_word_width)
-			   .attr("height",intro_word_height)
+			   .attr("width",width)
+			   .attr("height",height)
                .attr("class", "wordcloud")
                .append("g")
                 // without the transform, words words would get cutoff to the left and top, they would
                 // appear outside of the SVG area
-                .attr("transform", "translate(40,190)")
+                .attr("transform", "translate(100,100)")
                 .selectAll("g")
                 .data(words)
                 .enter().append("g")

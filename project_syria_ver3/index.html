@@ -4,40 +4,67 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 	 <link href="css/fonts.css" rel="stylesheet">
 	 <link href="css/index.css" rel="stylesheet">
+	 <link href="css/nav.css" rel="stylesheet">
+	 <link href="css/index_svg.css" rel="stylesheet">
 	<title></title>
 </head>
 <body>
+	<div class="nav_bar">
+		<ul class="topnav" id="mainTopnav">
+		    <li class="nav_item" id='main'><a href="index.html">PROJECT SYRIA</a></li>
+		    <li class="nav_item" id='item'><a href="chapter1.html">CHAPTER1</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter2.html">CHAPTER2</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter3.html">CHAPTER3</a></li>
+		    <li class="nav_item icon">
+		    	<a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
+	    </li>
+		</ul>
+	</div>
 	<div class="container">
 		<div class="header">
 			<h1 class="title">PROJECT SYRIA</h1>
             <p>
-                Syrian Civil War which has continued for 5 years has resulted in at least 132,559 fatalities based on the data of The Violation Documentation Center in Syria and 4,803,643 refugees (UNHCR). The world has observed direct and indirect involvement of other players such as its neighbors of Turkey, Iran, Saudi Arabia and but also others like United Nations, Russia and US. Furthermore, Islamic State has largely made the phase of war much more complicated from 2014 when it caught attention around the world, shaping negative stereotype against whole Islamic culture. Amid this kind of chaos, this project was designed to shed light on notable incidents and cases due to migrant crisis caused by Civil War chiefly with two focuses.
+                Syrian Civil War which has continued for 5 years has resulted in at least 132,559 fatalities based on the data of The Violation Documentation Center in Syria and 4,803,643 refugees (UNHCR). The world has observed direct and indirect involvement of other players such as its neighbors of Turkey, Iran, Saudi Arabia and Islamc States but also others like United Nations, Russia and US. Amid this kind of chaos, this project was designed to shed light on notable incidents and cases due to migrant crisis caused by Civil War chiefly with two focuses.
             </p>
             <div class="block-1">
             	<h2>Focus1: The Extreme Imbalance of refugee distribution</h2>
             	<div class="block-2" id="pie1"></div>
             	<div class="block-2" id="pie2"></div>
-            	<p>Analysis on UNHCR&#39;s data about refugees enabled us to see imbalanced acceptance of displaced people from 2011 until now. Especially, more than 80% of refugees have found new destinations of Turkey, Lebanon and Jordan within Middle East region, which permitted viewers to find out social and economic issues from severe government expenditure. This issue is not only related to each nation&#39;s difficulty but also to refugees&#39; difficulty to keep their quality of living. However, other Gulf States of which economic standard is much higher have been reluctant to incorporate themselves into migrant crisis.</p>
+            	<p>Analysis on UNHCR&#39;s data about refugees enabled us to see imbalanced acceptance of displaced people from 2011 until now. Especially, more than 80% of refugees have found new destinations of Turkey, Lebanon and Jordan within Middle East region, which permitted viewers to find out social and economic issues from severe government expenditure. However, other Gulf States of which economic standard is much higher have been reluctant to incorporate themselves into migrant crisis.</p>
             </div>
             <div class="block-1">
             	<h2>Focus2: Complicated relationship between powergroups inside the Syrian War</h2>
+            	<div id="wordcloud"></div>
                 <p>It is striking fact that the largest cause of the crisis is civil war. We could visualize the relevance between each data and number of fatalities on a monthly basis and also cases of civilian damages, refugees and etc., which further facilitated how deeply certain groups have involved in each incident. The fundamental intention of visualization is supposed to raise the question for the international community which questions we should voice up to relieve migrant crisis.</p>
             </div>
-		</div>
-		<div class="block-2">
-			<a href="chapter1.html">#1 History of Syrian Refugees</a>
-		</div>
-		<div class="block-2">
-			<a href="chapter2.html">#2 Refugee Distribution Map</a>
-		</div>
-		<div class="block-2">
-			<a href="chapter3.html">#3 Damage pattern of Civil war</a>
-		</div>
-		<div class="block-2">
-			#4 Correlation with factors
+			<div class="block-1">
+				<h2>Data Storytelling of Syrian Crisis</h2>
+				<div class="block-2">
+				<a href="chapter1.html">#1 History of Syrian Refugees</a>
+				</div>
+				<div class="block-2">
+					<a href="chapter2.html">#2 Refugee Distribution Map</a>
+				</div>
+				<div class="block-2">
+					<a href="chapter3.html">#3 Damage pattern of Civil war</a>
+				</div>
+				<div class="block-2">
+					#4 Correlation with factors
+				</div>
+			</div>
 		</div>
 	</div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+ <script>
+ 	function myFunction() {
+	    var x = document.getElementById("mainTopnav");
+	    if (x.className === "topnav") {
+	        x.className += " responsive";
+	    } else {
+	        x.className = "topnav";
+	    }
+	}
+ </script>
  <script src="js/d3.layout.cloud.js"></script>
  <script src="js/refugee_pie_charts.js"></script>
  <script src="js/word_cloud.js"></script>
