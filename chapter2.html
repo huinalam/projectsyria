@@ -141,7 +141,7 @@ $(window).load(function(){
 		/*사이즈 초기화*/
 		windowHeight = $window.height();
 		$(".header").css("height",windowHeight);
-		$(".chapter_article_div").css("height",windowHeight);
+		$(".chapter_article_div").not( document.getElementById("last_article")).css("height",windowHeight);
 		var header_back_Height = $(".header_background").width() * 0.6;
 		$(".header_background").css("height",header_back_Height);
 
@@ -161,7 +161,7 @@ $(window).load(function(){
 			article_top[i] = $(".chapter_article_div").eq(i).offset().top;
 			article_height[i] = $(".chapter_article_div").eq(i).height();
 		}
-		
+
 		/*div 스크롤 위치 확인*/
 		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom"));
 		vizGap = ($window.height() - $(".viz").height())/2;
