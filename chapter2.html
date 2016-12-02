@@ -38,51 +38,53 @@
             This chapter focuses on: how many refugees have expanded their footages toward other Middle East regions and Europe from the breakout to 2014 and; the fact that the data say in terms of the distribution of the displaced migrants.</p>
         </div>
 	</div>
-	<div class="container">
-		<div class="viz">
-			<h2>History of Syrian Refugees</h2>
-		</div>
-		<div class="text">
-			<div class="chapter_article_div" id="a1">
-				<h2>
-                    2011<br>Pre-War Period
-                </h2>
-                <p>
-                    Before Syrian Civil War, political suppression of Assads' family more than 50 years led its own people to leave for the new destinations. According to UNHCR, 13,718 Syrian refugees were registered in 2011. 95% of those people stayed within Europe that year, while Germany accepted the largest portion of 10,155 refugees among European countries.
-                </p>
+	<div class="wrapper">
+		<div class="container">
+			<div class="viz">
+				<h2>History of Syrian Refugees</h2>
 			</div>
-			<div class="chapter_article_div" id="a2">
-				 <h2>
-                    2012<br>Escalation results in surge of refugees
-                </h2>
-                <p>The number of Syrian refugees skyrocketed in the mid of 2012 when the military provocations were at its semi-apex: sieges posed both by Assad regime and anti-government forces. Accordingly, Syrian people started to abandon their motherlands - the number reached 50 times as many as those who had left in 2011. Enormous diaspora reversed the distribution of refugees in inter-continental context, taking 96% of them in Middle Eastern region. Majority of refugees moved toward surrounding nations of Turkey, Iraq, Jordan and Lebanon - Turkey accepted the largest of 24,866 refugees.</p>
+			<div class="text">
+				<div class="chapter_article_div" id="a1">
+					<h2>
+	                    2011<br>Pre-War Period
+	                </h2>
+	                <p>
+	                    Before Syrian Civil War, political suppression of Assads' family more than 50 years led its own people to leave for the new destinations. According to UNHCR, 13,718 Syrian refugees were registered in 2011. 95% of those people stayed within Europe that year, while Germany accepted the largest portion of 10,155 refugees among European countries.
+	                </p>
+				</div>
+				<div class="chapter_article_div" id="a2">
+					 <h2>
+	                    2012<br>Escalation results in surge of refugees
+	                </h2>
+	                <p>The number of Syrian refugees skyrocketed in the mid of 2012 when the military provocations were at its semi-apex: sieges posed both by Assad regime and anti-government forces. Accordingly, Syrian people started to abandon their motherlands - the number reached 50 times as many as those who had left in 2011. Enormous diaspora reversed the distribution of refugees in inter-continental context, taking 96% of them in Middle Eastern region. Majority of refugees moved toward surrounding nations of Turkey, Iraq, Jordan and Lebanon - Turkey accepted the largest of 24,866 refugees.</p>
+				</div>
+				<div class="chapter_article_div" id="a3">
+					<h2>
+	                    2013<br>Culmination of Migrant Crisis: not only issue of EU<br>
+	                </h2>
+	                <p>The year 2012 came to a head of having the largest number of victims and refugees ever recorded. The number of victims (2,415,374 in total) surged again 30 times more than that of last year and 98% of them came to stay in Middle East. As the incident got worsened, European countries have become at stake due to massive influx of refugees from Afghanistan and Syria, naming this phenomenon as European Migrant Crisis. However, Syrian neighbors had already accepted 50 times greater number of refugees than European countries did at this point.</p>
+				</div>
+				<div class="chapter_article_div" id="a4">
+					 <h2>
+	                    2014<br>Imalance of Distribution
+	                </h2>
+	                <p>The result of analyzing the distribution of Syrian refugees in two continents shows two aspects of imbalance. First of all, more than 60% of refugees have been staying in Germany and Sweden whereas Gulf states have showed its extreme reluctance for welcoming migrants. In 2014, it is said that only 18 Syrian refugees were accepted to stay in Saudi Arabia with its highest GDP figure in Gulf region.</p>
+				</div>
 			</div>
-			<div class="chapter_article_div" id="a3">
-				<h2>
-                    2013<br>Culmination of Migrant Crisis: not only issue of EU<br>
-                </h2>
-                <p>The year 2012 came to a head of having the largest number of victims and refugees ever recorded. The number of victims (2,415,374 in total) surged again 30 times more than that of last year and 98% of them came to stay in Middle East. As the incident got worsened, European countries have become at stake due to massive influx of refugees from Afghanistan and Syria, naming this phenomenon as European Migrant Crisis. However, Syrian neighbors had already accepted 50 times greater number of refugees than European countries did at this point.</p>
+			<div class="bottom" id="end_div">
+				<div class="arrow" id="prev">
+					<a href="chapter1.html"><img  src="img/prev_arrow.svg"><br>
+					To Chapter1<br>
+					"History of Syrian Refugees"</a>
+				</div>
+				<div class="arrow" id="next">
+					<a href="chapter3.html"><img src="img/next_arrow.svg"><br>
+					To Chapter3<br>
+					"Pattern of Civil Damage"</a>
+				</div>
 			</div>
-			<div class="chapter_article_div" id="a4">
-				 <h2>
-                    2014<br>Imalance of Distribution
-                </h2>
-                <p>The result of analyzing the distribution of Syrian refugees in two continents shows two aspects of imbalance. First of all, more than 60% of refugees have been staying in Germany and Sweden whereas Gulf states have showed its extreme reluctance for welcoming migrants. In 2014, it is said that only 18 Syrian refugees were accepted to stay in Saudi Arabia with its highest GDP figure in Gulf region.</p>
+			<div class="mask">
 			</div>
-		</div>
-		<div class="bottom" id="end_div">
-			<div class="arrow" id="prev">
-				<a href="chapter1.html"><img  src="img/prev_arrow.svg"><br>
-				To Chapter1<br>
-				"History of Syrian Refugees"</a>
-			</div>
-			<div class="arrow" id="next">
-				<a href="chapter3.html"><img src="img/next_arrow.svg"><br>
-				To Chapter3<br>
-				"Pattern of Civil Damage"</a>
-			</div>
-		</div>
-		<div class="mask">
 		</div>
 	</div>
 <script src="js/jquery-2.1.4.min.js"></script>
@@ -138,6 +140,15 @@ $(window).load(function(){
 		windowHeight = $window.height();
 		$(".header").css("height",windowHeight);
 		$(".chapter_article_div").css("height",windowHeight);
+		var header_back_Height = $(".header_background").width() * 0.6;
+		$(".header_background").css("height",header_back_Height);
+
+
+		/*헤더 위치 확인*/
+		headerTop = ($window.height() - $(".header_background").height())/2;
+		console.log(headerTop);
+		$(".header").css("margin-top",headerTop);
+		$(".header_background").css("top",headerTop);
 
 	
 		for(var i=0; i<4;i++){
@@ -146,11 +157,8 @@ $(window).load(function(){
 		}
 		/*div 스크롤 위치 확인*/
 		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom"));
+		vizGap = ($window.height() - $(".viz").height())/2;
 
-		/*헤더 위치 확인*/
-		headerTop = $(".chapter_introduction_div").offset().top;
-		console.log(headerTop);
-		$(".header_background").css("top",headerTop);
 
 	}
 
@@ -169,19 +177,20 @@ $(window).load(function(){
      }
 
 	function fade_out(){
-		var range = vizTop - scrollTop 
+		var range = vizTop - (scrollTop + vizGap);
 		var opacity = range/vizTop; 
 		$(".header_background").animate({opacity: opacity},10);
 	}
 
 
 	function fix_check(){
-		if(vizTop < scrollTop){//affix
+		if(vizTop < (scrollTop + vizGap)){//affix
 
 			if($window.width()<821){
 				//affix for mobile
 				//console.log("mobile");
 				$(".viz").addClass("viz_Mfixed");
+				$(".viz").css("top",vizGap);
 				//Text margin modification
 				vizHeight = parseInt($(".viz").height()) + parseInt($(".viz").css("padding-top")) + parseInt($(".viz").css("margin-top")) + parseInt($(".viz").css("margin-bottom"));
 				//console.log(vizHeight);
@@ -195,6 +204,7 @@ $(window).load(function(){
 				//affix for desktop
 				//console.log("desktop");
 				$(".viz").addClass("viz_Dfixed");
+				$(".viz").css("top",vizGap);
 				var left = $(".container").css("margin-left");
 				$(".viz").css("left",left);
 				var marginLeft = $(".viz").width() +(3*parseInt($(".viz").css("margin-left"))); 

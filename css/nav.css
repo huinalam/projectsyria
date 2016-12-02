@@ -96,14 +96,17 @@ li.nav_item{
 
   li.nav_item{
 	    list-style-type: none;
-		width: 98%;
+		width: 96%;
 		font-family: 'Muli', sans-serif;
 		font-size: 1em;
 		color: #d0d0d0;
 		font-weight: 400;
-		margin: 1% 10px 1% 10px;
-		padding: 0 10px 0 10px;
-	}		
+		margin: 1% 2% 1% 2%;
+	}	
+
+	#item{
+		margin-left: 7%;
+	}	
 }
 
 @media screen and (max-width: 640px){

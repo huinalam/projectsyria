@@ -13,8 +13,6 @@ body{
 	color: #D0D8DA;
 	background-color: #111111;
 }
-
-
 p{
 	font-size: 0.85em;
 	font-weight: 300;
@@ -31,7 +29,6 @@ p{
 }
 .header_background{
 	width:100%;
-	height:58%;
 	top:0%;
 	left: 0%;
 	background-repeat: no-repeat;
@@ -41,15 +38,17 @@ p{
 	z-index: -1;
 }
 
-
 #chapt1{
-	background-image: url("../img/father_son_dark.jpg");
+	background-image: url("../img/father_son.jpg");
+	height:65%;
 }
 #chapt2{
 	background-image: url("../img/refugee_move.jpg");
+	height:65%;
 }
 #chapt3{
 	background-image: url("../img/destroyed.jpg");
+	height:80%;
 }
 .chapter_introduction_div{
 	font-size: 0.8em;
@@ -73,7 +72,7 @@ p{
 }
 
 h1.title{
-	color: #eeeeee;
+	color: #ee333f;
 	margin: 3% 0% 5% 0%;
 	max-width: 800px;
 	font-family: 'League Gothic', sans-serif;
@@ -87,10 +86,10 @@ h1.title{
 	
 }
 h2{
-	font-family: 'League Gothic', sans-serif;
+	font-family: 'Muli', sans-serif;
 	font-weight: 100;
 	font-size: 2em;
-	margin: 30px 0 5px 0;
+	padding: 30px 5px 5px 0;
 	margin-top: 0px;
 	line-height: 120%;
 	color: #cc3333;
@@ -132,7 +131,11 @@ h3{
 	margin: 0.5em;
 	opacity: 0.8;
 }
-
+.wrapper{
+	width: 100%;
+	display:inline-block;
+	background-color: #11121A;
+}
 
 .container{
 	width: 100%;
@@ -161,7 +164,7 @@ h3{
 }
 .viz{
 	z-index: 999;
-	padding-top: 6em;
+	padding-top: 0;
 	width:96%;
 	margin: 2%;
 	margin-top: 0%;
@@ -232,7 +235,6 @@ h3{
 		}
 		.header_background{
 			width:92%;
-			height:52%;
 			top:0%;
 			left: 4%;
 			background-repeat: no-repeat;
@@ -262,7 +264,7 @@ h3{
 		}
 		.viz{
 			z-index: 999;
-			padding-top: 6em;
+			padding-top: 0;
 			width:63%;
 			max-width: 695.52px;
 			margin: 1%;
