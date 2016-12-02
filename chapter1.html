@@ -72,7 +72,7 @@
 	                <p>His son, Bashar al-Assad gripped on the next inauguration right after his father&#39;s death in 2000, lowering the age for the to-be president.</p>
 	                <p>The Damascus Spring began within intellectuals&#39; in private salons with various subjects. In 2001, Bashar released political criminals including Muslim Brotherhood followers, seemingly showing its intention to accept social demand for a political innovation. However, repressive actions were severely applied by imprisonment and closure of places for discussion a year later.</p>
 				</div>
-				<div class="chapter_article_div" id="a5">
+				<div class="chapter_article_div" id="last_article">
 					 <h2>
 	                     2001~2011<br>Intensive Oprpession<br>After Damascus Spring
 	                </h2>
@@ -82,26 +82,26 @@
 	                <p>Since the antipathy to such suppression became deteriorated, nationwide demonstration called &#39;Day of Rage&#39;sparked. With regime forces taking more violent actions against citizens, 4 unarmed demonstrators were killed in March 18th in Daraa, resulting in crucial tinderbox of civil war.</p>
 				</div>
 			</div>
-			<div class="bottom" id="end_div">
-				<div class="arrow" id="prev">
-					<a href="index.html"><img  src="img/prev_arrow.svg"><br>
-					To Home</a>
-				</div>
-				<div class="arrow" id="next">
-					<a href="chapter2.html"><img src="img/next_arrow.svg"><br>
-					To Chapter2<br>
-					"Distribution of Syrian Refugee"</a>
-				</div>
-			</div>
-			<div class="mask">
-			</div>
 		</div>
 	</div>
-	
+	<div id="end_div"></div>
+	<div class="bottom">
+		<div class="arrow" id="prev">
+			<a href="index.html"><img class="arrow_img" src="img/prev_arrow.svg"><br>
+			To Home</a>
+		</div>
+		<div class="arrow" id="next">
+			<a href="chapter2.html"><img class="arrow_img" src="img/next_arrow.svg"><br>
+			To Chapter2<br>
+			"Distribution of Syrian Refugee"</a>
+		</div>
+	</div>
+	<div class="mask">
+	</div>
 <script src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 <script src="js/chapter1.js"></script>
- <script>
+<script>
  	function myFunction() {
 	    var x = document.getElementById("mainTopnav");
 	    if (x.className === "topnav") {
@@ -123,6 +123,7 @@ $(window).load(function(){
 	var windowHeight;
 	var headerTop;
 	var vizTop;
+	var bottomHeight;
 
 	//위치,사이즈 정보 갱신
 	initation();
@@ -153,13 +154,16 @@ $(window).load(function(){
 		/*사이즈 초기화*/
 		windowHeight = $window.height();
 		$(".header").css("height",windowHeight);
-		$(".chapter_article_div").css("min-height",windowHeight);
+		$(".chapter_article_div").not( document.getElementById("last_article")).css("min-height",windowHeight);
 		var header_back_Height = $(".header_background").width() * 0.6;
 		$(".header_background").css("height",header_back_Height);
 
+		bottomHeight = $(".bottom").height() + parseInt($(".bottom").css("padding-bottom")) + parseInt($(".bottom").css("padding-top"));
+		$('#last_article').css("margin-bottom",bottomHeight);
+		$('.bottom').css("bottom",-bottomHeight);
+
 		/*헤더 위치 확인*/
 		headerTop = ($window.height() - $(".header_background").height())/2;
-		console.log(headerTop);
 		$(".header").css("margin-top",headerTop);
 		$(".header_background").css("top",headerTop);
 
@@ -173,7 +177,6 @@ $(window).load(function(){
 		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom"));
 		vizGap = ($window.height() - $(".viz").height())/2;
 
-
 	}
 
 	 function set_progress_bar(){
@@ -181,6 +184,15 @@ $(window).load(function(){
             var bar_percent = (parseInt($window.scrollTop())/end_scroll)*100;
 
             $('.progress_bar').css("width", bar_percent + "%");
+            console.log(bar_percent);
+
+            if(98<bar_percent){
+            	$(".bottom").animate({bottom: 0},100);
+            	console.log("bottom menu up!");
+            }
+            else {
+            	$(".bottom").animate({bottom: -bottomHeight},100);
+            }
      }
 
      function set_progress_bar2(start_scroll,end_scroll){
@@ -188,12 +200,18 @@ $(window).load(function(){
             var bar_percent = 100 - (parseInt(end_scroll - $window.scrollTop())/range)*100;
 
             $('.progress_bar2').css("width", bar_percent + "%");
+            
+
      }
 
 	function fade_out(){
 		var range = vizTop - (scrollTop + vizGap)
 		var opacity = range/vizTop; 
-		$(".header_background").animate({opacity: opacity},10);
+
+		if(opacity<0){
+			opacity=0;
+		}
+		$(".header_background").css({opacity: opacity},10);
 	}
 
 
@@ -216,7 +234,6 @@ $(window).load(function(){
 				$(".mask").css("top",maskTop).css("width","100%");
 			}else{
 				//affix for desktop
-				console.log("desktop");
 				$(".viz").addClass("viz_Dfixed");
 				$(".viz").css("top",vizGap);
 				var left = $(".container").css("margin-left");
@@ -226,7 +243,6 @@ $(window).load(function(){
 				//$(".text").css("margin-left",marginLeft);
 				$(".text").css("margin-left",marginLeft);
 			}
-			console.log("fixed");
 
 		}else{//un-affix
 			
@@ -295,7 +311,7 @@ $(window).load(function(){
 		else{
 			 $('.progress_bar2').css("width", "0%");
 		}
-	}
+	}// Area transition function end
 	
 });
 </script>

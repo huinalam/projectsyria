@@ -268,7 +268,7 @@
                     </div>
                     <p>Indicating recent for months, sieges posed toward civilians have dropped remarkably with operations of regime and Russia being reported, however. The decrease of bombings and shelling cases was seemingly found, whereas direct target became civilians once again in a higher rate around June 2015, leading more than 2,500 mortalities every month. Information on Russian operations is expected to represent its activities before official withdrawal.</p>
                 </div>
-                <div class="chapter_article_div" id="a8">
+                <div class="chapter_article_div" id="last_article">
                     <h2>
                         Summary of timeline analysis
                     </h2>
@@ -279,29 +279,7 @@
                     <p>With a view to arranging influence on monthly death tolls and number of refugees by the frequency of 6 types of attacks, we tried to analyze result statistically. So to speak, Pearson&#39;s product-mement correlation was adapted as an algorism tool to connect the dots of interrelation between civilian assaults and the number of deaths or refugees. In this regards, the correlation becomes higher when the result stands near 1.</p>
 
                     <p>Primarily, the table below says the correlation between monthly fatalities and six types of assaults with absolute value of each attack being provided.</p>
-                    <div class="timeline_correlation_table">
-                        <div class="table_factor type">Type of <br>attacks</div>
-                        <div class="table_factor report">Number of <br>Total Reports</div>
-                        <div class="table_factor cor">Correlation<br> with death</div>
-                        <div class="table_cell type" id="shelling">Shelling</div>
-                        <div class="table_cell report" id="shelling">14797</div>
-                        <div class="table_cell cor" id="shelling">0.78</div>
-                        <div class="table_cell type" id="air_strike">Air Strike</div>
-                        <div class="table_cell report" id="air_strike">3543</div>
-                        <div class="table_cell cor" id="air_strike">0.61</div>
-                        <div class="table_cell type" id="battle">Battle</div>
-                        <div class="table_cell report" id="battle">5567</div>
-                        <div class="table_cell cor" id="battle">0.16</div>
-                        <div class="table_cell type" id="direct_attack">Direct Attack</div>
-                        <div class="table_cell report" id="direct_attack">8304</div>
-                        <div class="table_cell cor" id="direct_attack">0.63</div>
-                        <div class="table_cell type" id="barrel_bomb">Barrel Bomb</div>
-                        <div class="table_cell report" id="barrel_bomb">892</div>
-                        <div class="table_cell cor" id="barrel_bomb">0.049</div>
-                        <div class="table_cell type" id="chemical">Chemical weapone</div>
-                        <div class="table_cell report" id="chemical">342</div>
-                        <div class="table_cell cor" id="chemical">0.28</div>
-                    </div>
+                   
 
                     <p>Followed by the table, shelling incidents (0.78) and air strike (0.61) show the highest value in correlation, while barrel bomb (0.049) and battle (0.16) represent the lowest relevance. It&#39;s why we chose to mark figure of total reports in order to consider possible influence which quantity and intention of attacks might have on the correlation itself. Let&#39;s see each figure: shelling incidents are the most reported with the highest correlation but; air strikes are less reported than battles with the second highest interrelation – it implies that air strikes could result in massive killings with minor number of assaults or maintain the higher intention on civilian areas as the very target.</p>
 
@@ -315,15 +293,16 @@
                     <p>By making use of the category ‘battle’, however, it was also able to distinguish originally intended civilian attacks from secondly-led damage among battles. Looking at the data again, battles of 5,567 cases and its correlation with fatalities show considerably low degree of 0.16 but air strikes of 3,543 cases represent 0.61. In other words, though air strike has relative lower reports than battles, it causes almost quadrupled victims. Of course, deaths during battles can also not be justifiable but analytic process enables the viewers to see much more persons than expected dying owing to non-selective attacks, who may have zero relevance with civil war itself. The data once again confirms the cruelty of war.</p>
                 </div>
             </div>
-            <div class="bottom" id="end_div">
-                <div class="arrow" id="prev">
-                    <a href="index.html"><img class="arrow_img" src="img/prev_arrow.svg"><br>
-                    "Distribution of Syrian Refugee"</a>
-                </div>
-                <div class="arrow" id="next">
-                    <a href="index.html"><img class="arrow_img" src="img/next_arrow.svg"><br>
-                    To Home<br></a>
-                </div>
+        </div>
+        <div id="end_div"></div>
+        <div class="bottom">
+            <div class="arrow" id="prev">
+                <a href="index.html"><img class="arrow_img" src="img/prev_arrow.svg"><br>
+                "Distribution of Syrian Refugee"</a>
+            </div>
+            <div class="arrow" id="next">
+                <a href="index.html"><img class="arrow_img" src="img/next_arrow.svg"><br>
+                To Home<br></a>
             </div>
         </div>
     </div>
@@ -354,6 +333,8 @@
             var article_height = [];
             var windowHeight;
             var vizTop;
+            var bottomHeight;
+            var headerTop;
 
             initation();
 
@@ -379,6 +360,10 @@
                 $(".chapter_article_div").css("height",windowHeight);
                 var header_back_Height = $(".header_background").width() * 0.6;
                 $(".header_background").css("height",header_back_Height);
+
+                bottomHeight = $(".bottom").height() + parseInt($(".bottom").css("padding-bottom")) + parseInt($(".bottom").css("padding-top"));
+                $('#last_article').css("margin-bottom",bottomHeight);
+                $('.bottom').css("bottom",-bottomHeight);
 
                 /*헤더 위치 확인*/
                 headerTop = ($window.height() - $(".header_background").height())/2;
@@ -413,6 +398,14 @@
                 var bar_percent = (parseInt($window.scrollTop())/end_scroll)*100;
 
                 $('.progress_bar').css("width", bar_percent + "%");
+
+                if(98<bar_percent){
+                $(".bottom").animate({bottom: 0},100);
+                console.log("bottom menu up!");
+                }
+                else {
+                    $(".bottom").animate({bottom: -bottomHeight},100);
+                }
             }
 
             function set_progress_bar2(start_scroll,end_scroll){

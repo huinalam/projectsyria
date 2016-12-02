@@ -64,28 +64,29 @@
 	                </h2>
 	                <p>The year 2012 came to a head of having the largest number of victims and refugees ever recorded. The number of victims (2,415,374 in total) surged again 30 times more than that of last year and 98% of them came to stay in Middle East. As the incident got worsened, European countries have become at stake due to massive influx of refugees from Afghanistan and Syria, naming this phenomenon as European Migrant Crisis. However, Syrian neighbors had already accepted 50 times greater number of refugees than European countries did at this point.</p>
 				</div>
-				<div class="chapter_article_div" id="a4">
+				<div class="chapter_article_div" id="last_article">
 					 <h2>
 	                    2014<br>Imalance of Distribution
 	                </h2>
 	                <p>The result of analyzing the distribution of Syrian refugees in two continents shows two aspects of imbalance. First of all, more than 60% of refugees have been staying in Germany and Sweden whereas Gulf states have showed its extreme reluctance for welcoming migrants. In 2014, it is said that only 18 Syrian refugees were accepted to stay in Saudi Arabia with its highest GDP figure in Gulf region.</p>
 				</div>
 			</div>
-			<div class="bottom" id="end_div">
-				<div class="arrow" id="prev">
-					<a href="chapter1.html"><img  src="img/prev_arrow.svg"><br>
-					To Chapter1<br>
-					"History of Syrian Refugees"</a>
-				</div>
-				<div class="arrow" id="next">
-					<a href="chapter3.html"><img src="img/next_arrow.svg"><br>
-					To Chapter3<br>
-					"Pattern of Civil Damage"</a>
-				</div>
-			</div>
-			<div class="mask">
-			</div>
 		</div>
+	</div>
+	<div id="end_div"></div>
+	<div class="bottom">
+		<div class="arrow" id="prev">
+			<a href="chapter1.html"><img  src="img/prev_arrow.svg"><br>
+			To Chapter1<br>
+			"History of Syrian Refugees"</a>
+		</div>
+		<div class="arrow" id="next">
+			<a href="chapter3.html"><img src="img/next_arrow.svg"><br>
+			To Chapter3<br>
+			"Pattern of Civil Damage"</a>
+		</div>
+	</div>
+	<div class="mask">
 	</div>
 <script src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
@@ -112,6 +113,7 @@ $(window).load(function(){
 	var windowHeight;
 	var vizTop;
 	var headerTop;
+	var bottomHeight;
 
 	//위치,사이즈 정보 갱신
 	initation();
@@ -143,6 +145,10 @@ $(window).load(function(){
 		var header_back_Height = $(".header_background").width() * 0.6;
 		$(".header_background").css("height",header_back_Height);
 
+		bottomHeight = $(".bottom").height() + parseInt($(".bottom").css("padding-bottom")) + parseInt($(".bottom").css("padding-top"));
+		$('#last_article').css("margin-bottom",bottomHeight);
+		$('.bottom').css("bottom",-bottomHeight);
+
 
 		/*헤더 위치 확인*/
 		headerTop = ($window.height() - $(".header_background").height())/2;
@@ -155,6 +161,7 @@ $(window).load(function(){
 			article_top[i] = $(".chapter_article_div").eq(i).offset().top;
 			article_height[i] = $(".chapter_article_div").eq(i).height();
 		}
+		
 		/*div 스크롤 위치 확인*/
 		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom"));
 		vizGap = ($window.height() - $(".viz").height())/2;
@@ -167,6 +174,14 @@ $(window).load(function(){
             var bar_percent = (parseInt($window.scrollTop())/end_scroll)*100;
 
             $('.progress_bar').css("width", bar_percent + "%");
+
+            if(98<bar_percent){
+            	$(".bottom").animate({bottom: 0},100);
+            	console.log("bottom menu up!");
+            }
+            else {
+            	$(".bottom").animate({bottom: -bottomHeight},100);
+            }
      }
 
     function set_progress_bar2(start_scroll,end_scroll){

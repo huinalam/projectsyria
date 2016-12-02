@@ -11,11 +11,10 @@
     display: inline-block;
 }
 .timeline_data_review_chart{
-    width: 250px;
     float: left;
 }
 .timeline_data_review_num{
-    width: 420px;
+    width: 100%;
     float: left;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
@@ -38,13 +37,11 @@
     margin:5px;
 }
 .ref_num{
-    width:190px;
     margin: 10px;
     float:left;
     color: #338866;
 }
 .death_num{
-    width: 190px;
     margin: 10px;
     float: left;
     color: #FF1744;
