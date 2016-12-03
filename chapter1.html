@@ -110,6 +110,14 @@
 	        x.className = "topnav";
 	    }
 	}
+
+	if( !window.location.hash && window.addEventListener ){
+    window.addEventListener( "load",function() {
+        setTimeout(function(){
+            window.scrollTo(0, 0);
+        }, 0);
+    });
+}
  </script>
 <script>
 $(window).load(function(){
@@ -127,6 +135,7 @@ $(window).load(function(){
 
 	//위치,사이즈 정보 갱신
 	initation();
+
 
 	/*윈도우 리사이즈 함수*/
 	$window.on("resize",function(){
