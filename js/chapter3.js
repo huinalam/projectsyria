@@ -506,7 +506,7 @@ function reDraw(){
                               .attr("class",function(d,i){
                                     return "tickMonth_" + i;
                                })
-                              .attr("x",-10)
+                              .attr("x","-0.5em")
                               .style("text-anchor","end")
                               .style("fill","#bbbbbb");
 
@@ -674,7 +674,7 @@ function timeline_yAxis(){
                               .attr("class",function(d,i){
                                     return "tickMonth_" + i;
                                })
-                              .attr("x",-10)
+                              .attr("x","-0.5em")
                               .style("text-anchor","end")
                               .style("fill","#bbbbbb");
 

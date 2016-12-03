@@ -1,8 +1,10 @@
+
+
 .timeline_axis { /* axis labels */
     fill: #eeeeee;
     font-family: sans-serif;
     font-weight: lighter;
-    font-size: 0.5em;
+    font-size: 70%;
 }
 .timeline_axis line{ /* axis tick marks */
     stroke-width : 0.5px;
@@ -98,12 +100,12 @@
     fill: rgba(2,2,2,0);
 }
 
-
-@media screen and (min-width: 360px){
+@media screen and (max-width: 360px){
     .timeline_axis { /* axis labels */
         fill: #eeeeee;
         font-family: sans-serif;
         font-weight: lighter;
-        font-size: 0.6em;
+        font-size: 0.5em;
     }
 }
+
