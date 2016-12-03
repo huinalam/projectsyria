@@ -133,7 +133,7 @@ $(window).load(function(){
 		initation();
 		fix_check();
 		reDraw();
-		
+
 		//console.log("scrollTop: " + scrollTop);
 		//console.log("vizTop: " + vizTop);
 	});
@@ -156,7 +156,7 @@ $(window).load(function(){
 		/*사이즈 초기화*/
 		windowHeight = $window.height();
 		$(".header").css("height",windowHeight);
-		$(".chapter_article_div").not( document.getElementById("last_article")).css("min-height",windowHeight);
+		//$(".chapter_article_div").not( document.getElementById("last_article")).css("min-height",windowHeight);
 		var header_back_Height = $(".header_background").width() * 0.6;
 		$(".header_background").css("height",header_back_Height);
 
