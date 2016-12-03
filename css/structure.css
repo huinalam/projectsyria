@@ -67,9 +67,8 @@ p{
 .viz>h2{
 	font-family: 'Muli', sans-serif;
 	font-weight: 100;
-	font-size: 2em;
-	margin: 30px 0 5px 0;
-	margin-top: 0px;
+	font-size: 1.5em;
+	margin: 5px 0 5px 0;
 	line-height: 120%;
 	color: #eeeeee;
 }
@@ -79,20 +78,19 @@ h1.title{
 	margin: 3% 0% 5% 0%;
 	max-width: 800px;
 	font-family: 'League Gothic', sans-serif;
-	font-size: 3.5em;
+	font-size: 2em;
 	letter-spacing: 0.05em;
 	word-spacing: 0.1em;
 	font-weight: normal;
 	font-style: normal;
 	font-weight: 100;
-	line-height: 100%;
-	
+	line-height: 100%;	
 }
 h2{
 	font-family: 'Muli', sans-serif;
 	font-weight: 100;
-	font-size: 2em;
-	padding: 30px 5px 5px 0;
+	font-size: 1.5em;
+	padding: 5px 5px 5px 0;
 	margin-top: 0px;
 	line-height: 120%;
 	color: #cc3333;
@@ -202,10 +200,24 @@ h3{
 
 @media screen and (min-width: 820px){
 		html{font-size: 16px;}
+		
 		p{
 			font-size: 1.1em;
 			font-family: 'Muli', sans-serif;
 			font-weight: 300;
+		}
+		h1.title{
+			color: #ee333f;
+			margin: 3% 0% 5% 0%;
+			max-width: 800px;
+			font-family: 'League Gothic', sans-serif;
+			font-size: 3.5em;
+			letter-spacing: 0.05em;
+			word-spacing: 0.1em;
+			font-weight: normal;
+			font-style: normal;
+			font-weight: 100;
+			line-height: 100%;
 		}
 		.container{
 			background-color: #11121A;
@@ -250,6 +262,14 @@ h3{
 			margin: 1%;
 			float: left;
 			background-color: #11121A;
+		}
+		.viz>h2{
+			font-family: 'Muli', sans-serif;
+			font-weight: 100;
+			font-size: 2em;
+			margin: 2% 0 5px 0;
+			line-height: 120%;
+			color: #eeeeee;
 		}
 		.viz_Dfixed{
 			position: fixed;
