@@ -140,6 +140,7 @@ $(window).load(function(){
 
 	$window.on("scroll",function(){
 		scrollTop = $window.scrollTop();
+		console.log($window.height());
 		set_progress_bar();
 		fade_out();
 		fix_check();
@@ -189,7 +190,7 @@ $(window).load(function(){
             var bar_percent = (parseInt($window.scrollTop())/end_scroll)*100;
 
             $('.progress_bar').css("width", bar_percent + "%");
-            console.log(bar_percent);
+            
 
             if(99.8<bar_percent){
             	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",0 +"px");
