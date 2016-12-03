@@ -90,7 +90,7 @@ li.nav_item{
 	position: fixed;
 	display: inline-block;
 	width: 50%;
-	padding: 5% 25% 10% 25%;
+	padding: 5% 25% 5% 25%;
 	bottom:0;
 	left: 0;
 	opacity: 0.8;
@@ -141,14 +141,14 @@ li.nav_item{
 		margin-left: 7%;
 	}
 	.bottom{
-		background-color: #20262F;
+		background-color: rgba(16,32,48,0.8);
 		position: fixed;
 		display: inline-block;
 		width: 92%;
 		padding: 5% 4% 10% 4%;
 		bottom:0;
 		left: 0;
-		opacity: 0.8;
+		opacity: 1;
 		z-index: 9999;
 	}	
 }

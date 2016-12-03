@@ -164,7 +164,12 @@ $(window).load(function(){
 
 		/*div 스크롤 위치 확인*/
 		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom"));
-		vizGap = ($window.height() - $(".viz").height())/2;
+		
+		if($window.width()<821){
+			vizGap =$(".nav_bar").height();
+		}else{
+			vizGap = ($window.height() - $(".viz").height())/2;
+		}
 
 
 	}
@@ -175,12 +180,12 @@ $(window).load(function(){
 
             $('.progress_bar').css("width", bar_percent + "%");
 
-            if(98<bar_percent){
-            	$(".bottom").animate({bottom: 0},100);
-            	console.log("bottom menu up!");
+            if(99.8<bar_percent){
+            	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",0 +"px");
+            	
             }
             else {
-            	$(".bottom").animate({bottom: -bottomHeight},100);
+            	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",-bottomHeight + "px");	
             }
      }
 
@@ -213,7 +218,7 @@ $(window).load(function(){
 				$(".text").css("margin-left","1%");
 				$(".viz").css("left","0px");
 				//mask for text fade-out
-				var maskTop = parseInt($(".viz").height()) + parseInt($(".viz").css("padding-top")) + parseInt($(".viz").css("margin-top"));
+				var maskTop = parseInt($(".viz").height()) + $(".nav_bar").height();
 				$(".mask").css("top",maskTop).css("width","100%");
 			}else{
 				//affix for desktop

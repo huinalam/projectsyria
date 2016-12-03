@@ -191,13 +191,12 @@ $(window).load(function(){
             $('.progress_bar').css("width", bar_percent + "%");
             console.log(bar_percent);
 
-            if(98<bar_percent){
+            if(99.8<bar_percent){
             	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",0 +"px");
-            	console.log("bottom menu up!");
+            	
             }
             else {
-            	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",-bottomHeight + "px");
-            	console.log("bottom menu down!");
+            	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",-bottomHeight + "px");	
             }
      }
 

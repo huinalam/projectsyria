@@ -163,6 +163,9 @@ h3{
 	float: none;
 	background-color: #11121A;
 }
+#viz_3{
+	padding-top:2%;
+}
 .viz_Mfixed{
 	position: fixed;
 	top: 0px;
