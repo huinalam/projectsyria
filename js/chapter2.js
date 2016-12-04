@@ -140,16 +140,16 @@ var svg_chapter2 = d3.select(".viz").append("svg")
                                 })
                                 .attr("transform", function(d){
                                   if(d.properties.name == "Lebanon"){
-                                    return "translate(" + path.centroid(d) +")" + "translate(-35,5)";
+                                    return "translate(" + path.centroid(d) +")" + "translate(0,0)";
                                   }
                                   else if(d.properties.name == "France"){
-                                    return "translate(" + path.centroid(d) +")" + "translate(65,-50)";
+                                    return "translate(" + path.centroid(d) +")" + "translate(0,-0)";
                                   }
                                   else if(d.properties.name == "Syria"){
                                     return "translate(" + path.centroid(d) +")";
                                   }
                                   else{
-                                    return "translate(" + path.centroid(d) +")" + "translate(0,-5)";
+                                    return "translate(" + path.centroid(d) +")" + "translate(0,-0)";
                                   } 
                                 })
                                 .attr("text-anchor","middle")
@@ -168,10 +168,10 @@ var svg_chapter2 = d3.select(".viz").append("svg")
                                   .attr("class","focus_map_number")
                                   .attr("transform", function(d){
                                     if(d.properties.name == "Lebanon"){
-                                      return "translate(" + path.centroid(d) +")" + "translate(-35,17)";
+                                      return "translate(" + path.centroid(d) +")" + "translate(0,7)";
                                     }
                                     else if(d.properties.name == "France"){
-                                      return "translate(" + path.centroid(d) +")" + "translate(65,-38)";
+                                      return "translate(" + path.centroid(d) +")" + "translate(0,7)";
                                     }
                                     else if(d.properties.name == "Syria"){
                                       return "";
@@ -269,16 +269,16 @@ function reDraw(){
     //라벨, 숫자 재위치
     path_group.selectAll(".label").attr("transform", function(d){
                 if(d.properties.name == "Lebanon"){
-                  return "translate(" + path.centroid(d) +")" + "translate(-35,5)";
+                  return "translate(" + path.centroid(d) +")" + "translate(0,0";
                 }
                 else if(d.properties.name == "France"){
-                  return "translate(" + path.centroid(d) +")" + "translate(65,-50)";
+                  return "translate(" + path.centroid(d) +")" + "translate(0,0)";
                 }
                 else if(d.properties.name == "Syria"){
                   return "translate(" + path.centroid(d) +")";
                 }
                 else{
-                  return "translate(" + path.centroid(d) +")" + "translate(0,-5)";
+                  return "translate(" + path.centroid(d) +")" + "translate(0,0)";
                 } 
             });
 
@@ -286,10 +286,10 @@ function reDraw(){
               .attr("transform", function(d){
                 if(d.properties.name != "Syria"){
                       if(d.properties.name == "Lebanon"){
-                        return "translate(" + path.centroid(d) +")" + "translate(-35,17)";
+                        return "translate(" + path.centroid(d) +")" + "translate(0,7)";
                       }
                       else if(d.properties.name == "France"){
-                        return "translate(" + path.centroid(d) +")" + "translate(65,-38)";
+                        return "translate(" + path.centroid(d) +")" + "translate(0,7)";
                       }
                       else{
                         return "translate(" + path.centroid(d) +")" + "translate(0,7)";
