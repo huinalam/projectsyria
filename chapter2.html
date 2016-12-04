@@ -198,6 +198,10 @@ $(window).load(function(){
 	function fade_out(){
 		var range = vizTop - (scrollTop + vizGap);
 		var opacity = range/vizTop; 
+
+		if(opacity<0){
+			opacity=0;
+		}
 		$(".header_background").animate({opacity: opacity},10);
 	}
 

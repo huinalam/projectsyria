@@ -398,11 +398,16 @@
             function fade_out(){
                 var range = vizTop - (scrollTop + vizGap);
                 var opacity = range/vizTop; 
+
+                if(opacity<0){
+                    opacity=0;
+                }
+                
                 $(".header_background").animate({opacity: opacity},10);
             }
 
             function set_progress_bar(){
-                var end_scroll = parseInt($("#end_div").offset().top) -  (windowHeight);
+                var end_scroll = parseInt($("#end_div").offset().top) - (windowHeight);
                 var bar_percent = (parseInt($window.scrollTop())/end_scroll)*100;
 
                 $('.progress_bar').css("width", bar_percent + "%");
