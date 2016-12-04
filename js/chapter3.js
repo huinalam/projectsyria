@@ -775,34 +775,34 @@ function chapter_move(index){
     //Opacity highlgiht
     if((0<i)&&(i<8)){ //*서브 챕터(1~7)일때 각 챕터만 보여주기
         console.log("chapter: " + i)
-        d3.selectAll(".chapt" + i + "_circle").transition().duration(0)
+        d3.selectAll(".chapt" + i + "_circle").transition()
                               .delay(150)
                               .duration(300)  
                               .ease("bounce")
                               .style("opacity",c_opacity1);
 
         d3.selectAll(".circle_event:not(.chapt"+ i + "_circle)")
-                              .transition().duration(0)
+                              .transition()
                               .delay(150)
                               .duration(300)  
                               .ease("bounce")
                               .style("opacity",c_opacity2);
 
         d3.selectAll(".death_circle:not(.chapt"+ i + "_circle)")
-                              .transition().duration(0)
+                              .transition()
                               .delay(150)
                               .duration(300)  
                               .ease("bounce")
                               .style("opacity",c_opacity2 + 0.2);
 
-        d3.selectAll(".chapt" + i + "_line").transition().duration(0)
+        d3.selectAll(".chapt" + i + "_line").transition()
                               .delay(150)
                               .duration(300)  
                               .ease("bounce")
                               .style("opacity",c_opacity1 + 0.2);
 
         d3.selectAll(".death_line:not(.chapt" + i + "_line)")
-                              .transition().duration(0)
+                              .transition()
                               .delay(150)
                               .duration(300)  
                               .ease("bounce")
@@ -812,21 +812,21 @@ function chapter_move(index){
     else{ //*처음과 끝에는 다 보여주기
 
         d3.selectAll(".circle_event")
-                              .transition().duration(0)
+                              .transition()
                               .delay(150)
                               .duration(300)  
                               .ease("bounce")
                               .style("opacity",c_opacity1);
 
         d3.selectAll(".death_line")
-                              .transition().duration(0)
+                              .transition()
                               .delay(150)
                               .duration(300)  
                               .ease("bounce")
                               .style("opacity",c_opacity1 + 0.2);
 
         d3.selectAll(".death_circle")
-                              .transition().duration(0)
+                              .transition()
                               .delay(150)
                               .duration(300)  
                               .ease("bounce")
