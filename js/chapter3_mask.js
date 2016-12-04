@@ -45,12 +45,7 @@ var value = [];
 width = parseInt(d3.select(".viz").style('width'));
 
 //width = (d3.select("body").width())*0.63;
-if(width<=360){
-  height = 0.9 * width;
-}else{
-  height = width;
-}
-
+height = width;
 
 var margin = {
               top: 20,
@@ -316,31 +311,6 @@ d3.csv("data/event_num_long.csv",function(event_data){
                         })
                         .attr("r","0.1em");
 
-          //NOTE Chapter masking
-           /*var chapter_mask1 = g_svg_chapter3.append("rect")
-                                              .attr("class","chapter_mask")
-                                              .attr("id","chapter_mask1")
-                                              .attr("width",(checkPoint[4]-checkPoint[0]))
-                                              .attr("height",0)
-                                              .attr("x",checkPoint[1])
-                                              .attr("y",timeline_yScale(parseDate("2011-01-01")));*/
-
-            var chapter_selector = g_svg_chapter3.append("g")
-                                              .attr("transform","translate(0,0)")
-                                              .append("rect")
-                                              .attr("class","chapter_selector")
-                                              .attr("width",(checkPoint[4]-checkPoint[0]))
-                                              .attr("height",timeline_yScale(parseDate("2016-04-01"))-timeline_yScale(parseDate("2011-01-01")))
-                                              .attr("x",checkPoint[0])
-                                              .attr("y",timeline_yScale(parseDate("2011-01-01")));
-
-            /*var chapter_mask2 = g_svg_chapter3.append("rect")
-                                              .attr("class","chapter_mask")
-                                              .attr("id","chapter_mask2")
-                                              .attr("width",(checkPoint[4]-checkPoint[0]))
-                                              .attr("height",0)
-                                              .attr("x",checkPoint[1])
-                                              .attr("y",timeline_yScale(parseDate("2016-04-01")));*/
 
 
             //NOTE Adding Monthly box
@@ -360,7 +330,7 @@ d3.csv("data/event_num_long.csv",function(event_data){
                                    .attr("opacity",0);
 
             /*Adding Event Listener to Monthly box*/
-             for(i=0; i<64; i++){
+          /*   for(i=0; i<64; i++){
                 (function(){
                   var index=i;
                   d3.selectAll(".month_" + index).on("mouseover",function(){
@@ -442,8 +412,32 @@ d3.csv("data/event_num_long.csv",function(event_data){
 
                   
                   })();//function End
-                }
-           
+                }*/
+           //NOTE Chapter masking
+           var chapter_mask1 = g_svg_chapter3.append("rect")
+                                              .attr("class","chapter_mask")
+                                              .attr("id","chapter_mask1")
+                                              .attr("width",(checkPoint[4]-checkPoint[0]))
+                                              .attr("height",0)
+                                              .attr("x",checkPoint[1])
+                                              .attr("y",timeline_yScale(parseDate("2011-01-01")));
+
+            var chapter_selector = g_svg_chapter3.append("g")
+                                              .attr("transform","translate(0,0)")
+                                              .append("rect")
+                                              .attr("class","chapter_selector")
+                                              .attr("width",(checkPoint[4]-checkPoint[0]))
+                                              .attr("height",timeline_yScale(parseDate("2016-04-01"))-timeline_yScale(parseDate("2011-01-01")))
+                                              .attr("x",checkPoint[0])
+                                              .attr("y",timeline_yScale(parseDate("2011-01-01")));
+
+            var chapter_mask2 = g_svg_chapter3.append("rect")
+                                              .attr("class","chapter_mask")
+                                              .attr("id","chapter_mask2")
+                                              .attr("width",(checkPoint[4]-checkPoint[0]))
+                                              .attr("height",0)
+                                              .attr("x",checkPoint[1])
+                                              .attr("y",timeline_yScale(parseDate("2016-04-01")));
 
           }); //CSV function end
 
@@ -459,11 +453,7 @@ function reDraw(){
   
   width = parseInt(d3.select(".viz").style('width'));
   //width = (d3.select("body").width())*0.63;
-  if(width<=360){
-  height = 0.9 * width;
-  }else{
-    height = width;
-  }
+  height = width;
   margin = {
             top: 20,
             left: width*0.05,
@@ -773,7 +763,7 @@ function chapter_move(index){
     d3.select(".chapter_selector").transition()
                     .delay(150)
                     .duration(300)
-                    .ease("bounce")
+                    .ease("sin")
                     .attr("width",checkPoint[4]-checkPoint[0])
                     .attr("height",function(){
                         return timeline_yScale(chapter_date[i].end)-timeline_yScale(chapter_date[i].start);
@@ -781,11 +771,11 @@ function chapter_move(index){
                     .attr("x",checkPoint[0])
                     .attr("y",timeline_yScale(chapter_date[i].start));
 
- /*   d3.select("#chapter_mask1")
+    d3.select("#chapter_mask1")
                     .transition()
                     .delay(150)
                     .duration(300)
-                    .ease("bounce")
+                    .ease("sin")
                     .attr("width",checkPoint[4]-checkPoint[0])
                     .attr("height",function(){
                         return timeline_yScale(chapter_date[i].start) - timeline_yScale(parseDate("2011-01-01"));
@@ -797,50 +787,50 @@ function chapter_move(index){
                     .transition()
                     .delay(150)
                     .duration(300)
-                    .ease("bounce")
+                    .ease("sin")
                     .attr("width",checkPoint[4]-checkPoint[0])
                     .attr("height",function(){
                         return  timeline_yScale(parseDate("2016-01-01") - timeline_yScale(chapter_date[i].end));
                     })
                     .attr("x",checkPoint[0])
-                    .attr("y",timeline_yScale(chapter_date[i].end));*/
+                    .attr("y",timeline_yScale(chapter_date[i].end));
 
 
-    
+    /*
     //Opacity highlgiht
     if((0<i)&&(i<8)){ //*서브 챕터(1~7)일때 각 챕터만 보여주기
         console.log("chapter: " + i)
         d3.selectAll(".chapt" + i + "_circle").transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity1);
 
         d3.selectAll(".circle_event:not(.chapt"+ i + "_circle)")
                               .transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity2);
 
         d3.selectAll(".death_circle:not(.chapt"+ i + "_circle)")
                               .transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity2 + 0.2);
 
         d3.selectAll(".chapt" + i + "_line").transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity1 + 0.2);
 
         d3.selectAll(".death_line:not(.chapt" + i + "_line)")
                               .transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity2 + 0.2);
 
     }
@@ -850,24 +840,24 @@ function chapter_move(index){
                               .transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity1);
 
         d3.selectAll(".death_line")
                               .transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity1 + 0.2);
 
         d3.selectAll(".death_circle")
                               .transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity1 + 0.2);
                               
-    } 
+    } */
 
 }
 
