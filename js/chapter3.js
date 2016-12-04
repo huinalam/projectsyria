@@ -763,7 +763,7 @@ function chapter_move(index){
     d3.select(".chapter_selector").transition()
                     .delay(150)
                     .duration(300)
-                    .ease("bounce")
+                    .ease("sin")
                     .attr("width",checkPoint[4]-checkPoint[0])
                     .attr("height",function(){
                         return timeline_yScale(chapter_date[i].end)-timeline_yScale(chapter_date[i].start);
@@ -775,7 +775,7 @@ function chapter_move(index){
                     .transition()
                     .delay(150)
                     .duration(300)
-                    .ease("bounce")
+                    .ease("sin")
                     .attr("width",checkPoint[4]-checkPoint[0])
                     .attr("height",function(){
                         return timeline_yScale(chapter_date[i].start) - timeline_yScale(parseDate("2011-01-01"));
@@ -787,7 +787,7 @@ function chapter_move(index){
                     .transition()
                     .delay(150)
                     .duration(300)
-                    .ease("bounce")
+                    .ease("sin")
                     .attr("width",checkPoint[4]-checkPoint[0])
                     .attr("height",function(){
                         return  timeline_yScale(parseDate("2016-01-01") - timeline_yScale(chapter_date[i].end));
@@ -803,34 +803,34 @@ function chapter_move(index){
         d3.selectAll(".chapt" + i + "_circle").transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity1);
 
         d3.selectAll(".circle_event:not(.chapt"+ i + "_circle)")
                               .transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity2);
 
         d3.selectAll(".death_circle:not(.chapt"+ i + "_circle)")
                               .transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity2 + 0.2);
 
         d3.selectAll(".chapt" + i + "_line").transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity1 + 0.2);
 
         d3.selectAll(".death_line:not(.chapt" + i + "_line)")
                               .transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity2 + 0.2);
 
     }
@@ -840,21 +840,21 @@ function chapter_move(index){
                               .transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity1);
 
         d3.selectAll(".death_line")
                               .transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity1 + 0.2);
 
         d3.selectAll(".death_circle")
                               .transition()
                               .delay(150)
                               .duration(300)  
-                              .ease("bounce")
+                              .ease("sin")
                               .style("opacity",c_opacity1 + 0.2);
                               
     } */
