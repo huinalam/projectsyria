@@ -19,6 +19,9 @@
  	fill: #EEEEEE;
  	font-size: 10px;
  }
+ .wordcloud_text{
+ 	mix-blend-mode: screen;
+ }
 .eu{
  	color: #b8e2d3;
  	fill: #b8e2d3;
