@@ -97,7 +97,7 @@
     stroke-width: 0.5px;
 }
 .chapter_mask{
-    fill: rgba(2,2,2,0);
+    fill: rgba(2,2,2,0.5);
 }
 
 @media screen and (max-width: 360px){
