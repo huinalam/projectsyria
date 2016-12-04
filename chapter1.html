@@ -131,9 +131,17 @@ $(window).load(function(){
 
 	/*윈도우 리사이즈 함수*/
 	$window.on("resize",function(){
+
+
+		/*모바일버전에서 브라우저 주소창으로 인해 발생하는 resize이벤트 방지*/
+	if(360<$window.width){
 		initation();
-		fix_check();
 		reDraw();
+
+	}
+		
+		fix_check();
+		
 
 		//console.log("scrollTop: " + scrollTop);
 		//console.log("vizTop: " + vizTop);
@@ -195,8 +203,7 @@ $(window).load(function(){
             
 
             if(99.8<bar_percent){
-            	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",0 +"px");
-            	
+            	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",0 +"px"); 	
             }
             else {
             	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",-bottomHeight + "px");	
@@ -208,8 +215,6 @@ $(window).load(function(){
             var bar_percent = 100 - (parseInt(end_scroll - $window.scrollTop())/range)*100;
 
             $('.progress_bar2').css("width", bar_percent + "%");
-            
-
      }
 
 	function fade_out(){
