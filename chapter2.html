@@ -120,7 +120,7 @@ $(window).load(function(){
 
 	/*윈도우 리사이즈 함수*/
 	$window.on("resize",function(){
-		if(360<$window.width){
+		if(360<$window.width()){
 			initation();
 			reDraw();
 		}
@@ -142,7 +142,7 @@ $(window).load(function(){
 		/*사이즈 초기화*/
 		windowHeight = $window.height();
 		$(".header").css("height",windowHeight);
-		//$(".chapter_article_div").not( document.getElementById("last_article")).css("height",windowHeight);
+		$(".chapter_article_div").not( document.getElementById("last_article")).css("height",windowHeight);
 		var header_back_Height = $(".header_background").width() * 0.6;
 		$(".header_background").css("height",header_back_Height);
 
@@ -191,7 +191,7 @@ $(window).load(function(){
     function set_progress_bar2(start_scroll,end_scroll){
      		var range = end_scroll - start_scroll;
             var bar_percent = 100 - (parseInt(end_scroll - $window.scrollTop())/range)*100;
-
+            console.log(bar_percent);
             $('.progress_bar2').css("width", bar_percent + "%");
      }
 
@@ -233,7 +233,7 @@ $(window).load(function(){
 				var marginLeft = $(".viz").width() +(3*parseInt($(".viz").css("margin-left"))); 
 				$(".text").css("margin-left",marginLeft);
 			}
-			console.log("fixed");
+			
 
 		}else{//un-affix
 			
@@ -250,7 +250,7 @@ $(window).load(function(){
 				$(".viz").removeClass("viz_Dfixed");
 				$(".text").css("margin","1%");
 			}
-			console.log("unfix");
+			
 		}
 	}// fix_check() end;
 
@@ -272,7 +272,7 @@ $(window).load(function(){
 			set_progress_bar2(start_scroll,end_scroll);
 
 		}else if(((article_top[2]-article_height[1])<scrollTop)&&(scrollTop<(article_top[3]-article_height[2]))){
-
+			console.log("chapter3");
 			mapTransition(years[2]);
 
 			var start_scroll = article_top[2]-article_height[1];
@@ -280,7 +280,7 @@ $(window).load(function(){
 			set_progress_bar2(start_scroll,end_scroll);
 
 		}else if(((article_top[3]-article_height[2])<scrollTop)){
-
+			console.log("chapter4");
 			mapTransition(years[3]);
 
 			var start_scroll = article_top[3]-article_height[2];
@@ -289,6 +289,7 @@ $(window).load(function(){
 
 		}else{
 			$('.progress_bar2').css("width", "0%");
+			console.log("no-chapter");
 		}
 	}
 	

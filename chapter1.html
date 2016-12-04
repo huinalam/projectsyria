@@ -134,7 +134,7 @@ $(window).load(function(){
 
 
 		/*모바일버전에서 브라우저 주소창으로 인해 발생하는 resize이벤트 방지*/
-	if(360<$window.width){
+	if(360<$window.width()){
 		initation();
 		reDraw();
 	}
@@ -149,7 +149,7 @@ $(window).load(function(){
 
 	$window.on("scroll",function(){
 		scrollTop = $window.scrollTop();
-		console.log($window.height());
+		
 		set_progress_bar();
 		fade_out();
 		fix_check();
@@ -164,7 +164,7 @@ $(window).load(function(){
 		/*사이즈 초기화*/
 		windowHeight = $window.height();
 		$(".header").css("height",windowHeight);
-		//$(".chapter_article_div").not( document.getElementById("last_article")).css("min-height",windowHeight);
+		$(".chapter_article_div").not( document.getElementById("last_article")).css("min-height",windowHeight);
 		var header_back_Height = $(".header_background").width() * 0.6;
 		$(".header_background").css("height",header_back_Height);
 
@@ -212,6 +212,7 @@ $(window).load(function(){
      function set_progress_bar2(start_scroll,end_scroll){
      		var range = end_scroll - start_scroll;
             var bar_percent = 100 - (parseInt(end_scroll - $window.scrollTop())/range)*100;
+            console.log(bar_percent);
 
             $('.progress_bar2').css("width", bar_percent + "%");
      }
@@ -279,7 +280,7 @@ $(window).load(function(){
 
 			current_chapter = chapter_list[0];
 			area_popYear(chapter_list[0]);
-
+			console.log("chapter1");
 			var start_scroll = vizTop;
 			var end_scroll = article_top[1]-article_height[0];
 			set_progress_bar2(start_scroll,end_scroll);
@@ -288,6 +289,7 @@ $(window).load(function(){
 
 			current_chapter = chapter_list[1];
 			area_popYear(chapter_list[1]);
+			console.log("chapter2");
 
 			var start_scroll = article_top[1]-article_height[0];
 			var end_scroll = article_top[2]-article_height[1];
@@ -297,6 +299,7 @@ $(window).load(function(){
 
 			current_chapter = chapter_list[2];
 			area_popYear(chapter_list[2]);
+			console.log("chapter3");
 
 			var start_scroll = article_top[2]-article_height[1];
 			var end_scroll = article_top[3]-article_height[2];
@@ -306,6 +309,7 @@ $(window).load(function(){
 
 			current_chapter = chapter_list[3];
 			area_popYear(chapter_list[3]);
+			console.log("chapter4");
 
 			var start_scroll = article_top[3]-article_height[2];
 			var end_scroll = article_top[4]-article_height[3];
@@ -313,11 +317,12 @@ $(window).load(function(){
 
 		}else if((article_top[4]-article_height[3])<scrollTop){
 			
+			console.log("chapter5");
 			area_popYear(chapter_list[4]);
-
 			var start_scroll = article_top[4]-article_height[3];
-			var end_scroll = parseInt($("#end_div").offset().top) -  (windowHeight);
+			var end_scroll = parseInt($("#end_div").offset().top) - (windowHeight - $("#end_div").height()) ;
 			set_progress_bar2(start_scroll,end_scroll);
+
 
 		}
 		else{
