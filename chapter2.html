@@ -76,14 +76,14 @@
 	<div id="end_div"></div>
 	<div class="bottom">
 		<div class="arrow" id="prev">
-			<a href="chapter1.html"><img  src="img/prev_arrow.svg"><br>
-			To Chapter1<br>
-			"History of Syrian Refugees"</a>
+			<a href="chapter1.html"><img class="arrow_img" src="img/prev_arrow.svg"><br>
+			To Chapter1
+			</a>
 		</div>
 		<div class="arrow" id="next">
-			<a href="chapter3.html"><img src="img/next_arrow.svg"><br>
-			To Chapter3<br>
-			"Pattern of Civil Damage"</a>
+			<a href="chapter3.html"><img class="arrow_img" src="img/next_arrow.svg"><br>
+			To Chapter3
+			</a>
 		</div>
 	</div>
 	<div class="mask">
@@ -141,7 +141,7 @@ $(window).load(function(){
 		/*사이즈 초기화*/
 		windowHeight = $window.height();
 		$(".header").css("height",windowHeight);
-		$(".chapter_article_div").not( document.getElementById("last_article")).css("height",windowHeight);
+		//$(".chapter_article_div").not( document.getElementById("last_article")).css("height",windowHeight);
 		var header_back_Height = $(".header_background").width() * 0.6;
 		$(".header_background").css("height",header_back_Height);
 
@@ -170,8 +170,6 @@ $(window).load(function(){
 		}else{
 			vizGap = ($window.height() - $(".viz").height())/2;
 		}
-
-
 	}
 
 	function set_progress_bar(){
