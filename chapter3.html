@@ -339,9 +339,12 @@
             initation();
 
 			$window.on("resize",function(){
-				initation();
+                if(360<$window.width){
+                    initation();
+                    reDraw();
+                }
+				
                 fix_check();
-                reDraw();
 			});
 
             $window.on("scroll",function(){
