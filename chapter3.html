@@ -477,12 +477,12 @@
                 if((vizTop<scrollTop)&&(scrollTop<(article_top[1]-article_height[0]))){
                     $('.progress_bar2').css("width", "0%");
                     chapter_move(0);
-                    console.log("chapter0");
+                    
                 }
                 else if(((article_top[1]-article_height[0])<scrollTop)&&(scrollTop<(article_top[2]-article_height[1]))){
                     
                     chapter_move(1);
-                    console.log("chapter1");
+                    
 
                     var start_scroll = article_top[1]-article_height[0];
                     var end_scroll = article_top[2]-article_height[1];
@@ -491,7 +491,7 @@
                 else if(((article_top[2]-article_height[1])<scrollTop)&&(scrollTop<(article_top[3]-article_height[2]))){
                     
                     chapter_move(2);
-                    console.log("chapter2");
+                    
 
                     var start_scroll = article_top[2]-article_height[1];
                     var end_scroll = article_top[3]-article_height[2];
@@ -500,7 +500,7 @@
                 else if(((article_top[3]-article_height[2])<scrollTop)&&(scrollTop<(article_top[4]-article_height[3]))){
                     
                     chapter_move(3);
-                    console.log("chapter3");
+                    
 
                     var start_scroll = article_top[3]-article_height[2];
                     var end_scroll = article_top[4]-article_height[3];
@@ -509,7 +509,7 @@
                 else if(((article_top[4]-article_height[3])<scrollTop)&&(scrollTop<(article_top[5]-article_height[4]))){
                     
                     chapter_move(4);
-                    console.log("chapter4");
+                    
 
                     var start_scroll = article_top[4]-article_height[3];
                     var end_scroll = article_top[5]-article_height[4];
@@ -518,7 +518,7 @@
                 else if(((article_top[5]-article_height[4])<scrollTop)&&(scrollTop<(article_top[6]-article_height[5]))){
                     
                     chapter_move(5);
-                    console.log("chapter5");
+                    
 
                     var start_scroll = article_top[5]-article_height[4];
                     var end_scroll = article_top[6]-article_height[5];
@@ -527,7 +527,7 @@
                 else if(((article_top[6]-article_height[5])<scrollTop)&&(scrollTop<(article_top[7]-article_height[6]))){
                     
                     chapter_move(6);
-                    console.log("chapter6");
+                    
 
                     var start_scroll = article_top[6]-article_height[5];
                     var end_scroll = article_top[7]-article_height[6];
@@ -536,7 +536,7 @@
                 else if(((article_top[7]-article_height[6])<scrollTop)&&(scrollTop<(article_top[8]-article_height[7]))){
                     
                     chapter_move(7);
-                    console.log("chapter7");
+                    
 
                     var start_scroll = article_top[7]-article_height[6];
                     var end_scroll = article_top[8]-article_height[7];
@@ -545,7 +545,7 @@
                 else if(((article_top[8]-article_height[7])<scrollTop)){
                     
                     chapter_move(8);
-                    console.log("chapter8");
+                    
 
                     var start_scroll = article_top[8]-article_height[7];
                     var end_scroll = parseInt($("#end_div").offset().top) - (windowHeight);
