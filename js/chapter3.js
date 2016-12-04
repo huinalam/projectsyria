@@ -354,7 +354,7 @@ d3.csv("data/event_num_long.csv",function(event_data){
                                    .attr("opacity",0);
 
             /*Adding Event Listener to Monthly box*/
-             for(i=0; i<64; i++){
+          /*   for(i=0; i<64; i++){
                 (function(){
                   var index=i;
                   d3.selectAll(".month_" + index).on("mouseover",function(){
@@ -436,7 +436,7 @@ d3.csv("data/event_num_long.csv",function(event_data){
 
                   
                   })();//function End
-                }
+                }*/
 
 
           }); //CSV function end
