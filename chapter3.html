@@ -399,7 +399,7 @@
             }
 
             function set_progress_bar(){
-                var end_scroll = parseInt($("#end_div").offset().top) -  (windowHeight - parseInt($("#end_div").height()));
+                var end_scroll = parseInt($("#end_div").offset().top) -  (windowHeight);
                 var bar_percent = (parseInt($window.scrollTop())/end_scroll)*100;
 
                 $('.progress_bar').css("width", bar_percent + "%");
@@ -535,14 +535,13 @@
                     chapter_move(8);
 
                     var start_scroll = article_top[8]-article_height[7];
-                    var end_scroll = parseInt($("#end_div").offset().top) -  (windowHeight - parseInt($("#end_div").height()));
+                    var end_scroll = parseInt($("#end_div").offset().top) - (windowHeight);
                     set_progress_bar2(start_scroll,end_scroll);
                 }
                 else{
                     $('.progress_bar2').css("width", "0%");
                 }
             }
-
 
 		});
 	</script>
