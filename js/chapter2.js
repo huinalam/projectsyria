@@ -197,8 +197,8 @@ var svg_chapter2 = d3.select(".viz").append("svg")
               legend_group.append("rect")
                           .attr("x",0)
                           .attr("y",0)
-                          .attr("width",100)
-                          .attr("height",100)
+                          .attr("width",70)
+                          .attr("height",60)
                           .attr("fill","#111111");
 
               map_legend = legend_group.append("g")
