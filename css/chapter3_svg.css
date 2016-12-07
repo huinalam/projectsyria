@@ -2,8 +2,8 @@
 
 .timeline_axis { /* axis labels */
     fill: #eeeeee;
-    font-family: sans-serif;
-    font-weight: lighter;
+    font-family: "HelveticaNeue", sans-serif;
+    font-weight: 600;
     font-size: 70%;
 }
 .timeline_axis line{ /* axis tick marks */
@@ -17,7 +17,7 @@
     shape-rendering: crispEdges;
 }
 .tooltip{
-    font-family: sans-serif;
+    font-family: "HelveticaNeue", sans-serif;
     font-weight: bold;
     font-size: 1.2em;
     text-anchor: middle;
