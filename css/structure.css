@@ -1,9 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700|Roboto+Slab:400,100,300);
-@import url(https://fonts.googleapis.com/css?family=Arvo:400,700);
-@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
-@import url('https://fonts.googleapis.com/css?family=Muli:300');
-@import url(https://fonts.googleapis.com/css?family=Lora:400,700);
+@import url('https://fonts.googleapis.com/css?family=Muli:300,700');
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Source+Sans+Pro:300,400,600,700');
 
 html{font-size: 14px; height:100%;}
 body{
@@ -15,9 +12,13 @@ body{
 	background-color: #111111;
 }
 p{
-	font-size: 0.85em;
+	display: inline-block;
+	font-size: 1em;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
-	font-family: 'Muli', sans-serif;
+	line-height: 120%;
+	margin-bottom: 5%;
+	text-align: left;
 }
 
 .header{
@@ -63,7 +64,7 @@ p{
 	margin: 80% 5% 80% 5%;
 }
 #last_article{
-	margin: 80% 5% 25% 5%;
+	margin: 80% 5% 0% 5%;
 }
 .viz>h2{
 	font-family: 'Muli', sans-serif;
@@ -88,8 +89,8 @@ h1.title{
 	line-height: 100%;	
 }
 h2{
-	font-family: 'Muli', sans-serif;
-	font-weight: 100;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
 	font-size: 1.5em;
 	padding: 5px 5px 5px 0;
 	margin-top: 0px;
@@ -97,17 +98,17 @@ h2{
 	color: #cc3333;
 }
 h3{
-	font-family: 'Muli', sans-serif;
-	font-weight: 100;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
 	font-size: 1em;
 	margin:5px 0 0 0;
 	line-height: 120%;
 	color: #eeeeee;
 }
 .chapter_article_div >h2{
-	font-family: 'Muli', sans-serif;
-	font-weight: 700;
-	font-size: 1.2em;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	font-size: 1.5em;
 	margin: 30px 0 5px 0;
 	margin-top: 0px;
 	line-height: 120%;
@@ -115,13 +116,14 @@ h3{
 }
 
 .chapter_article_div >p{
-	margin: 0 0 30px 0;
-	font-size: 0.85em;
+	margin: 0 0 2em 0;
+	display: inline-block;
+	font-size: 1em;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
-	font-family: 'Muli', sans-serif;
-	line-height: 130%;
-	text-indent: 1em;
-	color: #bbbbbb;
+	line-height: 120%;
+	margin-bottom: 5%;
+	text-align: left;
 }
 
 .wrapper{
@@ -222,9 +224,13 @@ h3{
 		html{font-size: 16px;}
 		
 		p{
+			display: inline-block;
 			font-size: 1.1em;
-			font-family: 'Muli', sans-serif;
+			font-family: 'Source Sans Pro', sans-serif;
 			font-weight: 300;
+			line-height: 120%;
+			margin-bottom: 5%;
+			text-align: left;
 		}
 		h1.title{
 			color: #ee333f;
@@ -284,8 +290,8 @@ h3{
 			background-color: #11121A;
 		}
 		.viz>h2{
-			font-family: 'Muli', sans-serif;
-			font-weight: 100;
+			font-family: 'Source Sans Pro', sans-serif;
+			font-weight: 400;
 			font-size: 2em;
 			margin: 2% 0 5px 0;
 			line-height: 120%;

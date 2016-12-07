@@ -1,16 +1,19 @@
-var intro_pie_width = 300;
-var intro_pie_height = 260;
-var intro_pie_margin = {left: 100, top: 50};
+var width = parseInt(d3.select("#pie1").style('width'));
+if(300<width){
+    width = 300;
+}
+var height = width * 0.6;
+var margin = {left: width*0.1, top: height*0.1};
 
 var intro_pie1_svg = d3.select('#pie1')
 						.append("svg")
-						.attr("width",intro_pie_width)
-						.attr("height",intro_pie_height);
+						.attr("width",width)
+						.attr("height",height);
 
 var intro_pie2_svg = d3.select('#pie2')
 						.append("svg")
-						.attr("width",intro_pie_width)
-						.attr("height",intro_pie_height);
+						.attr("width",width)
+						.attr("height",height);
 
 var continent_portion = [{cont:"mid", text:"MIDDLE EAST", refugee_value:3701082},
 						 {cont:"eu", text:"EUROPE", refugee_value:92540}];
@@ -29,14 +32,14 @@ var mid_portion = [{div:"mid",text:"OTHER", refugee_value:3649276},
 
 var sum2 = 3649276 + 234278;
 
+
 drawing_introPie();
 
 function drawing_introPie(){
 
-	var pie_width = 200;
-	var pie_height = 200;
-	var outerRadius = pie_width/2;
-	var innerRadius = 50;
+	var pie_r = width *0.5;
+	var outerRadius = pie_r/2;
+	var innerRadius = outerRadius/2;
 
 
 	var portion_arc = d3.svg.arc()
@@ -50,15 +53,16 @@ function drawing_introPie(){
 
     var arc_g1 = intro_pie1_svg
                 .append("g")
-                .attr("transform", "translate(" + (outerRadius + intro_pie_margin.left) +","+ (outerRadius + intro_pie_margin.top) +")");
+                .attr("id","pie_g1")
+                .attr("transform", "translate(" + (width - (outerRadius + margin.left)) +","+ (height - (outerRadius)) +")");
 
 
     var arc_g2 = intro_pie2_svg
                 .append("g")
-                .attr("transform", "translate(" + (outerRadius + intro_pie_margin.left) +","+ (outerRadius + intro_pie_margin.top) +")");
+                .attr("transform", "translate(" + (width - (outerRadius + margin.left)) +","+ (height - (outerRadius)) +")");
 
     var title_text1 = intro_pie1_svg.append("g")
-                        .attr("transform","translate(15,30)")
+                        .attr("transform","translate(0,20)")
                         .append("text")
                         .attr("class","chart_title");
 
@@ -79,7 +83,7 @@ function drawing_introPie(){
 
 
     var title_text2 = intro_pie2_svg.append("g")
-                        .attr("transform","translate(15,30)")
+                        .attr("transform","translate(0,20)")
                         .append("text")
                         .attr("class","chart_title");
 
@@ -124,7 +128,7 @@ function drawing_introPie(){
             });
 
     var pie_legend1 = intro_pie1_svg.append("g")
-    								.attr("transform","translate(0,200)");
+    								.attr("transform","translate(0," + height*0.7 + ")");
 
     pie_legend1.selectAll("rect")
     		   .data(continent_portion)
@@ -135,10 +139,10 @@ function drawing_introPie(){
     		   })
     		   .attr("x",0)
     		   .attr("y",function(d,i){
-    		   	return i*30;
-    		   })
-    		   .attr("width",20)
-    		   .attr("height",20);
+                return i*3 + "em";
+               })
+               .attr("width","2em")
+               .attr("height","2em");
 
     pie_legend1.selectAll("text")
     		   .data(continent_portion)
@@ -147,15 +151,15 @@ function drawing_introPie(){
     		   .attr("class","legend_text")
     		   .attr("x",25)
     		   .attr("y",function(d,i){
-    		   	return i*30 + 15;
-    		   })
-    		   .text(function(d){
-    		   	return d.text;
-    		   })
+                return (i*3 + 1.1) + "em";
+               })
+               .text(function(d){
+                return d.text;
+               });
 
 
     var pie_legend2 = intro_pie2_svg.append("g")
-    								.attr("transform","translate(15,200)");
+    								.attr("transform","translate(0," + height*0.7 + ")");
 
     pie_legend2.selectAll("rect")
     		   .data(mid_portion)
@@ -166,10 +170,10 @@ function drawing_introPie(){
     		   })
     		   .attr("x",0)
     		   .attr("y",function(d,i){
-    		   	return i*30;
+    		   	return i*3 + "em";
     		   })
-    		   .attr("width",20)
-    		   .attr("height",20);
+    		   .attr("width","2em")
+    		   .attr("height","2em");
 
     pie_legend2.selectAll("text")
     		   .data(mid_portion)
@@ -178,11 +182,11 @@ function drawing_introPie(){
     		   .attr("class","legend_text")
     		   .attr("x",25)
     		   .attr("y",function(d,i){
-    		   	return i*30 + 15;
+    		   	return (i*3 + 1.1) + "em";
     		   })
     		   .text(function(d){
     		   	return d.text;
-    		   })
+    		   });
 
    	arc_g2.selectAll("path")
     	  .data(intro_pie(mid_portion))
@@ -206,6 +210,39 @@ function drawing_introPie(){
              .text(function(d){
                     return d3.format("%")(d.data.refugee_value/sum2);
             });
+}
+
+function redraw_pie(){
+
+    width = parseInt(d3.select("#pie1").style('width'));
+    if(300<width){
+        width = 300;
+    }
+    height = width * 0.6;
+    margin = {left: width*0.1, top: height*0.1};
+
+    intro_pie1_svg.transition()
+                            .attr("width",width)
+                            .attr("height",height);
+
+    intro_pie2_svg.transition()
+                            .attr("width",width)
+                            .attr("height",height);
+
+
+    pie_r = width *0.6;
+    outerRadius = pie_r/2;
+    innerRadius = outerRadius/2;
+
+
+    portion_arc = d3.svg.arc()
+                .innerRadius(innerRadius)
+                .outerRadius(outerRadius);
+
+    d3.select("pie_g1")
+          .selectAll("path")
+          .transition()
+          .attr("d",portion_arc);
 
 }
 

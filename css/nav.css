@@ -30,8 +30,22 @@ li.nav_item{
 	margin: 0.8em 0.5em;
 	padding: 0 0 0.2em 0;
 }
+.current_chapter{
+	color: #eeeeee !important; 
+	border-style: solid;
+	border-width: 0 0 0.2em 0;
+	border-color: #eeeeee;
+}
 .icon{
 	display: none;
+}
+.icon> a:link{
+	text-decoration: none;
+	color: #eeeeee;
+}
+.icon> a:visited{
+	text-decoration: none;
+	color: #eeeeee;
 }
 #main{
 	color: #99eeff;
@@ -52,12 +66,6 @@ li.nav_item{
 #chapter_num{
 	float: left;
 	margin: 15px 5px 5px 20px;
-}
-.current_chapter{
-	color: #eeeeee !important; 
-	border-style: solid;
-	border-width: 0 0 0.2em 0;
-	border-color: #eeeeee;
 }
 #item{
 	float: left;
@@ -88,11 +96,11 @@ li.nav_item{
 }
 
 .bottom{
-	background-color: #20262F;
+	background-color: #22282c;
 	position: fixed;
 	display: inline-block;
 	width: 50%;
-	padding: 5% 25% 5% 25%;
+	padding: 2% 25% 3% 25%;
 	bottom:0;
 	left: 0;
 	opacity: 0.8;
@@ -154,7 +162,7 @@ li.nav_item{
 		position: fixed;
 		display: inline-block;
 		width: 92%;
-		padding: 5% 4% 10% 4%;
+		padding: 5% 4% 5% 4%;
 		bottom:0;
 		left: 0;
 		opacity: 1;
@@ -163,6 +171,14 @@ li.nav_item{
 }
 
 @media screen and (max-width: 640px){
+	.current_chapter{
+		color: #eeeeee !important; 
+		border-style: none;
+		border-width: 0;
+	}
+	.current_chapter>a{
+		list-style-type: circle;
+	}
 	  ul.topnav.responsive {position: relative;}
 	  ul.topnav.responsive li.icon {
 	    position: absolute;

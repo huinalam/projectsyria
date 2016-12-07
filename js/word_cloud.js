@@ -1,6 +1,6 @@
 var width = parseInt(d3.select("#wordcloud").style('width'));
 var height = 0.4 * width;
-var layout_width = width *0.8;
+var layout_width = width *0.85;
 var layout_height = height *0.8;
 
 /*var intro_word_svg = d3.select('.introduction_wordCloud')
@@ -8,11 +8,11 @@ var layout_height = height *0.8;
 					   .attr("width",width)
 					   .attr("height",height);*/
 
-var headline_frequencys = [{"text":"Islamic State",id:"is", "total":7245, "nyt":6496, "gd":749},
-    		                   {"text":"Iran", id:"ir", "total":1543, "nyt":1208, "gd":335},
+var headline_frequencys = [{"text":"Iran", id:"ir", "total":1543, "nyt":1208, "gd":335},
             						   {"text":"Hezbollah", id:"hez", "total":375,"nyt":319, "gd":56},
             						   {"text":"United States",id:"us","total":1978, "nyt":1978, "gd":2},
             						   {"text":"Assad Regime",id:"ass", "total": 4644, "nyt":4009, "gd":635},
+                           {"text":"Islamic State",id:"is", "total":7245, "nyt":6496, "gd":749},
             						   {"text":"Free Syrian Army",id:"fsa", "total": 1120, "nyt": 1001, "gd":119},
             						   {"text":"International Coalition",id:"ic", "total":45, "nyt": 45, "gd":0},
             						   {"text":"YPG", id:"ypg", "total":1067, "nyt":972, "gd":95},
@@ -21,7 +21,7 @@ var headline_frequencys = [{"text":"Islamic State",id:"is", "total":7245, "nyt":
   font_size = [15,50,60,75];
 
 for(i=0; i<font_size.length;i++){
-  font_size[i] = font_size[i] * (width/800);
+  font_size[i] = font_size[i] * (layout_width/800);
 }
 
 var color_cloud = d3.scale.linear()
@@ -40,7 +40,7 @@ d3.layout.cloud().size([layout_width,layout_height])
 				 .on("end",draw)
 				 .start();
 
-function redraw(){
+function redraw_wordcloud(){
   d3.select('.wordcloud').remove();
 
   width = parseInt(d3.select("#wordcloud").style('width'));
@@ -76,7 +76,7 @@ function draw(words) {
                .append("g")
                 // without the transform, words words would get cutoff to the left and top, they would
                 // appear outside of the SVG area
-                .attr("transform", "translate("+ layout_width/3.5 + ","+ layout_height/2 + ")")
+                .attr("transform", "translate("+ (layout_width/2) + ","+ (layout_height/2 + 0.05*height) + ")")
                 .selectAll("g")
                 .data(words)
                 .enter().append("g")
@@ -92,6 +92,7 @@ function draw(words) {
                 .style("fill", function(d, i) { 
                 	return color_cloud(d.size); })
                 .attr("transform", function(d) {
+                  console.log(d);
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
                 })
                 .text(function(d) { return d.text; });

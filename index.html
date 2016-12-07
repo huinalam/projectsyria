@@ -96,22 +96,22 @@
 				<h2>DATA SOURCES</h2>
 				<div class="content_block">
 					<div class="block-42">
-						<h3 class="chapt_list">1.UNHCR</h3><br>
+						<h3 class="chapt_list">UNHCR</h3><br>
 						<img class="data_source" src="img/unhcr.png"><br>
 						<p>Data sets about registered refugees in each country.</p> 
 					</div>
 					<div class="block-42">
-						<h3 class="chapt_list">2.VDCS</h3><br>
+						<h3 class="chapt_list">VDCS</h3><br>
 						<img class="data_source" src="img/vdc.png"><br>
 						<p>Provides list of death with location during Syrian Civl war.</p>
 					</div>
 					<div class="block-42">
-						<h3 class="chapt_list">3.SYRIAN TRACKER</h3><br>
+						<h3 class="chapt_list">SYRIAN TRACKER</h3><br>
 						<img class="data_source" src="img/syria_tracker.svg"><br>
 						<p>Crowd-sourcing community where civil damages are reported.</p>
 					</div>
 					<div class="block-42">
-						<h3 class="chapt_list">4.SNHR</h3><br>
+						<h3 class="chapt_list">SNHR</h3><br>
 						<img class="data_source" src="img/snhr.png"><br>
 						<p>Provided information of main accidents inside civil area.</p>
 					</div>
@@ -144,7 +144,8 @@
  	$window.on("resize",function(){
  		console.log("resize");
  		initation();
- 		redraw();
+ 		redraw_wordcloud();
+ 		redraw_pie();
  	});
 
  	var chapt_num = $(".chapt_link").length
@@ -153,10 +154,14 @@
  		(function(){
  		var index = i;
 	 		$(".chapt_link").eq(index).on("mouseover",function(){
-	 			$("#chapt" + (index+1)).css("filter","grayscale(30%)");
+	 			$("#chapt" + (index+1)).css("filter","grayscale(20%)");
 	 		});
 	 		$(".chapt_link").eq(index).on("mouseout",function(){
-	 			$("#chapt" + (index+1)).css("filter","grayscale(90%)");
+		 		if($window.width()<640){
+		 			$("#chapt" + (index+1)).css("filter","grayscale(50%)");
+		 		}else{
+		 			$("#chapt" + (index+1)).css("filter","grayscale(90%)");
+		 		}
 	 		});
 	 	})();
  	}
