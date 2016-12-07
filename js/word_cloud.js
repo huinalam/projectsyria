@@ -18,7 +18,7 @@ var headline_frequencys = [{"text":"Islamic State",id:"is", "total":7245, "nyt":
             						   {"text":"YPG", id:"ypg", "total":1067, "nyt":972, "gd":95},
             						   {"text":"United Nations",id:"un", "total":2429, "nyt":1952, "gd":477}];
 
-var font_size = [15,50,75,90];
+  font_size = [15,50,60,75];
 
 for(i=0; i<font_size.length;i++){
   font_size[i] = font_size[i] * (width/800);
@@ -26,7 +26,7 @@ for(i=0; i<font_size.length;i++){
 
 var color_cloud = d3.scale.linear()
             .domain(font_size)
-            .range(["#668888","#88BBB0","#99DDD0","#AAFFFF"]);
+            .range(["#88AA99","#88BBB0","#99DDD0","#AAFFFF"]);
 
 var font_scale = d3.scale.linear()
 			.domain([0,2500,5000,7500])
@@ -36,7 +36,7 @@ d3.layout.cloud().size([layout_width,layout_height])
 				 .words(headline_frequencys)
 				 .rotate(0)
 				 .fontSize(function(d){ return font_scale(d.total);})
-				 .padding(0)
+				 .padding(3)
 				 .on("end",draw)
 				 .start();
 
@@ -48,10 +48,10 @@ function redraw(){
   layout_width = width *0.8;
   layout_height = height *0.8;
 
-  font_size = [15,50,75,90];
+  font_size = [15,50,60,75];
 
   for(i=0; i<font_size.length;i++){
-    font_size[i] = font_size[i] * (width/800);
+    font_size[i] = font_size[i] * (layout_width/800);
   }
 
   color_cloud.domain(font_size);
@@ -61,7 +61,7 @@ function redraw(){
          .words(headline_frequencys)
          .rotate(0)
          .fontSize(function(d){ return font_scale(d.total);})
-         .padding(0.05)
+         .padding(3)
          .on("end",draw)
          .start();
 }
@@ -76,7 +76,7 @@ function draw(words) {
                .append("g")
                 // without the transform, words words would get cutoff to the left and top, they would
                 // appear outside of the SVG area
-                .attr("transform", "translate("+ width/4 + ","+ height/2 + ")")
+                .attr("transform", "translate("+ layout_width/3.5 + ","+ layout_height/2 + ")")
                 .selectAll("g")
                 .data(words)
                 .enter().append("g")
@@ -119,30 +119,30 @@ function draw(words) {
           						   .attr("class","cloud_tooltip")
           						   .attr("transform","translate(" + (coords[0] + 55) + "," + (coords[1] - 55) + ")");
 
-          	tooltip.append("rect")
-          		   .attr("x",0)
-          		   .attr("y",0)
-          		   .attr("width",200)
-          		   .attr("height",80)
-          		   .attr("fill","#111111")
-          		   .style("opacity",0.8);
+  	tooltip.append("rect")
+  		   .attr("x",0)
+  		   .attr("y",0)
+  		   .attr("width",200)
+  		   .attr("height",70)
+  		   .attr("fill","#111111")
+  		   .style("opacity",0.8);
 
-          	tooltip.append("text")
-          		   .attr("class","tooltip")
-      				   .attr("x",0)
-      				   .attr("y",0)
-      				   .text("New York Times :  " + d.nyt);
+    	tooltip.append("text")
+    		   .attr("class","tooltip")
+  			   .attr("x",20)
+  			   .attr("y",20)
+  			   .text("New York Times :  " + d.nyt);
 
 			tooltip.append("text")
 				   .attr("class","tooltip")
-				   .attr("x",0)
-				   .attr("y",20)
+				   .attr("x",20)
+				   .attr("y",40)
 				   .text("Guardians :  " + d.gd);
 
 			tooltip.append("text")
 				   .attr("class","tooltip")
-				   .attr("x",0)
-				   .attr("y",40)
+				   .attr("x",20)
+				   .attr("y",60)
 				   .text("Total :  " + (d.gd + d.nyt));
 
           });

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great');
+
 .chart_title{
 	font-family: 'Muli', sans-serif;
 	font-weight: 700;
@@ -20,7 +22,12 @@
  	font-size: 10px;
  }
  .wordcloud_text{
- 	mix-blend-mode: screen;
+ 	cursor: pointer;
+ 	font-family: 'Fredericka the Great', cursive;
+ 	mix-blend-mode: hard-light;
+ }
+ .cloud_tooltip{
+ 	font-family: 'Source Sans Pro', sans-serif;
  }
 .eu{
  	color: #b8e2d3;

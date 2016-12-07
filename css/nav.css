@@ -22,18 +22,18 @@ ul.topnav{
 li.nav_item{
     list-style-type: none;
 	width: auto;
-	font-family: 'Muli', sans-serif;
-	font-size: 0.8em;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 0.85em;
+	letter-spacing: 0.05em;
 	color: #d0d0d0;
 	font-weight: 400;
-	margin: 15px 0px 5px 0px;
-	padding: 0 10px 0 10px;
+	margin: 0.8em 0.5em;
+	padding: 0 0 0.2em 0;
 }
 .icon{
 	display: none;
 }
 #main{
-	font-size: 15px;
 	color: #99eeff;
 	float: left;
 	font-weight: 700;
@@ -41,7 +41,7 @@ li.nav_item{
 	margin-left: 5%;
 	margin-right: 5%;
 }
-#main > a:hover{
+#main > a:link{
 	color: #99eeff;
 	text-decoration: none;
 }
@@ -53,9 +53,11 @@ li.nav_item{
 	float: left;
 	margin: 15px 5px 5px 20px;
 }
-#current_chapter{
-	float: left;
-	margin: 15px 5px 5px 5px;
+.current_chapter{
+	color: #eeeeee !important; 
+	border-style: solid;
+	border-width: 0 0 0.2em 0;
+	border-color: #eeeeee;
 }
 #item{
 	float: left;
@@ -103,11 +105,17 @@ li.nav_item{
 	font-size: 0.8em;
 	font-weight: bold;
 }
-.arrow > a:visited ,a:link{
+.arrow > a:visited{
 	color:#eeeeee;
 	opacity:0.8;
 	text-decoration: none;
 }
+.arrow > a:link{
+	color:#eeeeee;
+	opacity:0.8;
+	text-decoration: none;
+}
+
 .arrow a:hover{
 	opacity:1; 
 	text-decoration: none;
@@ -131,7 +139,7 @@ li.nav_item{
   li.nav_item{
 	    list-style-type: none;
 		width: 96%;
-		font-family: 'Muli', sans-serif;
+		font-family: 'Source Sans Pro', sans-serif;
 		font-size: 1em;
 		color: #d0d0d0;
 		font-weight: 400;
