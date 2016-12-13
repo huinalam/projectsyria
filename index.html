@@ -6,7 +6,6 @@
 	 <link href="css/index.css" rel="stylesheet">
 	 <link href="css/nav.css" rel="stylesheet">
 	 <link href="css/index_svg.css" rel="stylesheet">
-	<title></title>
 </head>
 <body>
 	<div class="nav_bar">
@@ -20,32 +19,49 @@
 	    </li>
 		</ul>
 	</div>
+	<div class="header_background" id="background_svg"></div>
 	<div class="container" id="title_page">
-		<div class="title">
+		<div class="intro">
 			<h3 class="title" id="top">Data storytelling of Syrian Crisis</h3><br>
 			<h1 class="title">PROJECT SYRIA</h1><br>
 			<h3 class="title" id="bottom">Through eyes of Syrian Civilian</h3><br>
-			
-			<img id="logo" src="img/logo.svg">
-			<p class="narrative">
-	           "This project was designed to shed light on notable incidents and cases due to <span>Syrian Crisis</span> by <span>data driven approaches</span>. The below are general facts that many peope know through the media...""
-	        </p>
-	        <div class="block-3">
-	        	<h3 class="intro">5years Civil War</h3>
-	        	<p>Syrian Civil War was triggered by civil protest againgst dictatorship regime for last half century. The regime started to use military force to stop peaceful protests since 2011.</p>
-	        </div>
-	        <div class="block-3">
-	        	<h3 class="intro">132,559 Fatalities</h3>
-	        	<p>According to The Violation Documentation Center in Syria more than 150,000 fatalities has been killed by various military attacks during the civil war.</p>
-	        </div>
-	        <div class="block-3">
-	        	<h3 class="intro">4,809,787 Refugees</h3>
-	        	<p>UN's refugee agency reported that 4,809,787 refugees were registered. Most of refugees are heading for other countries of Middle east, Europe.</p>
-	        </div>
-	        <p class="narrative">
-	        	"Beyond the these records, there are still many things should be uncorved to understand this tragedy correctly. While most media are focusing sensational issue such as <span>'Islamic State'</span> and <span>'European migrant Crisis'</span>, this project mainly focus two aspect of Syrian Crisis.
-	        </p>
 		</div>
+		<div class="intro">
+			<p class="narrative">
+	           "PROJECT SYRIA was designed to shed light on notable incidents and cases due to <span class="red">Syrian Crisis</span> by <span class="green">data driven approaches</span>. The below are general facts that many peope know through the media...""
+	        </p>
+	    </div>
+	    <div class="intro" id="intro_facts">
+	    	<h2 class="intro">General Facts about Syrian Crisis</h2>
+	        <div class="block-3">
+	        	<div class="facts" id="civilwar">
+	        		<h3 class="subheading"><span class="red">5 YEARS<br>CIVIL WARS</span></h3>
+	        	</div>
+	        	<p class="facts_p">Syrian Civil War was triggered by intensive repression of Assad regime. They started to use military force to stop peaceful protests since 2011.</p>
+	        </div>
+	        <div class="block-3">
+	        	<div class="facts" id="death">
+	        		<h3 class="subheading"><span class="red">132,559 OF<br>DEATH</span></h3>
+	        	</div>
+	        	<p class="facts_p">According to The Violation Documentation Center in Syria more than 132,559 fatalities has been killed by military attacks during the civil war.</p>
+	        </div>
+	        <div class="block-3">
+	        	<div class="facts" id="refugee">
+	        		<h3 class="subheading"><span class="red">4,809,787 OF<br>REFUGEES</span></h3>
+	        	</div>
+	        	<p class="facts_p">UN's refugee agency reported that 4,809,787 refugees were registered. Majority of refugees are staying in Middle east & Europe.</p>
+	        </div>
+	     </div>
+	     <div class="intro">
+	        <p class="narrative">
+	        	"However, these records are not enough to understand Syrian Crisis correctly. Most media are focusing sensational issues such as <span class="red">'Islamic State'</span> and <span class="green">'European migrant Crisis'</span>, which are not addressing ultimate cuasation of this tragedy.
+	        </p>
+		 </div>
+		 <div class="intro">
+	        <p class="narrative">
+	        	"In order to reflect <span class="red">view of Syrian civilian</span>, PROJECT SYRIA focus on <span class="green">data generated inside Syria</span>. By analyzing and visualizing these data, we are trying to describe fundamental reasons of Syrian Crisis. Getthing start with this story, we would like to introduce two main focuses..."
+	        </p>
+		 </div>
 	</div>
 	<div class="container" id="content">
 		<div class="header">
@@ -115,7 +131,6 @@
 						<img class="data_source" src="img/snhr.png"><br>
 						<p>Provided information of main accidents inside civil area.</p>
 					</div>
-					
 				</div>
 			</div>
 		</div>
@@ -132,20 +147,33 @@
 	    }
 	}
  </script>
+ <script src="js/title_background.js"></script>
  <script src="js/d3.layout.cloud.js"></script>
  <script src="js/refugee_pie_charts.js"></script>
  <script src="js/word_cloud.js"></script>
  <script>
- $(window).load(function(){
+ $(document).ready(function(){
 
  	$window = $(window);
- 	initation();
+ 	var scrollTop;
+ 	var intro_top = [];
+ 	var section_check =[];
+ 	
+ 	initiation();
+ 	first_drawing(10);
 
  	$window.on("resize",function(){
  		console.log("resize");
- 		initation();
+ 		initiation();
+ 		redraw_headerSVG();
  		redraw_wordcloud();
  		redraw_pie();
+ 	});
+
+ 	$window.on("scroll",function(){
+ 		scrollTop = $window.scrollTop();
+ 		svg_transition();
+
  	});
 
  	var chapt_num = $(".chapt_link").length
@@ -168,8 +196,62 @@
 
 
 
- 	function initation(){
- 		//$("#title_page").height($window.height());
+ 	function initiation(){
+ 		//헤더 백그라운드 사이즈 포지션 설정
+ 		$(".header_background").height($window.height()).css("left",($window.width() - $(".header_background").width())/2);
+
+ 		$("div.intro").each(function(){
+ 			var title_margin = ($window.height() - $(this).height())/2;
+ 			$(this).css("margin-top",title_margin).css("margin-bottom",title_margin);
+ 		});
+
+ 		var svg_margin = ($('#background_svg').height() - $('#title_svg').height())/2;
+ 		$('#title_svg').css("margin-top",svg_margin);
+
+ 		//섹션 위치 확인을 위한 여러개의 intro.div 위치 확인
+ 		var intro_num = $("div.intro").length;
+ 		for(i=0;i<intro_num;i++){
+ 			intro_top[i] = $("div.intro").eq(i).offset().top;
+ 			console.log(intro_top[i]);
+
+ 			section_check.push(false);
+ 		}
+
+ 		
+ 		
+ 	}
+
+ 	function svg_transition(){
+
+ 		if(scrollTop<=intro_top[0]){
+ 			//Section1
+ 			if(section_check[0]==false){
+ 				console.log("section1");
+ 				
+ 				section_check[0]=true;
+
+ 			}
+ 			
+ 		}
+ 		else if((intro_top[0]<scrollTop)&&(scrollTop<=intro_top[1])){
+ 			if(section_check[1]==false){
+ 				console.log("section2");
+ 				
+ 				section_check[1]=true;
+ 			}
+ 		}
+ 		else if((intro_top[1]<scrollTop)&&(scrollTop<=intro_top[2])){
+ 			if(section_check[2]==false){
+ 				console.log("section3");
+ 			}
+ 		}
+ 		else if((intro_top[2]<scrollTop)&&(scrollTop<=intro_top[3])){
+ 			if(section_check[3]==false){
+ 				console.log("section4");
+ 				section_check[3]=true;
+ 			}
+ 		}
+
  	}
 
  });

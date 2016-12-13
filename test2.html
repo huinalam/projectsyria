@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		body{
+			background-color:#111111;
+		}
+		.back{
+		    position: relative;
+		    background-size: 100% 100%;
+		    background-repeat: no-repeat;
+		  	height: 400px;
+		}
+		.back::after{
+			 content: "";
+  			 background: url('img/facts_civil_war.jpg') no-repeat center center;
+			 background-size:cover;
+			 opacity: 0.5;
+			 top: 0;
+			 left: 0;
+			 bottom: 0;
+			 right: 0;
+			 position: absolute;
+			 z-index: -1;  
+
+			 mix-blend-mode: luminosity;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="back">
+		Text will be shown.
+	</div>
+</body>
+</html>

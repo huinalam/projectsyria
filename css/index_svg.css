@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great');
 
+
+/* README 타이틀 SVG*/
+.m_circle{
+	stroke-width:0;
+	fill: #AABBBB;
+}
+.m_line{
+	stroke: #AABBBB;
+	stroke-width: 0.05em;
+	opacity: 0.5;
+}
+
 .chart_title{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 600;

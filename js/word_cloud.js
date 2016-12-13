@@ -1,7 +1,7 @@
-var width = parseInt(d3.select("#wordcloud").style('width'));
-var height = 0.4 * width;
-var layout_width = width *0.85;
-var layout_height = height *0.8;
+var cloud_width = parseInt(d3.select("#wordcloud").style('width'));
+var cloud_height = 0.4 * cloud_width;
+var layout_width = cloud_width *0.85;
+var layout_height = cloud_height *0.8;
 
 /*var intro_word_svg = d3.select('.introduction_wordCloud')
 					   .append("svg")
@@ -43,10 +43,10 @@ d3.layout.cloud().size([layout_width,layout_height])
 function redraw_wordcloud(){
   d3.select('.wordcloud').remove();
 
-  width = parseInt(d3.select("#wordcloud").style('width'));
-  height = 0.4 * width;
-  layout_width = width *0.8;
-  layout_height = height *0.8;
+  cloud_width = parseInt(d3.select("#wordcloud").style('width'));
+  cloud_height = 0.4 * cloud_width;
+  layout_width = cloud_width *0.8;
+  layout_height = cloud_height *0.8;
 
   font_size = [15,50,60,75];
 
@@ -70,13 +70,13 @@ function draw(words) {
 
         d3.select('#wordcloud')
 			   .append("svg")
-			   .attr("width",width)
-			   .attr("height",height)
+			   .attr("width",cloud_width)
+			   .attr("height",cloud_height)
                .attr("class", "wordcloud")
                .append("g")
                 // without the transform, words words would get cutoff to the left and top, they would
                 // appear outside of the SVG area
-                .attr("transform", "translate("+ (layout_width/2) + ","+ (layout_height/2 + 0.05*height) + ")")
+                .attr("transform", "translate("+ (layout_width/2) + ","+ (layout_height/2 + 0.05*cloud_height) + ")")
                 .selectAll("g")
                 .data(words)
                 .enter().append("g")

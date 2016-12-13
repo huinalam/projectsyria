@@ -12,7 +12,7 @@ body{
 }
 p{
 	display: inline-block;
-	font-size: 1em;
+	font-size: 1.3em;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
 	line-height: 120%;
@@ -31,37 +31,135 @@ a:hover{
 	text-decoration: none;
 	color:#ffffff;
 }
+span.red{
+	color: #dd4455;
+}
+span.green{
+	color: #44DDAA;
+}
+#intro_facts{
+	background-color: rgba(255,255,255,0.0);
+	z-index: -2;
+}
+.facts{
+	padding-top:10%;
+	padding-bottom:35%;
+	color:#dddddd;
+	border-style: solid;
+	border-width: 1%;
+	border-color: #dd4455;
+	position: relative;
+	background-repeat: no-repeat;
+}
+.facts>p{
+	position: absolute;
+	bottom:0;
+	left:0;
+	margin:5% 0 0 0;
+	padding:5%;
+	background-color: #dd4455;
+}
+.facts_p{
+	background-color: #dd4455;
+	padding:5%;
+	margin-top:0;
+	color: #eeeeee;
+}
+#civilwar{
+	
+}
+#civilwar:after{
+	content:"";	
+	background: url('../img/facts_civil_war.jpg') no-repeat center center;
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index:-1;
+	mix-blend-mode: luminosity;
+	filter: grayscale(0.8);
+
+}
+
+#death{
+}
+#death:after{
+	content:"";	
+	background: url('../img/facts_death.jpg') no-repeat center center;
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index:-1;
+	mix-blend-mode: luminosity;
+	filter: grayscale(0.8);
+}
+#refugee{
+}
+#refugee:after{
+	content:"";	
+	background: url('../img/facts_refugee.jpg') no-repeat center center;
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index:-1;
+	mix-blend-mode: luminosity;
+	filter: grayscale(0.8);
+}
+#background_svg{
+	text-align: center;
+}
+.header_background{
+	z-index: -999;
+	position: fixed;
+	width:100%;
+	max-width: 900px;
+	top:0;
+	left:0;
+	background-image: url("../img/logo.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 80% auto;
+}
 .narrative{
 	display: inline-block;
 	width: 80%;
-	margin: 10% auto;
+	margin: 2% auto;
 	font-family: 'Amatic SC', cursive;
-	font-size: 1.5em;
+	font-weight: 700;
+	font-size: 1.7em;
 	text-align: center;
 	letter-spacing: 0.05em;
-	word-spacing: 0.1em;
+	word-spacing: 0.15em;
+	line-height: 140%;
+	color: #ffffff;
 }
 
 .container{
 	width: 100%;
 	height: auto;
 	margin: auto;
-	background-color: #111111;
 }
 .header{
 	max-width: 800px;
 	width: 94%;
 	margin: 3%;
 	text-align: center;
+	background-color: #111111;
 }
-div.title{
+.intro{
 	display: inline-block;
-	max-width: 800px;
 	width: 94%;
 	margin: 3%;
-	padding-top: 6%;
 	text-align: center;
-	background-color: #111111;
+	background-color: rgba(17,17,17,0.9);
 }
 h1.title{
 	display: inline-block;
@@ -81,15 +179,27 @@ h1.title{
 	font-weight: normal;
 	font-style: normal;
 	line-height: 95%;
+	mix-blend-mode: luminosity;
 }
 h3.title{
+		display: inline-block;
+		color: #fafafa;
+		text-align: center;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-weight: 400;
+		font-size: 1.2em;
+		letter-spacing: 0.1em;
+		word-spacing: 0.3em;
+		margin:0;
+	}
+.subheading{
 	display: inline-block;
 	text-align: center;
 	margin: 0.1em auto 0.1em auto;
-	color: #eeeeee;
-	font-size: 1.6em;
+	color: #222222;
+	font-size: 2em;
 	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 400;
+	font-weight: 700;
 	word-spacing: 0.25em;
 	letter-spacing: 0.05em;
 }
@@ -107,6 +217,15 @@ p.title{
 	width: 82%;
 	margin: 2% 9%;
 
+}
+h2.intro{
+	font-family: 'Amatic SC', cursive;
+	font-weight: 700;
+	font-size: 2em;
+	text-align: center;
+	letter-spacing: 0.05em;
+	word-spacing: 0.15em;
+	background: none;
 }
 h3.intro{
 	display: inline-block;
@@ -233,7 +352,7 @@ h3.chapt_list{
 	float: left;
 	width: 75%;
 	margin: 2% 12.5%;
-	background-color: #111111;
+	
 }
 .block-42{
 		display: inline-block;
@@ -274,11 +393,18 @@ h3.chapt_list{
 		font-size: 8em;
 		letter-spacing: 0.05em;
 		word-spacing: 0.1em;
+		mix-blend-mode: luminosity;
 	}
 	h3.title{
-		font-size: 1.6em;
-		word-spacing: 0.25em;
-		letter-spacing: 0.05em;
+		display: inline-block;
+		color: #fafafa;
+		text-align: center;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-weight: 400;
+		font-size: 1.5em;
+		letter-spacing: 0.1em;
+		word-spacing: 0.3em;
+		margin:0;
 	}
 	.report_back{
 		filter: grayscale(90%);
@@ -290,15 +416,16 @@ h3.chapt_list{
 	body{
 		margin: 0px;
 		padding: 0px;
-		color: #bbbcbd;
+		color: #eeeeee;
 		background-color: #111111;
 	}
 	p{
 		display: inline-block;
-		font-size: 0.85em;
+		font-size: 1.1em;
 		font-family: 'Source Sans Pro', sans-serif;
 		font-weight: 300;
-		line-height: 120%;
+		word-spacing: 0.1em;
+		line-height: 140%;
 		margin: 1em 0 1.4em 0;
 	}
 	.block-2{
@@ -314,16 +441,30 @@ h3.chapt_list{
 		display: inline-block;
 		position: relative;
 		float: left;
-		width: 29.3%;
-		margin: 2%;
-		background-color: #111111;
+		width: 30.3%;
+		margin: 1.5%;
 	}
-	
 	.container{
 			width: 100%;
-			max-width: 800px;
+			max-width: 900px;
 			height: auto;
 			margin: auto;
+	}
+	.facts{
+		padding-top:20%;
+		padding-bottom:65%;
+		color:#dddddd;
+		border-style: solid;
+		border-width: 1%;
+		border-color: #dd4455;
+		position: relative;
+		background-repeat: no-repeat;
+	}
+	.subheading{
+		color: #eeeeee;
+		font-size: 1.5em;
+		word-spacing: 0.25em;
+		letter-spacing: 0.05em;
 	}
 	#content{
 		/*border-style: solid;
