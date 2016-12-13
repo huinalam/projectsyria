@@ -32,7 +32,7 @@ a:hover{
 	color:#ffffff;
 }
 span.red{
-	color: #dd4455;
+	color: #ee4455;
 }
 span.green{
 	color: #44DDAA;
@@ -42,27 +42,29 @@ span.green{
 	z-index: -2;
 }
 .facts{
-	padding-top:10%;
-	padding-bottom:35%;
+	overflow: hidden;
+	width:58%;
+	padding-top:17.5%;
+	padding-bottom:17.5%;
 	color:#dddddd;
 	border-style: solid;
 	border-width: 1%;
 	border-color: #dd4455;
 	position: relative;
 	background-repeat: no-repeat;
-}
-.facts>p{
-	position: absolute;
-	bottom:0;
-	left:0;
-	margin:5% 0 0 0;
-	padding:5%;
-	background-color: #dd4455;
+	float:left;
 }
 .facts_p{
+	overflow: hidden;
+	display: inline-block;
+	font-size:1em;
+	font-weight: 400;
+	width:30%;
+	height:100%;
+	float: left;
 	background-color: #dd4455;
-	padding:5%;
-	margin-top:0;
+	padding: 5%;
+	margin:0 !important;
 	color: #eeeeee;
 }
 #civilwar{
@@ -78,9 +80,7 @@ span.green{
 	bottom: 0;
 	right: 0;
 	z-index:-1;
-	mix-blend-mode: luminosity;
 	filter: grayscale(0.8);
-
 }
 
 #death{
@@ -95,9 +95,9 @@ span.green{
 	bottom: 0;
 	right: 0;
 	z-index:-1;
-	mix-blend-mode: luminosity;
 	filter: grayscale(0.8);
 }
+
 #refugee{
 }
 #refugee:after{
@@ -110,12 +110,13 @@ span.green{
 	bottom: 0;
 	right: 0;
 	z-index:-1;
-	mix-blend-mode: luminosity;
 	filter: grayscale(0.8);
 }
+
 #background_svg{
 	text-align: center;
 }
+
 .header_background{
 	z-index: -999;
 	position: fixed;
@@ -148,7 +149,7 @@ span.green{
 	margin: auto;
 }
 .header{
-	max-width: 800px;
+	max-width: 900px;
 	width: 94%;
 	margin: 3%;
 	text-align: center;
@@ -160,6 +161,12 @@ span.green{
 	margin: 3%;
 	text-align: center;
 	background-color: rgba(17,17,17,0.9);
+	overflow: hidden;
+}
+.gap
+#title{
+	background-color: rgba(0,0,0,0) !important;
+	mix-blend-mode: luminosity;
 }
 h1.title{
 	display: inline-block;
@@ -171,15 +178,14 @@ h1.title{
 	border-top-width: 0.035em;
 	margin: 0.05em auto 0.05em auto;
 	padding-top: 0.1em;
-	max-width: 800px;
+	max-width: 900px;
 	font-family: 'League Gothic Condensed', sans-serif;
-	font-size: 8em;
+	font-size: 7em;
 	letter-spacing: 0.05em;
 	word-spacing: 0.1em;
 	font-weight: normal;
 	font-style: normal;
 	line-height: 95%;
-	mix-blend-mode: luminosity;
 }
 h3.title{
 		display: inline-block;
@@ -213,11 +219,7 @@ h3.title{
 #bottom{
 
 }
-p.title{
-	width: 82%;
-	margin: 2% 9%;
 
-}
 h2.intro{
 	font-family: 'Amatic SC', cursive;
 	font-weight: 700;
@@ -226,6 +228,9 @@ h2.intro{
 	letter-spacing: 0.05em;
 	word-spacing: 0.15em;
 	background: none;
+	-webkit-text-fill-color: white; /* Will override color (regardless of order) */
+   -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: black;
 }
 h3.intro{
 	display: inline-block;
@@ -285,9 +290,14 @@ h2{
 }
 .data_source{
 	height: 30%;
+	width: 30%;
 	max-height: 4em;
-	width: auto;
 	margin: 0.5em;
+}
+.data_source_p{
+	margin: 2% 0 2% 0;
+	color: #cccccc;
+	font-size: 0.8em;
 }
 #chapt1{
 	background-image: url("../img/chapt1.jpg");
@@ -316,11 +326,11 @@ h3.chapt_list{
 	left:0;
 	font-size: 1em;
 	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 300;
+	font-weight: 400;
 	z-index: 999;
 	margin:0.5em 0;
 	background-color: #111111;
-	color:#ffffff;
+	color:#eeeeee;
 }
 .wordcloud{
 	width: 96%;
@@ -352,6 +362,8 @@ h3.chapt_list{
 	float: left;
 	width: 75%;
 	margin: 2% 12.5%;
+	z-index: -2;
+	background-color: #ee4455;
 	
 }
 .block-42{
@@ -393,7 +405,6 @@ h3.chapt_list{
 		font-size: 8em;
 		letter-spacing: 0.05em;
 		word-spacing: 0.1em;
-		mix-blend-mode: luminosity;
 	}
 	h3.title{
 		display: inline-block;
@@ -451,6 +462,7 @@ h3.chapt_list{
 			margin: auto;
 	}
 	.facts{
+		width:98%;
 		padding-top:20%;
 		padding-bottom:65%;
 		color:#dddddd;
@@ -467,9 +479,21 @@ h3.chapt_list{
 		letter-spacing: 0.05em;
 	}
 	#content{
-		/*border-style: solid;
-		border-width: 0 1px 0 1px;
-		border-color: #eeeeee;*/
+		margin-top: 20%;
+		padding-top: 5%;
+		background-color: #111111;
+		border-style: solid;
+		border-width: 0.3em 0 0 0;
+		border-color: #222826;
+	}
+	.facts_p{
+		width:90%;
+		bottom:0;
+		left:0;
+		margin:5% 0 0 0;
+		padding:5%;
+		background-color: #dd4455;
+
 	}
 
 }

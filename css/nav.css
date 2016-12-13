@@ -1,5 +1,3 @@
-
-
 /* navigation */
 .nav_bar{
 	width: 100%;
@@ -48,7 +46,7 @@ li.nav_item{
 	color: #eeeeee;
 }
 #main{
-	color: #99eeff;
+	color: #44DDAA;
 	float: left;
 	font-weight: 700;
 	width:auto;
@@ -56,11 +54,11 @@ li.nav_item{
 	margin-right: 5%;
 }
 #main > a:link{
-	color: #99eeff;
+	color: #44DDAA;
 	text-decoration: none;
 }
 #main > a:visited {
-	color: #99eeff;
+	color: #44DDAA;
 	text-decoration: none;
 }
 #chapter_num{
@@ -87,7 +85,7 @@ li.nav_item{
 .progress_bar{
 	width: 0%;
 	height: 100%;
-	background-color: #44aacc;
+	background-color: #44DDAA;
 }
 .progress_bar2{
 	width: 0%;

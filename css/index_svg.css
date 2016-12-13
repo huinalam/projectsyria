@@ -4,12 +4,13 @@
 /* README 타이틀 SVG*/
 .m_circle{
 	stroke-width:0;
-	fill: #AABBBB;
+	fill: #ee4455;
 }
 .m_line{
 	stroke: #AABBBB;
 	stroke-width: 0.05em;
 	opacity: 0.5;
+	mix-blend-mode: luminosity;
 }
 
 .chart_title{

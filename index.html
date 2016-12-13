@@ -32,7 +32,7 @@
 	        </p>
 	    </div>
 	    <div class="intro" id="intro_facts">
-	    	<h2 class="intro">General Facts about Syrian Crisis</h2>
+	    	<h2 class="intro"></h2>
 	        <div class="block-3">
 	        	<div class="facts" id="civilwar">
 	        		<h3 class="subheading"><span class="red">5 YEARS<br>CIVIL WARS</span></h3>
@@ -114,22 +114,22 @@
 					<div class="block-42">
 						<h3 class="chapt_list">UNHCR</h3><br>
 						<img class="data_source" src="img/unhcr.png"><br>
-						<p>Data sets about registered refugees in each country.</p> 
+						<p class="data_source_p">Data sets about registered refugees in each country.</p> 
 					</div>
 					<div class="block-42">
 						<h3 class="chapt_list">VDCS</h3><br>
 						<img class="data_source" src="img/vdc.png"><br>
-						<p>Provides list of death with location during Syrian Civl war.</p>
+						<p class="data_source_p">Provides list of death with location during Syrian Civl war.</p>
 					</div>
 					<div class="block-42">
 						<h3 class="chapt_list">SYRIAN TRACKER</h3><br>
 						<img class="data_source" src="img/syria_tracker.svg"><br>
-						<p>Crowd-sourcing community where civil damages are reported.</p>
+						<p class="data_source_p">Crowd-sourcing community where civil damages are reported.</p>
 					</div>
 					<div class="block-42">
 						<h3 class="chapt_list">SNHR</h3><br>
 						<img class="data_source" src="img/snhr.png"><br>
-						<p>Provided information of main accidents inside civil area.</p>
+						<p class="data_source_p">Provided information of main accidents inside civil area.</p>
 					</div>
 				</div>
 			</div>
@@ -158,12 +158,14 @@
  	var scrollTop;
  	var intro_top = [];
  	var section_check =[];
+ 	var content_offset;
+ 	var content_top;
  	
  	initiation();
- 	first_drawing(10);
+ 	first_drawing(3);
 
  	$window.on("resize",function(){
- 		console.log("resize");
+ 
  		initiation();
  		redraw_headerSVG();
  		redraw_wordcloud();
@@ -173,6 +175,8 @@
  	$window.on("scroll",function(){
  		scrollTop = $window.scrollTop();
  		svg_transition();
+ 		//scroll_move();
+ 		fade_out();
 
  	});
 
@@ -212,18 +216,20 @@
  		var intro_num = $("div.intro").length;
  		for(i=0;i<intro_num;i++){
  			intro_top[i] = $("div.intro").eq(i).offset().top;
- 			console.log(intro_top[i]);
+ 			
 
  			section_check.push(false);
  		}
-
+ 		//콘텐츠 div위치 확인
+ 		content_top = $('#content').offset().top  - $window.height()/3;
+ 		content_offset = content_top - $window.height();
  		
  		
  	}
 
  	function svg_transition(){
 
- 		if(scrollTop<=intro_top[0]){
+ 		if(scrollTop<=intro_top[1]){
  			//Section1
  			if(section_check[0]==false){
  				console.log("section1");
@@ -233,23 +239,43 @@
  			}
  			
  		}
- 		else if((intro_top[0]<scrollTop)&&(scrollTop<=intro_top[1])){
+ 		else if((intro_top[1]<scrollTop)&&(scrollTop<=intro_top[2])){
  			if(section_check[1]==false){
  				console.log("section2");
- 				
+ 				push_circle(3);
  				section_check[1]=true;
  			}
  		}
- 		else if((intro_top[1]<scrollTop)&&(scrollTop<=intro_top[2])){
+ 		else if((intro_top[2]<scrollTop)&&(scrollTop<=intro_top[3])){
  			if(section_check[2]==false){
+ 				push_circle(3);
  				console.log("section3");
+ 				section_check[2]=true;
  			}
  		}
- 		else if((intro_top[2]<scrollTop)&&(scrollTop<=intro_top[3])){
+ 		else if((intro_top[3]<scrollTop)&&(scrollTop<=intro_top[4])){
  			if(section_check[3]==false){
  				console.log("section4");
+ 				push_circle(3);
  				section_check[3]=true;
  			}
+ 		}
+ 	}
+
+ 	function fade_out(){
+
+ 		if((content_offset<scrollTop)&&(scrollTop<content_top)){
+
+ 			var range = content_top - content_offset;
+ 			var percent = (content_top - scrollTop)/range;
+
+ 			if(range<0){
+ 				range=0;
+ 			}
+ 			$('#background_svg').css("opacity",percent);
+ 			//$('#content').css("opacity",(1-percent));
+
+
  		}
 
  	}
