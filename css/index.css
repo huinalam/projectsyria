@@ -294,15 +294,28 @@ h2{
 .data_source{
 	height: 30%;
 	width: auto;
-	max-width: 50%;
+	max-width: 80%;
 	max-height: 4em;
 	margin: 0.5em;
 }
 .data_source_p{
-	margin: 2% 15%;
+	margin: 2% 5%;
 	color: #AAAAAA;
 	font-size: 0.8em;
 }
+h3.source_list{
+		text-align: center;
+		width:98%;
+		margin:0 !important;
+		padding:1%;
+		font-size: 0.6em;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-weight: 400;
+		z-index: 999;
+		margin:0.5em 0;
+		background-color: #111111;
+		color:#eeeeee;
+	}
 #chapt1{
 	background-image: url("../img/chapt1.jpg");
 }
@@ -337,20 +350,7 @@ h3.chapt_list{
 	background-color: #111111;
 	color:#eeeeee;
 }
-h3.source_list{
-	text-align: center;
-	width:98%;
-	margin:0 !important;
-	padding:1%;
-	font-size: 1em;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 400;
-	z-index: 999;
-	margin:0.5em 0;
-	background-color: #111111;
-	color:#eeeeee;
 
-}
 .wordcloud{
 	width: 96%;
 	margin: 2%;
@@ -449,6 +449,24 @@ h3.source_list{
 		font-weight: 700;
 		word-spacing: 0.25em;
 		letter-spacing: 0.05em;
+	}
+	.data_source_p{
+		margin: 2% 15%;
+		color: #AAAAAA;
+		font-size: 0.8em;
+	}
+	h3.source_list{
+		text-align: center;
+		width:98%;
+		margin:0 !important;
+		padding:1%;
+		font-size: 1em;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-weight: 400;
+		z-index: 999;
+		margin:0.5em 0;
+		background-color: #111111;
+		color:#eeeeee;
 	}
 
 }

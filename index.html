@@ -268,7 +268,7 @@
  		if(scrollTop<content_offset){
  			$('#background_cover').css("opacity",0);
  			var size = 80;
- 			$('#background_svg').css("background-size",size + "%");
+ 			//$('#background_svg').css("background-size",size + "%");
  		}
  		else if((content_offset<scrollTop)&&(scrollTop<content_top)){
 
@@ -279,8 +279,8 @@
  				percent=0;
  			}
  			d3.select('#background_cover').style("opacity",1-percent);
- 			var size = 80;
- 			d3.select('#background_svg').style("background-size",(size + (1-percent)*20) + "%" );
+ 			//var size = 80;
+ 			//d3.select('#background_svg').style("background-size",(size + (1-percent)*20) + "%" );
  		}
 
  	}
