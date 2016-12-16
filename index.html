@@ -168,6 +168,13 @@
  	$window.on("resize",function(){
  
  		
+ 		if(360<$window.width()){
+			redraw_headerSVG();
+	 		initiation();
+	 		redraw_wordcloud();
+	 		redraw_pie();
+		}
+		
  		redraw_headerSVG();
  		initiation();
  		redraw_wordcloud();
