@@ -269,7 +269,7 @@
 
  	function fade_out(){
  		if(scrollTop<content_offset){
- 			$('#background_cover').css("opacity",0);
+ 			d3.select('#background_cover').style("opacity",0);
  			var size = 80;
  			//$('#background_svg').css("background-size",size + "%");
  		}
