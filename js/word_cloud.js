@@ -1,7 +1,7 @@
 var cloud_width = parseInt(d3.select("#wordcloud").style('width'));
 var cloud_height = 0.4 * cloud_width;
-var layout_width = cloud_width *0.85;
-var layout_height = cloud_height *0.8;
+var layout_width = cloud_width *0.98;
+var layout_height = cloud_height *0.98;
 
 /*var intro_word_svg = d3.select('.introduction_wordCloud')
 					   .append("svg")
@@ -18,7 +18,7 @@ var headline_frequencys = [{"text":"Iran", id:"ir", "total":1543, "nyt":1208, "g
             						   {"text":"YPG", id:"ypg", "total":1067, "nyt":972, "gd":95},
             						   {"text":"United Nations",id:"un", "total":2429, "nyt":1952, "gd":477}];
 
-  font_size = [15,50,60,75];
+  font_size = [15,50,60,80];
 
 for(i=0; i<font_size.length;i++){
   font_size[i] = font_size[i] * (layout_width/800);
@@ -26,7 +26,7 @@ for(i=0; i<font_size.length;i++){
 
 var color_cloud = d3.scale.linear()
             .domain(font_size)
-            .range(["#88AA99","#88BBB0","#99DDD0","#AAFFFF"]);
+            .range(["#EEEE88","#88BBB0","#99EED0","#AAFFFF"]);
 
 var font_scale = d3.scale.linear()
 			.domain([0,2500,5000,7500])
@@ -45,8 +45,8 @@ function redraw_wordcloud(){
 
   cloud_width = parseInt(d3.select("#wordcloud").style('width'));
   cloud_height = 0.4 * cloud_width;
-  layout_width = cloud_width *0.8;
-  layout_height = cloud_height *0.8;
+  layout_width = cloud_width *0.98;
+  layout_height = cloud_height *0.98;
 
   font_size = [15,50,60,75];
 
@@ -64,6 +64,7 @@ function redraw_wordcloud(){
          .padding(3)
          .on("end",draw)
          .start();
+
 }
 
 function draw(words) {
@@ -76,7 +77,7 @@ function draw(words) {
                .append("g")
                 // without the transform, words words would get cutoff to the left and top, they would
                 // appear outside of the SVG area
-                .attr("transform", "translate("+ (layout_width/2) + ","+ (layout_height/2 + 0.05*cloud_height) + ")")
+                .attr("transform", "translate("+ (layout_width/2) + ","+ (layout_height/2) + ")")
                 .selectAll("g")
                 .data(words)
                 .enter().append("g")
@@ -88,14 +89,38 @@ function draw(words) {
                 .attr("id",function(d){
                 	return d.id;
                 })
-                .style("font-size", function(d) {console.log(d.size); return d.size + "px"; })
+                .style("font-size", function(d) { return d.size + "px"; })
                 .style("fill", function(d, i) { 
                 	return color_cloud(d.size); })
                 .attr("transform", function(d) {
-                  console.log(d);
+                  
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
                 })
                 .text(function(d) { return d.text; });
+
+        var wordcloud_title = d3.select('.wordcloud')
+                                .append("g")
+                                .attr("transform","translate(" + 0 + "," + "0" +")")
+                                .append("text")
+                                .attr("x",0)
+                                .attr("y",0)
+                                .attr("class","chart_title")
+                                .attr("font_size","1.2em")
+
+          wordcloud_title.append("tspan")
+                         .attr("dy","1.2em")
+                         .attr("x",0)
+                         .text("Frequency of Mention");
+
+          wordcloud_title.append("tspan")
+                         .attr("dy","1.1em")
+                         .attr("x",0)
+                         .text("in Major Media:");
+
+          wordcloud_title.append("tspan")
+                         .attr("dy","1.1em")
+                         .attr("x",0)
+                         .text("NY times & The Guardians");
 
 
           d3.selectAll(".wordcloud_text").on("mouseover",function(d){

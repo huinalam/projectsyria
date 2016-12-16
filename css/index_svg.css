@@ -3,24 +3,25 @@
 
 /* README 타이틀 SVG*/
 .m_circle{
-	stroke-width:0;
-	fill: #ee4455;
+	stroke-width:1;
+	stroke: #88DDFF;
+	fill: #AAAAAA;
+	mix-blend-mode: screen;
 }
 .m_line{
-	stroke: #AABBBB;
-	stroke-width: 0.05em;
+	stroke: #88DDFF;
+	stroke-width: 0.01em;
 	opacity: 0.5;
-	mix-blend-mode: luminosity;
+	
 }
-
 .chart_title{
 	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 600;
+	font-weight: 400;
 	font-size: 0.8em;
 	margin: 5px;
 	letter-spacing: 0.5px;
 	word-spacing: 2px;
-	fill: #eeeeee;
+	fill: #cccccc;
 }
 .chart_caption{
 	font-family: 'Roboto Condensed', sans-serif;
