@@ -43,7 +43,7 @@ span.green{
 }
 .facts{
 	overflow: hidden;
-	width:58%;
+	width:57%;
 	padding-top:17.5%;
 	padding-bottom:17.5%;
 	color:#dddddd;
@@ -57,7 +57,7 @@ span.green{
 .facts_p{
 	overflow: hidden;
 	display: inline-block;
-	font-size:1em;
+	font-size:0.8em;
 	font-weight: 400;
 	width:30%;
 	height:100%;
@@ -66,6 +66,17 @@ span.green{
 	padding: 5%;
 	margin:0 !important;
 	color: #eeeeee;
+}
+.subheading{
+	display: inline-block;
+	text-align: center;
+	margin: 0.1em auto 0.1em auto;
+	color: #222222;
+	font-size: 1.5em;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 700;
+	word-spacing: 0.25em;
+	letter-spacing: 0.05em;
 }
 #civilwar{
 	
@@ -201,17 +212,6 @@ h3.title{
 		word-spacing: 0.3em;
 		margin:0;
 	}
-.subheading{
-	display: inline-block;
-	text-align: center;
-	margin: 0.1em auto 0.1em auto;
-	color: #222222;
-	font-size: 2em;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 700;
-	word-spacing: 0.25em;
-	letter-spacing: 0.05em;
-}
 #logo{
 	width: 50%;
 	margin: 4% 0 2% 0;
@@ -439,6 +439,17 @@ h3.source_list{
 	.report_back{
 		filter: grayscale(90%);
 	}
+	.subheading{
+		display: inline-block;
+		text-align: center;
+		margin: 0.1em auto 0.1em auto;
+		color: #222222;
+		font-size: 2em;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-weight: 700;
+		word-spacing: 0.25em;
+		letter-spacing: 0.05em;
+	}
 
 }
 @media screen and (min-width: 820px){
@@ -489,12 +500,6 @@ h3.source_list{
 		border-color: #dd4455;
 		position: relative;
 		background-repeat: no-repeat;
-	}
-	.subheading{
-		color: #eeeeee;
-		font-size: 1.5em;
-		word-spacing: 0.25em;
-		letter-spacing: 0.05em;
 	}
 	#content{
 		margin-top: 20%;
