@@ -39,7 +39,6 @@ span.green{
 }
 #intro_facts{
 	background-color: rgba(255,255,255,0.0);
-	z-index: -2;
 }
 .facts{
 	overflow: hidden;
@@ -123,23 +122,26 @@ span.green{
 	z-index:-1;
 	filter: grayscale(0.8);
 }
-
 #background_svg{
-	z-index: -999;
+	z-index: 0;
+}
+#background_img{
+	z-index: 0;
 	background-image: url("../img/logo.svg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 80%;
+	opacity: 0;
 }
 #background_cover{
-	z-index: -10;
+	z-index: -10 !important;
 	background-color: #111111;
 }
 .header_background{
 	text-align: center;
 	position: fixed;
 	width:100%;
-	max-width: 900px;
+	max-width: 700px;
 	top:-15%;
 	left:0;
 }
@@ -161,6 +163,7 @@ span.green{
 	width: 100%;
 	height: auto;
 	margin: auto;
+	z-index: 10;
 }
 .header{
 	max-width: 900px;
@@ -175,17 +178,17 @@ span.green{
 	margin: 3%;
 	text-align: center;
 	background-color: rgba(17,17,17,0.9);
-	overflow: hidden;
+	z-index: 0;
+
 }
-.gap
+
 #title{
-	background-color: rgba(0,0,0,0) !important;
-	mix-blend-mode: luminosity;
-	padding-top: 10%;
+	background-color: rgba(17,17,17,1) !important;
+	z-index: 0 !important;
 }
 h1.title{
 	display: inline-block;
-	color: #fafafa;
+	color: #ffffff;
 	text-align: center;
 	border-bottom-style: solid;
 	border-bottom-width: 0.035em;
@@ -201,6 +204,8 @@ h1.title{
 	font-weight: normal;
 	font-style: normal;
 	line-height: 95%;
+	mix-blend-mode: difference;
+	
 }
 h3.title{
 		display: inline-block;
@@ -212,6 +217,7 @@ h3.title{
 		letter-spacing: 0.1em;
 		word-spacing: 0.3em;
 		margin:0;
+		mix-blend-mode: difference;
 	}
 #logo{
 	width: 50%;
@@ -422,7 +428,7 @@ h3.chapt_list{
 		background-color: #111215;
 	}
 	h1.title{
-		font-size: 8em;
+		font-size: 6em;
 		letter-spacing: 0.05em;
 		word-spacing: 0.1em;
 	}
@@ -431,8 +437,8 @@ h3.chapt_list{
 		color: #fafafa;
 		text-align: center;
 		font-family: 'Source Sans Pro', sans-serif;
-		font-weight: 400;
-		font-size: 1.5em;
+		font-weight: 300;
+		font-size: 1.2em;
 		letter-spacing: 0.1em;
 		word-spacing: 0.3em;
 		margin:0;
@@ -508,6 +514,7 @@ h3.chapt_list{
 			max-width: 900px;
 			height: auto;
 			margin: auto;
+			z-index: 10;
 	}
 	.facts{
 		width:98%;
@@ -524,7 +531,7 @@ h3.chapt_list{
 		margin-top: 20%;
 		background-color: #111111;
 		border-style: solid;
-		border-width: 0.3em 0 0 0;
+		border-width: 0.1em 0 0 0;
 		border-color: #CCD0DA;
 	}
 	.facts_p{

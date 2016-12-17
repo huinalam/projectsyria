@@ -38,7 +38,7 @@ for(i=0;i<grid_slice;i++){
 	}
 }
 
-console.log(grid_coord);
+
 
 var point_index = [				  18,
 				22,23,24,25,26,27,28,
@@ -209,11 +209,11 @@ function redraw_headerSVG(){
 		}
 	}
 
-	console.log(grid_coord);
+	
 
 	for(i=0;i<point_index_length;i++){
 		var index = point_index[i];
-		console.log(index);
+		
 		circle_coord[i] = grid_coord[index];
 	}
 

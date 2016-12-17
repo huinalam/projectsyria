@@ -20,6 +20,7 @@
 		</ul>
 	</div>
 	<div class="header_background" id="background_cover"></div>
+	<div class="header_background" id="background_img"></div>
 	<div class="header_background" id="background_svg"></div>
 	<div class="container" id="title_page">
 		<div class="intro" id="title">
@@ -179,7 +180,7 @@
 
  	$window.on("scroll",function(){
  		scrollTop = $window.scrollTop();
- 		//svg_transition();
+ 		svg_transition();
  		//scroll_move();
  		fade_out();
 
@@ -214,61 +215,54 @@
  		var svg_margin = ($('#background_svg').height() - $('#title_svg').height())/2;
  		$('#title_svg').css("margin-top",svg_margin);
 
+ 		
+
+ 		$('div#title').each(function(){
+ 			var title_margin = ($window.height());
+ 			$(this).css("margin-top",title_margin*0.6).css("margin-bottom",title_margin*0.5);
+ 			console.log(title_margin);
+ 		});
+ 		$("div.intro:not('#title')").each(function(){
+ 			var title_margin = ($window.height())/2;
+ 			$(this).css("margin-top",title_margin).css("margin-bottom",title_margin);
+ 		});
+ 		//콘텐츠 div위치 확인
+ 		content_top = $('#content').offset().top  - $window.height()/3;
+ 		content_offset = content_top - $window.height();
+
+
  		//섹션 위치 확인을 위한 여러개의 intro.div 위치 확인
  		var intro_num = $("div.intro").length;
  		for(i=0;i<intro_num;i++){
  			intro_top[i] = $("div.intro").eq(i).offset().top;
  			section_check.push(false);
  		}
-
- 		$('div#title').each(function(){
- 			var title_margin = ($window.height() - $(this).height());
- 			$(this).css("margin-top",title_margin*0.8).css("margin-bottom",title_margin*0.5);
- 			console.log(title_margin);
- 		});
- 		$("div.intro:not('#title')").each(function(){
- 			var title_margin = ($window.height() - $(this).height())/2;
- 			$(this).css("margin-top",title_margin).css("margin-bottom",title_margin);
- 		});
- 		//콘텐츠 div위치 확인
- 		content_top = $('#content').offset().top  - $window.height()/3;
- 		content_offset = content_top - $window.height();
  		
  		
  	}
 
  	function svg_transition(){
 
- 		if(scrollTop<=intro_top[1]){
- 			//Section1
- 			if(section_check[0]==false){
- 				console.log("section1");
- 				
- 				section_check[0]=true;
-
- 			}
+ 		if(scrollTop<=intro_top[0]){
+ 			console.log("section1");
+ 			d3.selectAll(".header_background").style("z-index",0);
+ 			d3.select("#background_img").style("opacity",0);
+ 		}
+ 		else if((intro_top[0]<scrollTop)&&(scrollTop<=intro_top[1])){
+ 			console.log("section2");
+ 			d3.selectAll(".header_background").style("z-index",-999);
+ 			var opacity = 1 - (intro_top[1] - scrollTop)/(intro_top[1]-intro_top[0]);
+ 			d3.select("#background_img").style("opacity",opacity);
  			
  		}
  		else if((intro_top[1]<scrollTop)&&(scrollTop<=intro_top[2])){
- 			if(section_check[1]==false){
- 				console.log("section2");
- 				//push_circle(13);
- 				section_check[1]=true;
- 			}
+ 			console.log("section3");
+ 			
  		}
  		else if((intro_top[2]<scrollTop)&&(scrollTop<=intro_top[3])){
- 			if(section_check[2]==false){
- 				//push_circle(13);
- 				console.log("section3");
- 				section_check[2]=true;
- 			}
- 		}
- 		else if((intro_top[3]<scrollTop)&&(scrollTop<=intro_top[4])){
- 			if(section_check[3]==false){
- 				console.log("section4");
- 				//push_circle(5);
- 				section_check[3]=true;
- 			}
+ 			
+			console.log("section4");
+ 			
  		}
  	}
 
