@@ -140,7 +140,7 @@ span.green{
 	position: fixed;
 	width:100%;
 	max-width: 900px;
-	top:0;
+	top:-10%;
 	left:0;
 }
 .narrative{
@@ -181,6 +181,7 @@ span.green{
 #title{
 	background-color: rgba(0,0,0,0) !important;
 	mix-blend-mode: luminosity;
+	padding-top: 10%;
 }
 h1.title{
 	display: inline-block;
