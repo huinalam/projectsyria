@@ -1,5 +1,5 @@
 var cloud_width = parseInt(d3.select("#wordcloud").style('width'));
-var cloud_height = 0.4 * cloud_width;
+var cloud_height = 0.5 * cloud_width;
 var layout_width = cloud_width *0.98;
 var layout_height = cloud_height *0.98;
 
@@ -26,7 +26,7 @@ for(i=0; i<font_size.length;i++){
 
 var color_cloud = d3.scale.linear()
             .domain(font_size)
-            .range(["#EEEE88","#88BBB0","#99EED0","#AAFFFF"]);
+            .range(["#AABBAA","#88BBB0","#99EED0","#AAFFFF"]);
 
 var font_scale = d3.scale.linear()
 			.domain([0,2500,5000,7500])
@@ -36,7 +36,7 @@ d3.layout.cloud().size([layout_width,layout_height])
 				 .words(headline_frequencys)
 				 .rotate(0)
 				 .fontSize(function(d){ return font_scale(d.total);})
-				 .padding(3)
+				 .padding(4)
 				 .on("end",draw)
 				 .start();
 
@@ -46,7 +46,7 @@ function redraw_wordcloud(){
   d3.select('.wordcloud').remove();
 
   cloud_width = parseInt(d3.select("#wordcloud").style('width'));
-  cloud_height = 0.4 * cloud_width;
+  cloud_height = 0.5 * cloud_width;
   layout_width = cloud_width *0.98;
   layout_height = cloud_height *0.98;
 
@@ -63,7 +63,7 @@ function redraw_wordcloud(){
          .words(headline_frequencys)
          .rotate(0)
          .fontSize(function(d){ return font_scale(d.total);})
-         .padding(3)
+         .padding(4)
          .on("end",draw)
          .start();
 

@@ -45,6 +45,10 @@ li.nav_item{
 	text-decoration: none;
 	color: #eeeeee;
 }
+img.menu{
+	width: 15px;
+	height: 15px;
+}
 #main{
 	color: #44DDAA;
 	float: left;
