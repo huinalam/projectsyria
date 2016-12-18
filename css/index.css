@@ -123,18 +123,18 @@ span.green{
 	filter: grayscale(0.8);
 }
 #background_svg{
-	z-index: 0;
+	z-index: -10;
 }
 #background_img{
-	z-index: 0;
+	z-index: -10;
 	background-image: url("../img/logo.svg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 80%;
-	opacity: 0;
+	opacity: -10;
 }
 #background_cover{
-	z-index: -10 !important;
+	z-index: -2 !important;
 	background-color: #111111;
 }
 .header_background{
@@ -183,7 +183,7 @@ span.green{
 }
 
 #title{
-	background-color: rgba(17,17,17,1) !important;
+	background-color: rgba(17,17,17,0) !important;
 	z-index: 0 !important;
 }
 h1.title{
@@ -205,6 +205,7 @@ h1.title{
 	font-style: normal;
 	line-height: 95%;
 	mix-blend-mode: difference;
+	opacity: 0.8;
 	
 }
 h3.title{
@@ -218,6 +219,7 @@ h3.title{
 		word-spacing: 0.3em;
 		margin:0;
 		mix-blend-mode: difference;
+		opacity: 0.8
 	}
 #logo{
 	width: 50%;

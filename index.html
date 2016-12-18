@@ -245,12 +245,12 @@
 
  		if(scrollTop<=intro_top[0]){
  			console.log("section1");
- 			d3.selectAll(".header_background").style("z-index",0);
+ 			//d3.selectAll(".header_background").style("z-index",0);
  			d3.select("#background_img").style("opacity",0);
  		}
  		else if((intro_top[0]<scrollTop)&&(scrollTop<=intro_top[1])){
  			console.log("section2");
- 			d3.selectAll(".header_background").style("z-index",-999);
+ 			//d3.selectAll(".header_background").style("z-index",-999);
  			var opacity = 1 - (intro_top[1] - scrollTop)/(intro_top[1]-intro_top[0]);
  			d3.select("#background_img").style("opacity",opacity);
  			
