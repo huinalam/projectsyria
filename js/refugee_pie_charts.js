@@ -69,12 +69,12 @@ function drawing_introPie(){
     title_text1.append("tspan")
                 .attr("dy","1.1em")
                 .attr("x",0)
-                .text("Portions of Refugees");
+                .text("PORTION OF REFUGEES");
 
     title_text1.append("tspan")
                 .attr("dy","1.1em")
                 .attr("x",0)
-                .text("Between Continents");
+                .text("BETWEEN CONTIENTS");
 
     title_text1.append("tspan")
                 .attr("dy","1.1em")
@@ -90,12 +90,12 @@ function drawing_introPie(){
     title_text2.append("tspan")
                 .attr("dy","1.1em")
                 .attr("x",0)
-                .text("Portions of Refugees");
+                .text("PORTION OF REFUGEES");
 
     title_text2.append("tspan")
                 .attr("dy","1.1em")
                 .attr("x",0)
-                .text("in Middle East");
+                .text("IN MIDDLE EAST");
 
     title_text2.append("tspan")
                 .attr("dy","1.1em")

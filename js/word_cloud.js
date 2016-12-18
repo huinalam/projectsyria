@@ -40,6 +40,8 @@ d3.layout.cloud().size([layout_width,layout_height])
 				 .on("end",draw)
 				 .start();
 
+ add_title();
+
 function redraw_wordcloud(){
   d3.select('.wordcloud').remove();
 
@@ -64,6 +66,8 @@ function redraw_wordcloud(){
          .padding(3)
          .on("end",draw)
          .start();
+
+  add_title();
 
 }
 
@@ -97,30 +101,6 @@ function draw(words) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
                 })
                 .text(function(d) { return d.text; });
-
-        var wordcloud_title = d3.select('.wordcloud')
-                                .append("g")
-                                .attr("transform","translate(" + 0 + "," + "0" +")")
-                                .append("text")
-                                .attr("x",0)
-                                .attr("y",0)
-                                .attr("class","chart_title")
-                                .attr("font_size","1.2em")
-
-          wordcloud_title.append("tspan")
-                         .attr("dy","1.2em")
-                         .attr("x",0)
-                         .text("Frequency of Mention");
-
-          wordcloud_title.append("tspan")
-                         .attr("dy","1.1em")
-                         .attr("x",0)
-                         .text("in Major Media:");
-
-          wordcloud_title.append("tspan")
-                         .attr("dy","1.1em")
-                         .attr("x",0)
-                         .text("NY times & The Guardians");
 
 
           d3.selectAll(".wordcloud_text").on("mouseover",function(d){
@@ -203,6 +183,28 @@ function draw(words) {
 
           });
 
-     }
+}
+
+function add_title(){
+  var wordcloud_title = d3.select('.wordcloud')
+                                .append("g")
+                                .attr("transform","translate(" + 0 + "," + "0" +")")
+                                .append("text")
+                                .attr("x",0)
+                                .attr("y",0)
+                                .attr("class","chart_title_cloud")
+                                .attr("font_size","1.2em")
+
+          wordcloud_title.append("tspan")
+                         .attr("dy","1.1em")
+                         .attr("x",0)
+                         .text("FREQUENCY OF MENTION:");
+
+          wordcloud_title.append("tspan")
+                         .attr("dy","1.1em")
+                         .attr("x",0)
+                         .text("NY TIMES & The GUADIANS");
+
+}
 
 

@@ -17,11 +17,20 @@
 .chart_title{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 400;
+	font-size: 0.7em;
+	margin: 5px;
+	letter-spacing: 1px;
+	word-spacing: 2px;
+	fill: #CCCCCC;
+}
+.chart_title_cloud{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
 	font-size: 0.8em;
 	margin: 5px;
-	letter-spacing: 0.5px;
+	letter-spacing: 1px;
 	word-spacing: 2px;
-	fill: #cccccc;
+	fill: #CCCCCC;
 }
 .chart_caption{
 	font-family: 'Roboto Condensed', sans-serif;
