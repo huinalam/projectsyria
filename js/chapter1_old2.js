@@ -8,7 +8,7 @@ var margin = {
               
 width = parseInt(d3.select(".viz").style('width'));
 //width = (d3.select("body").width())*0.63;
-height = width * 0.75;
+height = width * 0.8;
 
 //DATA
 var dataCon;
@@ -32,7 +32,7 @@ var y_line;
 
 //Data
 var year = [parseDate("1968-12-31"),parseDate("1980-12-31"),parseDate("1992-12-31"),parseDate("2000-12-31"),parseDate("2011-12-31")]; 
-var marking_events = [{year:"1971", title:"Hafez al-Assad was elected as a president"},{year: "1982", title:"Hamma massacre: 10,000-40,000 casulties "},{ year: "2000", title:"Hafez's death and al-Assad Regime began"}];
+var marking_events = [{year:"1971", title:"Hafez al-Assad Regim began by Election"},{year: "1982", title:"Hamma massacre: 10,000-40,000 casulties "},{ year: "2000", title:"Hafez's death and al-Assad Regime began"}];
 var chapter_list = [{start: "1967-01-31", end: "1967-12-31"},
                     {start: "1968-12-31", end: "1982-12-31"},
                     {start: "1982-12-31", end: "2000-12-31"},
@@ -141,7 +141,7 @@ function reDraw(){
 
     //*assign size from css (media query) 
     width = parseInt(d3.select(".viz").style('width'));
-    height = width * 0.75;
+    height = width*0.8;
 
     svg_chapter1.transition()
             .attr("width",width)
@@ -199,8 +199,7 @@ function reDraw(){
                       .attr("cy",function(d){
                           var index = d.year - 1968;
                           //return y_line(dataCon[index].value) - 100;
-                          var svg_height = d3.select('.intro_svg_intrograph').attr("height");
-                          return svg_height/2;
+                           return "12em";
                       }); 
 
     d3.selectAll(".l1").transition()
@@ -215,8 +214,7 @@ function reDraw(){
                         .attr("y1",function(d){
                               var index = d.year - 1968;
                               //return y_line(dataCon[index].value) - 100;
-                              var svg_height = d3.select('.intro_svg_intrograph').attr("height");
-                              return svg_height/2;
+                              return "12em";
                          })
                         .attr("y2",function(d){
                               var index = d.year - 1968;
@@ -231,8 +229,7 @@ function reDraw(){
                           .attr("y",function(d){
                               var index = d.year - 1968;
                               //return y_line(dataCon[index].value) - 275;
-                               var svg_height = d3.select('.intro_svg_intrograph').attr("height");
-                               return svg_height/2 - 45;
+                               return "-3em";
                           });
 
     //d3.selectAll(".chart_caption").call(wrap,110);                   
@@ -267,8 +264,7 @@ function markingEvent(marking_events){
                   .attr("cy",function(d){
                       var index = d.year - 1968;
                       //return y_line(dataCon[index].value) - 100;
-                      var svg_height = d3.select('.intro_svg_intrograph').attr("height");
-                      return svg_height/2;
+                        return "12em";
                   }); 
 
     marking_events.append("line")
@@ -284,8 +280,7 @@ function markingEvent(marking_events){
                 .attr("y1",function(d){
                       var index = d.year - 1968;
                       //return y_line(dataCon[index].value) - 100;
-                      var svg_height = d3.select('.intro_svg_intrograph').attr("height");
-                      return svg_height/2;
+                      return "12em";
                  })
                 .attr("y2",function(d){
                       var index = d.year - 1968;
@@ -294,7 +289,6 @@ function markingEvent(marking_events){
 
     marking_events.append("text")
                   .attr("class","chart_caption")
-                  .attr("id",function(d,i){ return "caption" + i; })
                   .attr("x",function(d){
                     var toYear = d.year + "-12-31";
                     return x_line(parseDate(toYear)) - 5;
@@ -302,16 +296,16 @@ function markingEvent(marking_events){
                   .attr("y",function(d){
                       var index = d.year - 1968;
                       //return y_line(dataCon[index].value) - 275;
-                      var svg_height = d3.select('.intro_svg_intrograph').attr("height");
-                      return svg_height/2 - 45;
+                       return "-3em";
                   })
+                  .attr("dy","15px")
                   .text(function(d){
                     return d.title;
-                  })
-                  .attr("dy","0.8em")
+                  });
 
-    d3.selectAll(".chart_caption:not(#caption1)").call(wrap,90); 
-    d3.selectAll("#caption1").call(wrap,110); 
+    d3.selectAll(".chart_caption")
+      .call(wrap,95);
+
 }
 
 function area_popYear(chapter_list){

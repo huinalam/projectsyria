@@ -48,23 +48,22 @@ body{
 }
 .chapter_introduction_div{
 	font-size: 0.8em;
+	margin: 5% 0.5% 0 0.5%;
 	padding:1%;
 	display: inline-block;
-
 	background-color: rgba(2,8,16,0.8);
 }
-.chapter_inroduction_div>p{
-	font-family: 'Merriweather', serif;
+.chapter_introduction_div>p{
 	text-indent: 0.7em;
 	display: inline-block;
 	width: 96%;
 	margin: 2%;
-	font-weight: 400;
-	font-size: 1.1em;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 1.3em;
 	text-align: left;
 	letter-spacing: 0.05em;
 	word-spacing: 0.15em;
-	line-height: 160%;
+	line-height: 150%;
 	color: #eeeeee;
 }
 .chapter_article_div{
@@ -88,10 +87,15 @@ body{
 	color: #eeeeee;
 	font-stretch: condensed;
 }
+#chapt2_svg_title{
+	margin: 0 0 -1em 0 !important;
+}
 
 h1.title{
+	display: inline-block;
 	color: #FFFFFF;
-	margin: 3% 0% 5% 0%;
+	margin: 0.5%;
+    padding: 0.5%;
 	max-width: 800px;
 	font-family: 'League Gothic', sans-serif;
 	font-size: 2em;
@@ -99,29 +103,31 @@ h1.title{
 	word-spacing: 0.1em;
 	font-weight: normal;
 	font-style: normal;
-	font-weight: 100;
-	line-height: 100%;	
+	line-height: 110%;
+	background-color: rgba(2,8,8,0.8);
 }
 h2{
 	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 400;
+	font-weight: 700;
 	font-size: 1.5em;
 	padding: 5px 5px 5px 0;
 	margin-top: 0px;
 	line-height: 120%;
-	color: #cc3333;
+	letter-spacing: 0.03em;
+	word-spacing: 0.1em;
+	color: #eeeeee;
 }
 h3{
 	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 400;
-	font-size: 1em;
+	font-weight: 700;
+	font-size: 1.1em;
 	margin:5px 0 0 0;
 	line-height: 120%;
 	color: #eeeeee;
 }
 .chapter_article_div >h2{
 	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 400;
+	font-weight: 700;
 	font-size: 1.5em;
 	margin: 30px 0 5px 0;
 	margin-top: 0px;
@@ -184,7 +190,7 @@ h3{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 700;
 	font-size: 1.5em;
-	margin: 0.5em 0 0 0;
+	margin: 0.5em 0 0.5em 0;
 	line-height: 120%;
 	letter-spacing: 0.03em;
 	word-spacing: 0.1em;
@@ -259,8 +265,10 @@ h3{
 			margin: 1em 0 1.4em 0;
 		}
 		h1.title{
+			display: inline-block;
 			color: #ffffff;
-			margin: 3% 0% 5% 0%;
+			margin: 0.5%;
+			padding: 0.5%;
 			max-width: 800px;
 			font-family: 'League Gothic', sans-serif;
 			font-size: 3.5em;
@@ -268,8 +276,8 @@ h3{
 			word-spacing: 0.1em;
 			font-weight: normal;
 			font-style: normal;
-			font-weight: 100;
-			line-height: 100%;
+			line-height: 110%;
+			background-color: rgba(2,8,8,0.8);
 		}
 		.container{
 			background-color: #11121A;
@@ -289,18 +297,17 @@ h3{
 			z-index: -1;
 		}
 		.chapter_introduction_div>p{
-			font-family: 'Merriweather', serif;
 			text-indent: 0.7em;
 			display: inline-block;
 			width: 96%;
 			margin: 2%;
-			font-weight: 400;
-			font-size: 1.1em;
+			font-family: 'Source Sans Pro', sans-serif;
+			font-size: 1.3em;
 			text-align: left;
 			letter-spacing: 0.05em;
 			word-spacing: 0.15em;
-			line-height: 160%;
-			color: #cccccc;
+			line-height: 150%;
+			color: #eeeeee;
 		}
 		.chapter_article_div >p{
 			margin: 0 0 2em 0;

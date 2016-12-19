@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Source+Sans+Pro:300,400,600,700');
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,400');
 @import url('https://fonts.googleapis.com/css?family=Merriweather:300');
+@import url('https://fonts.googleapis.com/css?family=Gurajada');
 
 html{font-size: 14px;}
 body{
@@ -170,12 +171,12 @@ span.green{
 	display: inline-block;
 	width: 80%;
 	margin: 5% auto 5% auto;
-	font-family: 'Merriweather', serif;
-	font-size: 1.1em;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 1.3em;
 	text-align: left;
 	letter-spacing: 0.05em;
 	word-spacing: 0.15em;
-	line-height: 160%;
+	line-height: 150%;
 	color: #eeeeee;
 }
 
