@@ -134,18 +134,28 @@ h3{
 	text-align: left;
 	color: #AAAAAA;
 }
-
+.border{
+	margin: 0;
+	display: block;
+	width: 100%;
+	min-height: 0.4em;
+	background-color: #CCD0DA;
+	mix-blend-mode: screen;
+}
 .wrapper{
 	width: 100%;
 	display:inline-block;
-	background-color: #11121A;
+	background-color: #111111;
+	/*border-style: solid;
+	border-width: 0.2em 0 0 0;
+	border-color: #CCD0DA;*/
 }
 
 .container{
 	width: 100%;
 	margin:0;
 	height: auto;
-	background-color: #11121A;
+	background-color: #111111;
 }
 .block{
 	display: inline-block;
@@ -164,7 +174,7 @@ h3{
 	max-width: 400px;  
 	width: 48%;
 	margin: 1%;
-	background-color: #11121A;
+	background-color: #111111;
 }
 .viz{
 	z-index: 999;
@@ -173,7 +183,7 @@ h3{
 	margin: 2%;
 	margin-top: 0%;
 	float: none;
-	background-color: #11121A;
+	background-color: #111111;
 }
 .viz>h2{
 	font-family: 'Source Sans Pro', sans-serif;
@@ -204,7 +214,7 @@ h3{
 	background: linear-gradient(#111215 10%, rgba(0,0,0,0));
 }
 .text{
-	background-color: #11121A;
+	background-color: #111111;
 	width:98%;
 	margin: 1%;
 	float: none;
@@ -257,7 +267,7 @@ h3{
 			display: inline-block;
 			color: #ffffff;
 			margin: 0.5%;
-			padding: 0.5%;
+			padding: 1%;
 			max-width: 800px;
 			font-family: 'League Gothic', sans-serif;
 			font-size: 3.5em;
@@ -269,7 +279,7 @@ h3{
 			background-color: rgba(2,8,8,0.8);
 		}
 		.container{
-			background-color: #11121A;
+			background-color: #111111;
 			width: 92%;
 			margin:0 auto 0 auto;
 			height: auto;
@@ -307,7 +317,7 @@ h3{
 			width: 48%;
 			margin: 1%;
 			height: 100px;
-			background-color: #11121A;
+			background-color: #111111;
 		}
 		.block-32{
 			display: inline-block;
@@ -316,7 +326,7 @@ h3{
 			max-width: 400px;  
 			width: 30%;
 			margin: 1.6%;
-			background-color: #11121A;
+			background-color: #111111;
 		}
 		.viz{
 			z-index: 999;
@@ -325,14 +335,14 @@ h3{
 			max-width: 695.52px;
 			margin: 1%;
 			float: left;
-			background-color: #11121A;
+			background-color: #111111;
 		}
 		.viz>h2{
+			display: inline-block;
 			font-family: 'Source Sans Pro', sans-serif;
 			font-weight: 700;
 			font-size: 1.5em;
-			margin: 2em 0 0.5em 0;
-			margin-top: 0px;
+			margin: 1em 0 0.5em 0;
 			line-height: 120%;
 			letter-spacing: 0.03em;
 			word-spacing: 0.1em;
@@ -354,7 +364,7 @@ h3{
 			height:0;
 		}
 		.text{
-			background-color: #11121A;
+			background-color: #111111;
 			position: relative;
 			width:33%;
 			margin: 1%;

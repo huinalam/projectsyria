@@ -40,6 +40,7 @@
             <p>With a view to understanding occurrence of the crisis and the background of civil war, it&#39;d better look into Syrian history of two Assads&#39; dictatorship for 50 years and types of suppression which the regimes have pushed against. And how these facts are coincided with the number of refugees each time.</p>
         </div>
 	</div>
+	<div class="border"></div>
 	<div class="wrapper">
 		<div class="container">
 			<div class="viz">
@@ -126,6 +127,7 @@ $(window).load(function(){
 	var article_height = [];
 	var windowHeight;
 	var headerTop;
+	var wrapperTop;
 	var vizTop;
 	var bottomHeight;
 
@@ -190,6 +192,7 @@ $(window).load(function(){
 
 
 		/*div 스크롤 위치 확인*/
+		wrapperTop = $(".wrapper").offset().top;
 		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom"));
 
 		if($window.width()<821){
@@ -223,13 +226,24 @@ $(window).load(function(){
      }
 
 	function fade_out(){
-		var range = vizTop - (scrollTop + vizGap)
-		var opacity = range/vizTop; 
+		var progress1 = vizTop - (scrollTop + vizGap);
+		var range1 = vizTop;
+		var opacity1 = progress1/range1; 
+		var windowHeight = $window.height();
 
-		if(opacity<0){
-			opacity=0;
+		if(opacity1<0){
+			opacity1=0;
 		}
-		$(".header_background").css({opacity: opacity},10);
+		$(".header_background").css({opacity: opacity1},10);
+
+		if(((wrapperTop - windowHeight)<scrollTop)&&(scrollTop<=(vizTop - vizGap))){
+			
+			var progress2 = (vizTop - vizGap) - scrollTop;
+			var range2 = (vizTop - vizGap) - (wrapperTop - windowHeight);
+			var opacity2 = 1 - (progress2/range2);
+			console.log(opacity2);
+			$(".wrapper").css({opacity: opacity2},10);
+		}
 	}
 
 

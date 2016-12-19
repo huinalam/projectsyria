@@ -11,7 +11,7 @@ body{
 	margin: 0px;
 	padding: 0px;
 	color: #AAAAAA;
-	background-color: #111111;
+	background-color: #11181A;
 }
 p{
 	display: inline-block;
@@ -52,12 +52,12 @@ span.green{
 }
 .facts{
 	display: inline-block;
-	width:57%;
+	width:51%;
 	padding-top:17.5%;
 	padding-bottom:17.5%;
 	color:#dddddd;
 	border-style: solid;
-	border-color: #dd4455;
+	border-color: #224455;
 	position: relative;
 	background-repeat: no-repeat;
 	float:left;
@@ -72,12 +72,12 @@ span.green{
 .facts_p{
 	overflow: hidden;
 	display: inline-block;
-	font-size:1.1em;
+	font-size:1em;
 	font-weight: 300;
-	width:36%;
+	width:41%;
 	height:auto;
 	float: left;
-	background-color: #dd4455;
+	background-color: #224455;
 	padding: 2%;
 	margin:0 !important;
 	color: #eedddd;
@@ -88,15 +88,15 @@ span.green{
 	margin: 0.1em auto 0.1em auto;
 	font-size: 1.5em;
 	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 700;
+	font-weight: 600;
 	word-spacing: 0.25em;
 	letter-spacing: 0.05em;
-	color:#ee4455;
+	color:#eef0ff;
 }
 #civilwar{
 	background: url('../img/facts_civil_war.jpg') no-repeat center center;
 	background-size: cover;
-}h
+}
 #civilward:after{
 	content:"";	
 	background: url('../img/facts_civil_war.jpg') no-repeat center center;
@@ -156,7 +156,7 @@ span.green{
 }
 #background_cover{
 	z-index: -2 !important;
-	background-color: #111111;
+	background-color: #11181A;
 }
 .header_background{
 	text-align: center;
@@ -189,7 +189,7 @@ span.green{
 .header{
 	max-width: 900px;
 	width: 94%;
-	margin: 3%;
+	margin: 0% auto 3% auto;
 	text-align: center;
 	background-color: #111111;
 }
@@ -198,7 +198,7 @@ span.green{
 	width: 94%;
 	margin: 3%;
 	text-align: center;
-	background-color: rgba(17,17,17,0.9);
+	background-color: rgba(17,24,26,0.9);
 	z-index: 0;
 
 }
@@ -220,7 +220,7 @@ h1.title{
 	padding-top: 0.1em;
 	max-width: 900px;
 	font-family: 'League Gothic Condensed', sans-serif;
-	font-size: 7em;
+	font-size: 6em;
 	letter-spacing: 0.05em;
 	word-spacing: 0.1em;
 	font-weight: normal;
@@ -287,6 +287,13 @@ h2{
 	color: #eeeeee;
 	font-stretch: condensed;
 }
+.block-1 >h2{
+	margin: 3% 0 1% -3% !important;
+	padding: 0 0 1% 1.5%;
+	border-style: solid;
+	border-width: 0 0 1px 0;
+	border-color: #AAAAAA;
+}
 
 #back{
 	fill:white;
@@ -296,9 +303,6 @@ h2{
 	width: 100%;
 	padding-top: 2%;
 	display: inline-block;
-	border-style: solid;
-	border-width: 1px 0 0 0;
-	border-color: #AAAAAA;
 }
 .report{
 	width:100%;
@@ -402,7 +406,7 @@ h3.chapt_list{
 	display: inline-block;
 	background-color: #111111;
 	width: 98%;
-	margin: 8% 1% 4% 1%;
+	margin: 0% 1% 4% 1%;
 }
 .block-2{
 	display: inline-block;
@@ -423,7 +427,7 @@ h3.chapt_list{
 	float: left;
 	width: 90%;
 	margin: 2% 5%;
-	background-color: #ee4455;
+	background-color: #224455;
 	
 }
 .block-42{
@@ -496,13 +500,12 @@ h3.chapt_list{
 		display: inline-block;
 		text-align: center;
 		margin: 0.1em auto 0.1em auto;
-		color:#ee3344;
+		color:#eef0ff;
 		font-size: 1.5em;
 		font-family: 'Source Sans Pro', sans-serif;
-		font-weight: 700;
+		font-weight: 600;
 		word-spacing: 0.25em;
 		letter-spacing: 0.05em;
-		mix-blend-mode: screen;
 		
 	}
 	.data_source_p{
@@ -530,7 +533,6 @@ h3.chapt_list{
 	body{
 		margin: 0px;
 		padding: 0px;
-		background-color: #111111;
 	}
 	p{
 		display: inline-block;
@@ -556,6 +558,7 @@ h3.chapt_list{
 		float: left;
 		width: 30.3%;
 		margin: 1.5%;
+		background-color: #224455;
 	}
 	.container{
 			width: 100%;
@@ -570,8 +573,7 @@ h3.chapt_list{
 		padding-bottom:35%;
 		color:#dddddd;
 		border-style: solid;
-		
-		border-color: #dd4455;
+		border-color: #224455;
 		position: relative;
 		background-repeat: no-repeat;
 	}
@@ -579,15 +581,20 @@ h3.chapt_list{
 		margin-top: 20%;
 		background-color: #111111;
 		border-style: solid;
-		border-width: 0.1em 0 0 0;
+		border-width: 0.2em 0 0 0;
 		border-color: #CCD0DA;
+		width: 100%;
+		max-width: 100% !important;
+		height: auto;
+		margin: auto;
+		z-index: 10;
 	}
 	.facts_p{
 		width:90.4%;
 		height:146px;
 		margin:0% 0 0 0;
 		padding:5%;
-		background-color: #dd4455;
+		background-color: #224455;
 
 	}
 
