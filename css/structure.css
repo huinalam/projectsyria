@@ -82,7 +82,7 @@ body{
 
 h1.title{
 	display: inline-block;
-	color: #FFFFFF;
+	color: #222222;
 	margin: 0.5%;
     padding: 0.5%;
 	max-width: 800px;
@@ -93,7 +93,7 @@ h1.title{
 	font-weight: normal;
 	font-style: normal;
 	line-height: 110%;
-	background-color: rgba(2,8,8,0.8);
+	background-color: rgba(255,255,255,0.8);
 }
 h2{
 	font-family: 'Source Sans Pro', sans-serif;
@@ -265,7 +265,7 @@ h3{
 		}
 		h1.title{
 			display: inline-block;
-			color: #ffffff;
+			color: #222222;
 			margin: 0.5%;
 			padding: 1%;
 			max-width: 800px;
@@ -276,7 +276,7 @@ h3{
 			font-weight: normal;
 			font-style: normal;
 			line-height: 110%;
-			background-color: rgba(2,8,8,0.8);
+			background-color: rgba(255,255,255,0.8);
 		}
 		.container{
 			background-color: #111111;
