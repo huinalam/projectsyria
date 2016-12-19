@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Muli:300,700');
+@import url('https://fonts.googleapis.com/css?family=Muli:300,400,600');
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Source+Sans+Pro:300,400,600,700');
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,400');
@@ -445,8 +445,8 @@ h3.chapt_list{
 		display: inline-block;
 		position: relative;
 		float: left;
-		width: 17%;
-		margin: 4%;
+		width: 21%;
+		margin: 2%;
 		background-color: #111111;
 	}
 }

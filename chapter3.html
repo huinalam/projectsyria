@@ -364,8 +364,8 @@
                 windowHeight = $window.height();
                 $(".header").css("height",windowHeight);
                 $(".chapter_article_div").not( document.getElementById("last_article")).css("margin-top",windowHeight/2).css("margin-bottom",windowHeight/2);
-                var header_back_Height = $(".header_background").width() * 0.6;
-                $(".header_background").css("height",header_back_Height);
+                //var header_back_Height = $(".header_background").width() * 0.6;
+                $(".header_background").css("height",windowHeight);
 
                 bottomHeight = $(".bottom").height() + parseInt($(".bottom").css("padding-bottom")) + parseInt($(".bottom").css("padding-top"));
                 $('#last_article').css("margin-bottom",bottomHeight);
@@ -374,8 +374,8 @@
                 /*헤더 위치 확인*/
                 headerTop = ($window.height() - $(".header_background").height())/2;
                 
-                $(".header").css("margin-top",headerTop);
-                $(".header_background").css("top",headerTop);
+                //$(".header").css("margin-top",headerTop);
+                //$(".header_background").css("top",headerTop);
 
 
                 for(var i=0; i<$(".chapter_article_div").length;i++){

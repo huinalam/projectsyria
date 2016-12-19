@@ -169,7 +169,8 @@ $(window).load(function(){
 		windowHeight = $window.height();
 		$(".header").css("height",windowHeight);
 		$(".chapter_article_div").not( document.getElementById("last_article")).css("min-height",windowHeight);
-		var header_back_Height = $(".header_background").width() * 0.6;
+		//var header_back_Height = $(".header_background").width() * 0.6;
+		var header_back_Height = windowHeight;
 		$(".header_background").css("height",header_back_Height);
 
 		bottomHeight = $(".bottom").height() + parseInt($(".bottom").css("padding-bottom")) + parseInt($(".bottom").css("padding-top"));
@@ -178,8 +179,8 @@ $(window).load(function(){
 
 		/*헤더 위치 확인*/
 		headerTop = ($window.height() - $(".header_background").height())/2;
-		$(".header").css("margin-top",headerTop);
-		$(".header_background").css("top",headerTop);
+		//$(".header").css("margin-top",headerTop);
+		//$(".header_background").css("top",headerTop);
 
 		
 		for(var i=0; i<5;i++){

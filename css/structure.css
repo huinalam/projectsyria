@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Muli:300,700');
+@import url('https://fonts.googleapis.com/css?family=Muli:300,400,600');
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Source+Sans+Pro:300,400,600,700');
 @import url('https://fonts.googleapis.com/css?family=Merriweather:300');
@@ -17,16 +17,16 @@ body{
 	max-width: 800px;
 	width: 90%;
 	height:89%;
-	margin: 10% 1% 1% 1%;
+	margin: 15% 1% 1% 1%;
 	padding:0% 4% 0% 4%;
 }
 .header_background{
 	width:100%;
-	top:0%;
+	top:5%;
 	left: 0%;
 	background-repeat: no-repeat;
 	background-position: top center;
-	background-size: 100% auto;
+	background-size: cover;
 	position:fixed;
 	z-index: -1;
 }
@@ -58,7 +58,8 @@ body{
 	display: inline-block;
 	width: 96%;
 	margin: 2%;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Muli', sans-serif;
+	font-weight: 300;
 	font-size: 1.3em;
 	text-align: left;
 	letter-spacing: 0.05em;
@@ -74,19 +75,7 @@ body{
 #last_article{
 	margin: 80% 5% 0% 5%;
 }
-.viz>h2{
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 700;
-	font-size: 1.5em;
-	margin: 2em 0 0.5em 0;
-	margin-top: 0px;
-	line-height: 120%;
-	letter-spacing: 0.03em;
-	word-spacing: 0.1em;
-	text-align: left;
-	color: #eeeeee;
-	font-stretch: condensed;
-}
+
 #chapt2_svg_title{
 	margin: 0 0 -1em 0 !important;
 }
@@ -141,7 +130,7 @@ h3{
 	font-size: 1.3em;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
-	line-height: 150%;
+	line-height: 135%;
 	text-align: left;
 	color: #AAAAAA;
 }
@@ -189,7 +178,7 @@ h3{
 .viz>h2{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 700;
-	font-size: 1.5em;
+	font-size: 1.2em;
 	margin: 0.5em 0 0.5em 0;
 	line-height: 120%;
 	letter-spacing: 0.03em;
@@ -286,23 +275,15 @@ h3{
 			height: auto;
 			max-width: 1200px;
 		}
-		.header_background{
-			width:92%;
-			top:0%;
-			left: 4%;
-			background-repeat: no-repeat;
-			background-position: top center;
-			background-size: 100% auto;
-			position:fixed;
-			z-index: -1;
-		}
+		
 		.chapter_introduction_div>p{
 			text-indent: 0.7em;
 			display: inline-block;
 			width: 96%;
 			margin: 2%;
-			font-family: 'Source Sans Pro', sans-serif;
+			font-family: 'Muli', sans-serif;
 			font-size: 1.3em;
+			font-weight: 300;
 			text-align: left;
 			letter-spacing: 0.05em;
 			word-spacing: 0.15em;
@@ -315,7 +296,7 @@ h3{
 			font-size: 1.1em;
 			font-family: 'Source Sans Pro', sans-serif;
 			font-weight: 300;
-			line-height: 150%;
+			line-height: 135%;
 			text-align: left;
 			color: #AAAAAA;
 		}
