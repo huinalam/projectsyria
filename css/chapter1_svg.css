@@ -85,13 +85,13 @@
     font-size: 0.8em;
     fill: #eeeeee;
 }
-
-@media screen and (max-width: 360px){
+/*
+@media screen and (max-width: 640px){
     .chart_caption{
         font-family: 'Roboto Condensed', sans-serif;
         font-size: 0.6em;
         fill: #eeeeee;
     }
-}
+}*/
 
 

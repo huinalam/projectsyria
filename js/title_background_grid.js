@@ -40,13 +40,13 @@ for(i=0;i<grid_slice;i++){
 
 
 
-var point_index = [				  18,
+var point_index = [				  18,19,
 				22,23,24,25,26,27,28,
 				30,31,32,33,34,35,36,37,
 				40,41,42,43,44,45,46,47,
 				51,52,53,54,55,56,57,
 				61,62,63,64,65,
-				71,72,73,
+				70,71,72,73,
 				81,82
 				];
 
@@ -113,7 +113,7 @@ function first_drawing(num){
 		   .attr("cy",function(d){
 		   		return d.y;
 		   })
-		   .attr("r","0.3em")
+		   .attr("r","0.2em")
 		   .style("opacity",0);
 
 	title_g.selectAll(".m_circle")  
@@ -409,7 +409,7 @@ function push_circle(num){
 		   .attr("cy",function(d){
 		   		return d.y;
 		   })
-		   .attr("r","0.3em");
+		   .attr("r","0.2em");
 
 
 	 title_g.selectAll("line")

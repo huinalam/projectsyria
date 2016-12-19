@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:300,700');
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Source+Sans+Pro:300,400,600,700');
-@import url('https://fonts.googleapis.com/css?family=Bitter');
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400');
 
 html{font-size: 12px;}
 body{
@@ -33,10 +33,10 @@ a:hover{
 	color:#ffffff;
 }
 span.red{
-	color: #ee4455;
+	/*color: #ee4455;*/
 }
 span.green{
-	color: #44DDAA;
+	/*color: #44DDAA;*/
 }
 #intro_facts{
 	background-color: rgba(255,255,255,0);
@@ -57,6 +57,16 @@ span.green{
 .facts h3{
 
 }
+.no-margin{
+	display: inline-block;
+	margin: 0 -16.5%;
+	padding: 2% 16.5%;
+	background-color: rgba(18,18,18,0.5);
+	border-style: solid;
+	border-width: 0.05em 0;
+	border-color: #333333;
+	mix-blend-mode: screen;
+}
 .facts_p{
 	overflow: hidden;
 	display: inline-block;
@@ -74,17 +84,18 @@ span.green{
 	display: inline-block;
 	text-align: center;
 	margin: 0.1em auto 0.1em auto;
-	color: #222222;
 	font-size: 1.5em;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 700;
 	word-spacing: 0.25em;
 	letter-spacing: 0.05em;
+	color:#ee4455;
 }
 #civilwar{
-	
-}
-#civilwar:after{
+	background: url('../img/facts_civil_war.jpg') no-repeat center center;
+	background-size: cover;
+}h
+#civilward:after{
 	content:"";	
 	background: url('../img/facts_civil_war.jpg') no-repeat center center;
 	background-size: cover;
@@ -94,12 +105,14 @@ span.green{
 	bottom: 0;
 	right: 0;
 	z-index:-1;
-	filter: grayscale(0.8);
+	filter: grayscale(0.6);
 }
 
 #death{
+	background: url('../img/facts_death.jpg') no-repeat center center;
+	background-size: cover;
 }
-#death:after{
+#deathd:after{
 	content:"";	
 	background: url('../img/facts_death.jpg') no-repeat center center;
 	background-size: cover;
@@ -109,12 +122,14 @@ span.green{
 	bottom: 0;
 	right: 0;
 	z-index:-1;
-	filter: grayscale(0.8);
+	filter: grayscale(0.6);
 }
 
 #refugee{
+	background: url('../img/facts_refugee.jpg') no-repeat center center;
+	background-size: cover;
 }
-#refugee:after{
+#refugeed:after{
 	content:"";	
 	background: url('../img/facts_refugee.jpg') no-repeat center center;
 	background-size: cover;
@@ -124,7 +139,7 @@ span.green{
 	bottom: 0;
 	right: 0;
 	z-index:-1;
-	filter: grayscale(0.8);
+	filter: grayscale(0.6);
 }
 #background_svg{
 	z-index: -10;
@@ -154,14 +169,14 @@ span.green{
 	display: inline-block;
 	width: 80%;
 	margin: 2% auto;
-	font-family: 'Bitter', serif;
-	font-weight: 400;
-	font-size: 1.3em;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 300;
+	font-size: 1.1em;
 	text-align: left;
 	letter-spacing: 0.05em;
 	word-spacing: 0.15em;
-	line-height: 160%;
-	color: #ffffff;
+	line-height: 150%;
+	color: #88DDFF;
 }
 
 .container{
@@ -239,16 +254,13 @@ h3.title{
 }
 
 h2.intro{
-	font-family: 'Amatic SC', cursive;
-	font-weight: 700;
-	font-size: 2em;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	font-size: 1.5em;
 	text-align: center;
 	letter-spacing: 0.05em;
 	word-spacing: 0.15em;
 	background: none;
-	-webkit-text-fill-color: white; /* Will override color (regardless of order) */
-   -webkit-text-stroke-width: 1px;
-   -webkit-text-stroke-color: black;
 }
 h3.intro{
 	display: inline-block;
@@ -318,12 +330,14 @@ h2{
 		color: #44DDAA !important;
 		border-color: #44DDAA
 }
+
 .data_source{
 	height: 30%;
 	width: auto;
 	max-width: 80%;
 	max-height: 4em;
 	margin: 0.5em;
+	filter:grayscale(60%);
 }
 .data_source_p{
 	margin: 2% 5%;
@@ -331,17 +345,17 @@ h2{
 	font-size: 0.8em;
 }
 h3.source_list{
-		text-align: center;
-		width:98%;
-		margin:0 !important;
-		padding:1%;
-		font-size: 0.6em;
-		font-family: 'Source Sans Pro', sans-serif;
-		font-weight: 400;
-		z-index: 999;
-		margin:0.5em 0;
-		background-color: #111111;
-		color:#eeeeee;
+	text-align: center;
+	width:98%;
+	margin:0 !important;
+	padding:1%;
+	font-size: 0.6em;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	z-index: 999;
+	margin:0.5em 0;
+	background-color: #111111;
+	color:#eeeeee;
 	}
 #chapt1{
 	background-image: url("../img/chapt1.jpg");
@@ -407,7 +421,6 @@ h3.chapt_list{
 	float: left;
 	width: 75%;
 	margin: 2% 12.5%;
-	z-index: -2;
 	background-color: #ee4455;
 	
 }
@@ -430,8 +443,8 @@ h3.chapt_list{
 		display: inline-block;
 		position: relative;
 		float: left;
-		width: 21%;
-		margin: 2%;
+		width: 17%;
+		margin: 4%;
 		background-color: #111111;
 	}
 }
@@ -481,12 +494,13 @@ h3.chapt_list{
 		display: inline-block;
 		text-align: center;
 		margin: 0.1em auto 0.1em auto;
-		color: #222222;
+		color:#ee3344;
 		font-size: 2em;
 		font-family: 'Source Sans Pro', sans-serif;
 		font-weight: 700;
 		word-spacing: 0.25em;
 		letter-spacing: 0.05em;
+		
 	}
 	.data_source_p{
 		margin: 2% 15%;
@@ -549,8 +563,8 @@ h3.chapt_list{
 	}
 	.facts{
 		width:98%;
-		padding-top:30%;
-		padding-bottom:55%;
+		padding-top:40%;
+		padding-bottom:45%;
 		color:#dddddd;
 		border-style: solid;
 		border-width: 1%;

@@ -3,9 +3,9 @@
 
 /* README 타이틀 SVG*/
 .m_circle{
-	stroke-width:1;
+	stroke-width:0.1em;
 	stroke: #88DDFF;
-	fill: #AAAAAA;
+	fill: #88DDFF;
 	mix-blend-mode: screen;
 }
 .m_line{
