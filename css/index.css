@@ -40,6 +40,9 @@ span.green{
 }
 #intro_facts{
 	background-color: rgba(255,255,255,0);
+	width: 96% !important;
+	padding: 0% 2% !important;
+	margin: 3% -5% 3% 0% !important;
 }
 .facts{
 	display: inline-block;
@@ -59,8 +62,9 @@ span.green{
 }
 .no-margin{
 	display: inline-block;
-	margin: 0 -16.5%;
-	padding: 2% 16.5%;
+	width:100%;
+	margin: 0 0;
+	padding: 2% 0;
 	background-color: rgba(18,18,18,0.5);
 	border-style: solid;
 	border-width: 0.05em 0;
@@ -70,13 +74,13 @@ span.green{
 .facts_p{
 	overflow: hidden;
 	display: inline-block;
-	font-size:0.8em;
+	font-size:1.1em;
 	font-weight: 400;
-	width:30%;
-	height:100%;
+	width:36%;
+	height:auto;
 	float: left;
 	background-color: #dd4455;
-	padding: 5%;
+	padding: 2%;
 	margin:0 !important;
 	color: #eeeeee;
 }
@@ -176,7 +180,7 @@ span.green{
 	letter-spacing: 0.05em;
 	word-spacing: 0.15em;
 	line-height: 150%;
-	color: #88DDFF;
+	color: #eeeeee;
 }
 
 .container{
@@ -256,7 +260,7 @@ h3.title{
 h2.intro{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 400;
-	font-size: 1.5em;
+	font-size: 1.2em;
 	text-align: center;
 	letter-spacing: 0.05em;
 	word-spacing: 0.15em;
@@ -419,8 +423,8 @@ h3.chapt_list{
 	display: inline-block;
 	position: relative;
 	float: left;
-	width: 75%;
-	margin: 2% 12.5%;
+	width: 90%;
+	margin: 2% 5%;
 	background-color: #ee4455;
 	
 }
@@ -495,11 +499,12 @@ h3.chapt_list{
 		text-align: center;
 		margin: 0.1em auto 0.1em auto;
 		color:#ee3344;
-		font-size: 2em;
+		font-size: 1.5em;
 		font-family: 'Source Sans Pro', sans-serif;
 		font-weight: 700;
 		word-spacing: 0.25em;
 		letter-spacing: 0.05em;
+		mix-blend-mode: screen;
 		
 	}
 	.data_source_p{
@@ -563,8 +568,8 @@ h3.chapt_list{
 	}
 	.facts{
 		width:98%;
-		padding-top:40%;
-		padding-bottom:45%;
+		padding-top:30%;
+		padding-bottom:35%;
 		color:#dddddd;
 		border-style: solid;
 		border-width: 1%;
@@ -581,7 +586,7 @@ h3.chapt_list{
 	}
 	.facts_p{
 		width:90%;
-		bottom:0;
+		bottom:107px;
 		left:0;
 		margin:5% 0 0 0;
 		padding:5%;
