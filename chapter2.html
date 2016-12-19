@@ -40,8 +40,9 @@
             This chapter focuses on: how many refugees have expanded their footages toward other Middle East regions and Europe from the breakout to 2014 and; the fact that the data say in terms of the distribution of the displaced migrants.</p>
         </div>
 	</div>
+	<div class="border"></div>
 	<div class="wrapper">
-		<div class="container">
+		<div class="container" id="content">
 			<div class="viz">
 				<h2>REFUGEE DISTRIBUTION 2011 ~ 2014</h2>
 			</div>
@@ -113,6 +114,7 @@ $(window).load(function(){
 	var article_top = [];
 	var article_height = [];
 	var windowHeight;
+	var wrapperTop;
 	var vizTop;
 	var headerTop;
 	var bottomHeight;
@@ -167,6 +169,7 @@ $(window).load(function(){
 		}
 
 		/*div 스크롤 위치 확인*/
+		wrapperTop = $(".wrapper").offset().top;
 		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom"));
 		
 		if($window.width()<821){
@@ -199,13 +202,27 @@ $(window).load(function(){
      }
 
 	function fade_out(){
-		var range = vizTop - (scrollTop + vizGap);
-		var opacity = range/vizTop; 
+		var progress1 = vizTop - (scrollTop + vizGap);
+		var range1 = vizTop;
+		var opacity1 = progress1/range1; 
+		var windowHeight = $window.height();
 
-		if(opacity<0){
-			opacity=0;
+		if(opacity1<0){
+			opacity1=0;
 		}
-		$(".header_background").animate({opacity: opacity},10);
+		$(".header_background").css({opacity: opacity1},10);
+
+		if(((wrapperTop - windowHeight)<scrollTop)&&(scrollTop<=(vizTop - vizGap))){
+			
+			var progress2 = (vizTop - vizGap) - scrollTop;
+			var range2 = (vizTop - vizGap) - (wrapperTop - windowHeight);
+			var opacity2 = 1 - (progress2/range2);
+			console.log(opacity2);
+			$(".wrapper").css({opacity: opacity2},10);
+		}
+		else{
+			$(".wrapper").css({opacity: 1},10);
+		}
 	}
 
 

@@ -42,7 +42,7 @@
 	</div>
 	<div class="border"></div>
 	<div class="wrapper">
-		<div class="container">
+		<div class="container" id="content">
 			<div class="viz">
 					<h2 id="chapt2_svg_title">THE NUMBER OF SYRIAN REFUGEES<br>BEFORE CIVIL WAR</h2>
 			</div>
@@ -243,6 +243,9 @@ $(window).load(function(){
 			var opacity2 = 1 - (progress2/range2);
 			console.log(opacity2);
 			$(".wrapper").css({opacity: opacity2},10);
+		}
+		else{
+			$(".wrapper").css({opacity: 1},10);
 		}
 	}
 

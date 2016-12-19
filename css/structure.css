@@ -33,17 +33,17 @@ body{
 
 #chapt1{
 	background-image: url("../img/father_son.jpg");
-	filter: grayscale(0.6);
+	filter: grayscale(0.2);
 	height:65%;
 }
 #chapt2{
 	background-image: url("../img/refugee_move.jpg");
-	filter: grayscale(0.6);
+	filter: grayscale(0.2);
 	height:65%;
 }
 #chapt3{
 	background-image: url("../img/destroyed.jpg");
-	filter: grayscale(0.6);
+	filter: grayscale(0.2);
 	height:80%;
 }
 .chapter_introduction_div{
