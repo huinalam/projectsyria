@@ -48,7 +48,7 @@ body{
 }
 .chapter_introduction_div{
 	font-size: 0.8em;
-	margin: 5% 0.5% 0 0.5%;
+	margin: 15% 0.5% 0 0.5%;
 	padding:1%;
 	display: inline-block;
 	background-color: rgba(2,8,16,0.8);
@@ -89,7 +89,6 @@ h1.title{
 	font-family: 'League Gothic', sans-serif;
 	font-size: 2em;
 	letter-spacing: 0.05em;
-	word-spacing: 0.1em;
 	font-weight: normal;
 	font-style: normal;
 	line-height: 110%;
@@ -272,7 +271,6 @@ h3{
 			font-family: 'League Gothic', sans-serif;
 			font-size: 3.5em;
 			letter-spacing: 0.05em;
-			word-spacing: 0.1em;
 			font-weight: normal;
 			font-style: normal;
 			line-height: 110%;
