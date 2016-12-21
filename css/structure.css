@@ -109,7 +109,7 @@ h3{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 700;
 	font-size: 1.1em;
-	margin:5px 0 0 0;
+	margin:5px 0 0 2%;
 	line-height: 120%;
 	color: #eeeeee;
 }
@@ -282,6 +282,13 @@ h3{
 			margin:0 auto 0 auto;
 			height: auto;
 			max-width: 1200px;
+		}
+		.chapter_introduction_div{
+			font-size: 0.8em;
+			margin: 25% 0.5% 45% 0.5%;
+			padding:1%;
+			display: inline-block;
+			background-color: rgba(2,8,16,0.8);
 		}
 		
 		.chapter_introduction_div>p{

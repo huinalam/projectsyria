@@ -1,12 +1,15 @@
+#damage_type{
+    margin: 2% !important;
+    background-color: #111111 !important;
+}
 .definition >p{
 	margin:0px;
-	padding:1%;
-	font-size: 1.2em;
+	padding:2%;
+	font-size: 1.3em;
 	font-weight: 300;
 	font-family: 'Source Sans Pro', sans-serif;
-	height: 100px;
+	min-height: 80px;
 }
-
 .timeline_data_review{
     display: inline-block;
 }
