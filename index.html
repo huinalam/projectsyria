@@ -267,12 +267,15 @@
  			d3.select("#background_img").style("opacity",0);
  			var top = (intro_top[0] - scrollTop)/(intro_top[0]) *(-15);
  			$(".header_background").css("top",top + "%");
+
+ 			var opacity = 1 - (intro_top[0] - scrollTop)/(intro_top[0]);
+ 			d3.select("#background_img").style("opacity",opacity);
  		}
  		else if((intro_top[0]<scrollTop)&&(scrollTop<=intro_top[1])){
  			console.log("section2");
  			//d3.selectAll(".header_background").style("z-index",-999);
- 			var opacity = 1 - (intro_top[1] - scrollTop)/(intro_top[1]-intro_top[0]);
- 			d3.select("#background_img").style("opacity",opacity);
+ 			//var opacity = 1 - (intro_top[1] - scrollTop)/(intro_top[1]-intro_top[0]);
+ 			//d3.select("#background_img").style("opacity",opacity);
  			
  		}
  		else if((intro_top[1]<scrollTop)&&(scrollTop<=intro_top[2])){
