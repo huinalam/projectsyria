@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<head>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+	 <link href="css/fonts.css" rel="stylesheet">
+	 <link href="css/nav.css" rel="stylesheet">
+	 <link href="css/structure.css" rel="stylesheet">
+	 <link href="css/chapter2_svg.css" rel="stylesheet">
+</head>
+<body>
+	<div class="nav_bar">
+		<ul class="topnav" id="mainTopnav">
+		    <li class="nav_item" id='main'><a href="index.html">PROJECT SYRIA</a></li>
+		    <li class="nav_item" id='item'><a href="chapter1.html">CHAPTER1</a></li>
+		    <li class="nav_item current_chapter" id='item' ><a href="chapter2.html">CHAPTER2</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter3.html">CHAPTER3</a></li>
+		    <li class="nav_item icon">
+		    	<a href="javascript:void(0);" onclick="myFunction()"><img class="menu" src="img/menu.svg"></a>
+	    </li>
+		</ul>
+		<div class="progress_back">
+             <div class="progress_bar2"></div>
+        </div>
+		<div class="progress_back">
+             <div class="progress_bar"></div>
+        </div>
+	</div>
+	<div class="header_background" id="chapt2">
+	</div>
+	<div class="header">
+		<div class="chapter_title_div">
+			<h1 class="title">
+               IMBALANCED DISTRIBUTION
+            </h1><br>
+            <h1 class="title">
+            	OF THE SYRIAN REFUGEES
+            </h1>
+		</div>
+		<div class="chapter_introduction_div">
+            <p>As the world knows, unprecedented migrant crisis has sparked up since 2011.
+            This chapter focuses on: how many refugees have expanded their footages toward other Middle East regions and Europe from the breakout to 2014 and; the fact that the data say in terms of the distribution of the displaced migrants.</p>
+        </div>
+	</div>
+	<div class="border"></div>
+	<div class="wrapper">
+		<div class="container" id="content">
+			<div class="viz">
+				<h2>REFUGEE DISTRIBUTION 2011 ~ 2014</h2>
+				<img class="svg" src="img/viz_fix.svg">
+			</div>
+			<div class="text">
+				<div class="chapter_article_div" id="a1">
+					<h2>
+	                    2011<br>Pre-War Period
+	                </h2>
+	                <p>
+	                    Before Syrian Civil War, political suppression of Assads' family more than 50 years led its own people to leave for the new destinations. According to UNHCR, 13,718 Syrian refugees were registered in 2011. 95% of those people stayed within Europe that year, while Germany accepted the largest portion of 10,155 refugees among European countries.
+	                </p>
+				</div>
+				<div class="chapter_article_div" id="a2">
+					 <h2>
+	                    2012<br>Escalation results in surge of refugees
+	                </h2>
+	                <p>The number of Syrian refugees skyrocketed in the mid of 2012 when the military provocations were at its semi-apex: sieges posed both by Assad regime and anti-government forces. Accordingly, Syrian people started to abandon their motherlands - the number reached 50 times as many as those who had left in 2011. Enormous diaspora reversed the distribution of refugees in inter-continental context, taking 96% of them in Middle Eastern region. Majority of refugees moved toward surrounding nations of Turkey, Iraq, Jordan and Lebanon - Turkey accepted the largest of 24,866 refugees.</p>
+				</div>
+				<div class="chapter_article_div" id="a3">
+					<h2>
+	                    2013<br>Culmination of Migrant Crisis: not only issue of EU<br>
+	                </h2>
+	                <p>The year 2012 came to a head of having the largest number of victims and refugees ever recorded. The number of victims (2,415,374 in total) surged again 30 times more than that of last year and 98% of them came to stay in Middle East. As the incident got worsened, European countries have become at stake due to massive influx of refugees from Afghanistan and Syria, naming this phenomenon as European Migrant Crisis. However, Syrian neighbors had already accepted 50 times greater number of refugees than European countries did at this point.</p>
+				</div>
+				<div class="chapter_article_div" id="last_article">
+					 <h2>
+	                    2014<br>Imalance of Distribution
+	                </h2>
+	                <p>The result of analyzing the distribution of Syrian refugees in two continents shows two aspects of imbalance. First of all, more than 60% of refugees have been staying in Germany and Sweden whereas Gulf states have showed its extreme reluctance for welcoming migrants. In 2014, it is said that only 18 Syrian refugees were accepted to stay in Saudi Arabia with its highest GDP figure in Gulf region.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="end_div"></div>
+	<div class="bottom">
+		<div class="arrow" id="prev">
+			<a href="chapter1.html"><img class="arrow_img" src="img/prev_arrow.svg"><br>
+			To Chapter1
+			</a>
+		</div>
+		<div class="arrow" id="next">
+			<a href="chapter3.html"><img class="arrow_img" src="img/next_arrow.svg"><br>
+			To Chapter3
+			</a>
+		</div>
+	</div>
+	<div class="mask">
+	</div>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+<script>
+ 	function myFunction() {
+	    var x = document.getElementById("mainTopnav");
+	    if (x.className === "topnav") {
+	        x.className += " responsive";
+	    } else {
+	        x.className = "topnav";
+	    }
+	}
+</script>
+<script>
+$(document).ready(function(){
+	/* 윈도우,컨테이너,시각화 div 객체 선언*/
+	var $window = $(window);
+	var container = {};
+	var vizHeight;
+	var scrollTop
+	var article_top = [];
+	var article_height = [];
+	var windowHeight;
+	var wrapperTop;
+	var vizTop;
+	var headerTop;
+	var bottomHeight;
+
+	//위치,사이즈 정보 갱신
+	initation();
+
+	/*윈도우 리사이즈 함수*/
+	$window.on("resize",function(){
+		if(360<$window.width()){
+			initation();
+			reDraw();
+		}
+		
+		fix_check();
+	});
+
+
+	$window.on("scroll",function(){
+		scrollTop = $window.scrollTop();
+		fade_out();
+		fix_check();
+		set_progress_bar();
+		map_transition();
+	});
+
+	function initation(){
+		//위치,사이즈 정보 갱신
+		/*사이즈 초기화*/
+		windowHeight = $window.height();
+		$(".header").css("height",windowHeight);
+		$(".chapter_article_div").not( document.getElementById("last_article")).css("height",windowHeight);
+		//var header_back_Height = $(".header_background").width() * 0.6;
+		var header_back_Height = $window.height();
+		$(".header_background").css("height",header_back_Height);
+
+		bottomHeight = $(".bottom").height() + parseInt($(".bottom").css("padding-bottom")) + parseInt($(".bottom").css("padding-top"));
+		$('#last_article').css("margin-bottom",bottomHeight);
+		$('.bottom').css("bottom",-bottomHeight);
+
+
+		/*헤더 위치 확인*/
+		headerTop = ($window.height() - $(".header_background").height())/2;
+		console.log(headerTop);
+		//$(".header").css("margin-top",headerTop);
+		//$(".header_background").css("top",headerTop);
+
+	
+		for(var i=0; i<4;i++){
+			article_top[i] = $(".chapter_article_div").eq(i).offset().top;
+			article_height[i] = $(".chapter_article_div").eq(i).height();
+		}
+
+		/*div 스크롤 위치 확인*/
+		wrapperTop = $(".wrapper").offset().top;
+		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom"));
+		
+		if($window.width()<821){
+			vizGap =$(".nav_bar").height();
+		}else{
+			vizGap = ($window.height() - $(".viz").height())/2;
+		}
+	}
+
+	function set_progress_bar(){
+            var end_scroll = parseInt($("#end_div").offset().top) -  (windowHeight);
+            var bar_percent = (parseInt($window.scrollTop())/end_scroll)*100;
+
+            $('.progress_bar').css("width", bar_percent + "%");
+
+            if(99.8<bar_percent){
+            	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",0 +"px");
+            	
+            }
+            else {
+            	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",-bottomHeight + "px");	
+            }
+     }
+
+    function set_progress_bar2(start_scroll,end_scroll){
+     		var range = end_scroll - start_scroll;
+            var bar_percent = 100 - (parseInt(end_scroll - $window.scrollTop())/range)*100;
+            console.log(bar_percent);
+            $('.progress_bar2').css("width", bar_percent + "%");
+     }
+
+	function fade_out(){
+		var progress1 = vizTop - (scrollTop + vizGap);
+		var range1 = vizTop;
+		var opacity1 = progress1/range1; 
+		var windowHeight = $window.height();
+
+		if(opacity1<0){
+			opacity1=0;
+		}
+		$(".header_background").css({opacity: opacity1},10);
+
+		if(((wrapperTop - windowHeight)<scrollTop)&&(scrollTop<=(vizTop - vizGap))){
+			
+			var progress2 = (vizTop - vizGap) - scrollTop;
+			var range2 = (vizTop - vizGap) - (wrapperTop - windowHeight);
+			var opacity2 = 1 - (progress2/range2);
+			console.log(opacity2);
+			$(".wrapper").css({opacity: opacity2},10);
+		}
+		else{
+			$(".wrapper").css({opacity: 1},10);
+		}
+	}
+
+
+	function fix_check(){
+		if(vizTop < (scrollTop + vizGap)){//affix
+
+			if($window.width()<821){
+				//affix for mobile
+				//console.log("mobile");
+				$(".viz").addClass("viz_Mfixed");
+				$(".viz").css("top",vizGap);
+				//Text margin modification
+				vizHeight = parseInt($(".viz").height()) + parseInt($(".viz").css("padding-top")) + parseInt($(".viz").css("margin-top")) + parseInt($(".viz").css("margin-bottom"));
+				//console.log(vizHeight);
+				$(".text").css("margin-top",vizHeight);
+				$(".text").css("margin-left","1%");
+				$(".viz").css("left","0px");
+				//mask for text fade-out
+				var maskTop = parseInt($(".viz").height()) + $(".nav_bar").height();
+				$(".mask").css("top",maskTop).css("width","100%");
+			}else{
+				//affix for desktop
+				//console.log("desktop");
+				$(".viz").addClass("viz_Dfixed");
+				$(".viz").css("top",vizGap);
+				var left = $(".container").css("margin-left");
+				$(".viz").css("left",left);
+				var marginLeft = $(".viz").width() +(3*parseInt($(".viz").css("margin-left"))); 
+				$(".text").css("margin-left",marginLeft);
+			}
+			
+
+		}else{//un-affix
+			
+			if($window.width()<821){
+				//un-affix for mobile
+				$(".viz").removeClass("viz_Mfixed");
+				$(".viz").removeClass("viz_Dfixed");
+				$(".text").css("margin","1%");
+				//masek for fade-out
+				$(".mask").css("top",0).css("width",0);
+			}else{
+				//un-affix for desktop
+				$(".viz").removeClass("viz_Mfixed");
+				$(".viz").removeClass("viz_Dfixed");
+				$(".text").css("margin","1%");
+			}
+			
+		}
+	}// fix_check() end;
+
+	function map_transition(){
+		if((vizTop<scrollTop)&&(scrollTop<(article_top[1]-article_height[0]))){
+			console.log("chapter1");
+			//mapTransition(years[0]);
+
+			var start_scroll = vizTop;
+			var end_scroll = article_top[1]-article_height[0];
+			set_progress_bar2(start_scroll,end_scroll);
+
+		}else if(((article_top[1]-article_height[0])<scrollTop)&&(scrollTop<(article_top[2]-article_height[1]))){
+			console.log("chapter2");
+			//mapTransition(years[1]);
+
+			var start_scroll = article_top[1]-article_height[0];
+			var end_scroll = article_top[2]-article_height[1];
+			set_progress_bar2(start_scroll,end_scroll);
+
+		}else if(((article_top[2]-article_height[1])<scrollTop)&&(scrollTop<(article_top[3]-article_height[2]))){
+			console.log("chapter3");
+			//mapTransition(years[2]);
+
+			var start_scroll = article_top[2]-article_height[1];
+			var end_scroll = article_top[3]-article_height[2];
+			set_progress_bar2(start_scroll,end_scroll);
+
+		}else if(((article_top[3]-article_height[2])<scrollTop)){
+			console.log("chapter4");
+			//mapTransition(years[3]);
+
+			var start_scroll = article_top[3]-article_height[2];
+			var end_scroll = parseInt($("#end_div").offset().top) -  (windowHeight);
+			set_progress_bar2(start_scroll,end_scroll);
+
+		}else{
+			$('.progress_bar2').css("width", "0%");
+			console.log("no-chapter");
+		}
+	}
+	
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="../css/timeline.css" rel="stylesheet">
+</head>
+<body class="chapter">
+
+
+ <div class="timeline_div_content" id="t1">
+    <div class="timeline_chapter_title">
+        <h2>2.Early war<br>
+        (2011 May ~ 2012 July)</h2>
+    </div>
+    <div class="timeline_summary">
+        <h2 class="timeline_heading">Chapter Summary</h2>
+        <p>The period when the phase of civil war initiated involved in deployment of armored forces in major cities such as Homs, Darra and Damascus. (May of 2011) As the suppression against civilians became much more deteriorated, runaway soldiers started to establish its own forces called Free Syria Army. ‘The national’ says the Assad regime purposedly released extremists acquitted of heinous crimes for attracting not only themselves but also their forces to install divisions. On July that year, government forces made 216 victims wounded or dead suppressing demonstrators in Hama.</p>
+    </div>
+    <div class="timeline_summary">
+        <h2 class="timeline_heading">Data Review</h2>
+        <div class="timeline_data_review_chart">
+        </div>
+        <div class="timeline_data_review_num">
+            <span class="ref_num">
+                <span id="data_review_num">345,123</span>
+            <br>
+            of refugees</span>
+            <span class="death_num">
+                <span id="data_review_num">123,312</span>
+                <br>
+            of deaths<br></span>
+            <br>
+            for 14months
+        </div>
+    </div>
+     <div class="timeline_summary">
+        <p>With mortalities observed in a manner of upsurge, 3,000 fatalities occurred only in July of 2012. This period also coincides with the suspicions and actual reports that Assad regime committed air bombing (78), shelling cases(48), direct shootings and genocides, adding that Russian military intervention started to be observed: 4 shelling and two air strikes. Although the issue of chemical warfares in Syria gained its worldwide attention by 2013, two cases had been already found in September 2012.</p>
+     </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+<script>
+
+   var data_review_width = 250;
+   var data_review_height = 200;
+   var margin = 0;
+   var timeline_data_review_svg = d3.select(".timeline_data_review_chart")
+                                     .append("svg")
+                                     .attr("width",250)
+                                     .attr("height",220);
+
+    var data_review_g = timeline_data_review_svg.append("g")
+                                                .attr("transform","translate("+ margin + "," + margin + ")");
+
+
+    for(var i=0; i<6; i++){
+        for(var j=0; j<6; j++){
+            data_review_g.append("rect")
+                         .attr("x",i*37)
+                         .attr("y",j*32)
+                         .attr("width",35)
+                         .attr("height",30)
+                         .attr("fill","#cc2233");
+        }
+
+    }
+
+
+</script>
+</body>
+</html>
