@@ -56,7 +56,7 @@ var svg_chapter2 = d3.select(".viz").append("svg")
                                     .attr("class","intro_svg_intrograph")
                                     .attr("width",width)
                                     .attr("height",height)
-                                    .style("background-color","#111215");
+                                    .style("background-color","#11181A");
 
     svg_chapter2.append("path")
           	   .datum(graticule)
@@ -331,7 +331,7 @@ function mapTransition(year){
               .duration(function(d,i){
    
               currentNum = +this.textContent;
-                duration[i] = Math.abs(currentNum - d.properties.refugeesValue)/1000;
+                duration[i] = Math.abs(currentNum - d.properties.refugeesValue)/4000;
                 if(duration[i]<200){
                   duration[i] = 200;
                 }

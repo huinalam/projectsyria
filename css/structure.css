@@ -9,7 +9,7 @@ body{
 	margin: 0px;
 	padding: 0px;
 	color: #D0D8DA;
-	background-color: #111111;
+	background-color: #11181A;
 }
 
 .header{
@@ -144,7 +144,6 @@ h3{
 .wrapper{
 	width: 100%;
 	display:inline-block;
-	background-color: #111111;
 	/*border-style: solid;
 	border-width: 0.2em 0 0 0;
 	border-color: #CCD0DA;*/
@@ -182,7 +181,6 @@ h3{
 	margin: 2%;
 	margin-top: 0%;
 	float: none;
-	background-color: #111111;
 }
 .viz>h2{
 	font-family: 'Source Sans Pro', sans-serif;
@@ -213,7 +211,6 @@ h3{
 	background: linear-gradient(#111215 10%, rgba(0,0,0,0));
 }
 .text{
-	background-color: #111111;
 	width:98%;
 	margin: 1%;
 	float: none;
@@ -277,7 +274,7 @@ h3{
 			background-color: rgba(255,255,255,0.8);
 		}
 		.container{
-			background-color: #111111;
+			background-color: #11181A;
 			width: 92%;
 			margin:0 auto 0 auto;
 			height: auto;
@@ -340,7 +337,6 @@ h3{
 			max-width: 695.52px;
 			margin: 1%;
 			float: left;
-			background-color: #111111;
 		}
 		.viz>h2{
 			display: inline-block;
@@ -369,7 +365,6 @@ h3{
 			height:0;
 		}
 		.text{
-			background-color: #111111;
 			position: relative;
 			width:33%;
 			margin: 1%;
