@@ -148,12 +148,11 @@ h3{
 	border-width: 0.2em 0 0 0;
 	border-color: #CCD0DA;*/
 }
-
 .container{
 	width: 100%;
 	margin:0;
 	height: auto;
-	background-color: #111111;
+	background-color: #11181A;
 }
 .block{
 	display: inline-block;
@@ -175,6 +174,7 @@ h3{
 	background-color: #111111;
 }
 .viz{
+	background-color: #11181A;
 	z-index: 999;
 	padding-top: 0;
 	width:96%;
@@ -208,7 +208,7 @@ h3{
 	position: fixed;
 	top:0;
 	left:0;
-	background: linear-gradient(#111215 10%, rgba(0,0,0,0));
+	background: linear-gradient(#11181A 10%, rgba(0,0,0,0));
 }
 .text{
 	width:98%;
