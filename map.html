@@ -30,14 +30,7 @@
         size: new nhn.api.map.Size(500, 400)
     });
 
-    var map = new naver.maps.Map('map', {
-        center: new naver.maps.LatLng(37.3595704, 127.105399),
-        zoom: 10
-    });
-
-    var marker = new naver.maps.Marker({
-        position: new naver.maps.LatLng(37.3595704, 127.105399),
-        map: map
-    });
+    var oLabel = new nhn.api.map.MarkerLabel(); // - 마커 라벨 선언.
+    oMap.addOverlay(oLabel); // - 마커 라벨 지도에 추가. 기본은 라벨이 보이지 않는 상태로 추가됨.
 </script>
 </body>
