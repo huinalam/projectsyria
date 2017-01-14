@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="euc-kr">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=2.0,user-scalable=yes"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<title></title>
+	<link rel='stylesheet' href='{{$template}}/inc/style.css' type='text/css'>
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{{$template}}/img/js/comm.js"></script>
+<script type="text/javascript" src="{{$template}}/inc/debug.js"></script>
+<script type="text/javascript" src="{{$template}}/inc/gnb.js"></script>
+</head>
+<body>
+	<script type="text/javascript" src="http://openapi.map.naver.com/openapi/v2/maps.js?clientId=Vf5mouqiRcMpEpLsONk3"></script>
+	<div id="fff">
+		<div id="wrap_slider">
+			<div class="header">
+				<div class="gnb">
+					{{$main_top}} 
+					{{$m_topmenu}}
+				</div>
+			</div>
+			{{$visual}}
+			<div class="sub_main">
+				<div class="m_padding">
+					<div class="title"><p class="point_color"><b>Pension</b> Directions</p><span class="title5">오시는길을 안내해드리겠습니다.</span></div>
+					<div class="location">
+						Home > 오시는길 > <span class="page">오시는길</span>
+					</div>
+					<div id="map" style="border:1px solid #000;"></div>
+					</div>
+				</div>
+				<div class="add">
+					<div class="title3 fontB">주소 및 연락처</div>
+					<img class="bullet" src="{{$template}}/img/design/bullet.jpg" alt="" border="0" />
+					<div class="title5">주소 : 경상북도 예천군 효자면 사곡리 456번지</div>
+					<div class="title5">전화 : 010-8763-4028</div>
+					<div class="title5">이메일 : fylfot501@daum.net</div>
+				</div> 
+				<div class="border1 tb25"></div> 
+				<div class="subway">
+					<div class="title3 fontB">오시는 방법</div>
+					<img class="bullet" src="{{$template}}/img/design/bullet.jpg" alt="" border="0" /> </div>
+					<div class="title5 point_color mt25">승용차 이용시</div>
+					<br>
+					<div class="title5">서울 : 서울에서 (2시간 38분, 200.Km) 경부고속도로(신갈JC) - 영동고속도로(여주JC) - 중부내륙고속도로(충주JC) - 평택제천고속도로
+						(제천JC) - 중앙고속도로 - 단양TG - 대강교차로 (단양방면) - 장림사거리 (예천방면) - 미노삼거리 (상리 예천 방면) - 사곡교차로 (명봉사 방면) - 물맑은산골팬션 도착<br>
+						<br>대전 : 대전에서 (1시간 36분, 130Km) 경부고속도로(청주JC) - 당진영덕고속도로(낙동JC) - 중부내륙고속도로 - 북상주TG(함창방면) - 윤직교차로(예천 안동 방면) - 진정삼거리(산북 단양 방면) - 사곡교차로(명봉사방면) - 물맑은산골팬션 도착<br>
+						<br>대구 : 대구에서 (1시간 26분, 130Km) 경부고속도로 (금호JC) - 중앙고속도로 (금호JC) - 서안동TG (용산예천방면) - 동예천교차로 (양궁로 예천 방면) - 남산교차로 (영주 예천곤충생태원, 예천온천 방면) - 우계삼거리(도효자로 상리 단양 방면) - 사곡교차로 (명봉사 방면) - 물맑은산골팬션 도착</div>
+					</div>
+					<div class="title5 point_color mt25">대중교통 이용시</div>
+					<br>
+					<div class="title5">서울 : 동서울 터미널 - 예천시외버스정류장 (2시간 30분소요) - 시외버스터미널 앞 그랜드모텔 앞에서 시내버스 탑승 (06:00 ~ 18:00) - 하리 부흥슈퍼 앞 하차 - 물맑은산골팬션 도착<br>
+						<br>부산 : 부산종합버스 터미널 - 예천시외버스정류장 (4시간30분 소요) - 시외버스터미널 앞 그랜드모텔 앞에서 시내버스 탑승 (06:00 ~ 18:00) - 하리 부흥슈퍼 앞 하차 - 물맑은산골팬션 도착<br>
+						<br>기타 지역 : 지역고속터미널 - 예천시외버스정류장 (2시간 30분소요) - 시외버스터미널 앞 그랜드모텔 앞에서 시내버스 탑승 (06:00 ~ 18:00) - 하리 부흥슈퍼 앞 하차 - 물맑은산골팬션 도착</div>
+						<br>
+					</div>
+				</div>
+			</div>
+			{{$footer}}
+			<script type="text/javascript">
+				var oSize = new nhn.api.map.Size(28, 37);
+			    var oOffset = new nhn.api.map.Size(14, 37);
+			    var oIcon = new nhn.api.map.Icon('http://static.naver.com/maps2/icons/pin_spot2.png', oSize, oOffset);
+				var oPoint = new nhn.api.map.LatLng(36.760642, 128.398062);
+			    nhn.api.map.setDefaultPoint('LatLng');
+			    oMap = new nhn.api.map.Map('testMap', {
+			        point: oPoint,
+			        zoom: 10,
+			        enableWheelZoom: true,
+			        enableDragPan: true,
+			        enableDblClickZoom: false,
+			        mapMode: 0,
+			        activateTrafficMap: false,
+			        activateBicycleMap: false,
+			        minMaxLevel: [1, 14],
+			        size: new nhn.api.map.Size(500, 400)
+			    });
+
+			    var oLabel = new nhn.api.map.MarkerLabel(); // - 마커 라벨 선언.
+    oMap.addOverlay(oLabel); // - 마커 라벨 지도에 추가. 기본은 라벨이 보이지 않는 상태로 추가됨.
+    var oMarker = new nhn.api.map.Marker(oIcon, {title: '마커 : ' + oPoint.toString()});
+        oMarker.setPoint(oPoint);
+        oMap.addOverlay(oMarker);
+			</script>
+		</body>
+		</html>

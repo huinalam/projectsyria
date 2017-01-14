@@ -1,5 +1,5 @@
 var cloud_width = parseInt(d3.select("#wordcloud").style('width'));
-var cloud_height = 0.5 * cloud_width;
+var cloud_height = 0.4 * cloud_width;
 var layout_width = cloud_width *0.98;
 var layout_height = cloud_height *0.98;
 
@@ -46,7 +46,7 @@ function redraw_wordcloud(){
   d3.select('.wordcloud').remove();
 
   cloud_width = parseInt(d3.select("#wordcloud").style('width'));
-  cloud_height = 0.5 * cloud_width;
+  cloud_height = 0.4 * cloud_width;
   layout_width = cloud_width *0.98;
   layout_height = cloud_height *0.98;
 

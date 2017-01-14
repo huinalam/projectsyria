@@ -102,7 +102,6 @@ img.menu{
 }
 
 .bottom{
-		background-color: #22282c;
 		position: fixed;
 		display: inline-block;
 		width: 50%;
@@ -161,7 +160,6 @@ img.menu{
 
 
 	.bottom{
-		background-color: #22282c;
 		position: fixed;
 		display: inline-block;
 		width: 50%;
@@ -193,11 +191,9 @@ img.menu{
 		width:6em;
 		height:6em;
 	}
-	
 }
 
 @media screen and (max-width: 640px){
-
 	.nav_bar{
 		width: 100%;
 		height: auto;

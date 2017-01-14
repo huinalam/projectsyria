@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather:300');
 @import url('https://fonts.googleapis.com/css?family=Gurajada');
 
-html{font-size: 14px;}
+html{font-size: 16px;}
 body{
 	min-width: 360px;
 	margin: 0px;
@@ -57,7 +57,8 @@ span.green{
 	padding-bottom:17.5%;
 	color:#dddddd;
 	border-style: solid;
-	border-color: #224455;
+	border-color: #eeeeee;
+	border-width: 1px;
 	position: relative;
 	background-repeat: no-repeat;
 	float:left;
@@ -72,15 +73,14 @@ span.green{
 .facts_p{
 	overflow: hidden;
 	display: inline-block;
-	font-size:1em;
+	font-size:0.7em;
 	font-weight: 300;
 	width:41%;
 	height:auto;
 	float: left;
-	background-color: #224455;
 	padding: 2%;
 	margin:0 !important;
-	color: #eedddd;
+	color: #eeeeee;
 }
 .subheading{
 	display: inline-block;
@@ -91,58 +91,33 @@ span.green{
 	font-weight: 600;
 	word-spacing: 0.25em;
 	letter-spacing: 0.05em;
-	color:#eef0ff;
+	color:#ffffff;
 }
 #civilwar{
-	background: url('../img/facts_civil_war.jpg') no-repeat center center;
+	background: url('../img/facts_civil_war_dark.jpg') no-repeat center center;
 	background-size: cover;
-}
-#civilward:after{
-	content:"";	
-	background: url('../img/facts_civil_war.jpg') no-repeat center center;
-	background-size: cover;
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	z-index:-1;
-	filter: grayscale(0.6);
 }
 
 #death{
-	background: url('../img/facts_death.jpg') no-repeat center center;
+	background: url('../img/facts_death_dark.jpg') no-repeat center center;
 	background-size: cover;
-}
-#deathd:after{
-	content:"";	
-	background: url('../img/facts_death.jpg') no-repeat center center;
-	background-size: cover;
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	z-index:-1;
-	filter: grayscale(0.6);
 }
 
+
 #refugee{
-	background: url('../img/facts_refugee.jpg') no-repeat center center;
+	background: url('../img/facts_refugee_dark.jpg') no-repeat center center;
 	background-size: cover;
 }
-#refugeed:after{
-	content:"";	
-	background: url('../img/facts_refugee.jpg') no-repeat center center;
+
+#is{
+	background: url('../img/is.jpg') no-repeat center center;
 	background-size: cover;
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	z-index:-1;
-	filter: grayscale(0.6);
 }
+#migrant_crisis{
+	background: url('../img/refugee_budapest.jpg') no-repeat center center;
+	background-size: cover;
+}
+
 #background_svg{
 	z-index: -10;
 }
@@ -167,14 +142,14 @@ span.green{
 	left:0;
 }
 .narrative{
-	text-indent: 0.7em;
+	text-indent: 1em;
 	display: inline-block;
 	width: 80%;
 	margin: 5% auto 5% auto;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 1.3em;
+	font-weight: 300;
 	text-align: left;
-	letter-spacing: 0.05em;
 	word-spacing: 0.15em;
 	line-height: 150%;
 	color: #eeeeee;
@@ -199,11 +174,13 @@ span.green{
 	text-align: center;
 	background-color: rgba(17,24,26,0.9);
 	z-index: 0;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
 #title{
 	background-color: rgba(17,17,17,0) !important;
+	box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2);
 	z-index: 0 !important;
 }
 h1.title{
@@ -423,7 +400,6 @@ h3.chapt_list{
 	float: left;
 	width: 90%;
 	margin: 2% 5%;
-	background-color: #224455;
 	
 }
 .block-42{
@@ -493,12 +469,11 @@ h3.chapt_list{
 		display: inline-block;
 		text-align: center;
 		margin: 0.1em auto 0.1em auto;
-		color:#eef0ff;
+		color:#ffffff;
 		font-size: 1.5em;
 		font-family: 'Source Sans Pro', sans-serif;
 		font-weight: 600;
-		word-spacing: 0.25em;
-		letter-spacing: 0.05em;
+		word-spacing: 0.1em;
 		
 	}
 	.data_source_p{
@@ -526,6 +501,10 @@ h3.chapt_list{
 		margin: 0px;
 		padding: 0px;
 	}
+	.focus{
+		width:80%;
+		margin: 5% auto 10% auto;
+	}
 	p{
 		display: inline-block;
 		font-size: 1.1em;
@@ -549,7 +528,6 @@ h3.chapt_list{
 		float: left;
 		width: 30.3%;
 		margin: 1.5%;
-		background-color: #224455;
 	}
 	.container{
 			width: 100%;
@@ -564,7 +542,7 @@ h3.chapt_list{
 		padding-bottom:35%;
 		color:#dddddd;
 		border-style: solid;
-		border-color: #224455;
+		border-color: #eeeeee;
 		position: relative;
 		background-repeat: no-repeat;
 	}
@@ -572,20 +550,20 @@ h3.chapt_list{
 		margin-top: 20%;
 		background-color: #11181A;
 		border-style: solid;
-		border-width: 0.2em 0 0 0;
-		border-color: #CCD0DA;
+		border-width: 0px 0 0 0;
+		border-color: #668890;
 		width: 100%;
 		max-width: 100% !important;
 		height: auto;
 		margin: auto;
 		z-index: 10;
+		box-shadow: 0px 0px 200px 150px #11181A;
 	}
 	.facts_p{
 		width:90.4%;
 		height:146px;
 		margin:0% 0 0 0;
 		padding:5%;
-		background-color: #224455;
 
 	}
 
