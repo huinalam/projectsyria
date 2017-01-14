@@ -8,7 +8,7 @@
 	 <link href="css/index_svg.css" rel="stylesheet">
 </head>
 <body>
-	<div class="nav_bar">
+	<div class="nav_bar nav_hide">
 		<ul class="topnav" id="mainTopnav">
 		    <li class="nav_item" id='main'><a href="index.html">PROJECT SYRIA</a></li>
 		    <li class="nav_item" id='item'><a href="chapter1.html">CHAPTER1</a></li>
@@ -76,7 +76,7 @@
 	        	</p>
 	        </div>
 		 </div>
-		 <div class="intro">
+		 <div class="intro" id="last_intro">
 	        <p class="narrative">
 	        	In order to reflect view of Syrian civilian, <span style="font-weight:700;">PROJECT SYRIA</span> collected crowd sourcing data through the Syrian community.
 	        	<br><br>
@@ -117,30 +117,56 @@
 				<h2>DATA STORYTELLING<br>
 				OF SYRIAN CRISIS</h2>
 				<div class="content_block">
-					<div class="block-2 report">
-						<a class="chapt_link" href="chapter1.html">
+					<div class="report">
+						<div class="report_num">#1</div>
 						<div class="report_back" id="chapt1">
-							<h3 class="chapt_list">#1 SYRIAN REFUGEES BEFORE CIVIL WAR</h3>
+							SYRIAN REFUGEE DURUNG<br>
+							HALF CENTURY OF DICTATORSHIP
 						</div>
-						</a>
+						<div class="report_description">
+							<div>
+								Chapter1 shows how political opression of dictatorship affect to the number of refugees before civil war.
+							</div>
+							<a href="chapter1.html">
+								<div class="button">
+									go to chapter1 &nbsp;<img class="goto" src="img/goto.svg">
+								</div>
+							</a>
+						</div>
 					</div>
-					<div class="block-2 report">
-						<a class="chapt_link" href="chapter2.html">
+					<div class="report">
+						<div class="report_num">#2</div>
 						<div class="report_back" id="chapt2">
-							<h3 class="chapt_list">#2 IMBALANCED REFUGEE DISTRIBUTION</h3>
+							IMBALANCED DISTRIBUTION OF<br>
+							THE SYRIAN REFUGEES
 						</div>
-						</a>
+						<div class="report_description">
+							<div>
+								Interactive map visualizes distribution of Syrian refugees after civil war. As the war has keep escalated, imbalance of the distribution became more extreme.
+							</div>
+							<a href="chapter2.html">
+								<div class="button">
+									go to chapter2 &nbsp;<img class="goto" src="img/goto.svg">
+								</div>
+							</a>
+						</div>
 					</div>
-					<div class="block-2 report">
-						<a class="chapt_link" href="chapter3.html">
+					<div class="report">
+						<div class="report_num">#3</div>
 						<div class="report_back" id="chapt3">
-							<h3 class="chapt_list">#3 PATTERN OF CIVIL DAMAGE</h3>
+							WHO AND HOW KILLED SYRIANS<br>
+							DURING THE CIVL WAR
 						</div>
-						</a>
-					</div>
-					<div class="block-2">
-						<h3 class="chapt_list">#4 CONTRIBUTORS OF SYRIAN CRISIS</h3>
-						<p class="working">Chapter 4 is now on working</p>
+						<div class="report_description">
+							<div>
+								By analysing data of Syria Tracker, we could visualize pattern of civil damage and how it affected the number of deaths.
+							</div>
+							<a href="chapter3.html">
+								<div class="button">
+									go to chapter3 &nbsp;<img class="goto" src="img/goto.svg">
+								</div>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -149,29 +175,25 @@
 				<div class="content_block">
 					<div class="block-42">
 						<a class="source_link" href="http://data.unhcr.org/syrianrefugees/regional.php" target="_blank">
-							<h3 class="source_list">UNHCR</h3>
-							<img class="data_source" src="img/unhcr.png"><br>
+							<img class="data_source" src="img/unhcr_white.svg"><br>
 							<p class="data_source_p">Data sets about registered refugees in each country.</p>
 						</a>
 					</div>
 					<div class="block-42">
 						<a href="https://www.vdc-sy.info/index.php/en/" target="_blank">
-							<h3 class="source_list">VDCS</h3>
-							<img class="data_source" src="img/vdc.png">
+							<img class="data_source" src="img/vdc_white.svg">
 							<p class="data_source_p">Provides list of death with location during Syrian Civl war.</p>
 						</a>
 					</div>
 					<div class="block-42">
 						<a href="https://syriatracker.crowdmap.com/" target="_blank">
-							<h3 class="source_list">SYRIAN TRACKER</h3>
-							<img class="data_source" src="img/syria_tracker.svg"><br>
+							<img class="data_source" src="img/syria_tracker_white.svg"><br>
 							<p class="data_source_p">Crowd-sourcing community where civil damages are reported.</p>
 						</a>
 					</div>
 					<div class="block-42">
 						<a href="http://sn4hr.org/" target="_blank">
-						<h3 class="source_list">SNHR</h3>
-						<img class="data_source" src="img/snhr.png"><br>
+						<img class="data_source" src="img/snhr_white.svg"><br>
 						<p class="data_source_p">Provided information of main accidents inside civil area.</p>
 						</a>
 					</div>
@@ -271,7 +293,12 @@
  		});
  		$("div.intro:not('#title')").each(function(){
  			var title_margin = ($window.height())/2;
- 			$(this).css("margin-top",title_margin).css("margin-bottom",title_margin);
+ 			if($(this).attr("id")!="last_intro"){
+ 				$(this).css("margin-top",title_margin).css("margin-bottom",title_margin);
+ 			}else{
+ 				$(this).css("margin-top",title_margin).css("margin-bottom",2*title_margin);
+ 			}
+ 			
  		});
  		//콘텐츠 div위치 확인
  		content_top = $('#content').offset().top;
@@ -291,7 +318,7 @@
  	function svg_transition(){
 
  		if(scrollTop<=intro_top[0]){
- 			console.log("section1");
+ 			
  			//d3.selectAll(".header_background").style("z-index",0);
  			d3.select("#background_img").style("opacity",0);
  			var top = (intro_top[0] - scrollTop)/(intro_top[0]) *(-15);
@@ -299,26 +326,31 @@
 
  			var opacity = 1 - (intro_top[0] - scrollTop)/(intro_top[0]);
  			d3.select("#background_img").style("opacity",opacity);
+
+ 			$(".nav_bar").removeClass("nav_show");
+ 			$(".nav_bar").addClass("nav_hide");
+
  		}
  		else if((intro_top[0]<scrollTop)&&(scrollTop<=intro_top[1])){
- 			console.log("section2");
+ 			
  			//d3.selectAll(".header_background").style("z-index",-999);
  			//var opacity = 1 - (intro_top[1] - scrollTop)/(intro_top[1]-intro_top[0]);
  			//d3.select("#background_img").style("opacity",opacity);
- 			
+ 			$(".nav_bar").removeClass("nav_hide");
+ 			$(".nav_bar").addClass("nav_show");
  		}
  		else if((intro_top[1]<scrollTop)&&(scrollTop<=intro_top[2])){
- 			console.log("section3");
+ 			
  			
  		}
  		else if((intro_top[2]<scrollTop)&&(scrollTop<=intro_top[3])){
  			
-			console.log("section4");
+			
  			
  		}
  		else if((intro_top[3]<scrollTop)&&(scrollTop<=intro_top[4])){
  			
-			console.log("section5");
+			
  			
  		}
  	}
@@ -340,6 +372,7 @@
  			console.log(percent);
 
  			d3.select('#background_cover').style("opacity",1-percent);
+
  			var top = (1-percent) *(-10);
  			$(".header_background").css("top",top + "%");
 

@@ -1,5 +1,5 @@
 var cloud_width = parseInt(d3.select("#wordcloud").style('width'));
-var cloud_height = 0.4 * cloud_width;
+var cloud_height = 0.35 * cloud_width;
 var layout_width = cloud_width *0.98;
 var layout_height = cloud_height *0.98;
 
@@ -36,17 +36,17 @@ d3.layout.cloud().size([layout_width,layout_height])
 				 .words(headline_frequencys)
 				 .rotate(0)
 				 .fontSize(function(d){ return font_scale(d.total);})
-				 .padding(4)
+				 .padding(3)
 				 .on("end",draw)
 				 .start();
 
- add_title();
+ //add_title();
 
 function redraw_wordcloud(){
   d3.select('.wordcloud').remove();
 
   cloud_width = parseInt(d3.select("#wordcloud").style('width'));
-  cloud_height = 0.4 * cloud_width;
+  cloud_height = 0.35 * cloud_width;
   layout_width = cloud_width *0.98;
   layout_height = cloud_height *0.98;
 
@@ -63,11 +63,9 @@ function redraw_wordcloud(){
          .words(headline_frequencys)
          .rotate(0)
          .fontSize(function(d){ return font_scale(d.total);})
-         .padding(4)
+         .padding(3)
          .on("end",draw)
          .start();
-
-  add_title();
 
 }
 
@@ -81,7 +79,7 @@ function draw(words) {
                .append("g")
                 // without the transform, words words would get cutoff to the left and top, they would
                 // appear outside of the SVG area
-                .attr("transform", "translate("+ (layout_width/2) + ","+ (layout_height/2) + ")")
+                .attr("transform", "translate("+ (layout_width/2.5) + ","+ (layout_height/2) + ")")
                 .selectAll("g")
                 .data(words)
                 .enter().append("g")
@@ -184,7 +182,7 @@ function draw(words) {
           });
 
 }
-
+/*
 function add_title(){
   var wordcloud_title = d3.select('.wordcloud')
                                 .append("g")
@@ -206,5 +204,6 @@ function add_title(){
                          .text("NY TIMES & The GUADIANS");
 
 }
+*/
 
 
