@@ -8,22 +8,27 @@
 	 <link href="css/chapter1_svg.css" rel="stylesheet">
 </head>
 <body>
-	<div class="nav_bar">
+	<div class="vertical_progress_bar">
+		<div class="vertical_progress"></div>
+	</div>
+	<div class="chapter_count count_hide">
+	 <div class="chapt_num"></div>
+	 <div class="arrow" id="next">
+			<a href="chapter2.html"><img class="arrow_img" src="img/next_arrow.svg"><br>
+			To Chapter2</a>
+		</div>
+	</div>
+	<div class="nav_bar nav_show">
 		<ul class="topnav" id="mainTopnav">
-		    <li class="nav_item" id='main'><a href="index.html">PROJECT SYRIA</a></li>
-		    <li class="nav_item current_chapter" id='item'><a href="chapter1.html">CHAPTER1</a></li>
-		    <li class="nav_item" id='item' ><a href="chapter2.html">CHAPTER2</a></li>
-		    <li class="nav_item" id='item' ><a href="chapter3.html">CHAPTER3</a></li>
+		    <li class="nav_item" id='main'><div><img id='nav_logo' src="img/nav_logo.svg"></div><div><a href="index.html">PROJECT SYRIA</a></div></li>
+		    <li class="nav_item" id='chapter_display'>SYRIAN REFUGEES DURING HALF CENTURY OF DICTATORSHIP</li>
 		    <li class="nav_item icon">
 		    	<a href="javascript:void(0);" onclick="myFunction()"><img class="menu" src="img/menu.svg"></a>
-	    </li>
+	    	</li>
+		    <li class="nav_item top_item" id='item'><a href="chapter1.html">CHAPTER1</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter2.html">CHAPTER2</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter3.html">CHAPTER3</a></li>
 		</ul>
-		<div class="progress_back">
-             <div class="progress_bar2"></div>
-        </div>
-		<div class="progress_back">
-             <div class="progress_bar"></div>
-        </div>
 	</div>
 	<div class="header_background" id="chapt1">
 	</div>
@@ -90,16 +95,6 @@
 		</div>
 	</div>
 	<div id="end_div"></div>
-	<div class="bottom">
-		<div class="arrow" id="prev">
-			<a href="index.html"><img class="arrow_img" src="img/prev_arrow.svg"><br>
-			To Home</a>
-		</div>
-		<div class="arrow" id="next">
-			<a href="chapter2.html"><img class="arrow_img" src="img/next_arrow.svg"><br>
-			To Chapter2</a>
-		</div>
-	</div>
 	<div class="mask">
 	</div>
 <script src="js/jquery-2.1.4.min.js"></script>
@@ -130,6 +125,7 @@ $(document).ready(function(){
 	var wrapperTop;
 	var vizTop;
 	var bottomHeight;
+	var vertical_progress_height;
 
 	//위치,사이즈 정보 갱신
 	initation();
@@ -156,7 +152,8 @@ $(document).ready(function(){
 	$window.on("scroll",function(){
 		scrollTop = $window.scrollTop();
 		
-		set_progress_bar();
+		//set_progress_bar();
+		set_vertical_progress_bar();
 		fade_out();
 		fix_check();
 		//console.log("scrollTop: " + scrollTop);
@@ -179,6 +176,10 @@ $(document).ready(function(){
 		//$('#last_article').css("margin-bottom",bottomHeight);
 		$('.bottom').css("bottom",-bottomHeight);
 
+		/*수직 프로그래스바*/
+		vertical_progress_height = windowHeight - parseInt($(".nav_bar").css("height"));
+		$(".vertical_progress_bar").css("height",vertical_progress_height);
+
 		/*헤더 위치 확인*/
 		headerTop = ($window.height() - $(".header_background").height())/2;
 		//$(".header").css("margin-top",headerTop);
@@ -193,7 +194,7 @@ $(document).ready(function(){
 
 		/*div 스크롤 위치 확인*/
 		wrapperTop = $(".wrapper").offset().top;
-		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom"));
+		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom")) + parseInt($(".wrapper").css("padding-top"));
 
 		if($window.width()<821){
 			vizGap =$(".nav_bar").height();
@@ -207,6 +208,26 @@ $(document).ready(function(){
             var bar_percent = (parseInt($window.scrollTop())/end_scroll)*100;
 
             $('.progress_bar').css("width", bar_percent + "%");
+            
+
+            if(99.8<bar_percent){
+            	$(".bottom").removeClass("bottom_hide");
+            	$(".bottom").addClass("bottom_show");
+            }
+            else {
+            	$(".bottom").removeClass("bottom_show");
+            	$(".bottom").addClass("bottom_hide");
+            }
+     }
+     function set_vertical_progress_bar(){
+     		var start_scroll = vizTop - vizGap;
+            var end_scroll = parseInt($("#end_div").offset().top) - (windowHeight);
+            var range = end_scroll -start_scroll;
+            var bar_percent = (parseInt($window.scrollTop()-start_scroll)/range);
+
+            var height= vertical_progress_height * bar_percent;
+            console.log(height);
+            $('.vertical_progress').css("height", height);
             
 
             if(99.8<bar_percent){
@@ -231,8 +252,8 @@ $(document).ready(function(){
 		var opacity1 = progress1/range1; 
 		var windowHeight = $window.height();
 
-		if(opacity1<0){
-			opacity1=0;
+		if(opacity1<0.04){
+			opacity1=0.04;
 		}
 		$(".header_background").css({opacity: opacity1},10);
 
@@ -253,8 +274,20 @@ $(document).ready(function(){
 	function fix_check(){
 		if(vizTop < (scrollTop + vizGap)){//affix
 
+			//progress_bar show
+			$(".vertical_progress_bar").removeClass("vertical_hide");
+			$(".vertical_progress_bar").addClass("vertical_show");
+
+			$(".chapter_count").removeClass("count_hide");
+			$(".chapter_count").addClass("count_show");
+
+			
+
 			if($window.width()<821){
 				//affix for mobile
+				
+				$(".vertical_progress_bar").css("right",0);
+
 				//console.log("mobile");
 				$(".viz").addClass("viz_Mfixed");
 				$(".viz").css("top",vizGap);
@@ -269,17 +302,26 @@ $(document).ready(function(){
 				$(".mask").css("top",maskTop).css("width","100%");
 			}else{
 				//affix for desktop
+				var text_left = parseInt($(".text").css("margin-left")) + parseInt($("#content").css("margin-left"));
+				$(".vertical_progress_bar").css("left",text_left);
+
+
 				$(".viz").addClass("viz_Dfixed");
 				$(".viz").css("top",vizGap);
-				var left = $(".container").css("margin-left");
+				var left = parseInt($(".container").css("margin-left"));
 				$(".viz").css("left",left);
-				var marginLeft =  $(".viz").width() +(3*parseInt($(".viz").css("margin-left")));
-				//console.log("margin-left:" ) 
-				//$(".text").css("margin-left",marginLeft);
+				var marginLeft = $(".viz").width() +(4*parseInt($(".viz").css("margin-left"))); 
 				$(".text").css("margin-left",marginLeft);
 			}
 
 		}else{//un-affix
+
+			//progress_bar show
+			$(".vertical_progress_bar").removeClass("vertical_show");
+			$(".vertical_progress_bar").addClass("vertical_hide");
+
+			$(".chapter_count").removeClass("count_show");
+			$(".chapter_count").addClass("count_hide");
 			
 			if($window.width()<821){
 				//un-affix for mobile
@@ -292,7 +334,7 @@ $(document).ready(function(){
 				//un-affix for desktop
 				$(".viz").removeClass("viz_Mfixed");
 				$(".viz").removeClass("viz_Dfixed");
-				$(".text").css("margin","1%");
+				$(".text").css("margin","1% 1% 1% 2%");
 			}
 		}
 	}// fix_check() end;
@@ -307,6 +349,9 @@ $(document).ready(function(){
 			var end_scroll = article_top[1]-article_height[0];
 			set_progress_bar2(start_scroll,end_scroll);
 
+			$(".chapt_num").text("1/5");
+			$("#next").css("display","none");
+
 		}else if(((article_top[1]-article_height[0])<scrollTop)&&(scrollTop<(article_top[2]-article_height[1]))){
 
 			current_chapter = chapter_list[1];
@@ -316,6 +361,8 @@ $(document).ready(function(){
 			var start_scroll = article_top[1]-article_height[0];
 			var end_scroll = article_top[2]-article_height[1];
 			set_progress_bar2(start_scroll,end_scroll);
+
+			$(".chapt_num").text("2/5");
 
 		}else if(((article_top[2]-article_height[1])<scrollTop)&&(scrollTop<(article_top[3]-article_height[2]))){
 
@@ -327,15 +374,20 @@ $(document).ready(function(){
 			var end_scroll = article_top[3]-article_height[2];
 			set_progress_bar2(start_scroll,end_scroll);
 
+			$(".chapt_num").text("3/5");
+
 		}else if(((article_top[3]-article_height[2])<scrollTop)&&(scrollTop<(article_top[4]-article_height[3]))){
 
 			current_chapter = chapter_list[3];
 			area_popYear(chapter_list[3]);
 			console.log("chapter4");
 
+			$(".chapt_num").text("4/5");
+
 			var start_scroll = article_top[3]-article_height[2];
 			var end_scroll = article_top[4]-article_height[3];
 			set_progress_bar2(start_scroll,end_scroll);
+			$("#next").css("display","none");
 
 		}else if((article_top[4]-article_height[3])<scrollTop){
 			
@@ -345,10 +397,15 @@ $(document).ready(function(){
 			var end_scroll = parseInt($("#end_div").offset().top) - (windowHeight) ;
 			set_progress_bar2(start_scroll,end_scroll);
 
+			$(".chapt_num").text("5/5");
+			$("#next").css("display","block");
 
 		}
+		
 		else{
 			 $('.progress_bar2').css("width", "0%");
+			 $(".chapt_num").text("0/5");
+			 $("#next").css("display","none");
 		}
 	}// Area transition function end
 	

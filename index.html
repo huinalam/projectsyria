@@ -10,13 +10,14 @@
 <body>
 	<div class="nav_bar nav_hide">
 		<ul class="topnav" id="mainTopnav">
-		    <li class="nav_item" id='main'><a href="index.html">PROJECT SYRIA</a></li>
-		    <li class="nav_item" id='item'><a href="chapter1.html">CHAPTER1</a></li>
-		    <li class="nav_item" id='item' ><a href="chapter2.html">CHAPTER2</a></li>
-		    <li class="nav_item" id='item' ><a href="chapter3.html">CHAPTER3</a></li>
+		    <li class="nav_item" id='main'><div><img id='nav_logo' src="img/nav_logo.svg"></div><div><a href="index.html">PROJECT SYRIA</a></div></li>
+		    <li class="nav_item" id='chapter_display'>INTRODUCTION</li>
 		    <li class="nav_item icon">
 		    	<a href="javascript:void(0);" onclick="myFunction()"><img class="menu" src="img/menu.svg"></a>
-	    </li>
+	    	</li>
+		    <li class="nav_item top_item" id='item'><a href="chapter1.html">CHAPTER1</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter2.html">CHAPTER2</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter3.html">CHAPTER3</a></li>
 		</ul>
 	</div>
 	<div class="header_background" id="background_cover"></div>
@@ -280,17 +281,16 @@
  		d3.select('#background_cover').style("opacity",0);
  		$(".header_background").height($window.height()).css("left",($window.width() - $(".header_background").width())/2);
 
-
  		var svg_margin = ($('#background_svg').height() - $('#title_svg').height())/2;
  		$('#title_svg').css("margin-top",svg_margin);
-
  		
 
  		$('div#title').each(function(){
  			var title_margin = ($window.height());
- 			$(this).css("margin-top",title_margin*0.7).css("margin-bottom",title_margin*0.5);
+ 			$(this).css("margin-top",title_margin*0.6).css("margin-bottom",title_margin*0.5);
  			console.log(title_margin);
  		});
+
  		$("div.intro:not('#title')").each(function(){
  			var title_margin = ($window.height())/2;
  			if($(this).attr("id")!="last_intro"){
@@ -298,8 +298,11 @@
  			}else{
  				$(this).css("margin-top",title_margin).css("margin-bottom",2*title_margin);
  			}
- 			
  		});
+
+ 		//vertical progress바 설정
+ 		var text_left = parseInt($(".text").css("margin-left")) + parseInt($("#content").css("margin-left"));
+			$(".vertical_progress_bar").css("left",text_left);
  		//콘텐츠 div위치 확인
  		content_top = $('#content').offset().top;
  		content_offset = content_top - $window.height();
@@ -329,6 +332,7 @@
 
  			$(".nav_bar").removeClass("nav_show");
  			$(".nav_bar").addClass("nav_hide");
+ 			$(".chapter_count").contents("0");
 
  		}
  		else if((intro_top[0]<scrollTop)&&(scrollTop<=intro_top[1])){

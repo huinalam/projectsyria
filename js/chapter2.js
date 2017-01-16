@@ -15,7 +15,7 @@ var popData;
 var map_json;
 var start_year = 2011;
 var years = [2011, 2012, 2013, 2014]; //선택될 연도 
-var countryList = ["Syria","South Korea","Egypt", "Iraq","Iran", "Lebanon","Jordan","Turkey","Italy","France","Spain","Greece","United Kingdom", "Sweden", "Germany", "Libya", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //이름이 표시될 국가들
+var countryList = ["Syria","South Korea","Egypt", "Iraq","Iran", "Lebanon","Jordan","Turkey","Italy","Spain","Greece","United Kingdom", "Sweden", "Germany", "Libya", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //이름이 표시될 국가들
 var countryList2 = ["South Korea","Egypt", "Iraq", "Lebanon","Jordan","Turkey","Italy","France","Greece","United Kingdom", "Sweden", "Germany", "Libya", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //난민 숫자가 표시될 국가들
 
 //SVG & Group & Map 
@@ -55,8 +55,8 @@ var map_number;
 var svg_chapter2 = d3.select(".viz").append("svg")
                                     .attr("class","intro_svg_intrograph")
                                     .attr("width",width)
-                                    .attr("height",height)
-                                    .style("background-color","#11181A");
+                                    .attr("height",height);
+                                    //.style("background-color","#11181A");
 
     svg_chapter2.append("path")
           	   .datum(graticule)
@@ -140,7 +140,7 @@ var svg_chapter2 = d3.select(".viz").append("svg")
                                 })
                                 .attr("transform", function(d){
                                   if(d.properties.name == "Lebanon"){
-                                    return "translate(" + path.centroid(d) +")" + "translate(0,0)";
+                                    return "translate(" + path.centroid(d) +")" + "translate(-20,0)";
                                   }
                                   else if(d.properties.name == "France"){
                                     return "translate(" + path.centroid(d) +")" + "translate(0,-0)";
@@ -168,16 +168,16 @@ var svg_chapter2 = d3.select(".viz").append("svg")
                                   .attr("class","focus_map_number")
                                   .attr("transform", function(d){
                                     if(d.properties.name == "Lebanon"){
-                                      return "translate(" + path.centroid(d) +")" + "translate(0,7)";
+                                      return "translate(" + path.centroid(d) +")" + "translate(-20,10)";
                                     }
                                     else if(d.properties.name == "France"){
-                                      return "translate(" + path.centroid(d) +")" + "translate(0,7)";
+                                      return "translate(" + path.centroid(d) +")" + "translate(0,10)";
                                     }
                                     else if(d.properties.name == "Syria"){
                                       return "";
                                     }
                                     else{
-                                      return "translate(" + path.centroid(d) +")" + "translate(0,7)";
+                                      return "translate(" + path.centroid(d) +")" + "translate(0,10)";
                                     } 
                                   })
                                   .attr("text-anchor","middle")

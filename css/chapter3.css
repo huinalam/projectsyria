@@ -1,11 +1,10 @@
 #damage_type{
     margin: 2% !important;
-    background-color: #111111 !important;
 }
 .definition >p{
 	margin:0px;
 	padding:2%;
-	font-size: 1.3em;
+	font-size: 1em;
 	font-weight: 300;
 	font-family: 'Source Sans Pro', sans-serif;
 	min-height: 80px;

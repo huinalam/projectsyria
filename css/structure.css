@@ -104,14 +104,16 @@ h2{
 	letter-spacing: 0.03em;
 	word-spacing: 0.1em;
 	color: #eeeeee;
+	text-transform: uppercase;
 }
 h3{
 	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 700;
-	font-size: 1.1em;
-	margin:5px 0 0 2%;
+	font-weight: 400;
+	font-size: 1.2em;
+	margin:4% 2% 2% 2%;
 	line-height: 120%;
 	color: #eeeeee;
+	text-transform: uppercase;
 }
 .chapter_article_div >h2{
 	font-family: 'Source Sans Pro', sans-serif;
@@ -137,13 +139,14 @@ h3{
 	margin: 0;
 	display: block;
 	width: 100%;
-	min-height: 0.4em;
-	background-color: #CCD0DA;
+	min-height: 1px;
+	background-color: #11181A;
 	mix-blend-mode: screen;
 }
 .wrapper{
 	width: 100%;
 	display:inline-block;
+	padding-top: 50%;
 	/*border-style: solid;
 	border-width: 0.2em 0 0 0;
 	border-color: #CCD0DA;*/
@@ -152,7 +155,8 @@ h3{
 	width: 100%;
 	margin:0;
 	height: auto;
-	background-color: #11181A;
+	/*background-color: #11181A;*/
+	/*background-color: rgba(17,25,26,0.9);*/
 }
 .block{
 	display: inline-block;
@@ -164,6 +168,11 @@ h3{
 	height: 100px;
 	background-color: #eeeeee;
 }
+.block-1{
+	display: inline-block;
+	width: 98%;
+	margin: 1%;
+}
 .block-32{
 	display: inline-block;
 	position: relative;
@@ -171,10 +180,8 @@ h3{
 	max-width: 400px;  
 	width: 48%;
 	margin: 1%;
-	background-color: #111111;
 }
 .viz{
-	background-color: #11181A;
 	z-index: 999;
 	padding-top: 0;
 	width:96%;
@@ -198,6 +205,7 @@ h3{
 	padding-top:2%;
 }
 .viz_Mfixed{
+	background-color: #11181A;
 	position: fixed;
 	top: 0px;
 	left:0px;
@@ -274,7 +282,7 @@ h3{
 			background-color: rgba(255,255,255,0.8);
 		}
 		.container{
-			background-color: #11181A;
+			/*background-color: rgba(17,25,26,0.9);*/
 			width: 92%;
 			margin:0 auto 0 auto;
 			height: auto;
@@ -328,7 +336,6 @@ h3{
 			max-width: 400px;  
 			width: 30%;
 			margin: 1.6%;
-			background-color: #111111;
 		}
 		.viz{
 			z-index: 999;
@@ -358,6 +365,8 @@ h3{
 			margin: 0.92% !important;
 			top: 0px;
 			left:0px;
+			transition: box-shadow 0.5s ease;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		}
 		.mask{
 			opacity:0;
@@ -366,10 +375,11 @@ h3{
 		}
 		.text{
 			position: relative;
-			width:33%;
-			margin: 1%;
+			width:32%;
+			margin: 1% 1% 1% 2%;
 			float: left;
 			top:0px;
+			background-color: #11181A;
 		}
 		.text_fixed{
 			margin-left:61%;
