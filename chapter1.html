@@ -210,7 +210,7 @@ $(document).ready(function(){
             $('.progress_bar').css("width", bar_percent + "%");
             
 
-            if(99.8<bar_percent){
+            if(90.8<bar_percent){
             	$(".bottom").removeClass("bottom_hide");
             	$(".bottom").addClass("bottom_show");
             }
@@ -230,11 +230,13 @@ $(document).ready(function(){
             $('.vertical_progress').css("height", height);
             
 
-            if(99.8<bar_percent){
-            	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",0 +"px"); 	
+            if(0.95<bar_percent){
+            	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",0 +"px"); 
+            	$("#next").css("display","block");	
             }
             else {
             	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",-bottomHeight + "px");	
+            	$("#next").css("display","none");
             }
      }
 
@@ -387,7 +389,7 @@ $(document).ready(function(){
 			var start_scroll = article_top[3]-article_height[2];
 			var end_scroll = article_top[4]-article_height[3];
 			set_progress_bar2(start_scroll,end_scroll);
-			$("#next").css("display","none");
+			//$("#next").css("display","none");
 
 		}else if((article_top[4]-article_height[3])<scrollTop){
 			
@@ -398,14 +400,14 @@ $(document).ready(function(){
 			set_progress_bar2(start_scroll,end_scroll);
 
 			$(".chapt_num").text("5/5");
-			$("#next").css("display","block");
+			//$("#next").css("display","none");
 
 		}
 		
 		else{
 			 $('.progress_bar2').css("width", "0%");
 			 $(".chapt_num").text("0/5");
-			 $("#next").css("display","none");
+			// $("#next").css("display","none");
 		}
 	}// Area transition function end
 	
