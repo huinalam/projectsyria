@@ -233,11 +233,6 @@ h3{
 	margin-left: 2%;
 	float: left;
 }
-#next{
-	display: inline-block;
-	margin-right: 2%;
-	float: right;
-}
 
 @media screen and (max-width: 360px){
 	.chapter_article_div{

@@ -7,6 +7,16 @@
 	 <link href="css/chapter2_svg.css" rel="stylesheet">
 </head>
 <body>
+	<div class="vertical_progress_bar">
+		<div class="vertical_progress"></div>
+	</div>
+	<div class="chapter_count count_hide">
+		<div class="arrow" id="next">
+				<a href="chapter2.html"><img class="arrow_img arrow_off" src="img/next_arrow.svg">
+				</a>
+		</div>
+		<div class="chapt_num"></div>
+	</div>
 	<div class="nav_bar nav_show">
 		<ul class="topnav" id="mainTopnav">
 		    <li class="nav_item" id='main'><div><img id='nav_logo' src="img/nav_logo.svg"></div><div><a href="index.html">PROJECT SYRIA</a></div></li>
@@ -18,9 +28,6 @@
 		    <li class="nav_item" id='item' ><a href="chapter2.html">CHAPTER2</a></li>
 		    <li class="nav_item" id='item' ><a href="chapter3.html">CHAPTER3</a></li>
 		</ul>
-		<div class="progress_back">
-             <div class="progress_bar"></div>
-        </div>
 	</div>
 	<div class="header_background" id="chapt2">
 	</div>
@@ -75,18 +82,6 @@
 		</div>
 	</div>
 	<div id="end_div"></div>
-	<div class="bottom">
-		<div class="arrow" id="prev">
-			<a href="chapter1.html"><img class="arrow_img" src="img/prev_arrow.svg"><br>
-			To Chapter1
-			</a>
-		</div>
-		<div class="arrow" id="next">
-			<a href="chapter3.html"><img class="arrow_img" src="img/next_arrow.svg"><br>
-			To Chapter3
-			</a>
-		</div>
-	</div>
 	<div class="mask">
 	</div>
 <script src="js/jquery-2.1.4.min.js"></script>
@@ -116,6 +111,7 @@ $(document).ready(function(){
 	var vizTop;
 	var headerTop;
 	var bottomHeight;
+	var vertical_progress_height;
 
 	//위치,사이즈 정보 갱신
 	initation();
@@ -135,8 +131,8 @@ $(document).ready(function(){
 		scrollTop = $window.scrollTop();
 		fade_out();
 		fix_check();
-		set_progress_bar();
 		map_transition();
+		set_vertical_progress_bar();
 	});
 
 	function initation(){
@@ -152,6 +148,11 @@ $(document).ready(function(){
 		bottomHeight = $(".bottom").height() + parseInt($(".bottom").css("padding-bottom")) + parseInt($(".bottom").css("padding-top"));
 		$('#last_article').css("margin-bottom",bottomHeight);
 		$('.bottom').css("bottom",-bottomHeight);
+
+
+		/*수직 프로그래스바*/
+		vertical_progress_height = windowHeight - parseInt($(".nav_bar").css("height"));
+		$(".vertical_progress_bar").css("height",vertical_progress_height);
 
 
 		/*헤더 위치 확인*/
@@ -191,6 +192,30 @@ $(document).ready(function(){
             	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",-bottomHeight + "px");	
             }
      }
+     function set_vertical_progress_bar(){
+     		var start_scroll = vizTop - vizGap;
+            var end_scroll = parseInt($("#end_div").offset().top) - (windowHeight);
+            var range = end_scroll -start_scroll;
+            var bar_percent = (parseInt($window.scrollTop()-start_scroll)/range);
+
+            var height= vertical_progress_height * bar_percent;
+            console.log(height);
+            $('.vertical_progress').css("height", height);
+            
+
+            if(0.95<bar_percent){
+            	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",0 +"px"); 
+            	//$("#next").css("display","block");
+            	  $(".arrow_img").removeClass("arrow_off");
+            	  $(".arrow_img").addClass("arrow_on");	
+            }
+            else {
+            	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",-bottomHeight + "px");	
+            	//$("#next").css("display","none");
+         		$(".arrow_img").removeClass("arrow_on");
+            	$(".arrow_img").addClass("arrow_off");	
+            }
+     }
 
     function set_progress_bar2(start_scroll,end_scroll){
      		var range = end_scroll - start_scroll;
@@ -227,8 +252,17 @@ $(document).ready(function(){
 	function fix_check(){
 		if(vizTop < (scrollTop + vizGap)){//affix
 
+			//progress_bar show
+			$(".vertical_progress_bar").removeClass("vertical_hide");
+			$(".vertical_progress_bar").addClass("vertical_show");
+
+			$(".chapter_count").removeClass("count_hide");
+			$(".chapter_count").addClass("count_show");
+
 			if($window.width()<821){
 				//affix for mobile
+				$(".vertical_progress_bar").css("right",0);
+
 				//console.log("mobile");
 				$(".viz").addClass("viz_Mfixed");
 				$(".viz").css("top",vizGap);
@@ -244,6 +278,11 @@ $(document).ready(function(){
 			}else{
 				//affix for desktop
 				//console.log("desktop");
+
+				var text_left = parseInt($(".text").css("margin-left")) + parseInt($("#content").css("margin-left"));
+				$(".vertical_progress_bar").css("left",text_left);
+
+
 				$(".viz").addClass("viz_Dfixed");
 				$(".viz").css("top",vizGap);
 				var left = $(".container").css("margin-left");
@@ -255,6 +294,13 @@ $(document).ready(function(){
 
 		}else{//un-affix
 			
+			//progress_bar show
+			$(".vertical_progress_bar").removeClass("vertical_show");
+			$(".vertical_progress_bar").addClass("vertical_hide");
+
+			$(".chapter_count").removeClass("count_show");
+			$(".chapter_count").addClass("count_hide");
+
 			if($window.width()<821){
 				//un-affix for mobile
 				$(".viz").removeClass("viz_Mfixed");
@@ -281,6 +327,8 @@ $(document).ready(function(){
 			var end_scroll = article_top[1]-article_height[0];
 			//set_progress_bar2(start_scroll,end_scroll);
 
+			$(".chapt_num").text("1/4");
+
 		}else if(((article_top[1]-article_height[0])<scrollTop)&&(scrollTop<(article_top[2]-article_height[1]))){
 			console.log("chapter2");
 			mapTransition(years[1]);
@@ -288,6 +336,8 @@ $(document).ready(function(){
 			var start_scroll = article_top[1]-article_height[0];
 			var end_scroll = article_top[2]-article_height[1];
 			//set_progress_bar2(start_scroll,end_scroll);
+
+			$(".chapt_num").text("2/4");
 
 		}else if(((article_top[2]-article_height[1])<scrollTop)&&(scrollTop<(article_top[3]-article_height[2]))){
 			console.log("chapter3");
@@ -297,6 +347,8 @@ $(document).ready(function(){
 			var end_scroll = article_top[3]-article_height[2];
 			//set_progress_bar2(start_scroll,end_scroll);
 
+			$(".chapt_num").text("3/4");
+
 		}else if(((article_top[3]-article_height[2])<scrollTop)){
 			console.log("chapter4");
 			mapTransition(years[3]);
@@ -305,9 +357,13 @@ $(document).ready(function(){
 			var end_scroll = parseInt($("#end_div").offset().top) -  (windowHeight);
 			//set_progress_bar2(start_scroll,end_scroll);
 
+			$(".chapt_num").text("4/4");
+
 		}else{
 			$('.progress_bar2').css("width", "0%");
 			console.log("no-chapter");
+
+			$(".chapt_num").text("0/4");
 		}
 	}
 	

@@ -12,11 +12,11 @@
 		<div class="vertical_progress"></div>
 	</div>
 	<div class="chapter_count count_hide">
-	 <div class="chapt_num"></div>
-	 <div class="arrow" id="next">
-			<a href="chapter2.html"><img class="arrow_img" src="img/next_arrow.svg"><br>
-			To Chapter2</a>
+		<div class="arrow" id="next">
+				<a href="chapter2.html"><img class="arrow_img arrow_off" src="img/next_arrow.svg">
+				</a>
 		</div>
+		<div class="chapt_num"></div>
 	</div>
 	<div class="nav_bar nav_show">
 		<ul class="topnav" id="mainTopnav">
@@ -232,11 +232,15 @@ $(document).ready(function(){
 
             if(0.95<bar_percent){
             	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",0 +"px"); 
-            	$("#next").css("display","block");	
+            	//$("#next").css("display","block");
+            	  $(".arrow_img").removeClass("arrow_off");
+            	  $(".arrow_img").addClass("arrow_on");	
             }
             else {
             	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",-bottomHeight + "px");	
-            	$("#next").css("display","none");
+            	//$("#next").css("display","none");
+         		$(".arrow_img").removeClass("arrow_on");
+            	$(".arrow_img").addClass("arrow_off");	
             }
      }
 
@@ -352,7 +356,7 @@ $(document).ready(function(){
 			set_progress_bar2(start_scroll,end_scroll);
 
 			$(".chapt_num").text("1/5");
-			$("#next").css("display","none");
+			
 
 		}else if(((article_top[1]-article_height[0])<scrollTop)&&(scrollTop<(article_top[2]-article_height[1]))){
 

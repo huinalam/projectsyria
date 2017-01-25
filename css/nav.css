@@ -126,12 +126,12 @@ img.menu{
 	position:fixed;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	background-color: #11181A;
-	width:100px;
+	width:70px;
 	font-family: 'Source Sans Pro', sans-serif;
 	color:#eeeeee;
 	font-size: 1em;
 	font-weight: 700;
-	padding:1%;
+	padding:0.5%;
 	z-index: 999;
 }
 .count_show{
@@ -141,7 +141,7 @@ img.menu{
 }
 .count_hide{
 	transition: all 0.5s ease;
-	right:-120px;
+	right:-90px;
 	bottom: 5%;
 }
 .vertical_progress_bar{
@@ -204,7 +204,7 @@ img.menu{
 		text-align: center;
 		font-family: 'Muli', sans-serif;
 		color:#eeeeee;
-		font-size: 0.8em;
+		font-size: 0.7em;
 		font-weight: bold;
 }
 .arrow > a:visited{
@@ -222,6 +222,21 @@ img.menu{
 	opacity:1; 
 	text-decoration: none;
 	color:#eeeeee;
+}
+.arrow_img{
+	margin: 0.5em;
+	width:50px;
+	height:50px;
+}
+.arrow_on{
+	transition: all 0.5s ease;
+	width:50px;
+	height:50px;
+}
+.arrow_off{
+	transition: all 0.5s ease;
+	width:0px;
+	height:0px;
 }
 
 @media screen and (max-width: 640px){
@@ -285,6 +300,17 @@ img.menu{
 		opacity: 0.8;
 		z-index: 9999;
 	}
+	#next{
+		margin-right: 2%;
+		float: right;
+	}
+	.next_on{
+
+	}
+	.next_off{
+
+	}
+
 
 	.arrow > a:visited{
 		color:#eeeeee;
@@ -304,8 +330,8 @@ img.menu{
 	}
 	.arrow_img{
 		margin: 0.5em;
-		width:6em;
-		height:6em;
+		width:50px;
+		height:50px;
 	}
 }
 
