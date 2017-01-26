@@ -20,6 +20,12 @@
 		    <li class="nav_item" id='item' ><a href="chapter3.html">CHAPTER3</a></li>
 		</ul>
 	</div>
+
+	<div class="keep_scroll">
+		<img src="img/keep_scroll.svg"><br>
+		<p>KEEP SCROLL TO START</p>
+	</div>
+
 	<div class="header_background" id="background_cover"></div>
 	<div class="header_background" id="background_img"></div>
 	<div class="header_background" id="background_svg"></div>
@@ -231,7 +237,7 @@
  	initiation();
  	first_drawing(13);
  	svg_transition();
- 	fade_out();
+ 	//fade_out();
 
  	$window.on("resize",function(){
  
@@ -242,7 +248,7 @@
 	 		redraw_wordcloud();
 	 		redraw_pie();
 	 		svg_transition();
- 			fade_out();
+ 			//fade_out();
 		}
 
  	});
@@ -251,7 +257,7 @@
  		scrollTop = $window.scrollTop();
  		svg_transition();
  		//scroll_move();
- 		fade_out();
+ 		//fade_out();
 
  	});
 
@@ -323,7 +329,7 @@
  		if(scrollTop<=intro_top[0]){
  			
  			//d3.selectAll(".header_background").style("z-index",0);
- 			d3.select("#background_img").style("opacity",0);
+ 		//	d3.select("#background_img").style("opacity",0);
  			var top = (intro_top[0] - scrollTop)/(intro_top[0]) *(-15);
  			$(".header_background").css("top",top + "%");
 
@@ -333,6 +339,7 @@
  			$(".nav_bar").removeClass("nav_show");
  			$(".nav_bar").addClass("nav_hide");
  			$(".chapter_count").contents("0");
+ 			$('.keep_scroll').removeClass('keep_scroll_hide');
 
  		}
  		else if((intro_top[0]<scrollTop)&&(scrollTop<=intro_top[1])){
@@ -342,6 +349,7 @@
  			//d3.select("#background_img").style("opacity",opacity);
  			$(".nav_bar").removeClass("nav_hide");
  			$(".nav_bar").addClass("nav_show");
+ 			$('.keep_scroll').addClass('keep_scroll_hide');
  		}
  		else if((intro_top[1]<scrollTop)&&(scrollTop<=intro_top[2])){
  			
@@ -361,28 +369,12 @@
 
  	function fade_out(){
  		if(scrollTop<content_offset){
- 			d3.select('#background_cover').style("opacity",0);
+ 			//d3.select('#background_cover').style("opacity",0);
  			var size = 80;
  			//$('#background_svg').css("background-size",size + "%");
+ 			
  		}
- 		else if((content_offset<scrollTop)&&(scrollTop<content_top)){
-
- 			var range = content_top - content_offset;
- 			var percent = (content_top - scrollTop)/range;
-
- 			if(percent<0){
- 				percent=0;
- 			}
- 			console.log(percent);
-
- 			d3.select('#background_cover').style("opacity",1-percent);
-
- 			var top = (1-percent) *(-10);
- 			$(".header_background").css("top",top + "%");
-
- 			//var size = 80;
- 			//d3.select('#background_svg').style("background-size",(size + (1-percent)*20) + "%" );
- 		}
+ 		
 
  	}
 

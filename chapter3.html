@@ -30,6 +30,12 @@
             <li class="nav_item" id='item' ><a href="chapter3.html">CHAPTER3</a></li>
         </ul>
     </div>
+
+    <div class="keep_scroll">
+        <img src="img/keep_scroll.svg"><br>
+        <p>KEEP SCROLL TO START</p>
+    </div>
+
     <div class="header_background" id="chapt3">
     </div>
     <div class="header">
@@ -282,6 +288,7 @@
                     var opacity2 = 1 - (progress2/range2);
                     console.log(opacity2);
                     $(".wrapper").css({opacity: opacity2},10);
+                    $('.keep_scroll').addClass('keep_scroll_hide');
                     console.log("yes");
                 }
                 else{
