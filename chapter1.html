@@ -132,26 +132,28 @@ $(document).ready(function(){
 	var vizTop;
 	var bottomHeight;
 	var vertical_progress_height;
-
+	var resizeTimer;
 	//위치,사이즈 정보 갱신
 	initation();
 
 
 	/*윈도우 리사이즈 함수*/
-	$window.on("resize",function(){
+	$window.on("resize",function(e){
 
+		clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(function(){
+			//Run code here
+			/*모바일버전에서 브라우저 주소창으로 인해 발생하는 resize이벤트 방지*/
+			if(360<$window.width()){
+				initation();
+				reDraw();
+			}
+			set_vertical_progress_bar()
+			fix_check();
 
-		/*모바일버전에서 브라우저 주소창으로 인해 발생하는 resize이벤트 방지*/
-	if(360<$window.width()){
-		initation();
-		reDraw();
-	}
+		},0);
+
 		
-		fix_check();
-		
-
-		//console.log("scrollTop: " + scrollTop);
-		//console.log("vizTop: " + vizTop);
 	});
 
 
@@ -207,6 +209,8 @@ $(document).ready(function(){
 		}else{
 			vizGap = ($window.height() - $(".viz").height())/2;
 		}
+
+
 	}
 
 	 function set_progress_bar(){
@@ -281,7 +285,12 @@ $(document).ready(function(){
 		}
 		else{
 			$(".wrapper").css({opacity: 1},10);
-			
+			if(scrollTop<(wrapperTop - windowHeight)){
+				$('.keep_scroll').removeClass('keep_scroll_hide');
+			}
+			else{
+				$('.keep_scroll').addClass('keep_scroll_hide');
+			}
 		}
 	}
 

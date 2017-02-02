@@ -1,13 +1,50 @@
 #damage_type{
-    margin: 2% !important;
+    text-align: center;
+    width: 90% !important;
+    margin: 50% 5% !important;
+    background-color: rgba(17,24,26,0.7);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#intro{
+    width: 90% !important;
+    margin: 1% 5% !important;
+    display: inline-block;
+    background-color: rgba(17,24,26,0.7);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+#narrative{
+    display: inline-block;
+    width:80%;
+    margin: 5% auto 2% auto;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-indent: 0.5em;
+    font-size: 1.3em;
+    font-weight: 300;
+    text-align: left;
+    word-spacing: 0.1em;
+    line-height: 150%;
+}
+.definition{
+    display: flex !important;  
+    align-items: top;
+    justify-content: center;
 }
 .definition >p{
+    text-align: left;
 	margin:0px;
-	padding:2%;
+	padding:0% 5% 2% 1%;
 	font-size: 1em;
+    line-height: 120% !important;
 	font-weight: 300;
 	font-family: 'Source Sans Pro', sans-serif;
 	min-height: 80px;
+    float: left;
+}
+.type{
+    width: 80px;
+    height: 80px;
+    float: left;
 }
 .timeline_data_review{
     display: inline-block;
@@ -20,6 +57,11 @@
     float: left;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
+}
+#date{
+    color: #AAAAAA !important;
+    font-weight: 400!important;
+    font-size: 0.8em!important;
 }
 .timeline_correlation_table{
     margin: 20px 0 20px 0;
@@ -47,4 +89,36 @@
     margin: 10px;
     float: left;
     color: #FF1744;
+}
+
+.button{
+    margin: 1% auto;
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 135px;
+    font-weight: 400;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #eeeeee;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.7em;
+}
+.button:hover{
+    transition: all 0.5s ease;
+    border-color: #229977;
+    background-color: #229977;
+}
+a:link {
+    color:#ffffff;
+    text-decoration: none;
+}
+a:visited {
+    color:#ffffff;
+    text-decoration: none;
+}
+.goto{
+    width: 15px;
+    height: 15px;
 }

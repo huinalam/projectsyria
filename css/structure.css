@@ -29,21 +29,19 @@ body{
 	background-size: cover;
 	position:fixed;
 	z-index: -1;
+	filter: grayscale(0.6) brightness(60%);
 }
 
 #chapt1{
 	background-image: url("../img/father_son.jpg");
-	filter: grayscale(0.2);
 	height:65%;
 }
 #chapt2{
 	background-image: url("../img/refugee_move.jpg");
-	filter: grayscale(0.2);
 	height:65%;
 }
 #chapt3{
 	background-image: url("../img/destroyed.jpg");
-	filter: grayscale(0.2);
 	height:80%;
 }
 .chapter_introduction_div{
@@ -82,9 +80,8 @@ body{
 
 h1.title{
 	display: inline-block;
-	color: #222222;
+	color: #eeeeee;
 	margin: 0.5%;
-    padding: 0.5%;
 	max-width: 800px;
 	font-family: 'League Gothic', sans-serif;
 	font-size: 2em;
@@ -92,7 +89,6 @@ h1.title{
 	font-weight: normal;
 	font-style: normal;
 	line-height: 110%;
-	background-color: rgba(255,255,255,0.8);
 }
 h2{
 	font-family: 'Source Sans Pro', sans-serif;
@@ -108,9 +104,9 @@ h2{
 }
 h3{
 	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 400;
-	font-size: 1.2em;
-	margin:4% 2% 2% 2%;
+	font-weight: 600;
+	font-size: 1em;
+	margin:4% 0% 2% 0%;
 	line-height: 120%;
 	color: #eeeeee;
 	text-transform: uppercase;
@@ -133,7 +129,7 @@ h3{
 	font-weight: 300;
 	line-height: 135%;
 	text-align: left;
-	color: #AAAAAA;
+	color: #dedede;
 }
 .border{
 	margin: 0;
@@ -223,6 +219,19 @@ h3{
 	margin: 1%;
 	float: none;
 }
+.facts_p{
+	overflow: hidden;
+	display: inline-block;
+	font-size:0.8em;
+	font-weight: 300;
+	width:60%;
+	height:auto;
+	float: left;
+	padding: 0%;
+	margin:1% 20% !important;
+	text-align: center;
+	color: #aaafb5;
+}
 #end_div{
 	display: inline-block;
 	width:100%;
@@ -264,17 +273,16 @@ h3{
 		}
 		h1.title{
 			display: inline-block;
-			color: #222222;
+			color: #eeeeee;
 			margin: 0.5%;
-			padding: 1%;
 			max-width: 800px;
 			font-family: 'League Gothic', sans-serif;
-			font-size: 3.5em;
+			font-size: 4em;
 			letter-spacing: 0.05em;
 			font-weight: normal;
 			font-style: normal;
 			line-height: 110%;
-			background-color: rgba(255,255,255,0.8);
+			text-shadow: 2px 2px #11181A;
 		}
 		.container{
 			/*background-color: rgba(17,25,26,0.9);*/
@@ -288,7 +296,7 @@ h3{
 			margin: 25% 0.5% 45% 0.5%;
 			padding:1%;
 			display: inline-block;
-			background-color: rgba(2,8,16,0.8);
+			background-color: rgba(8,16,16,0.8);
 		}
 		
 		.chapter_introduction_div>p{
@@ -313,7 +321,7 @@ h3{
 			font-weight: 300;
 			line-height: 135%;
 			text-align: left;
-			color: #AAAAAA;
+			color: #dedede;
 		}
 		.block{
 			display: inline-block;

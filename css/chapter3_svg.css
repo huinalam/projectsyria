@@ -54,33 +54,33 @@
 }
 
 #shelling{
-    fill:#F50057;
-    color:#F50057;
+    fill:#D52270;
+    color:#D52270;
     border-color: #B71C1C;
 }
 #air_strike{
-    fill: #2196F3;
-    color: #2196F3;
+    fill: #3196D3;
+    color: #3196D3;
     border-color: #444444;
 }
 #battle{
-    fill: #12CF43;
-    color:#12CF43;
+    fill: #22BF99;
+    color:#22BF99;
     border-color: #444444;
 }
 #chemical{
-    fill: #B2FF59;
-    color: #B2FF59;
+    fill: #A2DF69;
+    color: #A2DF69;
     border-color: #444444;
 }
 #direct_attack{
-    fill: #FFEA00;
-    color: #FFEA00;
+    fill: #CCDA32;
+    color: #CCDA32;
     border-color: #444444;
 }
 #barrel_bomb{
-    fill: #FF5252;
-    color: #FF5252;
+    fill: #FF5266;
+    color: #FF5266;
     border-color: #444444;
 }
 #death{
