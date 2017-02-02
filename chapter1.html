@@ -10,6 +10,7 @@
 <body>
 	<div class="vertical_progress_bar">
 		<div class="vertical_progress"></div>
+		<div class="vertical_grid"></div>
 	</div>
 	<div class="chapter_count count_hide">
 		<div class="arrow" id="next">
@@ -123,7 +124,7 @@ $(document).ready(function(){
 	var $window = $(window);
 	var container = {};
 	var vizHeight;
-	var scrollTop
+	var scrollTop;
 	var article_top = [];
 	var article_height = [];
 	var windowHeight;
@@ -133,6 +134,7 @@ $(document).ready(function(){
 	var bottomHeight;
 	var vertical_progress_height;
 	var resizeTimer;
+	var chapter_number = 5;
 	//위치,사이즈 정보 갱신
 	initation();
 
@@ -187,6 +189,12 @@ $(document).ready(function(){
 		/*수직 프로그래스바*/
 		vertical_progress_height = windowHeight - parseInt($(".nav_bar").css("height"));
 		$(".vertical_progress_bar").css("height",vertical_progress_height);
+		$('.vertical_grid').css("height",vertical_progress_height);
+
+		/*프로그래스바 그리드 그리기*/
+		for(i=0;i<chapter_number;i++){
+			$(".vertical_grid").append("<div class='grid'></div>");
+		}
 
 		/*헤더 위치 확인*/
 		headerTop = ($window.height() - $(".header_background").height())/2;
@@ -194,7 +202,7 @@ $(document).ready(function(){
 		//$(".header_background").css("top",headerTop);
 
 		
-		for(var i=0; i<5;i++){
+		for(var i=0; i<chapter_number;i++){
 			article_top[i] = $(".chapter_article_div").eq(i).offset().top;
 			article_height[i] = $(".chapter_article_div").eq(i).height();
 		}
@@ -236,7 +244,7 @@ $(document).ready(function(){
             var bar_percent = (parseInt($window.scrollTop()-start_scroll)/range);
 
             var height= vertical_progress_height * bar_percent;
-            console.log(height);
+          
             $('.vertical_progress').css("height", height);
             
 
@@ -271,6 +279,7 @@ $(document).ready(function(){
 		if(opacity1<0.04){
 			opacity1=0.04;
 		}
+
 		$(".header_background").css({opacity: opacity1},10);
 
 		if(((wrapperTop - windowHeight)<scrollTop)&&(scrollTop<=(vizTop - vizGap))){

@@ -192,6 +192,30 @@ img.menu{
 	background-color: #22282c;
 	z-index: 999;
 }
+.vertical_grid{
+	position:absolute;
+	display: flex;
+	width:100%;
+	align-items: stretch;
+	top:0;
+	left:0;
+	flex-direction: column;
+}
+.grid{
+	width: 100%;
+	border-style: solid;
+	border-width: 0 0 2px 0;
+	border-color: #ffffff;
+	flex:1;
+}
+
+.vertical_progress{
+	position:absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	background-color: #44DDAA;
+}
 .vertical_hide{
 	transition: opacity 0.5s ease;
 	height: 0;
@@ -201,45 +225,6 @@ img.menu{
 	transition: opacity 0.5s ease;
 	height: 1000px;
 	opacity: 0.7;
-}
-.vertical_progress{
-	width: 100%;
-	background-color: #44DDAA;
-}
-.progress_back{
-	width: 100%;
-	height: 0.3em;
-	background-color: #22282c;
-	opacity: 0.85;
-}
-.progress_bar{
-	width: 0%;
-	height: 100%;
-	background-color: #44DDAA;
-}
-.progress_bar2{
-	width: 0%;
-	height: 100%;
-	background-color: #DDE0E6;
-}
-
-.bottom{
-		position: fixed;
-		display: inline-block;
-		width: 50%;
-		padding: 2% 25% 3% 25%;	
-		opacity: 1;
-		z-index: 9999;
-}
-.bottom_show{
-	transition: all 0.5s ease;
-	bottom:0;
-	left: 0;
-}
-.bottom_hide{
-	transition: all 0.5s ease;
-	bottom:-100px;
-	left: 0;
 }
 .arrow{
 		text-align: center;

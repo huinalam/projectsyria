@@ -11,6 +11,18 @@ body{
 	color: #D0D8DA;
 	background-color: #11181A;
 }
+a:link {
+	color:#ffffff;
+	text-decoration: none;
+}
+a:visited {
+	color:#ffffff;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+	color:#ffffff;
+}
 
 .header{
 	display: inline-block;

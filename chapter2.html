@@ -9,6 +9,7 @@
 <body>
 	<div class="vertical_progress_bar">
 		<div class="vertical_progress"></div>
+		<div class="vertical_grid"></div>
 	</div>
 	<div class="chapter_count count_hide">
 		<div class="arrow" id="next">
@@ -120,6 +121,7 @@ $(document).ready(function(){
 	var bottomHeight;
 	var vertical_progress_height;
 	var resizeTimer;
+	var chapter_number = 4;
 
 	//위치,사이즈 정보 갱신
 	initation();
@@ -169,7 +171,12 @@ $(document).ready(function(){
 		/*수직 프로그래스바*/
 		vertical_progress_height = windowHeight - parseInt($(".nav_bar").css("height"));
 		$(".vertical_progress_bar").css("height",vertical_progress_height);
+		$('.vertical_grid').css("height",vertical_progress_height);
 
+		/*프로그래스바 그리드 그리기*/
+		for(i=0;i<chapter_number;i++){
+			$(".vertical_grid").append("<div class='grid'></div>");
+		}
 
 		/*헤더 위치 확인*/
 		headerTop = ($window.height() - $(".header_background").height())/2;
