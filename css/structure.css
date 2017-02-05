@@ -34,7 +34,7 @@ a:hover{
 }
 .header_background{
 	width:100%;
-	top:5%;
+	top:6.5%;
 	left: 0%;
 	background-repeat: no-repeat;
 	background-position: top center;
@@ -301,7 +301,7 @@ h3{
 			width: 92%;
 			margin:0 auto 0 auto;
 			height: auto;
-			max-width: 1200px;
+			/*max-width: 1200px;*/
 		}
 		.chapter_introduction_div{
 			font-size: 0.8em;
@@ -356,7 +356,7 @@ h3{
 			z-index: 999;
 			padding-top: 0;
 			width:63%;
-			max-width: 695.52px;
+			/*max-width: 695.52px;*/
 			margin: 1%;
 			float: left;
 		}
@@ -376,7 +376,7 @@ h3{
 		.viz_Dfixed{
 			position: fixed;
 			width: 57.96% !important; /* Container width(92%) X Viz-Width */
-			max-width: 695.52px;
+			/*max-width: 695.52px;*/
 			margin: 0.92% !important;
 			top: 0px;
 			left:0px;

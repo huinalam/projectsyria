@@ -137,7 +137,10 @@ $(document).ready(function(){
 	var chapter_number = 5;
 	//위치,사이즈 정보 갱신
 	initation();
-
+	/*프로그래스바 그리드 그리기*/
+	for(i=0;i<chapter_number;i++){
+		$(".vertical_grid").append("<div class='grid'></div>");
+	}
 
 	/*윈도우 리사이즈 함수*/
 	$window.on("resize",function(e){
@@ -153,7 +156,7 @@ $(document).ready(function(){
 			set_vertical_progress_bar()
 			fix_check();
 
-		},0);
+		},250);
 
 		
 	});
@@ -191,10 +194,7 @@ $(document).ready(function(){
 		$(".vertical_progress_bar").css("height",vertical_progress_height);
 		$('.vertical_grid').css("height",vertical_progress_height);
 
-		/*프로그래스바 그리드 그리기*/
-		for(i=0;i<chapter_number;i++){
-			$(".vertical_grid").append("<div class='grid'></div>");
-		}
+		
 
 		/*헤더 위치 확인*/
 		headerTop = ($window.height() - $(".header_background").height())/2;
@@ -247,7 +247,6 @@ $(document).ready(function(){
           
             $('.vertical_progress').css("height", height);
             
-
             if(0.95<bar_percent){
             	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",0 +"px"); 
             	//$("#next").css("display","block");
@@ -260,6 +259,7 @@ $(document).ready(function(){
          		$(".arrow_img").removeClass("arrow_on");
             	$(".arrow_img").addClass("arrow_off");	
             }
+
      }
 
      function set_progress_bar2(start_scroll,end_scroll){
@@ -335,8 +335,7 @@ $(document).ready(function(){
 				$(".mask").css("top",maskTop).css("width","100%");
 			}else{
 				//affix for desktop
-				var text_left = parseInt($(".text").css("margin-left")) + parseInt($("#content").css("margin-left"));
-				$(".vertical_progress_bar").css("left",text_left);
+				
 
 
 				$(".viz").addClass("viz_Dfixed");
@@ -345,6 +344,9 @@ $(document).ready(function(){
 				$(".viz").css("left",left);
 				var marginLeft = $(".viz").width() +(4*parseInt($(".viz").css("margin-left"))); 
 				$(".text").css("margin-left",marginLeft);
+
+				var vertical_left = parseInt($(".text").css("margin-left")) + parseInt($("#content").css("margin-left"));
+				$(".vertical_progress_bar").css("left",vertical_left);
 			}
 
 		}else{//un-affix

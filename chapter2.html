@@ -126,6 +126,11 @@ $(document).ready(function(){
 	//위치,사이즈 정보 갱신
 	initation();
 
+	/*프로그래스바 그리드 그리기*/
+	for(i=0;i<chapter_number;i++){
+		$(".vertical_grid").append("<div class='grid'></div>");
+	}
+
 	/*윈도우 리사이즈 함수*/
 	$window.on("resize",function(){
 		
@@ -173,10 +178,6 @@ $(document).ready(function(){
 		$(".vertical_progress_bar").css("height",vertical_progress_height);
 		$('.vertical_grid').css("height",vertical_progress_height);
 
-		/*프로그래스바 그리드 그리기*/
-		for(i=0;i<chapter_number;i++){
-			$(".vertical_grid").append("<div class='grid'></div>");
-		}
 
 		/*헤더 위치 확인*/
 		headerTop = ($window.height() - $(".header_background").height())/2;
