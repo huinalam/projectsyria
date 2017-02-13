@@ -42,15 +42,22 @@ var value = [];
                 // NOTE 
 //1.Global Variable Declare - Start
 // NOTE size variable
-width = parseInt(d3.select(".viz").style('width'));
+  width = parseInt(d3.select(".viz").style('width'));
+
+  if(800<width){
+    width=800;
+  }
 
 //width = (d3.select("body").width())*0.63;
 if(width<=360){
   height = 0.9 * width;
-}else{
-  height = width;
-}
-
+  }else{
+    if(780<width){
+      height = 780;
+    }else{
+      height = width;
+    }
+  }
 
 var margin = {
               top: 20,
@@ -167,9 +174,6 @@ var current_opacity;
 var current_opacity2;
 
 //1.Global Variable Declare--END
-
-
-
 
 
 
@@ -458,11 +462,18 @@ d3.csv("data/event_num_long.csv",function(event_data){
 function reDraw(){
   
   width = parseInt(d3.select(".viz").style('width'));
+  if(800<width){
+    width=800;
+  }
   //width = (d3.select("body").width())*0.63;
   if(width<=360){
   height = 0.9 * width;
   }else{
-    height = width;
+    if(780<width){
+      height = 780;
+    }else{
+      height = width;
+    }
   }
   margin = {
             top: 20,

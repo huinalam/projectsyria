@@ -5,7 +5,8 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather:300');
 @import url('https://fonts.googleapis.com/css?family=Gurajada');
 
-html{font-size: 16px;}
+/*html Element*/
+html{font-size: 16px;}  
 body{
 	min-width: 360px;
 	margin: 0px;
@@ -15,12 +16,9 @@ body{
 }
 p{
 	display: inline-block;
-	font-size: 1.3em;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
 	line-height: 150%;
-	margin-bottom: 5%;
-	text-align: left;
 }
 a:link {
 	color:#ffffff;
@@ -34,6 +32,12 @@ a:hover{
 	text-decoration: none;
 	color:#ffffff;
 }
+/*html Element*/
+
+
+
+
+/*Big containner*/
 #content{
 	margin-top: 20%;
 	background-color: #11181A;
@@ -47,56 +51,136 @@ a:hover{
 	z-index: 10;
 	box-shadow: 0px 0px 200px 150px #11181A;
 }
-#intro_facts{
+#intro_img_head{
 	background-color: rgba(255,255,255,0);
 	width: 96% !important;
 	padding: 0% 2% !important;
 	margin: 3% -5% 3% 0% !important;
 }
-.facts{
+/*Big containner*/
+
+
+
+
+/*Intro page flex-box*/
+.img_head{
 	display: inline-block;
-	width:51%;
-	padding-top:17.5%;
-	padding-bottom:17.5%;
+	width:90%;
+	padding-top:35%;
+	padding-bottom:35%;
 	color:#dddddd;
 	border-style: solid;
 	border-color: #eeeeee;
 	border-width: 1px;
 	position: relative;
 	background-repeat: no-repeat;
-	float:left;
 }
-.facts h3{
+.flex-31{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	flex:1;
+	align-items: center;
+}
+.flex-21{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	flex:1;
+	align-items: center;
+}
 
-}
-.no-margin{
-	display: inline-block;
-	width:100%;
-}
-.facts_p{
-	overflow: hidden;
-	display: inline-block;
-	font-size:0.9em;
-	font-weight: 300;
-	width:41%;
-	height:auto;
-	float: left;
-	padding: 2%;
-	margin:0 !important;
-	text-indent: 0.5em;
-	color: #aaafb5;
+.flex-12{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width:90%;
+	margin-bottom: 5%;
 }
 .subheading{
 	display: inline-block;
 	text-align: center;
 	margin: 0.1em auto 0.1em auto;
-	font-size: 1.2em;
+	font-size: 1.8em;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 600;
+	padding: 0% 2%;
 	word-spacing: 0.25em;
 	letter-spacing: 0.05em;
 	color:#ffffff;
 }
+.facts_p{
+	display: inline-block;
+	font-size:0.8em;
+	font-weight: 300;
+	width:90%;
+	padding: 2% 5%;
+	margin:0 !important;
+	text-align: left;
+	text-indent: 0.5em;
+	color: #aaafb5;
+}
+@media screen and (min-width: 640px){
+	.flex-31{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: flex-start;
+	}
+	.flex-21{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: flex-start;
+	}
+
+	.flex-12{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width:50%;
+		flex-grow: 1;
+		margin-bottom: 0%;
+	}
+	.subheading{
+		display: inline-block;
+		text-align: center;
+		margin: 0.1em auto 0.1em auto;
+		font-size: 1.2em;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-weight: 600;
+		word-spacing: 0.25em;
+		letter-spacing: 0.05em;
+		color:#ffffff;
+	}
+	.facts_p{
+		display: inline-block;
+		font-size:0.8em;
+		font-weight: 300;
+		width:90%;
+		padding: 5%;
+		margin:0 !important;
+		text-align: left;
+		text-indent: 0.5em;
+		color: #aaafb5;
+	}
+}
+/*Intro page flex-box*/
+
+
+
+/*data_source img*/
+.source_img{
+	width:90%;
+	margin:5%;
+}
+
+
+
 #civilwar{
 	background: url('../img/facts_civil_war_dark.jpg') no-repeat center center;
 	background-size: cover;
@@ -177,7 +261,7 @@ a:hover{
 	margin: auto;
 	z-index: 10;
 }
-.header{
+.content_col{
 	max-width: 900px;
 	width: 94%;
 	margin: 0% auto 3% auto;
@@ -292,11 +376,6 @@ h2{
     -webkit-filter: url(#filter);
             filter: url(#filter);
 }
-.content_block{
-	width: 100%;
-	padding-top: 2%;
-	display: inline-block;
-}
 .report{
 	transition: all 0.5s ease;
 	width:100%;
@@ -305,6 +384,7 @@ h2{
 	display: -ms-flexbox;
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
 	border-style: solid;
 	border-width: 1px;
 	border-color:  #11181A;
@@ -438,11 +518,6 @@ h3.chapt_list{
 	background-color: #111111;
 }
 
-.wordcloud{
-	width: 96%;
-	margin: 2%;
-	text-align: center;
-}
 .block-1{
 	display: inline-block;
 	width: 98%;
@@ -513,34 +588,6 @@ h3.chapt_list{
 		max-width: 600px;  
 		width: 48%;
 		margin: 1%;
-	}
-	.facts{
-		width:98%;
-		padding-top:30%;
-		padding-bottom:35%;
-		color:#dddddd;
-		border-style: solid;
-		border-color: #eeeeee;
-		position: relative;
-		background-repeat: no-repeat;
-	}
-	.facts_p{
-		font-size:0.8em;
-		width:90.4%;
-		margin:0% 0 0 0;
-		padding:5%;
-
-	}
-	.subheading{
-		display: inline-block;
-		text-align: center;
-		margin: 0.1em auto 0.1em auto;
-		color:#ffffff;
-		font-size: 1.2em;
-		font-family: 'Source Sans Pro', sans-serif;
-		font-weight: 600;
-		word-spacing: 0.1em;
-		
 	}
 	.data_source_p{
 		margin: -10% 5% 2% 5%;

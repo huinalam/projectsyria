@@ -34,7 +34,7 @@ a:hover{
 }
 .header_background{
 	width:100%;
-	top:6.5%;
+	top:5%;
 	left: 0%;
 	background-repeat: no-repeat;
 	background-position: top center;
@@ -196,6 +196,7 @@ h3{
 	margin: 2%;
 	margin-top: 0%;
 	float: none;
+	text-align: center;
 }
 .viz>h2{
 	font-family: 'Source Sans Pro', sans-serif;
@@ -217,6 +218,7 @@ h3{
 	position: fixed;
 	top: 0px;
 	left:0px;
+	text-align: center;
 }
 .mask{
 	width:0;
@@ -359,6 +361,7 @@ h3{
 			/*max-width: 695.52px;*/
 			margin: 1%;
 			float: left;
+			text-align: center;
 		}
 		.viz>h2{
 			display: inline-block;
@@ -374,6 +377,7 @@ h3{
 			font-stretch: condensed;
 		}
 		.viz_Dfixed{
+			text-align: center;
 			position: fixed;
 			width: 57.96% !important; /* Container width(92%) X Viz-Width */
 			/*max-width: 695.52px;*/
