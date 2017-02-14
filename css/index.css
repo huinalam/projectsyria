@@ -170,6 +170,62 @@ a:hover{
 /*Intro page flex-box*/
 
 
+/*headline*/
+h1.title{
+	display: inline-block;
+	color: #ffffff;
+	text-align: center;
+	border-bottom-style: solid;
+	border-bottom-width: 0.02em;
+	border-top-style: solid;
+	border-top-width: 0.02em;
+	border-color: #cccccc;
+	margin: 0.05em auto 0.05em auto;
+	padding-top: 0.1em;
+	max-width: 900px;
+	font-family: 'League Gothic Condensed', sans-serif;
+	font-size: 5em;
+	letter-spacing: 0.05em;
+	word-spacing: 0.1em;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 95%;
+	mix-blend-mode: difference;
+	opacity: 0.8;
+	
+}
+h3.title{
+	display: inline-block;
+	color: #fafafa;
+	text-align: center;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	font-size: 1em;
+	letter-spacing: 0.1em;
+	word-spacing: 0.3em;
+	margin:0;
+	mix-blend-mode: difference;
+	opacity: 0.8
+}
+
+@media screen and (min-width:640px){
+	h1.title{
+		font-size: 6em;
+		letter-spacing: 0.05em;
+		word-spacing: 0.1em;
+	}
+	h3.title{
+		display: inline-block;
+		color: #fafafa;
+		text-align: center;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-weight: 300;
+		font-size: 1.2em;
+		letter-spacing: 0.1em;
+		word-spacing: 0.3em;
+		margin:0;
+	}
+}
 
 /*data_source img*/
 .flex-42{
@@ -317,42 +373,7 @@ a:hover{
 	box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2);
 	z-index: 0 !important;
 }
-h1.title{
-	display: inline-block;
-	color: #ffffff;
-	text-align: center;
-	border-bottom-style: solid;
-	border-bottom-width: 0.02em;
-	border-top-style: solid;
-	border-top-width: 0.02em;
-	border-color: #cccccc;
-	margin: 0.05em auto 0.05em auto;
-	padding-top: 0.1em;
-	max-width: 900px;
-	font-family: 'League Gothic Condensed', sans-serif;
-	font-size: 6em;
-	letter-spacing: 0.05em;
-	word-spacing: 0.1em;
-	font-weight: normal;
-	font-style: normal;
-	line-height: 95%;
-	mix-blend-mode: difference;
-	opacity: 0.8;
-	
-}
-h3.title{
-		display: inline-block;
-		color: #fafafa;
-		text-align: center;
-		font-family: 'Source Sans Pro', sans-serif;
-		font-weight: 400;
-		font-size: 1.2em;
-		letter-spacing: 0.1em;
-		word-spacing: 0.3em;
-		margin:0;
-		mix-blend-mode: difference;
-		opacity: 0.8
-	}
+
 #logo{
 	width: 50%;
 	margin: 4% 0 2% 0;
@@ -601,22 +622,7 @@ h3.chapt_list{
 }
 @media screen and (min-width: 640px){
 	html{font-size: 16px;}
-	h1.title{
-		font-size: 6em;
-		letter-spacing: 0.05em;
-		word-spacing: 0.1em;
-	}
-	h3.title{
-		display: inline-block;
-		color: #fafafa;
-		text-align: center;
-		font-family: 'Source Sans Pro', sans-serif;
-		font-weight: 300;
-		font-size: 1.2em;
-		letter-spacing: 0.1em;
-		word-spacing: 0.3em;
-		margin:0;
-	}
+
 	.block-2{
 		display: inline-block;
 		position: relative;
