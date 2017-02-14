@@ -64,9 +64,9 @@ a:hover{
 /*Intro page flex-box*/
 .img_head{
 	display: inline-block;
-	width:90%;
-	padding-top:35%;
-	padding-bottom:35%;
+	width:75%;
+	padding-top:20%;
+	padding-bottom:20%;
 	color:#dddddd;
 	border-style: solid;
 	border-color: #eeeeee;
@@ -96,7 +96,7 @@ a:hover{
 	flex-direction: column;
 	align-items: center;
 	width:90%;
-	margin-bottom: 5%;
+	margin-bottom: 10%;
 }
 .subheading{
 	display: inline-block;
@@ -114,14 +114,26 @@ a:hover{
 	display: inline-block;
 	font-size:0.8em;
 	font-weight: 300;
-	width:90%;
-	padding: 2% 5%;
+	width:75%;
+	padding: 2% 12.5%;
 	margin:0 !important;
 	text-align: left;
 	text-indent: 0.5em;
 	color: #aaafb5;
 }
 @media screen and (min-width: 640px){
+	.img_head{
+		display: inline-block;
+		width:90%;
+		padding-top:35%;
+		padding-bottom:35%;
+		color:#dddddd;
+		border-style: solid;
+		border-color: #eeeeee;
+		border-width: 1px;
+		position: relative;
+		background-repeat: no-repeat;
+	}
 	.flex-31{
 		width: 100%;
 		display: flex;
