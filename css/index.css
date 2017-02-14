@@ -36,7 +36,6 @@ a:hover{
 
 
 
-
 /*Big containner*/
 #content{
 	margin-top: 20%;
@@ -137,7 +136,6 @@ a:hover{
 		flex-wrap: nowrap;
 		align-items: flex-start;
 	}
-
 	.flex-12{
 		display: flex;
 		flex-direction: column;
@@ -174,13 +172,29 @@ a:hover{
 
 
 /*data_source img*/
+.flex-42{
+	display: flex;
+	flex-direction: row;
+	width:100%;
+	flex-wrap: wrap;
+}
 .source_img{
-	width:90%;
+	width:40%;
 	margin:5%;
 }
+@media screen and (min-width:360px){
+	.flex-42{
+		display: flex;
+		flex-direction: row;
+		width:100%;
+	}
+	.source_img{
+		width:20%;
+		margin:2.5%;
+	}
+}
 
-
-
+/*img_background*/
 #civilwar{
 	background: url('../img/facts_civil_war_dark.jpg') no-repeat center center;
 	background-size: cover;
@@ -221,6 +235,8 @@ a:hover{
 	z-index: -2 !important;
 	background-color: #11181A;
 }
+
+
 .header_background{
 	text-align: center;
 	position: fixed;
@@ -229,19 +245,37 @@ a:hover{
 	top:-15%;
 	left:0;
 }
+
+/*narrative*/
 .narrative{
 	display: inline-block;
-	width: 80%;
+	width: 100%;
 	margin: 5% auto 5% auto;
 	font-family: 'Source Sans Pro', sans-serif;
 	text-indent: 0.5em;
-	font-size: 1.3em;
+	font-size: 1.1em;
 	font-weight: 300;
 	text-align: left;
 	word-spacing: 0.1em;
-	line-height: 150%;
+	line-height: 140%;
 	color: #eeeeee;
 }
+@media screen and (min-width: 640px){
+	.narrative{
+		display: inline-block;
+		width: 100%;
+		margin: 5% auto 5% auto;
+		font-family: 'Source Sans Pro', sans-serif;
+		text-indent: 0.5em;
+		font-size: 1.3em;
+		font-weight: 300;
+		text-align: left;
+		word-spacing: 0.1em;
+		line-height: 150%;
+		color: #eeeeee;
+	}
+}
+
 .focus{
 	background-color: #11181A;
 	width:80%;
@@ -522,6 +556,8 @@ h3.chapt_list{
 	display: inline-block;
 	width: 98%;
 	margin: 1%;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 1em;
 }
 .block-2{
 	display: flex;
