@@ -51,9 +51,10 @@ a:hover{
 	text-align: center;
 }
 .intro{
-	display: inline-block;
+	display: block;
 	width: 94%;
-	margin: 3%;
+	margin: 3% auto;
+	max-width: 900px;
 	text-align: center;
 	background-color: rgba(17,24,26,0.9);
 	z-index: 0;
@@ -168,6 +169,7 @@ a:hover{
 	}
 	.flex-31{
 		width: 100%;
+		max-width: 900px;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;

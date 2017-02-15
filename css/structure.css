@@ -11,11 +11,11 @@ body{
 	color: #D0D8DA;
 	background-color: #11181A;
 }
-a:link {
+a:link{
 	color:#ffffff;
 	text-decoration: none;
 }
-a:visited {
+a:visited{
 	color:#ffffff;
 	text-decoration: none;
 }
@@ -44,6 +44,10 @@ a:hover{
 	filter: grayscale(0.6) brightness(60%);
 }
 
+.chapter_img{
+	width: 100%;
+	height: auto;
+}
 #chapt1{
 	background-image: url("../img/father_son.jpg");
 	height:65%;
@@ -86,9 +90,6 @@ a:hover{
 	margin: 80% 5% 0% 5%;
 }
 
-#chapt2_svg_title{
-	margin: 0 0 -1em 0 !important;
-}
 
 h1.title{
 	display: inline-block;
@@ -196,13 +197,12 @@ h3{
 	margin: 2%;
 	margin-top: 0%;
 	float: none;
-	text-align: center;
 }
 .viz>h2{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 700;
 	font-size: 1.2em;
-	margin: 0.5em 0 0.5em 0;
+	padding: 0 0 0 1em;
 	line-height: 120%;
 	letter-spacing: 0.03em;
 	word-spacing: 0.1em;
@@ -218,7 +218,6 @@ h3{
 	position: fixed;
 	top: 0px;
 	left:0px;
-	text-align: center;
 }
 .mask{
 	width:0;
@@ -361,14 +360,12 @@ h3{
 			/*max-width: 695.52px;*/
 			margin: 1%;
 			float: left;
-			text-align: center;
 		}
 		.viz>h2{
 			display: inline-block;
 			font-family: 'Source Sans Pro', sans-serif;
 			font-weight: 700;
 			font-size: 1.5em;
-			margin: 1em 0 0.5em 0;
 			line-height: 120%;
 			letter-spacing: 0.03em;
 			word-spacing: 0.1em;
@@ -377,7 +374,6 @@ h3{
 			font-stretch: condensed;
 		}
 		.viz_Dfixed{
-			text-align: center;
 			position: fixed;
 			width: 57.96% !important; /* Container width(92%) X Viz-Width */
 			/*max-width: 695.52px;*/
