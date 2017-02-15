@@ -47,9 +47,8 @@
 /** line_graph **/
 .intro_graph{
  	fill: none;
- 	stroke-width: 0.15em;
- 	stroke: #eeeeee;
- 	stroke-dasharray: 3,3;
+ 	stroke-width: 1px;
+ 	stroke: #dddddd;
  	shape-rendering: crisp;
  }
  .intro_area{
@@ -89,7 +88,10 @@
 .chart_caption{
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 0.6em;
-    fill: #eeeeee;
+    fill: #aaaaaa;
+}
+.caption_g{
+    opacity: 0;
 }
 @media screen and (min-width: 640px){
     .chart_caption{

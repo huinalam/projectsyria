@@ -245,7 +245,10 @@ function markingEvent(marking_events){
                                         .enter();
 
     marking_events.append("circle")
-                  .attr("class","marking_events c1")
+                  .attr("class","marking_events c1 caption_g")
+                  .attr("id",function(d,i){
+                    return "caption_g" + i;
+                  })
                   .attr("r",2)
                   .attr("cx",function(d){
                       var toYear = d.year + "-12-31"
@@ -258,7 +261,10 @@ function markingEvent(marking_events){
 
 
     marking_events.append("circle")
-                  .attr("class","marking_events c2")
+                  .attr("class","marking_events c2 caption_g")
+                  .attr("id",function(d,i){
+                    return "caption_g" + i;
+                  })
                   .attr("r",2)
                   .attr("cx",function(d){
                       var toYear = d.year + "-12-31"
@@ -272,7 +278,10 @@ function markingEvent(marking_events){
                   }); 
 
     marking_events.append("line")
-                .attr("class","marking_events_line l1")
+                .attr("class","marking_events_line l1 caption_g")
+                .attr("id",function(d,i){
+                  return "caption_g" + i;
+                })
                 .attr("x1",function(d){
                     var toYear = d.year + "-12-31";
                     return x_line(parseDate(toYear));
@@ -293,8 +302,10 @@ function markingEvent(marking_events){
                  }); 
 
     marking_events.append("text")
-                  .attr("class","chart_caption")
-                  .attr("id",function(d,i){ return "caption" + i; })
+                  .attr("class","chart_caption caption_g")
+                  .attr("id",function(d,i){
+                    return "caption_g" + i;
+                  })
                   .attr("x",function(d){
                     var toYear = d.year + "-12-31";
                     return x_line(parseDate(toYear)) - 5;

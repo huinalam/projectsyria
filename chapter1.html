@@ -412,7 +412,7 @@ $(document).ready(function(){
 			set_progress_bar2(start_scroll,end_scroll);
 
 			$(".chapt_num").text("1/5");
-			
+			$(".caption_g").style("opacity",0);
 
 		}else if(((article_top[1]-article_height[0])<scrollTop)&&(scrollTop<(article_top[2]-article_height[1]))){
 
@@ -425,6 +425,8 @@ $(document).ready(function(){
 			set_progress_bar2(start_scroll,end_scroll);
 
 			$(".chapt_num").text("2/5");
+			$(".caption_g").css("opacity",0);
+			d3.selectAll("#caption_g0").style("opacity",1);
 
 		}else if(((article_top[2]-article_height[1])<scrollTop)&&(scrollTop<(article_top[3]-article_height[2]))){
 
@@ -437,6 +439,8 @@ $(document).ready(function(){
 			set_progress_bar2(start_scroll,end_scroll);
 
 			$(".chapt_num").text("3/5");
+			$(".caption_g").css("opacity",0);
+			d3.selectAll("#caption_g1").style("opacity",1);
 
 		}else if(((article_top[3]-article_height[2])<scrollTop)&&(scrollTop<(article_top[4]-article_height[3]))){
 
@@ -445,6 +449,8 @@ $(document).ready(function(){
 			console.log("chapter4");
 
 			$(".chapt_num").text("4/5");
+			$(".caption_g").css("opacity",0);
+			d3.selectAll("#caption_g2").style("opacity",1);
 
 			var start_scroll = article_top[3]-article_height[2];
 			var end_scroll = article_top[4]-article_height[3];
