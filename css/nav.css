@@ -55,6 +55,8 @@
 	border-color: #c0c6ca;
 	border-width: 2px;
 	border-radius: 5px;
+	display: inline-block;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 @keyframes blink{
 	0% {opacity:1;}
@@ -246,8 +248,10 @@ img.menu{
 .chapter_count{
 	position:fixed;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	background-color: #11181A;
-	width:70px;
+	background-color: rgba(17,25,26,0.6);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	font-family: 'Source Sans Pro', sans-serif;
 	color:#eeeeee;
 	font-size: 1em;
@@ -265,6 +269,30 @@ img.menu{
 	right:-90px;
 	bottom: 5%;
 }
+@media screen and (min-width: 640px){
+	.chapter_count{
+		position:fixed;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		background-color: rgba(17,25,26,0.6);
+		font-family: 'Source Sans Pro', sans-serif;
+		color:#eeeeee;
+		font-size: 1em;
+		font-weight: 700;
+		padding:0.5%;
+		z-index: 999;
+	}
+	.count_show{
+		transition: all 0.5s ease;
+		right:0;
+		bottom: 5%;
+	}
+	.count_hide{
+		transition: all 0.5s ease;
+		right:-90px;
+		bottom: 5%;
+	}
+}
+
 
 /*Vertical Progress_bar*/
 .vertical_progress_bar{
@@ -272,7 +300,7 @@ img.menu{
 	position: fixed;
 	bottom:0;
 	background-color: #22282c;
-	z-index: 999;
+	z-index: 9999;
 }
 .vertical_grid{
 	position:absolute;
@@ -372,9 +400,9 @@ img.menu{
 		color:#eeeeee;
 	}
 	.arrow_img{
-		margin: 0.5em;
-		width:50px;
-		height:50px;
+		margin: 0.2em;
+		width:30px;
+		height:30px;
 	}
 }
 
