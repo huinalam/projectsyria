@@ -101,7 +101,7 @@ a:hover{
 .chapter_article_div >h2{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 700;
-	font-size: 1.5em;
+	font-size: 1.3em;
 	margin: 30px 0 5px 0;
 	margin-top: 0px;
 	line-height: 120%;
@@ -111,10 +111,10 @@ a:hover{
 .chapter_article_div >p{
 	margin: 0 0 2em 0;
 	display: inline-block;
-	font-size: 1.3em;
+	font-size: 1.1em;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
-	line-height: 135%;
+	line-height: 140%;
 	text-align: left;
 	color: #dedede;
 }
@@ -138,6 +138,15 @@ a:hover{
 			display: inline-block;
 			background-color: rgba(8,16,16,0.8);
 		}
+		.chapter_article_div >h2{
+			font-family: 'Source Sans Pro', sans-serif;
+			font-weight: 700;
+			font-size: 1.5em;
+			margin: 30px 0 5px 0;
+			margin-top: 0px;
+			line-height: 120%;
+			color: #eeeeee;
+		}
 		
 		.chapter_introduction_div>p{
 			text-indent: 0.7em;
@@ -159,7 +168,7 @@ a:hover{
 			font-size: 1.1em;
 			font-family: 'Source Sans Pro', sans-serif;
 			font-weight: 300;
-			line-height: 135%;
+			line-height: 150%;
 			text-align: left;
 			color: #dedede;
 		}
@@ -174,11 +183,12 @@ h1.title{
 	margin: 0.5%;
 	max-width: 800px;
 	font-family: 'League Gothic', sans-serif;
-	font-size: 2em;
+	font-size: 2.5em;
 	letter-spacing: 0.05em;
 	font-weight: normal;
 	font-style: normal;
 	line-height: 110%;
+	text-shadow: 2px 2px #11181A;
 }
 h2{
 	font-family: 'Source Sans Pro', sans-serif;
@@ -260,7 +270,7 @@ h3{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 600;
 	font-size: 1.2em;
-	padding: 0 0 0 1em;
+	margin: 2% 0 1% 0;
 	line-height: 120%;
 	letter-spacing: 0.03em;
 	word-spacing: 0.1em;
@@ -316,7 +326,7 @@ h3{
 
 
 
-@media screen and (min-width: 820px){
+@media screen and (min-width: 640px){
 		html{font-size: 16px;}
 		
 		p{
@@ -376,6 +386,7 @@ h3{
 		}
 		.viz>h2{
 			display: inline-block;
+			margin: 0% 0 1% 0;
 			font-family: 'Source Sans Pro', sans-serif;
 			font-weight: 600;
 			font-size: 1.2em;
