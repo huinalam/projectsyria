@@ -303,9 +303,8 @@
  		
 
  		$('div#title').each(function(){
- 			var title_margin = ($window.height());
- 			$(this).css("margin-top",title_margin*0.6).css("margin-bottom",title_margin*0.5);
- 
+ 			var title_margin = $('#title_svg').height() + parseInt($('#title_svg').css("margin-top")) -$window.height()*0.2;
+ 			$(this).css("margin-top",title_margin).css("margin-bottom",title_margin*0.5);
  		});
 
  		$("div.intro:not('#title')").each(function(){
