@@ -27,7 +27,7 @@
 .keep_scroll{
 	transition: all 0.5s ease;
 	position: fixed;
-	bottom:5%;
+	bottom:10px;
 	left: 0%;
 	width:100%;
 	height:100px;
@@ -50,7 +50,8 @@
 	font-size: 0.8em;
 	font-weight: 400;
 	/*background-color: #c0c6ca;*/
-	color: #c0c6ca;
+	background-color: #c0c6ca;
+	color: #11181A;
 	border-style: solid;
 	border-color: #c0c6ca;
 	border-width: 2px;
@@ -80,11 +81,11 @@
 }
 
 @keyframes blink{
-	0% {opacity:1;}
+	0% {opacity:0.65;}
 	25% {opacity:0.1;}
-	50% {opacity:1;}
-	75% {opacity:1;}
-	100% {opacity:1;}
+	50% {opacity:0.65;}
+	75% {opacity:0.65;}
+	100% {opacity:0.65;}
 }
 
 

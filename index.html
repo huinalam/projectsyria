@@ -303,7 +303,7 @@
  		
 
  		$('div#title').each(function(){
- 			var title_margin = $('#title_svg').height() + parseInt($('#title_svg').css("margin-top")) -$window.height()*0.22;
+ 			var title_margin = $('#title_svg').height() + parseInt($('#title_svg').css("margin-top")) -$window.height()*0.23;
  			$(this).css("margin-top",title_margin).css("margin-bottom",title_margin*0.5);
  		});
 
@@ -336,7 +336,7 @@
 
  	function svg_transition(){
 
- 		if(scrollTop<=intro_top[0]){
+ 		if(scrollTop<=50){
  			//d3.selectAll(".header_background").style("z-index",0);
  		//	d3.select("#background_img").style("opacity",0);
  			var top = (intro_top[0] - scrollTop)/(intro_top[0]) *(-15);
@@ -353,7 +353,7 @@
 
 
  		}
- 		else if((intro_top[0]<scrollTop)){
+ 		else if((50<scrollTop)){
  			
  			//d3.selectAll(".header_background").style("z-index",-999);
  			//var opacity = 1 - (intro_top[1] - scrollTop)/(intro_top[1]-intro_top[0]);
