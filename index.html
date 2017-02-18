@@ -337,7 +337,6 @@
  	function svg_transition(){
 
  		if(scrollTop<=intro_top[0]){
- 			
  			//d3.selectAll(".header_background").style("z-index",0);
  		//	d3.select("#background_img").style("opacity",0);
  			var top = (intro_top[0] - scrollTop)/(intro_top[0]) *(-15);
@@ -354,7 +353,7 @@
 
 
  		}
- 		else if((intro_top[0]<scrollTop)&&(scrollTop<=intro_top[1])){
+ 		else if((intro_top[0]<scrollTop)){
  			
  			//d3.selectAll(".header_background").style("z-index",-999);
  			//var opacity = 1 - (intro_top[1] - scrollTop)/(intro_top[1]-intro_top[0]);
@@ -363,26 +362,6 @@
  			$(".nav_bar").addClass("nav_show");
  			$('.keep_scroll').addClass('keep_scroll_hide');
  			console.log("Hide");
- 		}
- 		else if((intro_top[1]<scrollTop)&&(scrollTop<=intro_top[2])){
- 			
- 			$('.keep_scroll').addClass('keep_scroll_hide');
- 			console.log("Hide");
- 		}
- 		else if((intro_top[2]<scrollTop)&&(scrollTop<=intro_top[3])){
- 			
-			$('.keep_scroll').addClass('keep_scroll_hide');
-			console.log("Hide");
- 			
- 		}
- 		else if((intro_top[3]<scrollTop)&&(scrollTop<=intro_top[4])){
- 			
-			$('.keep_scroll').addClass('keep_scroll_hide');
-			console.log("Hide");
- 			
- 		}
- 		else{
- 			$('.keep_scroll').addClass('keep_scroll_hide');
  		}
  	}
 
