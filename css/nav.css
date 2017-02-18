@@ -11,6 +11,12 @@
 	border-width: 0 0 1px 0;
 	border-color: #AAB0B6;
 }
+
+@media screen and (max-width: 360px){
+ .nav_bar{
+ 	background-color: rgba(24,32,38,1);
+ }
+}
 .nav_show{
 	transition: all 0.5s ease;
 	top: 0px;
@@ -146,7 +152,7 @@ li.nav_item{
 	justify-content: center;
 	color: #44DDAA !important;
 	width:15%;
-	padding:0 0 0 2%;
+	padding:0 1% 0 1%;
 	font-weight: 700;
 }
 #chapter_display{

@@ -192,7 +192,7 @@ $(document).ready(function(){
 	$window.on("scroll",function(){
 		scrollTop = $window.scrollTop();
 		
-		//set_progress_bar();
+
 		set_vertical_progress_bar();
 		fade_out();
 		fix_check();
@@ -212,9 +212,7 @@ $(document).ready(function(){
 		var header_back_Height = windowHeight;
 		$(".header_background").css("height",header_back_Height);
 
-		bottomHeight = $(".bottom").height() + parseInt($(".bottom").css("padding-bottom")) + parseInt($(".bottom").css("padding-top"));
-		//$('#last_article').css("margin-bottom",bottomHeight);
-		$('.bottom').css("bottom",-bottomHeight);
+
 
 		/*수직 프로그래스바*/
 		vertical_progress_height = windowHeight - parseInt($(".nav_bar").css("height"));
@@ -248,22 +246,6 @@ $(document).ready(function(){
 
 	}
 
-	 function set_progress_bar(){
-            var end_scroll = parseInt($("#end_div").offset().top) - (windowHeight);
-            var bar_percent = (parseInt($window.scrollTop())/end_scroll)*100;
-
-            $('.progress_bar').css("width", bar_percent + "%");
-            
-
-            if(90.8<bar_percent){
-            	$(".bottom").removeClass("bottom_hide");
-            	$(".bottom").addClass("bottom_show");
-            }
-            else {
-            	$(".bottom").removeClass("bottom_show");
-            	$(".bottom").addClass("bottom_hide");
-            }
-     }
      function set_vertical_progress_bar(){
      		var start_scroll = vizTop - vizGap;
             var end_scroll = parseInt($("#end_div").offset().top) - (windowHeight);
@@ -273,29 +255,10 @@ $(document).ready(function(){
             var height= vertical_progress_height * bar_percent;
           
             $('.vertical_progress').css("height", height);
-            
-            if(0.95<bar_percent){
-            	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",0 +"px"); 
-            	//$("#next").css("display","block");
-            	  $(".arrow_img").removeClass("arrow_off");
-            	  $(".arrow_img").addClass("arrow_on");	
-            }
-            else {
-            	d3.select(".bottom").transition().duration(600).ease("exp").style("bottom",-bottomHeight + "px");	
-            	//$("#next").css("display","none");
-         		$(".arrow_img").removeClass("arrow_on");
-            	$(".arrow_img").addClass("arrow_off");	
-            }
+           
 
      }
 
-     function set_progress_bar2(start_scroll,end_scroll){
-     		var range = end_scroll - start_scroll;
-            var bar_percent = 100 - (parseInt(end_scroll - $window.scrollTop())/range)*100;
-            console.log(bar_percent);
-
-            $('.progress_bar2').css("width", bar_percent + "%");
-     }
 
 	function fade_out(){
 		var progress1 = vizTop - (scrollTop + vizGap);
@@ -406,10 +369,7 @@ $(document).ready(function(){
 
 			current_chapter = chapter_list[0];
 			area_popYear(chapter_list[0]);
-			console.log("chapter1");
-			var start_scroll = vizTop;
-			var end_scroll = article_top[1]-article_height[0];
-			set_progress_bar2(start_scroll,end_scroll);
+			
 
 			$(".chapt_num").text("1/5");
 			d3.selectAll("#caption_g0").style("opacity",0);
@@ -420,9 +380,6 @@ $(document).ready(function(){
 			area_popYear(chapter_list[1]);
 			console.log("chapter2");
 
-			var start_scroll = article_top[1]-article_height[0];
-			var end_scroll = article_top[2]-article_height[1];
-			set_progress_bar2(start_scroll,end_scroll);
 
 			$(".chapt_num").text("2/5");
 			$(".caption_g").css("opacity",0);
@@ -434,9 +391,6 @@ $(document).ready(function(){
 			area_popYear(chapter_list[2]);
 			console.log("chapter3");
 
-			var start_scroll = article_top[2]-article_height[1];
-			var end_scroll = article_top[3]-article_height[2];
-			set_progress_bar2(start_scroll,end_scroll);
 
 			$(".chapt_num").text("3/5");
 			$(".caption_g").css("opacity",0);
@@ -452,22 +406,12 @@ $(document).ready(function(){
 			$(".caption_g").css("opacity",0);
 			d3.selectAll("#caption_g2").style("opacity",1);
 
-			var start_scroll = article_top[3]-article_height[2];
-			var end_scroll = article_top[4]-article_height[3];
-			set_progress_bar2(start_scroll,end_scroll);
-			//$("#next").css("display","none");
 
 		}else if((article_top[4]-article_height[3])<scrollTop){
 			
 			console.log("chapter5");
 			area_popYear(chapter_list[4]);
-			var start_scroll = article_top[4]-article_height[3];
-			var end_scroll = parseInt($("#end_div").offset().top) - (windowHeight) ;
-			set_progress_bar2(start_scroll,end_scroll);
-
 			$(".chapt_num").text("5/5");
-			//$("#next").css("display","none");
-
 		}
 		
 		else{
