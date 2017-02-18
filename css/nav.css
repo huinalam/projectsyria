@@ -61,7 +61,7 @@
 @media screen and (max-width: 360px){
 	.keep_scroll{
 		height:70px;
-		bottom:75px;
+		bottom:5px;
 	}
 	.keep_scroll>img{
 		width:40px;
