@@ -45,10 +45,17 @@
     mix-blend-mode: screen;
 }
 #date_axis line{
-    stroke-width:0.5px;
-    stroke: #444444;
-    stroke-dasharray: 2,2;
+    stroke-width:0px;
+    
 }
+@media screen and (min-width: 640px){
+    #date_axis line{
+        stroke-width:0.5px;
+        stroke: #444444;
+        stroke-dasharray: 2,2;
+    }
+}
+
 #date_axis path{
     display: none;
 }

@@ -412,7 +412,7 @@ $(document).ready(function(){
 			set_progress_bar2(start_scroll,end_scroll);
 
 			$(".chapt_num").text("1/5");
-			$(".caption_g").style("opacity",0);
+			d3.selectAll("#caption_g0").style("opacity",0);
 
 		}else if(((article_top[1]-article_height[0])<scrollTop)&&(scrollTop<(article_top[2]-article_height[1]))){
 

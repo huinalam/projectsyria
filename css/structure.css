@@ -96,7 +96,7 @@ a:hover{
 .chapter_article_div{
 	display: inline-block;
 	width: 96%;
-	margin: 80% 2% 80% 2%;
+	margin: 80% 0% 80% 4%;
 }
 .chapter_article_div >h2{
 	font-family: 'Source Sans Pro', sans-serif;
@@ -414,7 +414,7 @@ h3{
 		}
 		.text{
 			position: relative;
-			width:32%;
+			width:34%;
 			margin: 1% 1% 1% 2%;
 			float: left;
 			top:0px;

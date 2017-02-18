@@ -75,7 +75,7 @@
 	    </div>
 	     <div class="intro">
 	        <p class="narrative">
-	        	However, these records do not fully explain why ‘Syrian Crisis’ can’t stop. While most media has been focused  'Islamic State' and 'European migrant Crisis', voice of Syrian people has been neglected.
+	        	However, these records do not fully explain why ‘Syrian Crisis’ can’t stop. While most media has been focused  &#39;Islamic State&#39; and &#39;European migrant Crisis&#39;, voice of Syrian people has been neglected.
 	        </p>
 	        <div class="flex-21">
 	        	 <div class="flex-12">
@@ -83,7 +83,7 @@
 		        		<h3 class="subheading"><span class="red">RISE OF ISLAMIC STATE</span></h3>
 		        	</div>
 		        	<p class="facts_p">
-		        	Troops of 'Islamic State' were marching on the street of Raqqa, a city in the middle of Syria. Raqqa is one of the their main base since 2011.
+		        	Troops of &#39;Islamic State&#39; were marching on the street of Raqqa, a city in the middle of Syria. Raqqa is one of the their main base since 2011.
 		        	</p>
 		        </div>
 		        <div class="flex-12">
@@ -119,7 +119,7 @@
             		<div class="block-1" id="pie1"></div>
 	            	<div class="block-1" id="pie2"></div>
 	            </div>
-	            	<p class="narrative">Analysis on UNHCR&#39;s data about refugees enabled us to see imbalanced acceptance of displaced people from 2011 until now. Especially, more than 80% of refugees have found new destinations of Turkey, Lebanon and Jordan while Gulf States been reluctant to incorporate themselves into migrant crisis.</p>
+	            	<p class="narrative">Analysis on UNHCR&#x27;s data about refugees enabled us to see imbalanced acceptance of displaced people from 2011 until now. Especially, more than 80% of refugees have found new destinations of Turkey, Lebanon and Jordan while Gulf States been reluctant to incorporate themselves into migrant crisis.</p>
 	            
             </div>
             <div class="gap"></div>
@@ -127,7 +127,7 @@
             	<h2>FOCUS 2:<br>MULTIPLE CONTRIBUTORS OF<br>LONG-LASTING SYRIAN CIVIL WAR</h2>
             	<div class="block-1">
             		<div id="wordcloud"></div>
-		            <p class="narrative">The fundamental intention of visualization is supposed to raise the question for the international community which questions we should voice up to relieve migrant crisis.</p>
+		            <p class="narrative">The above wordcloud represents frequency how many time each power group has been mentioned in headline of news written from NY times and The guardians.</p>
             	</div>
             </div>
             <div class="gap"></div>
@@ -305,7 +305,7 @@
  		$('div#title').each(function(){
  			var title_margin = ($window.height());
  			$(this).css("margin-top",title_margin*0.6).css("margin-bottom",title_margin*0.5);
- 			console.log(title_margin);
+ 
  		});
 
  		$("div.intro:not('#title')").each(function(){
@@ -351,6 +351,8 @@
  			$(".nav_bar").addClass("nav_hide");
  			$(".chapter_count").contents("0");
  			$('.keep_scroll').removeClass('keep_scroll_hide');
+ 			console.log("Show");
+
 
  		}
  		else if((intro_top[0]<scrollTop)&&(scrollTop<=intro_top[1])){
@@ -361,20 +363,27 @@
  			$(".nav_bar").removeClass("nav_hide");
  			$(".nav_bar").addClass("nav_show");
  			$('.keep_scroll').addClass('keep_scroll_hide');
+ 			console.log("Hide");
  		}
  		else if((intro_top[1]<scrollTop)&&(scrollTop<=intro_top[2])){
  			
- 			
+ 			$('.keep_scroll').addClass('keep_scroll_hide');
+ 			console.log("Hide");
  		}
  		else if((intro_top[2]<scrollTop)&&(scrollTop<=intro_top[3])){
  			
-			
+			$('.keep_scroll').addClass('keep_scroll_hide');
+			console.log("Hide");
  			
  		}
  		else if((intro_top[3]<scrollTop)&&(scrollTop<=intro_top[4])){
  			
-			
+			$('.keep_scroll').addClass('keep_scroll_hide');
+			console.log("Hide");
  			
+ 		}
+ 		else{
+ 			$('.keep_scroll').addClass('keep_scroll_hide');
  		}
  	}
 
