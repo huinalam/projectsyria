@@ -247,8 +247,6 @@
  	
  	initiation();
  	first_drawing(13);
- 	svg_transition();
- 	//fade_out();
 
  	$window.on("resize",function(){
  
@@ -258,17 +256,17 @@
 	 		initiation();
 	 		redraw_wordcloud();
 	 		redraw_pie();
-	 		svg_transition();
- 			//fade_out();
+			fade_out();
 		}
 
  	});
 
  	$window.on("scroll",function(){
  		scrollTop = $window.scrollTop();
- 		svg_transition();
+
  		//scroll_move();
  		//fade_out();
+ 		fade_out();
 
  	});
 
@@ -336,7 +334,13 @@
 
  	function svg_transition(){
 
- 		if(scrollTop<=50){
+ 		
+ 	}
+
+ 	function fade_out(){
+
+ 		//*Background img control
+ 		if(scrollTop<intro_top[0]){
  			//d3.selectAll(".header_background").style("z-index",0);
  		//	d3.select("#background_img").style("opacity",0);
  			var top = (intro_top[0] - scrollTop)/(intro_top[0]) *(-15);
@@ -345,35 +349,28 @@
  			var opacity = 1 - (intro_top[0] - scrollTop)/(intro_top[0]);
  			d3.select("#background_img").style("opacity",opacity);
 
- 			$(".nav_bar").removeClass("nav_show");
- 			$(".nav_bar").addClass("nav_hide");
- 			$(".chapter_count").contents("0");
- 			$('.keep_scroll').removeClass('keep_scroll_hide');
- 			console.log("Show");
+ 			
 
 
  		}
- 		else if((50<scrollTop)){
- 			
- 			//d3.selectAll(".header_background").style("z-index",-999);
- 			//var opacity = 1 - (intro_top[1] - scrollTop)/(intro_top[1]-intro_top[0]);
- 			//d3.select("#background_img").style("opacity",opacity);
+ 		else if((intro_top[0]<scrollTop)){
+ 			d3.select("#background_img").style("opacity",1);
+ 		}
+
+ 		//*Nav position control
+ 		if(scrollTop<50){
+ 			$(".nav_bar").removeClass("nav_show");
+ 			$(".nav_bar").addClass("nav_hide");
+ 			$('.keep_scroll').removeClass('keep_scroll_hide');
+ 			console.log("Show");
+
+ 		}else if(50<scrollTop){
  			$(".nav_bar").removeClass("nav_hide");
  			$(".nav_bar").addClass("nav_show");
  			$('.keep_scroll').addClass('keep_scroll_hide');
  			console.log("Hide");
  		}
- 	}
-
- 	function fade_out(){
- 		if(scrollTop<content_offset){
- 			//d3.select('#background_cover').style("opacity",0);
- 			var size = 80;
- 			//$('#background_svg').css("background-size",size + "%");
- 			
- 		}
  		
-
  	}
 
  });
