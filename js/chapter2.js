@@ -7,7 +7,7 @@ var margin = {
               };
               
 var width = parseInt(d3.select(".viz").style('width'));
-var height = width * 0.8;
+var height = width * 0.7;
 
 //DATA
 var dataCon;
@@ -15,8 +15,8 @@ var popData;
 var map_json;
 var start_year = 2011;
 var years = [2011, 2012, 2013, 2014]; //선택될 연도 
-var countryList = ["Syria","South Korea","Egypt", "Iraq","Iran", "Lebanon","Jordan","Turkey","Italy","Spain","Greece","United Kingdom", "Sweden", "Germany", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //이름이 표시될 국가들
-var countryList2 = ["South Korea","Egypt", "Iraq", "Lebanon","Jordan","Turkey","Italy","France","Greece","United Kingdom", "Sweden", "Germany", "Saudi Arabia", "Yemen","United States","Canada","Qatar","Oman"]; //난민 숫자가 표시될 국가들
+var countryList = ["Egypt", "Iraq","Iran","Jordan","Turkey","Italy","Spain","Greece","United Kingdom", "Sweden", "Germany", "Saudi Arabia","United States","Canada","Qatar"]; //이름이 표시될 국가들
+
 
 //SVG & Group & Map 
 var map_legend;
@@ -245,7 +245,7 @@ var svg_chapter2 = d3.select(".viz").append("svg")
 function reDraw(){
 
     width = parseInt(d3.select(".viz").style('width'));
-    height = width * 0.8;
+    height = width * 0.7;
 
     //*SVG resize
     svg_chapter2.transition()

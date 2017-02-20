@@ -452,6 +452,9 @@ img.menu{
 	    float: none;
 	    display: inline-block !important;
 	    height:auto !important;
+	    border-style: solid;
+		border-width: 1px 0 0 0;
+		border-color: #99B0Bf;
 	  }
 
 }

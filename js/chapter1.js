@@ -8,7 +8,7 @@ var margin = {
               
 width = parseInt(d3.select(".viz").style('width'));
 //width = (d3.select("body").width())*0.63;
-height = width * 0.75;
+height = width * 0.7;
 
 //DATA
 var dataCon;
@@ -141,7 +141,7 @@ function reDraw(){
 
     //*assign size from css (media query) 
     width = parseInt(d3.select(".viz").style('width'));
-    height = width * 0.75;
+    height = width * 0.7;
 
     svg_chapter1.transition()
             .attr("width",width)
