@@ -299,7 +299,7 @@
                 wrapperTop = $(".wrapper").offset().top;
                 vizTop = $("#damage_type").offset().top + $("#damage_type").height() + parseInt($("#damage_type").css("margin-top"));
                 
-                if($window.width()<821){
+                if($window.width()<640){
                     vizGap =$(".nav_bar").height();
                 }else{
                     vizGap = ($window.height() - $(".viz").height())/2;
@@ -401,7 +401,7 @@
                     $(".chapter_count").removeClass("count_hide");
                     $(".chapter_count").addClass("count_show");
 
-                    if($window.width()<821){
+                    if($window.width()<640){
                         //affix for mobile
                         //
 
@@ -444,7 +444,7 @@
                     $(".chapter_count").removeClass("count_show");
                     $(".chapter_count").addClass("count_hide");
                     
-                    if($window.width()<821){
+                    if($window.width()<640){
                         //un-affix for mobile
                         $(".viz").removeClass("viz_Mfixed");
                         $(".viz").removeClass("viz_Dfixed");

@@ -25,7 +25,6 @@ a:hover{
 }
 
 
-
 /*header*/
 .header{
 	display: inline-block;
@@ -55,7 +54,13 @@ a:hover{
 	width: 100%;
 	height: auto;
 }
-@media screen and (max-width: 360px){
+#img_exp{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 0.8em !important;
+	font-style: italic;
+	color: #22BB99 !important;
+}
+@media screen and (max-width: 640px){
 	.chapter_img{
 		display: block;
 		width: auto;
@@ -64,6 +69,13 @@ a:hover{
 		max-height: 200px;
 		margin: 1% auto;
 	}	
+	#img_exp{
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 0.8em !important;
+		font-style: italic;
+		color: #22BB99 !important;
+		text-align: center;
+	}
 }
 #chapt1{
 	background-image: url("../img/father_son.jpg");
@@ -160,12 +172,6 @@ a:hover{
 	margin: 80% 1% 0% 1%;
 }
 
-#img_exp{
-	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 0.8em !important;
-	font-style: italic;
-	color: #22BB99 !important;;
-}
 
 
 h1.title{
@@ -292,6 +298,7 @@ h3{
 	float: none;
 }
 .facts_p{
+	font-family: 'Source Sans Pro', sans-serif;
 	overflow: hidden;
 	display: inline-block;
 	font-size:0.8em;

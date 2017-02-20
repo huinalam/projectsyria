@@ -1,11 +1,5 @@
 
 
-.timeline_axis { /* axis labels */
-    fill: #eeeeee;
-    font-family: "HelveticaNeue", sans-serif;
-    font-weight: 600;
-    font-size: 70%;
-}
 .timeline_axis line{ /* axis tick marks */
     stroke-width : 0.5px;
     stroke: #dddddd;
@@ -45,7 +39,9 @@
     mix-blend-mode: screen;
 }
 #date_axis line{
-    stroke-width:0px;
+     stroke-width:0.5px;
+     stroke: #444444;
+     stroke-dasharray: 2,2;
     
 }
 @media screen and (min-width: 640px){
@@ -107,7 +103,13 @@
     fill: rgba(2,2,2,0.5);
 }
 
-@media screen and (max-width: 360px){
+.timeline_axis { /* axis labels */
+    fill: #eeeeee;
+    font-family: "HelveticaNeue", sans-serif;
+    font-weight: lighter;
+    font-size: 0.6em;
+}
+@media screen and (max-width: 361px){
     .timeline_axis { /* axis labels */
         fill: #eeeeee;
         font-family: sans-serif;

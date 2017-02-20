@@ -42,6 +42,10 @@ var value = [];
                 // NOTE 
 //1.Global Variable Declare - Start
 // NOTE size variable
+var width;
+var height;
+var tickNum;
+
   width = parseInt(d3.select(".viz").style('width'));
 
   if(800<width){
@@ -58,6 +62,12 @@ if(width<=360){
       height = width;
     }
   }
+
+if(width<=360){
+  tickNum = 12;
+}else{
+  tickNum = 64;
+}
 
 var margin = {
               top: 20,
@@ -475,6 +485,13 @@ function reDraw(){
       height = width;
     }
   }
+
+  if(width<=360){
+    tickNum = 12;
+  }else{
+    tickNum = 64;
+  }
+
   margin = {
             top: 20,
             left: width*0.05,
@@ -516,7 +533,8 @@ function reDraw(){
 
   //Axis rescale
   timeline_yAxis
-    .tickSize(checkPoint[4] - checkPoint[0],0);
+    .tickSize(checkPoint[4] - checkPoint[0],0)
+    .ticks(tickNum);
 
   d3.select(".yAxis_timeline").transition().duration(0)
                               .attr("transform", "translate(" + checkPoint[0] +",0)")
@@ -668,12 +686,12 @@ function timeline_yAxis(){
             datelist.push("201" + i + "-" + j*2 + "-01");
         }
     }
-
+    
     timeline_yAxis = d3.svg.axis()
                            .scale(timeline_yScale)
                            .orient("right")
                            .tickSize(checkPoint[4] -checkPoint[0] ,0)
-                           .ticks(64)
+                           .ticks(tickNum)
                          //.tickValues(dateTick_list)
                            .tickFormat(function(d,i){ 
                                 if(i%3==0){

@@ -198,7 +198,7 @@ var svg_chapter2 = d3.select(".viz").append("svg")
                           .attr("x",0)
                           .attr("y",0)
                           .attr("width",70)
-                          .attr("height",60)
+                          .attr("height",70)
                           .attr("fill","#111111");
 
               map_legend = legend_group.append("g")
@@ -210,9 +210,9 @@ var svg_chapter2 = d3.select(".viz").append("svg")
 
 
 
-              map_legend.append("rect").attr("x",10)
+              map_legend.append("rect").attr("x",0)
                             .attr("y",function(d,i){
-                              return map_legend_num.length*10 - i*10;
+                              return map_legend_num.length*10 - (i+1)*10;
                             })
                             .attr("width",10)
                             .attr("height",10)
@@ -230,10 +230,10 @@ var svg_chapter2 = d3.select(".viz").append("svg")
                           }
                           return " " + d3.format(",")(d);
                         })
-                        .attr("x",25)
+                        .attr("x",15)
                         .attr("y",function(d,i){
                       
-                          return map_legend_num.length*10 - i*10 + 10;
+                          return map_legend_num.length*10 - (i+1)*10 + 8;
                         })
                         .attr("class","map_legend_text");
 

@@ -15,25 +15,37 @@
 }
 #narrative{
     display: inline-block;
-    width:80%;
+    width:100%;
     margin: 5% auto 2% auto;
     font-family: 'Source Sans Pro', sans-serif;
     text-indent: 0.5em;
-    font-size: 1.3em;
+    font-size: 1em;
     font-weight: 300;
     text-align: left;
     word-spacing: 0.1em;
     line-height: 150%;
 }
+@media screen and(max-width: 640px){
+    #narrative{
+        font-size: 1em;
+    }
+}
+
 .definition{
-    display: flex !important;  
+    display: flex !important;
+    flex-direction: column; 
     align-items: top;
     justify-content: center;
+}
+@media screen and (min-width: 640px){
+    .definition{
+        flex-direction: row;
+    }
 }
 .definition >p{
     text-align: left;
 	margin:0px;
-	padding:0% 5% 2% 1%;
+	padding:1%;
 	font-size: 0.8em;
     line-height: 120% !important;
 	font-weight: 300;
@@ -42,9 +54,10 @@
     float: left;
 }
 .type{
+    display: block;
+    margin: 0 auto;
     width: 80px;
     height: 80px;
-    float: left;
 }
 .timeline_data_review{
     display: inline-block;

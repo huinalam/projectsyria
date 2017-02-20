@@ -237,7 +237,7 @@ $(document).ready(function(){
 		wrapperTop = $(".wrapper").offset().top;
 		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom")) + parseInt($(".wrapper").css("padding-top"));
 
-		if($window.width()<821){
+		if($window.width()<640){
 			vizGap =$(".nav_bar").height();
 		}else{
 			vizGap = ($window.height() - $(".viz").height())/2;
@@ -306,7 +306,7 @@ $(document).ready(function(){
 
 			
 
-			if($window.width()<821){
+			if($window.width()<640){
 				//affix for mobile
 				
 				$(".vertical_progress_bar").css("right",0);
@@ -348,7 +348,7 @@ $(document).ready(function(){
 			$(".chapter_count").removeClass("count_show");
 			$(".chapter_count").addClass("count_hide");
 			
-			if($window.width()<821){
+			if($window.width()<640){
 				//un-affix for mobile
 				$(".viz").removeClass("viz_Mfixed");
 				$(".viz").removeClass("viz_Dfixed");
