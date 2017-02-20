@@ -119,7 +119,7 @@ a:hover{
 	width: 96%;
 	margin: 80% 0% 80% 4%;
 }
-@media screen and (max-width:360px){
+@media screen and (max-width:640px){
 	.chapter_article_div{
 		display: inline-block;
 		width: 98%;
@@ -147,7 +147,7 @@ a:hover{
 	color: #dedede;
 }
 #last_article{
-	margin: 80% 5% 0% 5%;
+	margin: 80% 1% 0% 1%;
 }
 
 #img_exp{
