@@ -59,7 +59,7 @@ a:hover{
 	text-align: center;
 	background-color: rgba(17,24,26,0.9);
 	z-index: 0;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	/*box-shadow: 0 4px 8px 0 rgba(244, 244, 244, 0.2), 0 6px 20px 0 rgba(244, 244, 244, 0.19);*/
 }
 @media screen and (min-width: 640px){
 	.content_col{
@@ -96,6 +96,9 @@ a:hover{
 
 
 /*Intro page flex-box*/
+.img_head::before{
+	z-index: -1;
+}
 .img_head{
 	display: inline-block;
 	width:75%;
@@ -136,13 +139,13 @@ a:hover{
 	display: inline-block;
 	text-align: center;
 	margin: 0.1em auto 0.1em auto;
-	font-size: 1.8em;
+	font-size: 1.2em;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 600;
 	padding: 0% 2%;
 	word-spacing: 0.25em;
 	letter-spacing: 0.05em;
-	color:#ffffff;
+	color:#EE4455;
 }
 .facts_p{
 	display: inline-block;
@@ -153,7 +156,7 @@ a:hover{
 	margin:0 !important;
 	text-align: left;
 	text-indent: 0.5em;
-	color: #aaafb5;
+	color: #778899
 }
 @media screen and (min-width: 640px){
 	.img_head{
@@ -195,12 +198,12 @@ a:hover{
 		display: inline-block;
 		text-align: center;
 		margin: 0.1em auto 0.1em auto;
-		font-size: 1.2em;
+		font-size: 1.8em;
 		font-family: 'Source Sans Pro', sans-serif;
 		font-weight: 600;
 		word-spacing: 0.25em;
 		letter-spacing: 0.05em;
-		color:#ffffff;
+		color:#EE4455;
 	}
 	.facts_p{
 		display: inline-block;
@@ -211,7 +214,7 @@ a:hover{
 		margin:0 !important;
 		text-align: left;
 		text-indent: 0.5em;
-		color: #aaafb5;
+		color: #778899;
 	}
 }
 /*Intro page flex-box*/
@@ -386,8 +389,8 @@ h2{
 /*narrative*/
 .narrative{
 	display: inline-block;
-	width: 100%;
-	margin: 5% auto 5% auto;
+	width: 98%;
+	margin: 5% 1% 5% 1%;
 	font-family: 'Source Sans Pro', sans-serif;
 	text-indent: 0.5em;
 	font-size: 1.1em;
@@ -400,8 +403,8 @@ h2{
 @media screen and (min-width: 640px){
 	.narrative{
 		display: inline-block;
-		width: 100%;
-		margin: 5% auto 5% auto;
+		width: 96%;
+		margin: 5% 2% 5% 2%;
 		font-family: 'Source Sans Pro', sans-serif;
 		text-indent: 0.5em;
 		font-size: 1.3em;

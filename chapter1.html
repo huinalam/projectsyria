@@ -63,7 +63,7 @@
 	<div class="wrapper">
 		<div class="container" id="content">
 			<div class="viz viz_chapt1">
-					<h2 id="chapt1_svg_title">THE NUMBER OF SYRIAN REFUGEES<br>BEFORE CIVIL WAR</h2>
+					<h2 class="viz_title" id="chapt1_svg_title">THE NUMBER OF SYRIAN REFUGEES<br>BEFORE CIVIL WAR</h2>
 			</div>
 			<div class="text">
 				<div class="chapter_article_div" id="a1">
@@ -147,6 +147,7 @@
  </script>
 <script>
 $(document).ready(function(){
+	console.log("jquery loaded");
 	/* 윈도우,컨테이너,시각화 div 객체 선언*/
 	var $window = $(window);
 	var container = {};
@@ -162,6 +163,8 @@ $(document).ready(function(){
 	var vertical_progress_height;
 	var resizeTimer;
 	var chapter_number = 5;
+
+	
 	//위치,사이즈 정보 갱신
 	initation();
 	/*프로그래스바 그리드 그리기*/
@@ -241,6 +244,7 @@ $(document).ready(function(){
 			vizGap =$(".nav_bar").height();
 		}else{
 			vizGap = ($window.height() - $(".viz").height())/2;
+			console.log($(".viz").height());
 		}
 
 

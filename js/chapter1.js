@@ -49,7 +49,7 @@ var graph_line;
 var graph_area;
 
 d3.csv("data/refugees_by_years_df.csv",function(data){
-
+  console.log("JS file CSV function loaded");
     //data initiall setting
     data.forEach(function(d){
             d.value = +d.value;

@@ -75,6 +75,7 @@ function draw(words) {
 			   .append("svg")
 			   .attr("width",cloud_width)
 			   .attr("height",cloud_height)
+         .style("background-color","#11181A")
                .attr("class", "wordcloud")
                .append("g")
                 // without the transform, words words would get cutoff to the left and top, they would

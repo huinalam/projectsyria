@@ -1,0 +1,66 @@
+/*Axis*/
+/*Correlation*/
+.date_axis line{
+     stroke-width:0.5px;
+     stroke: #AAAAAA;
+}
+.date_axis path{
+	stroke-width:1px;
+    stroke: #eeeeee;
+}
+.date_axis{
+	fill: #eeeeee;
+    font-family: "HelveticaNeue", sans-serif;
+    font-weight: 300;
+    font-size: 0.6em;
+}
+.num_axis line{
+	stroke-width:0.5px;
+    stroke: #EEEEEE;
+    shape-rendering: crispEdges;
+    stroke-dasharray: 2,2;
+}
+.num_axis path{
+	stroke-width:0.5px;
+    stroke: #EEEEEE;
+     shape-rendering: crispEdges;
+}
+.num_axis{
+	fill: #eeeeee;
+    font-family: "HelveticaNeue", sans-serif;
+    font-weight: lighter;
+    font-size: 0.6em;
+}
+/*frequency*/
+.heatmap_axis line{
+    stroke-width:1px;
+    stroke: #AAAAAA;
+}
+.heatmap_axis path{
+    stroke-width:0px;
+    stroke: #eeeeee;
+}
+.heatmap_axis{
+    fill: #eeeeee;
+    font-family: "HelveticaNeue", sans-serif;
+    font-weight: 300;
+    font-size: 0.6em;
+}
+
+
+/*Text*/
+.heatmap_value{
+    fill: #eeeeee;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+
+/*Area*/
+.death_area{
+	fill: #E03440;
+	opacity: 0.8;
+}
+.ref_area{
+	fill: #30BBAA;
+}

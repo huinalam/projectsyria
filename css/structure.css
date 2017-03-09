@@ -43,9 +43,12 @@ a:hover{
 	background-size: cover;
 	position:fixed;
 	z-index: -1;
-	filter: grayscale(0.6) brightness(60%);
+	filter: grayscale(0.4) brightness(80%);
 }
-
+.gap{
+	width:100%;
+	padding:20% 0;
+}
 
 
 
@@ -89,6 +92,10 @@ a:hover{
 	background-image: url("../img/destroyed.jpg");
 	height:80%;
 }
+#chapt4{
+	background-image: url("../img/chapter4_back.jpg");
+	height:80%;
+}
 
 
 
@@ -98,7 +105,8 @@ a:hover{
 	margin: 35% 0.5% 45% 0.5%;
 	padding:1%;
 	display: inline-block;
-	background-color: rgba(2,8,16,0.8);
+	background-color: rgba(32,128,114,0.9);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .chapter_introduction_div>p{
 	text-indent: 0.7em;
@@ -185,7 +193,7 @@ h1.title{
 	font-weight: normal;
 	font-style: normal;
 	line-height: 110%;
-	text-shadow: 2px 2px #11181A;
+	text-shadow: 3px 3px #11181A;
 }
 h2{
 	font-family: 'Source Sans Pro', sans-serif;
@@ -214,13 +222,14 @@ h3{
 	display: block;
 	width: 100%;
 	min-height: 1px;
-	background-color: #11181A;
+	
 	mix-blend-mode: screen;
 }
 .wrapper{
 	width: 100%;
 	display:inline-block;
-	padding-top: 50%;
+	padding-top: 15%;
+	background-color: #11181A;
 	/*border-style: solid;
 	border-width: 0.2em 0 0 0;
 	border-color: #CCD0DA;*/
@@ -231,6 +240,10 @@ h3{
 	height: auto;
 	/*background-color: #11181A;*/
 	/*background-color: rgba(17,25,26,0.9);*/
+}
+.max-1200{
+	max-width: 900px;
+	margin: 0 auto;
 }
 .block{
 	display: inline-block;
@@ -256,14 +269,13 @@ h3{
 	margin: 1%;
 }
 .viz{
-	z-index: 999;
 	padding-top: 0;
 	width:96%;
 	margin: 2%;
 	margin-top: 0%;
 	float: none;
 }
-.viz>h2{
+.viz_title{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 600;
 	font-size: 1em;
@@ -347,7 +359,7 @@ h3{
 			font-weight: normal;
 			font-style: normal;
 			line-height: 110%;
-			text-shadow: 2px 2px #11181A;
+			text-shadow: 3px 3px #11181A;
 		}
 		.container{
 			/*background-color: rgba(17,25,26,0.9);*/
@@ -371,19 +383,17 @@ h3{
 			position: relative;
 			float: left;
 			max-width: 400px;  
-			width: 30%;
-			margin: 1.6%;
+			width: 31%;
+			margin: 1%;
 		}
 		.viz{
-			z-index: 999;
 			padding-top: 0;
 			width:63%;
 			/*max-width: 695.52px;*/
 			margin: 1%;
 			float: left;
 		}
-		.viz>h2{
-			display: inline-block;
+		.viz_title{
 			margin: 0% 0 1% 0;
 			font-family: 'Source Sans Pro', sans-serif;
 			font-weight: 600;

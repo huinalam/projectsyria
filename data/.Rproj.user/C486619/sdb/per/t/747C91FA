@@ -1,0 +1,17 @@
+{
+    "contents" : "library(ggplot2)\n\n\n#Exercise1. 1950년대 대륙별 전화기수를 라인그래프로 표현해보자\n#해당 데이터는 동일 폴더의 WorldPhones.csv\n\nphone_num <- read.csv(\"WorldPhones.csv\")\n\n## wide-long data로 바꾸기\nlibrary(tidyr)\nphone_num_long <-gather(phone_num,continent,num,N.Amer:Mid.Amer)\n\n##ggplot\nggplot(phone_num_long, aes(x=year,y=num, colour=continent)) + geom_line() + geom_point()\n",
+    "created" : 1488525862533.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2765292725",
+    "id" : "747C91FA",
+    "lastKnownWriteTime" : 1472204513,
+    "path" : "~/Documents/r_study/ggplot/exercise.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

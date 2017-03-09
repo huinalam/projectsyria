@@ -47,7 +47,6 @@
  .wordcloud_text{
  	cursor: pointer;
  	font-family: 'Fredericka the Great', cursive;
- 	mix-blend-mode: hard-light;
  }
  .cloud_tooltip{
  	font-family: 'Source Sans Pro', sans-serif;

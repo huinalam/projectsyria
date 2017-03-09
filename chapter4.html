@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+	 <link href="css/fonts.css" rel="stylesheet">
+	 <link href="css/structure.css" rel="stylesheet">
+	 <link href="css/chapter4.css" rel="stylesheet">
+	 <link href="css/chapter4_svg.css" rel="stylesheet">
+	 <link href="css/nav.css" rel="stylesheet">
+</head>
+<body>
+	<!--Navigation-->
+	<div class="nav_bar nav_show">
+		<ul class="topnav" id="mainTopnav">
+		    <li class="nav_item" id='main'>
+		    	<div>
+		    		<a href="index.html">
+		    		<img id='nav_logo' src="img/nav_logo.svg">
+		    		</a>
+		    	</div>
+		    	<div><a href="index.html"><span id='logo_text'>PROJECT SYRIA</span></a>
+		    	</div>
+		    </li>
+		    <li class="nav_item" id='chapter_display'>SYRIAN REFUGEES DURING DICTATORSHIP</li>
+		    <li class="nav_item icon">
+		    	<a href="javascript:void(0);" onclick="myFunction()"><img class="menu" src="img/menu.svg"></a>
+	    	</li>
+		    <li class="nav_item top_item" id='item'><a href="chapter1.html">CHAPTER1</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter2.html">CHAPTER2</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter3.html">CHAPTER3</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter4.html">CHAPTER4</a></li>
+		</ul>
+	</div>
+	
+	<div class="keep_scroll">
+		<img src="img/keep_scroll.svg"><br>
+		<p>KEEP SCROLL TO START</p>
+	</div>
+
+
+	<!--Header-->
+	<div class="header_background" id="chapt4">
+	</div>
+	<div class="header">
+		<h1 class="title">
+            WHO REALLY MAKE DEATHS &amp; REFUGEES
+        </h1>  
+        
+		<div class="chapter_introduction_div">
+            <p>Through the last chapter, you can check correlation between the number of fatalities in Syria and the number of Refugee. Then by analysing data collected from 'Syrian Tracker', we visualized qunatitative data of the number of civil attack by each power group.</p>
+        </div>
+	</div>
+
+	<!--MAIN CONTENT-->
+	<div class="border"></div>
+	<div class="wrapper" id='wrapper1'>
+		<div class="container" id="content">
+			<div class="viz " id="viz_correlation">
+				<h2 class="viz_title">
+				THE NUMBER OF DEATHS &amp; REFUGEES
+				</h2>
+			</div>
+			<div class="text">
+				<div class="chapter_article_div" id="a1">
+					<h2>ABOUT DATA USED</h2>
+					<h3>Death per a month</h3>
+					<p>
+						The Violation Docmentation Center provides daily report of death in Syria. We refine the data set into data set of monthly death to compare with the number of refugee per a month.
+					</p>
+					<h3>Refugee per a month</h3>
+					<p>UNHCR provide data set of change of registered refugees. Date factor of this data set is so random and it also confined only middle east country. However, considering fact that about 98% of whole Syrian refugee stay in middle east area, we determined that this data set is enough vaild to confirm tendancy of refugees number by the time. Therefore, we refine the original data into monthly data of registered refugee.</p>
+
+					<h3>Possible Bias</h3>
+					<p>VDC is one of the rare data source where we can access list of death in Syria. However, they can miss some list of death where they can't reach to investiage, for example Raqqa, where Islamic State mainly occupied.</p>
+					<p>Data of registered refugee provided by UNHCR doesn't represent exact and immediate the number of refugee generated on each date. It rather represent the number of refugees that UNHRC confirm on each date. And there are several outlier points which are hard to be explained. For example, more than 500,000 refugees were recorded on Dec 2014, which is almost  as twice as the highest records in the past.
+
+					</p>
+				</div> 
+				<div class="chapter_article_div">
+					<h2>THE MOST INTESIVE DAMAGES</h2>
+					<p>One of the largest characteristics we have seen in timeline is the worst damage happened after June 2012 during a year. More than 1,400 shelling incidents were reported only in November 2011 with other types of air strikes and direct bombings were also publicized. This coincides with the right point when the highest fatalities occurred the figures delclared seem to have something to do with death tolls and direct attacks.
+					</p>
+				</div>
+				<div class="chapter_article_div">
+					<h2>CORRELATION BETWEEN DEATH AND REFUGEE</h2>
+					<p>With a view to arranging influence on monthly death tolls and number of refugees by the frequency of 6 types of attacks, we tried to analyze result statistically. So to speak, Pearson's product-mement correlation was adapted as an algorism tool to connect the dots of interrelation between civilian assaults and the number of deaths or refugees. In this regards, the correlation becomes higher when the result stands near 1.</p>
+					<p>In terms of number of refugees each month, it does not demonstrate direct correlation with frequency of attacks. It's because of the gap between the two of increasing refugees and deaths. However, when time axis be pushed forward by 5 months, the correlation is increased to 0.68, showing that there are 5 month-gap between civilian assaults and refugee crisis.</p>
+				</div>
+				<div id="end_div"></div>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper" id="wrapper2">
+		<div class="container" id="content2">
+			<div class="block-1">
+				<div class="max-1200">
+					<h2 class="viz_title">
+					Introduction of stakeholder
+					</h2>
+					<div class="block-32 profile" id="assad"><h3>#1Assad Regime</h3></div>
+					<div class="block-32 profile" id="hezbollah"><h3>#2Hezbollah</h3></div>
+					<div class="block-32 profile" id="islamic_state"><h3>#3ISLAMIC STATE</h3></div>
+					<div class="block-32 profile" id="russia"><h3>#4RUSSIA</h3></div>
+					<div class="block-32 profile" id="ypg"><h3>#5YPG</h3></div>
+					<div class="block-32 profile" id="ic"><h3>#6INTERNATIONAL COALIATION</h3></div>
+				</div>
+			</div>
+			<div class="block-1" id="viz_frequency">
+				<h2 class="viz_title">
+				Score of Killing game
+				</h2>
+			</div>
+		</div>
+	</div>
+	<div class="mask">
+	</div>
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+<script src="js/chapter4_correlation.js"></script>
+<script src="js/chapter4_frequency.js"></script>
+<script>
+$(document).ready(function(){
+
+	/*GLOBAL VAR*/
+	var $window = $(window);
+	var scrollTop;
+	var wrapperTop;
+
+	//SVG그리기 파일 로드
+	
+	initation();
+
+
+	/*JQUERY WINDOW EVENT LISTNER*/
+	$window.on("resize",function(){
+		redrawing_correlation();
+		redrawing_frequency();
+	});
+
+	$window.on("scroll",function(){
+		scrollTop = $window.scrollTop();
+
+		fade_out();
+		fix_check();
+	});
+
+
+
+	//*FUNCTION LIST*/
+	/**/
+	/*Initation*/
+	function initation(){
+
+		/*SVG그리기*/
+		initiation_correlation();
+		initiation_frequency();
+		//위치,사이즈 정보 갱신
+		/*사이즈 초기화*/
+		windowHeight = $window.height();
+		$(".header").css("height",windowHeight);
+		$(".header_background").css("height",windowHeight);
+
+		if($window.width()<640){
+			vizGap =$(".nav_bar").height();
+		}else{
+			vizGap = ($window.height() - $("#viz_correlation").height())/2;
+		}
+
+		/*div 스크롤 위치 확인*/
+		wrapperTop = $("#wrapper1").offset().top;
+		vizTop = $(".header").height() + parseInt($(".header").css("margin-top")) + parseInt($(".header").css("margin-bottom")) + parseInt($("#wrapper1").css("padding-top"));
+
+		
+	}
+
+	/*Fade_out*/
+	function fade_out(){
+		var progress1 = wrapperTop - (scrollTop);
+		var range1 = wrapperTop;
+		var opacity1 = progress1/range1; 
+		var windowHeight = $window.height();
+
+		$(".header_background").css({opacity: opacity1},10);
+
+		if(((wrapperTop - windowHeight)<scrollTop)&&(scrollTop<=(wrapperTop))){
+			
+			var progress2 = (wrapperTop) - scrollTop;
+			var range2 = wrapperTop;
+			var opacity2 = 1 - (progress2/range2);
+			
+			$("#wrapper1").css({opacity: opacity2},10);
+			$('.keep_scroll').addClass('keep_scroll_hide');
+		}
+		else{
+			$("#wrapper1").css({opacity: 1},10);		
+			if(scrollTop<(wrapperTop - windowHeight)){
+				$('.keep_scroll').removeClass('keep_scroll_hide');
+			}
+			else{
+				$('.keep_scroll').addClass('keep_scroll_hide');
+			}
+		}
+	}
+
+	/*Fix_Check*/
+	function fix_check(){
+		if((vizTop - vizGap) < scrollTop){//affix
+
+			//progress_bar show
+			/*$(".vertical_progress_bar").removeClass("vertical_hide");
+			$(".vertical_progress_bar").addClass("vertical_show");
+
+			$(".chapter_count").removeClass("count_hide");
+			$(".chapter_count").addClass("count_show");*/
+
+			
+			if($window.width()<640){
+				//affix for mobile
+				
+				//$(".vertical_progress_bar").css("right",0);
+
+				//console.log("mobile");
+				$(".viz").addClass("viz_Mfixed");
+				$(".viz").css("top",vizGap);
+				//Text margin modification
+				vizHeight = parseInt($(".viz").height()) + parseInt($(".viz").css("margin-bottom"));
+				
+				$(".text").css("margin-top",vizHeight);
+				$(".text").css("margin-left","1%");
+				$(".viz").css("left","0px");
+				//mask for text fade-out
+				var maskTop = parseInt($(".viz").height()) + $(".nav_bar").height();
+				$(".mask").css("top",maskTop).css("width","100%");
+			}else{
+				//affix for desktop
+				
+
+				$(".viz").addClass("viz_Dfixed");
+				$(".viz").css("top",vizGap);
+				var left = parseInt($(".container").css("margin-left"));
+				$(".viz").css("left",left);
+				var marginLeft = $(".viz").width() +(4*parseInt($(".viz").css("margin-left"))); 
+				$(".text").css("margin-left",marginLeft);
+
+				var vertical_left = parseInt($(".text").css("margin-left")) + parseInt($("#content").css("margin-left"));
+				$(".vertical_progress_bar").css("left",vertical_left);
+			}
+
+		}else{//un-affix
+
+			//progress_bar show
+			/*$(".vertical_progress_bar").removeClass("vertical_show");
+			$(".vertical_progress_bar").addClass("vertical_hide");
+
+			$(".chapter_count").removeClass("count_show");
+			$(".chapter_count").addClass("count_hide");*/
+			
+			if($window.width()<640){
+				//un-affix for mobile
+				$(".viz").removeClass("viz_Mfixed");
+				$(".viz").removeClass("viz_Dfixed");
+				$(".text").css("margin","1%");
+				//masek for fade-out
+				$(".mask").css("top",0).css("width",0);
+			}else{
+				//un-affix for desktop
+				$(".viz").removeClass("viz_Mfixed");
+				$(".viz").removeClass("viz_Dfixed");
+				$(".text").css("margin","1% 1% 1% 2%");
+			}
+		}
+	}// fix_check() end;
+
+	
+
+});
+</script>
+</body>
+</html>
+

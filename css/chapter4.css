@@ -1,0 +1,49 @@
+#wrapper2{
+	background-color: #11181A;
+	z-index: 999;
+	position: absolute;
+}
+.profile{
+	padding: 20% 0 0% 0;
+}
+.profile::before{
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	background-size: cover;
+	background-position: center;
+	filter: grayscale(60%) brightness(80%);
+	content: " ";
+	z-index: -1;
+}
+.profile::before:hover{
+	filter: grayscale(0%) brightness(90%);
+}
+#assad::before{
+	background-image: url("../img/assad.jpg");
+}
+#hezbollah::before{
+	background-image: url("../img/hezbollah.jpg");
+}
+#islamic_state::before{
+	background-image: url("../img/islamic_state.jpg");
+}
+#russia::before{
+	background-image: url("../img/russia.jpg");
+}
+#ypg::before{
+	background-image: url("../img/ypg.jpg");
+}
+#ic::before{
+	background-image: url("../img/international_coalition.jpg");
+}
+.profile>h3{
+	margin:0;
+	font-size: 1.2em;
+	font-weight: 700;
+	text-align: center;
+	padding: 2% 2% 2% 2%;
+	background-color: rgba(2,8,16,0.8);
+}
