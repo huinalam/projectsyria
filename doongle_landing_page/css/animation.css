@@ -1,0 +1,63 @@
+#blink0{
+	animation: blink0 10s infinite;
+}
+#blink1{
+	animation: blink1 5s infinite;
+}
+#blink2{
+	animation: blink2 8s infinite;
+}
+#blink3{
+	animation: blink3 9s infinite;
+}
+#blink4{
+	animation: blink4 4s infinite;
+}
+#blink5{
+	animation: blink5 7s infinite;
+}
+#blink6{
+	animation: blink6 9s infinite;
+}
+@keyframes blink0{
+	0% {background-color:#ffffff;}
+	5% {background-color:#81F7E7;}
+	20% {background-color:#ffffff;}
+	100% {background-color:#ffffff;}
+}
+@keyframes blink1{
+	0% {background-color:#ffffff;}
+	20% {background-color:#81F7ff;}
+	41% {background-color:#ffffff;}
+	100% {background-color:#ffffff;}
+}
+@keyframes blink2{
+	0% {background-color:#ffffff;}
+	30% {background-color:#81F7E7;}
+	35% {background-color:#ffffff;}
+	100% {background-color:#ffffff;}
+}
+@keyframes blink3{
+	0% {background-color:#ffffff;}
+	50% {background-color:#81F7ff;}
+	81% {background-color:#ffffff;}
+	100% {background-color:#ffffff;}
+}
+@keyframes blink4{
+	0% {background-color:#ffffff;}
+	60% {background-color:#81F7E7;}
+	72% {background-color:#ffffff;}
+	100% {background-color:#ffffff;}
+}
+@keyframes blink5{
+	0% {background-color:#ffffff;}
+	80% {background-color:#41D7CA;}
+	92% {background-color:#ffffff;}
+	100% {background-color:#ffffff;}
+}
+@keyframes blink6{
+	0% {background-color:#ffffff;}
+	20% {background-color:#81F7E7;}
+	30% {background-color:#ffffff;}
+	100% {background-color:#ffffff;}
+}
