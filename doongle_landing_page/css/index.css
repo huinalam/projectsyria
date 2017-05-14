@@ -19,6 +19,20 @@ html,body {
 
 /*DIV*/
 /*header page*/
+.lang_select{
+	position:fixed;
+	top:1%;
+	right:1%;
+	display: flex;
+	flex-direction: row;
+	z-index: 999;
+}
+@media screen and (max-width: 640px){
+	.lang_select>a>img{
+		width:40px;
+		height:40px;
+	}
+}
 .half_screen{
 	position: relative;
 	width: 100%;
@@ -395,7 +409,7 @@ h3.big_message{
 }
 p.footer_copy{
 	width:90%;
-	margin:5% 5% 2% 5%;
+	margin:10% 5% 2% 5%;
 	font-size: 0.75em;
 	letter-spacing: 0.1em;
 	line-height: 130%;
