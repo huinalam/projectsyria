@@ -5,8 +5,7 @@
 <link rel="stylesheet" type="text/css" href="css/animation.css">
 </head>
 <body>
-
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 	<div class="half_screen" id="white">
 	
 		<div class="header_background">
@@ -20,19 +19,19 @@
 	<div class="half_screen" id="color">
 		<div class="top2_container">
 			<h2 class="message">
-				Cross culture<br>Social network
+				Cross culture<br>Social Network
 			</h2>
 		</div>
 		<div class="top2_container">
 			<div class="top2_item">
-				<h3 class="small_message">ESTABLISH YOUR<br>GLOBAL NETWORK</h3>
+				<h3 class="small_message">ESTABLISH GLOBAL NETWORK</h3>
 				<img src="img/network.svg">
 				<p>More than 300,000 active Doonglers from 30 countries are waiting for you.</p>
 			</div>
 			<div class="top2_item">
 				<h3 class="small_message">SHARING YOUR<br>LIFE STYLE</h3>
 				<img src="img/lifestyle.svg">
-				<p>Doonglers&#39; lifestyle motivated eachother to make connection.</p>
+				<p>Doonglers&#39; lifestyle motivated each other to make connection.</p>
 			</div>
 			<div class="top2_item">
 				<h3 class="small_message">EXPEND YOUR<br>EXPERIENCE</h3>
@@ -46,26 +45,26 @@
 	<div class="mobile_left_margin"></div>
 	<div class="mobile_frame">
 		<div class="white_area" id="white_top"></div>
-		<img src="img/mobile.svg">
+		<img src="img/mobile_white.svg">
 			<div class="white_area" id="white_bottom"></div>
 		</div>
 	</div>
 
 	
-	<div class="section-row" id="section1" style="padding-top:55%">
+	<div class="section" id="section1" style="padding-top:55%">
 		<div class="text_col">
 			<h3 class="big_message" id="story">
 				EXPLORER<br>
 				DOONGLER's<br>
 				STORY
 			</h3>
-			34,131 active users from 81 countries share their life story
+			<p>34,131 active users from 81 countries share their life story</p>
 		</div>
 		<div class="img_col">
 			<img class="captured" src="img/Story_Explorer_First.png">
 		</div>
 	</div>
-	<div class="section-row">
+	<div class="section">
 		<div class="text_col">
 			<h3 class="big_message" id="story">
 				CUSTOMIZE<br>
@@ -85,15 +84,16 @@
 		</h3>
 		Share your inspiration with doonglers from all of the world in real time.
 	</div>
-	<div class="section-row" id="right_now" style="position: relative; z-index: 20;">
+	<div class="section" id="right_now" style="position: relative; z-index: 20;">
 		<div class="right_now_screen">
-			<img src="img/mobile_tranparence.svg">
+			<img src="img/mobile_tranparence_white.svg">
 		</div>
 	</div>
 	<div class="half_screen" id="color" style="height: 25%;">
-		Company Resiger Number: 474-86-00700<br>
+		Company Register Number: 474-86-00700<br>
 		Contact:  contact@doonglecorp.com<br>
 		Address: 101-1001, Kanmangu Bong-eunsa, Seoul, South Korea<br>
+		All ri
 	</div>
 </body>
 <script src="js/jquery-3.2.1.min.js"></script>
@@ -111,7 +111,7 @@
  	}
 
  	for(var i=0;i<160;i++){
- 		var random =parseInt(Math.random() * 6);
+ 		var random =parseInt(Math.random() * 7);
  		console.log(random)
  		$(".header_cube").eq(i).attr("id","blink" + random);	
  	}
