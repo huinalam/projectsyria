@@ -39,6 +39,7 @@ html,body {
 	background-color: #61D7C7;
 	color:#ffffff;
 }
+
 .header_content{
 	position: absolute;
 	top:0;
@@ -52,6 +53,16 @@ html,body {
 	-webkit-flex-direction: column;
     flex-direction: column;
     mix-blend-mode: multiply;
+}
+.header_content>img{
+	width: 15%;
+	height: auto;
+}
+@media screen and (max-width: 640px){
+	.header_content>img{
+		width: 25%;
+		height: auto;
+	}
 }
 .header_background{
 	position: absolute;
@@ -74,7 +85,6 @@ html,body {
 	border-width: 0.01px;
 	border-color: #ffffff;
 	opacity: 0.7;
-
 }
 
 .top2_container{
@@ -87,6 +97,7 @@ html,body {
 	-webkit-flex-direction: row;
     flex-direction: row;
 }
+
 @media screen and (max-width: 640px){
 	.top2_container{
 		width: 100%;
@@ -162,8 +173,8 @@ html,body {
 		-webkit-flex-direction: column;
 	    flex-direction: column;
 	 }
-
  }
+
  .section-col{
 	margin-top: 5%;
  	width:100%;
@@ -173,6 +184,9 @@ html,body {
 	justify-content: center;
 	-webkit-flex-direction: column;
     flex-direction: column;
+ }
+ .section-col>p{
+ 	margin:2%;
  }
  #right_now{
  	background-image: url(../img/map_wide.jpg);
@@ -209,6 +223,13 @@ html,body {
 	justify-content: flex-start;
 	-webkit-flex-direction: column;
     flex-direction: column;
+}
+@media screen and (max-width: 640px){
+	.img_col{
+		width:80%;
+		margin:0 auto;
+	}
+
 }
 .right_now_screen{
 	width:auto;
@@ -266,6 +287,21 @@ html,body {
 	justify-content: stretch;
 	-webkit-flex-direction: column;
     flex-direction: column;
+}
+@media screen and (max-width: 640px){
+	.mobile_frame{
+		display: flex;
+		width:80%;
+		align-items: center;
+		justify-content: stretch;
+		-webkit-flex-direction: column;
+	    flex-direction: column;
+	}
+	.mobile_frame>img{
+		width:100%;
+		height:auto;
+	}
+
 }
 .white_area{
 	width:100%;
@@ -347,6 +383,23 @@ h3.big_message{
 	line-height: 150%;
 	margin: 1em 0 0.2em 0;
 }
+@media screen and (max-width: 640px){
+	h3.big_message{
+		font-family: ADAM;
+		display: inline-block;
+		font-size: 1.5em;
+		letter-spacing: 0.1em;
+		line-height: 150%;
+		margin: 1em 0 0.2em 0;
+	}
+}
+p.footer_copy{
+	width:90%;
+	margin:5% 5% 2% 5%;
+	font-size: 0.75em;
+	letter-spacing: 0.1em;
+	line-height: 130%;
+}
 #header{
 	color: #ffffff;
 }
@@ -358,6 +411,13 @@ h3.big_message{
 .captured{
 	width: 320px;
 	height: auto;
+}
+@media screen and (max-width: 640px){
+	.captured{
+		width: 80%;
+		margin:0 10%;
+		height:auto;
+	}
 }
 #captured_on{
 	opacity: 1;
