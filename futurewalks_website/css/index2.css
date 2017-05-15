@@ -1,0 +1,142 @@
+
+body{
+	font-family: NotoSans-Regular;
+	font-size:18px;
+	color: #333a3e;
+}
+
+/*ANIMAITON*/
+@-webkit-keyframes gradientAnimation {
+    0%{background-position:0% 90%}
+    50%{background-position:100% 11%}
+    100%{background-position:0% 90%}
+}
+@-moz-keyframes gradientAnimation {
+    0%{background-position:0% 90%}
+    50%{background-position:100% 11%}
+    100%{background-position:0% 90%}
+}
+@keyframes gradientAnimation { 
+    0%{background-position:0% 90%}
+    50%{background-position:100% 11%}
+    100%{background-position:0% 90%}
+}
+@keyframes textAnimaiton {
+	0%{letter-spacing: -0.5em}
+	100%{letter-spacing: 0.1em}
+}
+
+/*FONT*/
+@font-face {
+    font-family: NotoSans-Regular;
+    src: url(NotoSans-Regular.ttf);
+}
+@font-face {
+    font-family: Lato-BlackItalic;
+    src: url(Lato-BlackItalic.ttf);
+}
+@font-face{
+	font-family: NotoSansCJKkr-Thin;
+	src: url(NotoSansCJKkr-Thin.otf);
+}
+
+/*TYPOGRAPHY*/
+h1.title{
+	margin:1% 0 2% 0;
+	font-family: Lato-BlackItalic;
+	font-style: italic;
+	font-size:2.2em;
+	text-align: center;
+	/*animation: textAnimaiton 2s;*/
+	letter-spacing: 0.15em;
+}
+@media screen and (max-width: 640px){
+	h1.title{
+		font-size:1.8em;
+	}
+}
+h3.message{
+	font-family: NotoSansCJKkr-Thin;
+	font-weight: lighter;
+	font-size: 1.2em;
+}
+
+/*SECTION*/
+.top{
+	width:97%;
+	margin:10% 1.5% 3% 1.5%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.top>img{
+	width:280px;
+	height: auto;
+}
+@media screen and (max-width: 640px){
+	.top{
+		margin: 25% 0 10% 0;
+	}
+	.top>img{
+		width:220px;
+		height: auto;
+	}
+}
+.middle{
+	display: flex;
+	flex-direction: row;
+	width:100%;
+	margin:5% 0;
+	align-items: center;
+	justify-content: center;
+}
+@media screen and (max-width: 640px){
+	.middle{
+    	display: flex;
+		flex-direction: column;
+		width:100%;
+		margin:5% 0;
+		align-items: center;
+		justify-content: flex-start;
+	}
+}
+.item{
+	display: flex;
+	width:200px;
+	height: 200px;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin:1%;
+	background-image: url("../img/circle_dark.svg");
+	background-position: center;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	font-family:NotoSansCJKkr-Thin;
+}
+@media screen and (max-width: 640px){
+	.item{
+		margin: 2%;
+		width:240px;
+		height: 240px;
+	}
+}
+.footer{
+	width:95%;
+	margin:25% 2.5% 1% 2.5%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+p.footer_copy{
+	font-family:NotoSansCJKkr-Thin;
+	font-size: 0.7em;
+}
+@media screen and (max-width:640px){
+	p.footer_copy{
+		font-size: 0.5em;
+	}
+}
