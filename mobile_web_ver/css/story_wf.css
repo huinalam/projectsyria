@@ -63,11 +63,8 @@ html, body{
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-start;
-	background-color: #eeeeee;
+	background-color: #cccccc;
     outline: 1px solid #222222;
-    background-image: url(../img/story1.jpg);
-	background-position: center;
-	background-size: cover;
 }
 .story_title{
 	display: flex;
@@ -103,23 +100,12 @@ html, body{
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-end;
-	background-color: #ffffff;
+	background-color: #cccccc;
 	background-position: center top;
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
-#chapter1{
-	 background-image: url(../img/story2.jpg);
-}
-#chapter2{
-	 background-image: url(../img/story3.jpg);
-}
-#chapter3{
-	 background-image: url(../img/story4.jpg);
-}
-#chapter4{
-	 background-image: url(../img/story1.jpg);
-}
+
 .text{
 	display: flex;
 	align-items: center;
@@ -140,7 +126,6 @@ html, body{
 	background-color: rgba(2,2,2,0.6);
 }
 #story_end_back{
-	background-image: url(../img/story1.jpg);
 	background-position: center;
 	background-size: cover;
 }

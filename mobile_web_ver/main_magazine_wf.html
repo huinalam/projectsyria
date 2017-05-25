@@ -10,19 +10,24 @@
 <body>
 	    
 	<div class="nav">
-		<div id="nav-icon3">
+		<div id="menu-icon">
 		  <span></span>
 		  <span></span>
 		  <span></span>
 		  <span></span>
 		</div>
 		<h2>PROJECT M</h2>
+		<div id="search">
+			<img src="img/search.svg">
+		</div>
 	</div>
+	<a href="story_wf.html">
 	<div class="wide_item">
 		<h2 class="item_title">
 			스토리 타이틀
 		</h2>
 	</div>
+	</a>
 	<div class="container_two_by">
 		<div class="item">
 			<h2 class="item_title">스토리 타이틀 </h2>
@@ -60,7 +65,7 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 <script>
 	$(document).ready(function(){
-		$('#nav-icon3').click(function(){
+		$('#menu-icon').click(function(){
 			$(this).toggleClass('open');
 		});
 	});
