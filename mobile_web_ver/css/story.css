@@ -1,0 +1,205 @@
+@font-face {
+    font-family: NanumMyeongjo;
+    src: url(NanumMyeongjo.otf);
+}
+@font-face {
+    font-family: NotoSansCJKkr-Bold;
+    src: url(NotoSansCJKkr-Bold.otf);
+}
+@font-face {
+    font-family: NotoSansCJKkr-Regular;
+    src: url(NotoSansCJKkr-Regular.otf);
+}
+@font-face {
+    font-family: NotoSansCJKkr-Thin;
+    src: url(NotoSansCJKkr-Thin.otf);
+}
+
+html, body{
+	margin:0;
+	width: 100%;
+	height:100%;
+}
+.button{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: NotoSansCJKkr-Thin;
+	font-size: 0.35em;
+	color: #ffffff;
+}
+
+
+.back{
+	 z-index: 999;
+	 position: fixed;
+	 top:10px;
+	 left: 8px;
+	 width: 30px;
+	 height: 24px;
+}
+.chapter{
+	display: flex;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+}
+.title_image{
+	display: flex;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	background-color: #eeeeee;
+    outline: 1px solid #222222;
+    background-image: url(../img/story1.jpg);
+	background-position: center;
+	background-size: cover;
+}
+.story_title{
+	display: flex;
+	flex-direction: row;
+}
+.title_image> h2{
+	font-family: NotoSansCJKkr-Regular;
+	font-size: 1.2em;
+	display: flex;
+	letter-spacing:0.2em;
+	background-color: rgba(8,8,8,0.65);
+	color: #FFFFFF;
+	margin-top: 15%;
+	padding: 2% 2% 2% 5%;
+}
+.title_text{
+	display: flex;
+	position: absolute;
+	width: 90%;
+	height: 90%;
+	padding:5%;
+	align-items: flex-end;
+	justify-content: center;
+	font-family: NotoSansCJKkr-Regular;
+	font-size: 0.8em;
+	line-height: 180%;
+	color: #ffffff;
+}
+.image{
+	display: flex;
+	width: 100%;
+	height: 60%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	background-color: #ffffff;
+	background-position: center top;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#chapter1{
+	 background-image: url(../img/story2.jpg);
+}
+#chapter2{
+	 background-image: url(../img/story3.jpg);
+}
+#chapter3{
+	 background-image: url(../img/story4.jpg);
+}
+#chapter4{
+	 background-image: url(../img/story1.jpg);
+}
+.text{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 88%;
+	height: 40%;
+	padding: 5% 6%;
+	font-family: NotoSansCJKkr-Regular;
+	font-style: 1em;
+	line-height: 180%;
+	color: #33383E;
+}
+
+
+/*End of Story*/
+#story_end_content{
+	background-color: rgba(2,2,2,0.6);
+}
+#story_end_back{
+	background-image: url(../img/story1.jpg);
+	background-position: center;
+	background-size: cover;
+}
+.profile_top{
+	margin-top: 0%;
+	height:18%;
+	width: 88%;
+	padding: 0 6%;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+.profile{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-end;
+	font-family: NotoSansCJKkr-Regular;
+	font-size: 0.7em;
+	color: #ffffff;
+}
+.highfive{
+	width:88%;
+	height:30%;
+	margin: 10% 0;
+	padding:0 6%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: NotoSansCJKkr-Regular;
+	text-align: center;
+	font-size: 1em;
+	color:#ffffff;
+}
+.related_story{
+	width:100%;
+	height:39%;
+	display: flex;
+	flex-direction: column;
+}
+.section_title{
+	width:88%;
+	margin:0 6%;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: center;
+	font-family: NotoSansCJKkr-Regular;
+	text-align: center;
+	font-size: 0.85em;
+	color:#ffffff;
+	border-style: solid;
+	border-width: 0 0 1px 0;
+	border-color: #eeeeee;
+}
+.story_list{
+	width: 100%;
+	height: 90%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.story_item{
+	display: flex;
+	width:31%;
+	height: 50%;
+	margin:1%;
+	background-color: #eeeeee;
+}
