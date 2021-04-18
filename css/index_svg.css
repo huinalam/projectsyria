@@ -4,12 +4,12 @@
 /* README 타이틀 SVG*/
 .m_circle{
 	stroke-width:0.1em;
-	stroke: #88DDFF;
-	fill: #88DDFF;
+	stroke: #20DDAA !important;
+	fill: #20DDAA;
 	mix-blend-mode: screen;
 }
 .m_line{
-	stroke: #88DDFF;
+	stroke: #20DDAA;
 	stroke-width: 0.01em;
 	opacity: 0.5;
 	

@@ -13,19 +13,20 @@
 		    <li class="nav_item" id='main'>
 		    	<div>
 		    		<a href="index.html">
-		    		<img id='nav_logo' src="img/nav_logo.svg">
+		    			<img id='nav_logo' src="img/nav_logo.svg">
 		    		</a>
 		    	</div>
-		    	<div><a href="index.html"><span id='logo_text'>PROJECT SYRIA</span></a>
+		    	<div>
+						<!-- <a href="index.html"><span id='logo_text'>PROJECT SYRIA</span></a> -->
 		    	</div>
 		    </li>
 		    <li class="nav_item" id='chapter_display'>INTRODUCTION</li>
 		    <li class="nav_item icon">
 		    	<a href="javascript:void(0);" onclick="myFunction()"><img class="menu" src="img/menu.svg"></a>
 	    	</li>
-		    <li class="nav_item top_item" id='item'><a href="chapter1.html">CHAPTER1</a></li>
-		    <li class="nav_item" id='item' ><a href="chapter2.html">CHAPTER2</a></li>
-		    <li class="nav_item" id='item' ><a href="chapter3.html">CHAPTER3</a></li>
+		    <li class="nav_item top_item" id='item'><a href="chapter1.html">Story1</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter2.html">Story2</a></li>
+		    <li class="nav_item" id='item' ><a href="chapter3.html">Story3</a></li>
 		</ul>
 	</div>
 
@@ -40,7 +41,7 @@
 	<div class="container" id="title_page">
 		<div class="intro" id="title">
 			<h3 class="title" id="top">Data storytelling of Syrian Crisis</h3><br>
-			<h1 class="title">PROJECT-SYRIA</h1><br>
+			<h1 class="title">PROJECT SYRIA</h1><br>
 			<h3 class="title" id="bottom">Through eyes of Syrian Civilian</h3><br>
 		</div>
 		<div class="intro">
@@ -75,7 +76,7 @@
 	    </div>
 	     <div class="intro">
 	        <p class="narrative">
-	        	However, these records do not fully explain why ‘Syrian Crisis’ can’t stop. While most media has been focused  &#39;Islamic State&#39; and &#39;European migrant Crisis&#39;, voice of Syrian people has been neglected.
+	        	However, these records do not fully explain why Syrian Crisis can not be stopped. While most media has been focused  &#39;Islamic State&#39; and &#39;European migrant Crisis&#39;, voice of Syrian people has been neglected.
 	        </p>
 	        <div class="flex-21">
 	        	 <div class="flex-12">
@@ -100,7 +101,6 @@
 		 <div class="intro" id="last_intro">
 	        <p class="narrative">
 	        	In order to reflect view of Syrian civilian, <span style="font-weight:700;">PROJECT SYRIA</span> collected crowd sourcing data through the Syrian community.
-	        	<br><br>
 				By analyzing and visualizing the data from various sources, we described the reasons why they had to escape Syria.
 	        </p>
 	        <div class="flex-42">
@@ -114,7 +114,7 @@
 	<div class="container" id="content">
 		<div class="content_col">
             <div class="block-1">
-            	<h2>FOCUS 1:<br>The EXTREME IMBALANCE<br>OF REFUGEE DISTRIBUTION</h2>
+            	<h2>EXTREME IMBALANCE<br>OF REFUGEE DISTRIBUTION</h2>
             	<div class="flex-21">
             		<div class="block-1" id="pie1"></div>
 	            	<div class="block-1" id="pie2"></div>
@@ -124,7 +124,7 @@
             </div>
             <div class="gap"></div>
             <div class="block-1">
-            	<h2>FOCUS 2:<br>MULTIPLE CONTRIBUTORS OF<br>LONG-LASTING SYRIAN CIVIL WAR</h2>
+            	<h2>MULTIPLE CONTRIBUTORS OF<br>LONG-LASTING SYRIAN CIVIL WAR</h2>
             	<div class="block-1">
             		<div id="wordcloud"></div>
 		            <p class="narrative">The above wordcloud represents frequency how many time each power group has been mentioned in headline of news written from NY times and The guardians.</p>
@@ -301,7 +301,7 @@
  		
 
  		$('div#title').each(function(){
- 			var title_margin = $('#title_svg').height() + parseInt($('#title_svg').css("margin-top")) -$window.height()*0.23;
+ 			var title_margin = $('#title_svg').height() + parseInt($('#title_svg').css("margin-top")) -$window.height()*0.30;
  			$(this).css("margin-top",title_margin).css("margin-bottom",title_margin*0.5);
  		});
 

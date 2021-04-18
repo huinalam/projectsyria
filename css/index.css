@@ -11,12 +11,12 @@ body{
 	min-width: 360px;
 	margin: 0px;
 	padding: 0px;
-	color: #AAAAAA;
-	background-color: #11181A;
+	/* color: #AAAAAA; */
+	background-color: #001418;
 }
 p{
 	display: inline-block;
-	font-family: 'Source Sans Pro', sans-serif;
+	/* font-family: 'Work Sans', sans-serif; */
 	font-weight: 300;
 	line-height: 150%;
 }
@@ -49,7 +49,7 @@ a:hover{
 	width: 100%;
 	margin: 0%;
 	text-align: center;
-	background-color: #11181A;
+	/* background-color: #11181A; */
 }
 .intro{
 	display: block;
@@ -57,7 +57,7 @@ a:hover{
 	margin: 3% auto;
 	max-width: 900px;
 	text-align: center;
-	background-color: rgba(17,24,26,0.9);
+	background-color: #001418;
 	z-index: 0;
 	/*box-shadow: 0 4px 8px 0 rgba(244, 244, 244, 0.2), 0 6px 20px 0 rgba(244, 244, 244, 0.19);*/
 }
@@ -73,7 +73,7 @@ a:hover{
 
 #content{
 	margin-top: 20%;
-	background-color: #11181A;
+	background-color: #001418;
 	border-style: solid;
 	border-width: 0px 0 0 0;
 	border-color: #668890;
@@ -82,7 +82,7 @@ a:hover{
 	height: auto;
 	margin: auto;
 	z-index: 10;
-	box-shadow: 0px 0px 200px 150px #11181A;
+	box-shadow: 0px 0px 200px 150px #001418;
 }
 #intro_img_head{
 	background-color: rgba(255,255,255,0);
@@ -105,9 +105,9 @@ a:hover{
 	padding-top:20%;
 	padding-bottom:20%;
 	color:#dddddd;
-	border-style: solid;
+	/* border-style: solid;
 	border-color: #eeeeee;
-	border-width: 1px;
+	border-width: 1px; */
 	position: relative;
 	background-repeat: no-repeat;
 }
@@ -139,13 +139,14 @@ a:hover{
 	display: inline-block;
 	text-align: center;
 	margin: 0.1em auto 0.1em auto;
-	font-size: 1.2em;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 600;
+	font-size: 1.8em;
+	line-height: 1.2;
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 800;
 	padding: 0% 2%;
-	word-spacing: 0.25em;
-	letter-spacing: 0.05em;
-	color:#EE4455;
+	word-spacing: 0em;
+	letter-spacing: 0.02em;
+	color:#C82A3F;
 }
 .facts_p{
 	display: inline-block;
@@ -155,7 +156,7 @@ a:hover{
 	padding: 2% 12.5%;
 	margin:0 !important;
 	text-align: left;
-	text-indent: 0.5em;
+	/* text-indent: 0.5em; */
 	color: #778899
 }
 @media screen and (min-width: 640px){
@@ -166,10 +167,25 @@ a:hover{
 		padding-bottom:35%;
 		color:#dddddd;
 		border-style: solid;
-		border-color: #eeeeee;
-		border-width: 1px;
+		border-color: #40484a;
+		border-width: 0.5px;
 		position: relative;
 		background-repeat: no-repeat;
+		position: relative;
+	}
+	.img_head>*{
+		z-index: 9;
+		position: relative;
+	}
+	.img_head:before{
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0,0,0,0.48);
+		position: absolute;
+		top: 0;
+		left: 0;
+		content: "";
+		z-index: 0;
 	}
 	.flex-31{
 		width: 100%;
@@ -194,17 +210,17 @@ a:hover{
 		flex-grow: 1;
 		margin-bottom: 0%;
 	}
-	.subheading{
+	/* .subheading{
 		display: inline-block;
 		text-align: center;
 		margin: 0.1em auto 0.1em auto;
 		font-size: 1.8em;
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Work Sans', sans-serif;
 		font-weight: 600;
 		word-spacing: 0.25em;
 		letter-spacing: 0.05em;
 		color:#EE4455;
-	}
+	} */
 	.facts_p{
 		display: inline-block;
 		font-size:0.8em;
@@ -213,7 +229,7 @@ a:hover{
 		padding: 5%;
 		margin:0 !important;
 		text-align: left;
-		text-indent: 0.5em;
+		/* text-indent: 0.5em; */
 		color: #778899;
 	}
 }
@@ -230,58 +246,57 @@ a:hover{
 /*headline*/
 h1.title{
 	display: inline-block;
-	color: #ffffff;
+	color: #C82A3F;
 	text-align: center;
 	border-bottom-style: solid;
-	border-bottom-width: 0.02em;
+	border-bottom-width: 0.01em;
 	border-top-style: solid;
-	border-top-width: 0.02em;
-	border-color: #cccccc;
-	margin: 0.05em auto 0.05em auto;
-	padding-top: 0.1em;
+	border-top-width: 0.01em;
+	border-color: #c0a0a0;
+	margin: 0.2em auto;
+	padding: 0.24em 0;
 	max-width: 900px;
-	font-family: 'League Gothic Condensed', sans-serif;
+	/* font-family: 'League Gothic Condensed', sans-serif; */
+	/* font-family: 'Goblin One' !important; */
 	font-size: 5em;
 	letter-spacing: 0.05em;
 	word-spacing: 0.1em;
-	font-weight: normal;
-	font-style: normal;
-	line-height: 95%;
 	mix-blend-mode: difference;
 	opacity: 0.8;
-	
+	width: 600px;
 }
 h3.title{
 	display: inline-block;
 	color: #fafafa;
 	text-align: center;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 400;
-	font-size: 1em;
-	letter-spacing: 0.1em;
-	word-spacing: 0.3em;
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 500;
+	font-size: 1.3em;
+	letter-spacing: 0.02em;
+	word-spacing: 0.2em;
 	margin:0;
 	mix-blend-mode: difference;
-	opacity: 0.8
+	opacity: 0.8;
 }
 
 h2{
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 700;
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 900;
 	font-size: 1.3em;
 	margin: 2em 0 0.5em 0;
 	margin-top: 0px;
-	line-height: 120%;
+	/* line-height: 120%; */
 	letter-spacing: 0.03em;
 	word-spacing: 0.1em;
 	text-align: left;
-	color: #eeeeee;
-	font-stretch: condensed;
+	/* color: #eeeeee; */
+	/* font-stretch: condensed; */
 }
 
-@media screen and (min-width:640px){
+@media screen and (max-width:640px){
 	h1.title{
-		font-size: 6em;
+		width: 100%;
+		font-size: 3em;
 		letter-spacing: 0.05em;
 		word-spacing: 0.1em;
 	}
@@ -289,7 +304,7 @@ h2{
 		display: inline-block;
 		color: #fafafa;
 		text-align: center;
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Work Sans', sans-serif;
 		font-weight: 300;
 		font-size: 1.2em;
 		letter-spacing: 0.1em;
@@ -297,7 +312,7 @@ h2{
 		margin:0;
 	}
 	h2{
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Work Sans', sans-serif;
 		font-weight: 700;
 		font-size: 1.5em;
 		margin: 2em 0 0.5em 0;
@@ -362,6 +377,7 @@ h2{
 
 #background_svg{
 	z-index: -10;
+	padding-left: 24px;
 }
 #background_img{
 	z-index: -10;
@@ -391,28 +407,28 @@ h2{
 	display: inline-block;
 	width: 98%;
 	margin: 5% 1% 5% 1%;
-	font-family: 'Source Sans Pro', sans-serif;
-	text-indent: 0.5em;
+	/* font-family: 'Work Sans', sans-serif; */
+	/* text-indent: 0.5em; */
 	font-size: 1.1em;
 	font-weight: 300;
 	text-align: left;
 	word-spacing: 0.1em;
 	line-height: 140%;
-	color: #eeeeee;
+	/* color: #eeeeee; */
 }
 @media screen and (min-width: 640px){
 	.narrative{
 		display: inline-block;
 		width: 96%;
 		margin: 5% 2% 5% 2%;
-		font-family: 'Source Sans Pro', sans-serif;
-		text-indent: 0.5em;
+		/* font-family: 'Work Sans', sans-serif; */
+		/* text-indent: 0.5em; */
 		font-size: 1.3em;
 		font-weight: 300;
 		text-align: left;
 		word-spacing: 0.1em;
 		line-height: 150%;
-		color: #eeeeee;
+		/* color: #eeeeee; */
 	}
 }
 
@@ -428,15 +444,15 @@ h2{
 	flex-direction: row;
 	justify-content: center;
 	border-style: solid;
-	border-width: 1px;
-	border-color:  #11181A;
+	border-width: 0.5px;
+	border-color:  #40484a;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 16px 0 rgba(0, 0, 0, 0.19);
 }
 .report:hover{
 	box-shadow: 0 4px 8px 0 rgba(68, 221, 170, 0.2), 0 6px 16px 0 rgba(68, 221, 170, 0.2);
 	border-style: solid;
 	border-width: 1px;
-	border-color:  #44DDAA;
+	border-color:  #00806E;
 	cursor: pointer;
 }
 .report_num{
@@ -445,11 +461,11 @@ h2{
 		text-align: center;
 		justify-content: center;
 		width:20%;
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Work Sans', sans-serif;
 		font-weight: 700;
 		font-size: 2em;
 		color: #ffffff;
-		background-color: #229977;
+		background-color: #00806E;
 	}
 	.report_back{
 		display: inline-block;
@@ -459,7 +475,7 @@ h2{
 		margin:0;
 		width:34%;
 		padding:2% 0% 18% 2%;
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Work Sans', sans-serif;
 		color: #ffffff;
 		font-size: 0.8em;
 		font-weight: 700;
@@ -470,14 +486,14 @@ h2{
 		display: inline-block;
 		width:41%;
 		padding: 2% 2% 0 2%;
-		text-indent: 0.5em;
-		font-family: 'Source Sans Pro', sans-serif;
+		/* text-indent: 0.5em; */
+		/* font-family: 'Work Sans', sans-serif; */
 		font-size: 0.8em;
 		font-weight: 300;
 		text-align: left;
 		word-spacing: 0.1em;
 		line-height: 140%;
-		background-color: #11181A;
+		/* background-color: #11181A; */
 		color: #eeeeee;
 	}
 .button{
@@ -494,8 +510,8 @@ h2{
 }
 .button:hover{
 	transition: all 0.5s ease;
-	border-color: #229977;
-	background-color: #229977;
+	border-color: #00806E;
+	background-color: #00806E;
 }
 @media screen and (min-width: 640px){
 	.report_num{
@@ -504,11 +520,11 @@ h2{
 		text-align: center;
 		justify-content: center;
 		width:20%;
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Work Sans', sans-serif;
 		font-weight: 700;
 		font-size: 4em;
 		color: #ffffff;
-		background-color: #229977;
+		background-color: #00806E;
 	}
 	.report_back{
 		display: inline-block;
@@ -518,7 +534,7 @@ h2{
 		margin:0;
 		width:34%;
 		padding:2% 0% 18% 2%;
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Work Sans', sans-serif;
 		color: #ffffff;
 		font-size: 1em;
 		font-weight: 700;
@@ -529,14 +545,14 @@ h2{
 		display: inline-block;
 		width:41%;
 		padding: 2% 2% 0 2%;
-		text-indent: 0.5em;
-		font-family: 'Source Sans Pro', sans-serif;
+		/* text-indent: 0.5em; */
+		/* font-family: 'Work Sans', sans-serif; */
 		font-size: 1em;
 		font-weight: 300;
 		text-align: left;
 		word-spacing: 0.1em;
 		line-height: 150%;
-		background-color: #11181A;
+		/* background-color: #11181A; */
 		color: #eeeeee;
 	}
 	.button{
@@ -579,7 +595,7 @@ h3.intro{
 	margin: 0.1em auto 0.1em auto;
 	color: #eeeeee;
 	font-size: 1.3em;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Work Sans', sans-serif;
 	font-weight: 600;
 	word-spacing: 0.25em;
 	letter-spacing: 0.05em;
@@ -590,6 +606,11 @@ h3.intro{
 	border-style: solid;
 	border-width: 0 0 1px 0;
 	border-color: #888888;
+	padding-bottom: 16px;
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 900;
+	font-size: 1.8em;
+	line-height: 1.48;
 }
 
 #back{
@@ -620,7 +641,7 @@ h3.source_list{
 	margin:0 !important;
 	padding:1%;
 	font-size: 0.6em;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Work Sans', sans-serif;
 	font-weight: 400;
 	z-index: 999;
 	margin:0.5em 0;
@@ -653,7 +674,7 @@ h3.chapt_list{
 	top:0;
 	left:0;
 	font-size: 0.8em;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Work Sans', sans-serif;
 	font-weight: 400;
 	z-index: 999;
 	margin:1em 0;
@@ -664,13 +685,13 @@ h3.chapt_list{
 	display: inline-block;
 	width: 98%;
 	margin: 1%;
-	font-family: 'Source Sans Pro', sans-serif;
+	/* font-family: 'Work Sans', sans-serif; */
 	font-size: 1em;
 }
 .block-2{
 	display: flex;
 	flex-direction: row;
-	font-family: 'Source Sans Pro', sans-serif;
+	/* font-family: 'Work Sans', sans-serif; */
 	font-weight: 300;
 	font-size: 1.2em;
 	position: relative;
@@ -687,7 +708,7 @@ h3.chapt_list{
 }
 .block-42{
 		display: inline-block;
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Work Sans', sans-serif;
 		font-weight: 300;
 		text-align: center;
 		position: relative;
@@ -729,7 +750,7 @@ h3.chapt_list{
 		margin:0 !important;
 		padding:1%;
 		font-size: 1em;
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Work Sans', sans-serif;
 		font-weight: 400;
 		z-index: 999;
 		margin:0.5em 0;

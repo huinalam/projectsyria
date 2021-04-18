@@ -1,3 +1,6 @@
+/* Title */
+@import url('https://fonts.googleapis.com/css2?family=Goblin+One&display=swap');
+
 /* Regular */
 @font-face {
     font-family: 'League Gothic';
@@ -46,3 +49,4 @@
     font-weight: normal;
     font-style: italic;
 }
+

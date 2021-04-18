@@ -2,8 +2,8 @@
     text-align: center;
     width: 90% !important;
     margin: 0% 5% 50% 5% !important;
-    background-color: rgba(17,24,26,0.7);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* background-color: rgba(17,24,26,0.7); */
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 #intro{
     width: 90% !important;
