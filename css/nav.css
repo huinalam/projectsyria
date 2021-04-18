@@ -139,7 +139,14 @@ li.nav_item{
 		width: 96%;
 		height:40px;
 		margin: 1% 2% 1% 2%;
+		min-height: 56px;
+		display: flex;
 	}	
+
+	ul.topnav{
+		height: auto;
+		min-height: 56px;
+	}
 
 	.top_item{
 	 	font-weight: 400;
@@ -189,9 +196,10 @@ li.nav_item{
 }
 @media screen and (max-width: 640px){
 	#main{
-		width:30%;
+		width:auto;
 		position: relative;
 		float: left;
+		padding: 0 12px;
 		margin: 0 !important;
 	}
 	#chapter_display{	
@@ -208,6 +216,7 @@ li.nav_item{
 		width:92%;
 		display: none;
 		text-align: left;
+		min-height: 32px;
 	}
 }
 #main > div> a:link{
@@ -249,6 +258,7 @@ li.nav_item{
   		position: relative;
 		float: left;
 		display: flex;
+		justify-content: space-between;
 	}
 	.icon{
 		display: flex;
@@ -457,11 +467,13 @@ img.menu{
 	  }
 	 .responsive> #item {
 	    float: none;
-	    display: inline-block !important;
-	    height:auto !important;
+	    display: flex !important;
+			height: auto !important;
+			align-items: center;
+			justify-content: left;
 	    border-style: solid;
-		border-width: 1px 0 0 0;
-		border-color: #99B0Bf;
+			border-width: 1px 0 0 0;
+			border-color: #99B0Bf;
 	  }
 
 }
