@@ -1,277 +1,358 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-	 <link href="css/fonts.css" rel="stylesheet">
-	 <link href="css/index.css" rel="stylesheet">
-	 <link href="css/nav.css" rel="stylesheet">
-	 <link href="css/index_svg.css" rel="stylesheet">
-</head>
-<body>
-	<div class="nav_bar nav_hide">
-		<ul class="topnav" id="mainTopnav">
-		    <li class="nav_item" id='main'>
-		    	<div>
-		    		<a href="index.html">
-		    			<img id='nav_logo' src="img/nav_logo.svg">
-		    		</a>
-		    	</div>
-		    	<div>
+	<head>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"
+		/>
+		<meta name="description" content="Project Syria: Story of Syria Crisis">
+		<meta
+			property="og:image"
+			content="https://firebasestorage.googleapis.com/v0/b/data-driven-design-d2418.appspot.com/o/project_assets%2Fproject%20syria%2Fthumb_project_syria_square.png?alt=media&token=747ca32f-6cbd-4409-81e7-c6762c80650f"
+		/>
+		<meta property="og:title" content="Project Syria: Story of Syria Crisis" />
+		<meta
+			property="og:description"
+			content="From The View Of Insider"
+		/>
+		<meta property="og:url" content="https://projectsyria.witnessism.org/" />
+		<link href="css/fonts.css" rel="stylesheet" />
+		<link href="css/index.css" rel="stylesheet" />
+		<link href="css/nav.css" rel="stylesheet" />
+		<link href="css/index_svg.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="nav_bar nav_hide">
+			<ul class="topnav" id="mainTopnav">
+				<li class="nav_item" id="main">
+					<div>
+						<a href="index.html">
+							<img id="nav_logo" src="img/nav_logo.svg" />
+						</a>
+					</div>
+					<div>
 						<!-- <a href="index.html"><span id='logo_text'>PROJECT SYRIA</span></a> -->
-		    	</div>
-		    </li>
-		    <li class="nav_item" id='chapter_display'>INTRODUCTION</li>
-		    <li class="nav_item icon">
-		    	<a href="javascript:void(0);" onclick="myFunction()"><img class="menu" src="img/menu.svg"></a>
-	    	</li>
-		    <li class="nav_item top_item" id='item'><a href="chapter1.html">Chapter1: Assad Regime</a></li>
-		    <li class="nav_item" id='item' ><a href="chapter2.html">Chapter2: Refugee Cricis</a></li>
-		    <li class="nav_item" id='item' ><a href="chapter3.html">Chapter3: Civil War Timeline</a></li>
-		</ul>
-	</div>
-
-	<div class="keep_scroll">
-		<img src="img/keep_scroll.svg"><br>
-		<p>KEEP SCROLL TO START</p>
-	</div>
-
-	<div class="header_background" id="background_cover"></div>
-	<div class="header_background" id="background_img"></div>
-	<div class="header_background" id="background_svg"></div>
-	<div class="container" id="title_page">
-		<div class="intro" id="title">
-			<h3 class="title" id="top">Data storytelling of Syrian Crisis</h3><br>
-			<h1 class="title">PROJECT SYRIA</h1><br>
-			<h3 class="title" id="bottom">Through eyes of Syrian Civilian</h3><br>
+					</div>
+				</li>
+				<li class="nav_item" id="chapter_display">INTRODUCTION</li>
+				<li class="nav_item icon">
+					<a href="javascript:void(0);" onclick="myFunction()"
+						><img class="menu" src="img/menu.svg"
+					/></a>
+				</li>
+				<li class="nav_item top_item" id="item">
+					<a href="chapter1.html">Chapter1</a>
+				</li>
+				<li class="nav_item" id="item">
+					<a href="chapter2.html">Chapter2</a>
+				</li>
+				<li class="nav_item" id="item">
+					<a href="chapter3.html">Chapter3</a>
+				</li>
+			</ul>
 		</div>
-		<div class="intro">
-			<p class="narrative">
-	           <span style="font-weight:700;">Project Syria</span> was designed to shed light on notable incidents and cases due to Syrian Crisis by data driven approaches.
-	            The below are general facts that many peope know through the media.
-	        </p>
-	        <div class="flex-31">
-	        	<div class="flex-12 item">
-		        	<div class="img_head" id="civilwar">
-		        		<h3 class="subheading">5 YEARS<br>
-						CIVIL WARS</h3>
-		        	</div>
-		        	<p class="facts_p">Syrian Civil War was triggered by intensive repression of Assad regime. They started to use military force to stop peaceful protests since 2011.</p>
-		        </div>
-		        <div class="flex-12 item">
-		        	<div class="img_head" id="death">
-		        		<h3 class="subheading">132,559 OF<br>
-						DEATH</h3>
-		        	</div>
-		        	<p class="facts_p">According to The Violation Documentation Center in Syria more than 132,559 fatalities has been killed during the civil war.</p>
-		        	
-		        </div>
-		        <div class="flex-12 item">
-		        	<div class="img_head" id="refugee">
-		        		<h3 class="subheading">4,809,787 OF
-						<br>REFUGEES</h3>
-		        	</div>
-		        	<p class="facts_p">UN's refugee agency reported that 4,809,787 refugees were registered. Majority of refugees are staying in Middle east &amp; Europe.</p>
-		        </div>
-	        </div>
-	    </div>
-	     <div class="intro">
-	        <p class="narrative">
-	        	However, these records do not fully explain why Syrian Crisis can not be stopped. While most media has been focused  &#39;Islamic State&#39; and &#39;European migrant Crisis&#39;, voice of Syrian people has been neglected.
-	        </p>
-	        <div class="flex-21">
-	        	 <div class="flex-12">
-		        	<div class="img_head" id="is">
-		        		<h3 class="subheading"><span class="red">RISE OF ISLAMIC STATE</span></h3>
-		        	</div>
-		        	<p class="facts_p">
-		        	Troops of &#39;Islamic State&#39; were marching on the street of Raqqa, a city in the middle of Syria. Raqqa is one of the their main base since 2011.
-		        	</p>
-		        </div>
-		        <div class="flex-12">
-		        	<div class="img_head" id="migrant_crisis">
-		        		<h3 class="subheading"><span class="red">MIGRANT CRISIS IN EU
-		        		</span></h3>
-		        	</div>
-		        	<p class="facts_p">
-	        		Syrian refugees were having protest for claiming openning border between Hungary and Slovakia at the budapest train station.
-	        		</p>
-		        </div>
-	        </div>
-		 </div>
-		 <div class="intro" id="last_intro">
-	        <p class="narrative">
-	        	In order to reflect view of Syrian civilian, <span style="font-weight:700;">PROJECT SYRIA</span> collected crowd sourcing data through the Syrian community.
-				By analyzing and visualizing the data from various sources, we described the reasons why they had to escape Syria.
-	        </p>
-	        <div class="flex-42">
-	        	<img class="source_img" src="img/unhcr_white.svg">
-	        	<img class="source_img" src="img/vdc_white.svg">
-	        	<img class="source_img" src="img/syria_tracker_white.svg">
-	        	<img class="source_img" src="img/snhr_white.svg">
-	        </div>
-		 </div>
-	</div>
-	<div class="container" id="content">
-		<div class="content_col">
-            <div class="block-1">
-            	<h2>EXTREME IMBALANCE<br>OF REFUGEE DISTRIBUTION</h2>
-            	<div class="flex-21">
-            		<div class="block-1" id="pie1"></div>
-	            	<div class="block-1" id="pie2"></div>
-	            </div>
-	            	<p class="narrative">Analysis on UNHCR&#x27;s data about refugees enabled us to see imbalanced acceptance of displaced people from 2011 until now. Especially, more than 80% of refugees have found new destinations of Turkey, Lebanon and Jordan while Gulf States been reluctant to incorporate themselves into migrant crisis.</p>
-	            
-            </div>
-            <div class="gap"></div>
-            <div class="block-1">
-            	<h2>MULTIPLE CONTRIBUTORS OF<br>LONG-LASTING SYRIAN CIVIL WAR</h2>
-            	<div class="block-1">
-            		<div id="wordcloud"></div>
-		            <p class="narrative">The above wordcloud represents frequency how many time each power group has been mentioned in headline of news written from NY times and The guardians.</p>
-            	</div>
-            </div>
-            <div class="gap"></div>
-			<div class="block-1">
-				<h2>DATA STORYTELLING<br>
-				OF SYRIAN CRISIS</h2>
+
+		<div class="keep_scroll">
+			<img src="img/keep_scroll.svg" /><br />
+			<p>KEEP SCROLL TO START</p>
+		</div>
+
+		<div class="header_background" id="background_cover"></div>
+		<div class="header_background" id="background_img"></div>
+		<div class="header_background" id="background_svg"></div>
+		<div class="container" id="title_page">
+			<div class="intro" id="title">
+				<h3 class="title" id="top">Data storytelling of Syrian Crisis</h3>
+				<br />
+				<h1 class="title">PROJECT SYRIA</h1>
+				<br />
+				<h3 class="title" id="bottom">Through eyes of Syrian Civilian</h3>
+				<br />
+			</div>
+			<div class="intro">
+				<p class="narrative">
+					<span style="font-weight: 700">Project Syria</span> was designed to
+					shed light on notable incidents and cases due to Syrian Crisis by data
+					driven approaches. The below are general facts that many peope know
+					through the media.
+				</p>
+				<div class="flex-31">
+					<div class="flex-12 item">
+						<div class="img_head" id="civilwar">
+							<h3 class="subheading">
+								5 YEARS<br />
+								CIVIL WARS
+							</h3>
+						</div>
+						<p class="facts_p">
+							Syrian Civil War was triggered by intensive repression of Assad
+							regime. They started to use military force to stop peaceful
+							protests since 2011.
+						</p>
+					</div>
+					<div class="flex-12 item">
+						<div class="img_head" id="death">
+							<h3 class="subheading">
+								132,559 OF<br />
+								DEATH
+							</h3>
+						</div>
+						<p class="facts_p">
+							According to The Violation Documentation Center in Syria more than
+							132,559 fatalities has been killed during the civil war.
+						</p>
+					</div>
+					<div class="flex-12 item">
+						<div class="img_head" id="refugee">
+							<h3 class="subheading">4,809,787 OF <br />REFUGEES</h3>
+						</div>
+						<p class="facts_p">
+							UN's refugee agency reported that 4,809,787 refugees were
+							registered. Majority of refugees are staying in Middle east &amp;
+							Europe.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="intro">
+				<p class="narrative">
+					However, these records do not fully explain why Syrian Crisis can not
+					be stopped. While most media has been focused &#39;Islamic State&#39;
+					and &#39;European migrant Crisis&#39;, voice of Syrian people has been
+					neglected.
+				</p>
+				<div class="flex-21">
+					<div class="flex-12">
+						<div class="img_head" id="is">
+							<h3 class="subheading">
+								<span class="red">RISE OF ISLAMIC STATE</span>
+							</h3>
+						</div>
+						<p class="facts_p">
+							Troops of &#39;Islamic State&#39; were marching on the street of
+							Raqqa, a city in the middle of Syria. Raqqa is one of the their
+							main base since 2011.
+						</p>
+					</div>
+					<div class="flex-12">
+						<div class="img_head" id="migrant_crisis">
+							<h3 class="subheading">
+								<span class="red">MIGRANT CRISIS IN EU </span>
+							</h3>
+						</div>
+						<p class="facts_p">
+							Syrian refugees were having protest for claiming openning border
+							between Hungary and Slovakia at the budapest train station.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="intro" id="last_intro">
+				<p class="narrative">
+					In order to reflect view of Syrian civilian,
+					<span style="font-weight: 700">PROJECT SYRIA</span> collected crowd
+					sourcing data through the Syrian community. By analyzing and
+					visualizing the data from various sources, we described the reasons
+					why they had to escape Syria.
+				</p>
+				<div class="flex-42">
+					<img class="source_img" src="img/unhcr_white.svg" />
+					<img class="source_img" src="img/vdc_white.svg" />
+					<img class="source_img" src="img/syria_tracker_white.svg" />
+					<img class="source_img" src="img/snhr_white.svg" />
+				</div>
+			</div>
+		</div>
+		<div class="container" id="content">
+			<div class="content_col">
 				<div class="block-1">
-					<div class="report">
-						<div class="report_num">#1</div>
-						<div class="report_back" id="chapt1">
-							SYRIAN REFUGEE DURUNG<br>
-							DICTATORSHIP
-						</div>
-						<div class="report_description">
-							<div>
-								Chapter1 shows how political opression of dictatorship affect to the number of refugees before civil war.
+					<h2>EXTREME IMBALANCE<br />OF REFUGEE DISTRIBUTION</h2>
+					<div class="flex-21">
+						<div class="block-1" id="pie1"></div>
+						<div class="block-1" id="pie2"></div>
+					</div>
+					<p class="narrative">
+						Analysis on UNHCR&#x27;s data about refugees enabled us to see
+						imbalanced acceptance of displaced people from 2011 until now.
+						Especially, more than 80% of refugees have found new destinations of
+						Turkey, Lebanon and Jordan while Gulf States been reluctant to
+						incorporate themselves into migrant crisis.
+					</p>
+				</div>
+				<div class="gap"></div>
+				<div class="block-1">
+					<h2>MULTIPLE CONTRIBUTORS OF<br />LONG-LASTING SYRIAN CIVIL WAR</h2>
+					<div class="block-1">
+						<div id="wordcloud"></div>
+						<p class="narrative">
+							The above wordcloud represents frequency how many time each power
+							group has been mentioned in headline of news written from NY times
+							and The guardians.
+						</p>
+					</div>
+				</div>
+				<div class="gap"></div>
+				<div class="block-1">
+					<h2>
+						DATA STORYTELLING<br />
+						OF SYRIAN CRISIS
+					</h2>
+					<div class="block-1">
+						<div class="report">
+							<div class="report_num">#1</div>
+							<div class="report_back" id="chapt1">
+								SYRIAN REFUGEE DURUNG<br />
+								DICTATORSHIP
 							</div>
-							<a href="chapter1.html">
-								<div class="button">
-									go to chapter1&nbsp;<img class="goto" src="img/goto.svg">
+							<div class="report_description">
+								<div>
+									Chapter1 shows how political opression of dictatorship affect
+									to the number of refugees before civil war.
 								</div>
-							</a>
+								<a href="chapter1.html">
+									<div class="button">
+										go to chapter1&nbsp;<img class="goto" src="img/goto.svg" />
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="report">
+							<div class="report_num">#2</div>
+							<div class="report_back" id="chapt2">
+								IMBALANCED DISTRIBUTION OF<br />
+								THE SYRIAN REFUGEES
+							</div>
+							<div class="report_description">
+								<div>
+									Interactive map visualizes distribution of Syrian refugees
+									after civil war. As the war has keep escalated, imbalance of
+									the distribution became more extreme.
+								</div>
+								<a href="chapter2.html">
+									<div class="button">
+										go to chapter2 &nbsp;<img class="goto" src="img/goto.svg" />
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="report">
+							<div class="report_num">#3</div>
+							<div class="report_back" id="chapt3">
+								WHO AND HOW KILLED SYRIANS<br />
+								DURING THE CIVL WAR
+							</div>
+							<div class="report_description">
+								<div>
+									By analysing data of Syria Tracker, we could visualize pattern
+									of civil damage and how it affected the number of deaths.
+								</div>
+								<a href="chapter3.html">
+									<div class="button">
+										go to chapter3 &nbsp;<img class="goto" src="img/goto.svg" />
+									</div>
+								</a>
+							</div>
 						</div>
 					</div>
-					<div class="report">
-						<div class="report_num">#2</div>
-						<div class="report_back" id="chapt2">
-							IMBALANCED DISTRIBUTION OF<br>
-							THE SYRIAN REFUGEES
-						</div>
-						<div class="report_description">
-							<div>
-								Interactive map visualizes distribution of Syrian refugees after civil war. As the war has keep escalated, imbalance of the distribution became more extreme.
-							</div>
-							<a href="chapter2.html">
-								<div class="button">
-									go to chapter2 &nbsp;<img class="goto" src="img/goto.svg">
-								</div>
+				</div>
+				<div class="block-1">
+					<h2>DATA SOURCES</h2>
+					<div class="block-1">
+						<div class="block-42">
+							<a
+								class="source_link"
+								href="http://data.unhcr.org/syrianrefugees/regional.php"
+								target="_blank"
+							>
+								<img class="data_source" src="img/unhcr_white.svg" /><br />
+								<p class="data_source_p">
+									Data sets about registered refugees in each country.
+								</p>
 							</a>
 						</div>
-					</div>
-					<div class="report">
-						<div class="report_num">#3</div>
-						<div class="report_back" id="chapt3">
-							WHO AND HOW KILLED SYRIANS<br>
-							DURING THE CIVL WAR
+						<div class="block-42">
+							<a href="https://www.vdc-sy.info/index.php/en/" target="_blank">
+								<img class="data_source" src="img/vdc_white.svg" />
+								<p class="data_source_p">
+									Provides list of death with location during Syrian Civl war.
+								</p>
+							</a>
 						</div>
-						<div class="report_description">
-							<div>
-								By analysing data of Syria Tracker, we could visualize pattern of civil damage and how it affected the number of deaths.
-							</div>
-							<a href="chapter3.html">
-								<div class="button">
-									go to chapter3 &nbsp;<img class="goto" src="img/goto.svg">
-								</div>
+						<div class="block-42">
+							<a href="https://syriatracker.crowdmap.com/" target="_blank">
+								<img
+									class="data_source"
+									src="img/syria_tracker_white.svg"
+								/><br />
+								<p class="data_source_p">
+									Crowd-sourcing community where civil damages are reported.
+								</p>
+							</a>
+						</div>
+						<div class="block-42">
+							<a href="http://sn4hr.org/" target="_blank">
+								<img class="data_source" src="img/snhr_white.svg" /><br />
+								<p class="data_source_p">
+									Provided information of main accidents inside civil area.
+								</p>
 							</a>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="block-1">
-				<h2>DATA SOURCES</h2>
-				<div class="block-1">
-					<div class="block-42">
-						<a class="source_link" href="http://data.unhcr.org/syrianrefugees/regional.php" target="_blank">
-							<img class="data_source" src="img/unhcr_white.svg"><br>
-							<p class="data_source_p">Data sets about registered refugees in each country.</p>
-						</a>
-					</div>
-					<div class="block-42">
-						<a href="https://www.vdc-sy.info/index.php/en/" target="_blank">
-							<img class="data_source" src="img/vdc_white.svg">
-							<p class="data_source_p">Provides list of death with location during Syrian Civl war.</p>
-						</a>
-					</div>
-					<div class="block-42">
-						<a href="https://syriatracker.crowdmap.com/" target="_blank">
-							<img class="data_source" src="img/syria_tracker_white.svg"><br>
-							<p class="data_source_p">Crowd-sourcing community where civil damages are reported.</p>
-						</a>
-					</div>
-					<div class="block-42">
-						<a href="http://sn4hr.org/" target="_blank">
-						<img class="data_source" src="img/snhr_white.svg"><br>
-						<p class="data_source_p">Provided information of main accidents inside civil area.</p>
-						</a>
-					</div>
-				</div>
-			</div>
 		</div>
-	</div>
-<script src="js/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
- <script>
- 	function myFunction() {
-	    var x = document.getElementById("mainTopnav");
-	    if (x.className === "topnav") {
-	        x.className += " responsive";
-	    } else {
-	        x.className = "topnav";
-	    }
-	}
- </script>
- <script src="js/title_background_grid.js"></script>
- <script src="js/d3.layout.cloud.js"></script>
- <script src="js/refugee_pie_charts.js"></script>
- <script src="js/word_cloud.js"></script>
- <script>
- $(document).ready(function(){
+		<script src="js/jquery-2.1.4.min.js"></script>
+		<script
+			type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"
+			charset="utf-8"
+		></script>
+		<script>
+			function myFunction() {
+				var x = document.getElementById("mainTopnav");
+				if (x.className === "topnav") {
+					x.className += " responsive";
+				} else {
+					x.className = "topnav";
+				}
+			}
+		</script>
+		<script src="js/title_background_grid.js"></script>
+		<script src="js/d3.layout.cloud.js"></script>
+		<script src="js/refugee_pie_charts.js"></script>
+		<script src="js/word_cloud.js"></script>
+		<script>
+			$(document).ready(function () {
+				$window = $(window);
+				var scrollTop;
+				var intro_top = [];
+				var section_check = [];
+				var content_offset;
+				var content_top;
 
- 	$window = $(window);
- 	var scrollTop;
- 	var intro_top = [];
- 	var section_check =[];
- 	var content_offset;
- 	var content_top;
- 	
- 	initiation();
- 	first_drawing(13);
+				initiation();
+				first_drawing(13);
 
- 	$window.on("resize",function(){
- 
- 		
- 		if(360<$window.width()){
-			redraw_headerSVG();
-	 		initiation();
-	 		redraw_wordcloud();
-	 		redraw_pie();
-			fade_out();
-		}
+				$window.on("resize", function () {
+					if (360 < $window.width()) {
+						redraw_headerSVG();
+						initiation();
+						redraw_wordcloud();
+						redraw_pie();
+						fade_out();
+					}
+				});
 
- 	});
+				$window.on("scroll", function () {
+					scrollTop = $window.scrollTop();
 
- 	$window.on("scroll",function(){
- 		scrollTop = $window.scrollTop();
+					//scroll_move();
+					//fade_out();
+					fade_out();
+				});
 
- 		//scroll_move();
- 		//fade_out();
- 		fade_out();
-
- 	});
-
- 	var chapt_num = $(".chapt_link").length
-/*
+				var chapt_num = $(".chapt_link").length;
+				/*
  	for(i=0;i<chapt_num;i++){
  		(function(){
  		var index = i;
@@ -289,91 +370,90 @@
 
  	}*/
 
+				function initiation() {
+					//헤더 백그라운드 사이즈 포지션 설정
+					d3.select("#background_cover").style("opacity", 0);
+					$(".header_background")
+						.height($window.height())
+						.css(
+							"left",
+							($window.width() - $(".header_background").width()) / 2
+						);
 
+					var svg_margin =
+						($("#background_svg").height() - $("#title_svg").height()) / 2;
+					$("#title_svg").css("margin-top", svg_margin);
 
- 	function initiation(){
- 		//헤더 백그라운드 사이즈 포지션 설정
- 		d3.select('#background_cover').style("opacity",0);
- 		$(".header_background").height($window.height()).css("left",($window.width() - $(".header_background").width())/2);
+					$("div#title").each(function () {
+						var title_margin =
+							$("#title_svg").height() +
+							parseInt($("#title_svg").css("margin-top")) -
+							$window.height() * 0.3;
+						$(this)
+							.css("margin-top", title_margin)
+							.css("margin-bottom", title_margin * 0.5);
+					});
 
- 		var svg_margin = ($('#background_svg').height() - $('#title_svg').height())/2;
- 		$('#title_svg').css("margin-top",svg_margin);
- 		
+					$("div.intro:not('#title')").each(function () {
+						var title_margin = $window.height() / 2;
+						if ($(this).attr("id") != "last_intro") {
+							$(this)
+								.css("margin-top", title_margin)
+								.css("margin-bottom", title_margin);
+						} else {
+							$(this)
+								.css("margin-top", title_margin)
+								.css("margin-bottom", 2 * title_margin);
+						}
+					});
 
- 		$('div#title').each(function(){
- 			var title_margin = $('#title_svg').height() + parseInt($('#title_svg').css("margin-top")) -$window.height()*0.30;
- 			$(this).css("margin-top",title_margin).css("margin-bottom",title_margin*0.5);
- 		});
+					//vertical progress바 설정
+					var text_left =
+						parseInt($(".text").css("margin-left")) +
+						parseInt($("#content").css("margin-left"));
+					$(".vertical_progress_bar").css("left", text_left);
+					//콘텐츠 div위치 확인
+					content_top = $("#content").offset().top;
+					content_offset = content_top - $window.height();
 
- 		$("div.intro:not('#title')").each(function(){
- 			var title_margin = ($window.height())/2;
- 			if($(this).attr("id")!="last_intro"){
- 				$(this).css("margin-top",title_margin).css("margin-bottom",title_margin);
- 			}else{
- 				$(this).css("margin-top",title_margin).css("margin-bottom",2*title_margin);
- 			}
- 		});
+					//섹션 위치 확인을 위한 여러개의 intro.div 위치 확인
+					var intro_num = $("div.intro").length;
+					for (i = 0; i < intro_num; i++) {
+						intro_top[i] = $("div.intro").eq(i).offset().top;
+						section_check.push(false);
+					}
+				}
 
- 		//vertical progress바 설정
- 		var text_left = parseInt($(".text").css("margin-left")) + parseInt($("#content").css("margin-left"));
-			$(".vertical_progress_bar").css("left",text_left);
- 		//콘텐츠 div위치 확인
- 		content_top = $('#content').offset().top;
- 		content_offset = content_top - $window.height();
+				function svg_transition() {}
 
+				function fade_out() {
+					//*Background img control
+					if (scrollTop < intro_top[0]) {
+						//d3.selectAll(".header_background").style("z-index",0);
+						//	d3.select("#background_img").style("opacity",0);
+						var top = ((intro_top[0] - scrollTop) / intro_top[0]) * -15;
+						$(".header_background").css("top", top + "%");
 
- 		//섹션 위치 확인을 위한 여러개의 intro.div 위치 확인
- 		var intro_num = $("div.intro").length;
- 		for(i=0;i<intro_num;i++){
- 			intro_top[i] = $("div.intro").eq(i).offset().top;
- 			section_check.push(false);
- 		}
- 		
- 		
- 	}
+						var opacity = 1 - (intro_top[0] - scrollTop) / intro_top[0];
+						d3.select("#background_img").style("opacity", opacity);
+					} else if (intro_top[0] < scrollTop) {
+						d3.select("#background_img").style("opacity", 1);
+					}
 
- 	function svg_transition(){
-
- 		
- 	}
-
- 	function fade_out(){
-
- 		//*Background img control
- 		if(scrollTop<intro_top[0]){
- 			//d3.selectAll(".header_background").style("z-index",0);
- 		//	d3.select("#background_img").style("opacity",0);
- 			var top = (intro_top[0] - scrollTop)/(intro_top[0]) *(-15);
- 			$(".header_background").css("top",top + "%");
-
- 			var opacity = 1 - (intro_top[0] - scrollTop)/(intro_top[0]);
- 			d3.select("#background_img").style("opacity",opacity);
-
- 			
-
-
- 		}
- 		else if((intro_top[0]<scrollTop)){
- 			d3.select("#background_img").style("opacity",1);
- 		}
-
- 		//*Nav position control
- 		if(scrollTop<50){
- 			$(".nav_bar").removeClass("nav_show");
- 			$(".nav_bar").addClass("nav_hide");
- 			$('.keep_scroll').removeClass('keep_scroll_hide');
- 			console.log("Show");
-
- 		}else if(50<scrollTop){
- 			$(".nav_bar").removeClass("nav_hide");
- 			$(".nav_bar").addClass("nav_show");
- 			$('.keep_scroll').addClass('keep_scroll_hide');
- 			console.log("Hide");
- 		}
- 		
- 	}
-
- });
- </script>
-</body>
+					//*Nav position control
+					if (scrollTop < 50) {
+						$(".nav_bar").removeClass("nav_show");
+						$(".nav_bar").addClass("nav_hide");
+						$(".keep_scroll").removeClass("keep_scroll_hide");
+						console.log("Show");
+					} else if (50 < scrollTop) {
+						$(".nav_bar").removeClass("nav_hide");
+						$(".nav_bar").addClass("nav_show");
+						$(".keep_scroll").addClass("keep_scroll_hide");
+						console.log("Hide");
+					}
+				}
+			});
+		</script>
+	</body>
 </html>
